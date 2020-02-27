@@ -6,18 +6,23 @@
 class Map{
 public:
   /** @brief Class constructor */
-  /** The class constructor randomly generates a map*/
+  /** The class constructor randomly generates a map */
   Map();
   /** @brief Class destructor */
   ~Map();
+  /** @brief paths and numberOfPaths updated to start the run */
+  /** paths become an array of size numberOfPaths that stocks the first events id, where the run will start */
+  /** @param paths array where the ids will be stocked */
+  /** @param numberOfPaths size of paths array */
+  void getPathStarts(unsigned short int *& paths, unsigned short int & numberOfPaths);
   /** @brief Returns pointer to the event number eventId */
-  /** @param eventId Current event Id*/
+  /** @param eventId Current event Id */
   Event * getEvent(unsigned short int eventId);
   /** @brief Returns the number of the next event */
-  /** @param eventId Current event Id*/
+  /** @param eventId Current event Id */
   void nextEvent(unsigned short int & eventId);
   /** @brief Draws the map*/
-  /** Draws the map in console mode or in graphic mode with SDL*/
+  /** Draws the map in console mode or in graphic mode with SDL */
   /** @param mode MAP_TXT to console mode MAP_SDL to graphic mode */
   void drawMap(unsigned short int mode);
 protected:
@@ -25,6 +30,8 @@ protected:
   Event ** eventTree;
   /** @brief Array that stores the upper step of the n-th event */
   unsigned short int * nextEvent;
+  /** @brief Number of events */
+  unsigned short int nEvents;
 };
 
 #endif
