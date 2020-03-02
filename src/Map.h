@@ -33,6 +33,7 @@ protected:
   /** @brief Vector that stores the upper step of the n-th event.*/
   /** This vector stores the upper step in the path of the n-th event. nextEvent[0] should never be accesed because 0 its the uppest step*/
   vector<unsigned short int> * nextEvent;
+  /** @brief Number of events in each layer*/
   unsigned short int * eventsInLayer;
 };
 
