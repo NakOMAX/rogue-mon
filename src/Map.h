@@ -2,13 +2,15 @@
 #define POKE_MAP_H
 
 #include "Event.h"
+#include <vector>
 
 class Map{
 public:
   /** @brief Class constructor */
-  /** The class constructor randomly generates a map */
-  Map();
-  /** @brief Class destructor */
+  /** The class constructor randomly generates a map of the desired number of layers */
+  /** @param layers Number of layers that the map will have. Minimun: 1 */
+  Map(unsigned short int layers = 10);
+  /** @brief Class destructor. Deallocates memory. */
   ~Map();
   /** @brief paths and numberOfPaths updated to start the run */
   /** paths become an array of size numberOfPaths that stocks the first events id, where the run will start */
@@ -27,11 +29,11 @@ public:
   void drawMap(unsigned short int mode);
 protected:
   /** @brief Array where the events are stocked */
-  Event ** eventTree;
-  /** @brief Array that stores the upper step of the n-th event */
-  unsigned short int * nextEvent;
-  /** @brief Number of events */
-  unsigned short int nEvents;
+  vector<Event *> eventTree;
+  /** @brief Vector that stores the upper step of the n-th event.*/
+  /** This vector stores the upper step in the path of the n-th event. nextEvent[0] should never be accesed because 0 its the uppest step*/
+  vector<unsigned short int> * nextEvent;
+  unsigned short int * eventsInLayer;
 };
 
 #endif
