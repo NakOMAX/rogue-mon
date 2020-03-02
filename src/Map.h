@@ -4,7 +4,7 @@
 #include "Event.h"
 #include <vector>
 
-struct Noeud{
+struct Node{
   Event * event;
   unsigned short int posX;
   unsigned short int posY;
@@ -37,7 +37,7 @@ public:
   void drawMap(unsigned short int mode);
 protected:
   /** @brief Array where the events are stocked */
-  vector<Noeud *> eventTree;
+  vector<Node *> eventTree;
   /** @brief Number of events in each layer*/
   unsigned short int * eventsInLayer;
 };
