@@ -4,6 +4,14 @@
 #include "Event.h"
 #include <vector>
 
+struct Noeud{
+  Event * event;
+  unsigned short int posX;
+  unsigned short int posY;
+
+  unsigned short int nextEvent;
+};
+
 class Map{
 public:
   /** @brief Class constructor */
@@ -29,10 +37,7 @@ public:
   void drawMap(unsigned short int mode);
 protected:
   /** @brief Array where the events are stocked */
-  vector<Event *> eventTree;
-  /** @brief Vector that stores the upper step of the n-th event.*/
-  /** This vector stores the upper step in the path of the n-th event. nextEvent[0] should never be accesed because 0 its the uppest step*/
-  vector<unsigned short int> * nextEvent;
+  vector<Noeud *> eventTree;
   /** @brief Number of events in each layer*/
   unsigned short int * eventsInLayer;
 };

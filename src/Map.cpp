@@ -13,16 +13,20 @@ Map::Map(unsigned short int layers = 10)
   // Initialization of variables
   srand (time(NULL));
   unsigned short int eventsInLayer = new unsigned short int [layers];
-  nextEvent = new vector<unsigned short int>;
-  eventTree = new vector<Event *>;
+  eventTree = new vector<Noeud>;
   unsigned short int nEvents = 1;
   unsigned short int random;
   unsigned short int i, j, k;
 
   // Boss layer set-up
   eventsInLayer[0]=1;
-  nextEvent->push_back(0);
-  eventTree->push_back(new Boss);
+  Node * currentEvent = new Node;
+  currentEvent->event=new Boss;
+  /*posX posY setting*/
+  currentEvent->nextEvent=0;
+  eventTree.push_back(currentEvent);
+
+
 
   // For each layer we create a number of events that depends on the number of events in the upper layer
   for (i = 1; i < layers; i++)
@@ -39,7 +43,6 @@ Map::Map(unsigned short int layers = 10)
       // Initialization of events
       for (k = 0; k < random; k++)
       {
-        nextEvent->push_back(j);
         //
         //  Place holder:
         //  Code to generate a event depending on the layer we are
@@ -57,9 +60,8 @@ Map::~Map()
   size=eventTree->size();
   for (int i = 0; i < size; i++)
   {
-    delete eventTree->at(i);
+    delete eventTree.at(i);
   }
   delete eventTree;
-  delete nextEvent;
   delete eventsInLayer;
 }
