@@ -13,20 +13,21 @@ Map::Map(unsigned short int layers = 10)
   // Initialization of variables
   srand (time(NULL));
   unsigned short int eventsInLayer = new unsigned short int [layers];
-  eventTree = new vector<Noeud>;
+  nodeTree = new vector<Node>;
+  edgeArray = new vector<Edge>;
   unsigned short int nEvents = 1;
   unsigned short int random;
   unsigned short int i, j, k;
 
   // Boss layer set-up
   eventsInLayer[0]=1;
-  Node * currentEvent = new Node;
-  currentEvent->event=new Boss;
-  /*posX posY setting*/
-  currentEvent->nextEvent=0;
-  eventTree.push_back(currentEvent);
+  Node currentEvent;
+  //currentEvent->event=new Boss;
+  currentEvent.content = 0; // test de contenu
+  currentEvent.posY = 0;
+  nodeTree->push_back(currentEvent);
 
-
+  Edge currentEdge;
 
   // For each layer we create a number of events that depends on the number of events in the upper layer
   for (i = 1; i < layers; i++)
@@ -39,29 +40,36 @@ Map::Map(unsigned short int layers = 10)
     {
       random=rand()%2 + 1;
       eventsInLayer[i]+=random;
+      currentEdge.up = &nodeTree->at(j);
 
       // Initialization of events
       for (k = 0; k < random; k++)
       {
-        //
-        //  Place holder:
-        //  Code to generate a event depending on the layer we are
-        //  WIP
-        //
+        currentEvent.posY = i;
+        //param
+        nodeTree->push_back(temp);
+
+        currentEdge.down = &nodeTree->back();
+        edgeArray->push_back(currentEdge);
+
+        currentEvent.connects.push_back(&edgeArray->back());
       }
 
     }
     nEvents+=eventsInLayer[i];
+    for (k = eventsInLayer[i]; k > 0; k--) {
+      nodeTree->at(nEvents-k).posX = k/eventsInLayer[i];
+    }
   }
 }
 
 Map::~Map()
 {
-  size=eventTree->size();
+  size=nodeTree->size();
   for (int i = 0; i < size; i++)
   {
-    delete eventTree.at(i);
+    delete nodeTree->at(i);
   }
-  delete eventTree;
+  delete nodeTree;
   delete eventsInLayer;
 }

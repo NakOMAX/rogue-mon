@@ -3,13 +3,23 @@
 
 #include "Event.h"
 #include <vector>
+using namespace std;
 
 struct Node{
-  Event * event;
+  //Event * event;
+  unsigned short int content;
   unsigned short int posX;
   unsigned short int posY;
 
   unsigned short int nextEvent;
+
+  unsigned short int state; // visited, current, unreachable, reachable
+  vector<Edge *> connects;
+};
+
+struct Edge {
+  Node * up;
+  Node * down;
 };
 
 class Map{
@@ -37,7 +47,9 @@ public:
   void drawMap(unsigned short int mode);
 protected:
   /** @brief Array where the events are stocked */
-  vector<Node *> eventTree;
+  vector<Node>* nodeTree;
+  /** @brief Array where edges are stocked */
+  vector<Edge>* edgeArray;
   /** @brief Number of events in each layer*/
   unsigned short int * eventsInLayer;
 };
