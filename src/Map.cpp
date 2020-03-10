@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
+using namespace std;
 
 #define MAP_TXT 0
 #define MAP_SDL 1
@@ -58,7 +60,7 @@ Map::Map(unsigned short int layers = 10)
     }
     nEvents+=eventsInLayer[i];
     for (k = eventsInLayer[i]; k > 0; k--) {
-      nodeTree->at(nEvents-k).posX = k/eventsInLayer[i];
+      nodeTree->at(nEvents-k).posX = k;
     }
   }
 }
