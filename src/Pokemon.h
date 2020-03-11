@@ -5,8 +5,19 @@ class Pokemon
 {
     private :
 
-    unsigned char idP;
-    unsigned char pv;
+    unsigned short int idP;
+    string name;
+    unsigned short int type;
+    unsigned short int HP;
+    unsigned short int atk;
+    unsigned short int sAtk;
+    unsigned short int def;
+    unsigned short int sDef;
+    unsigned short int speed;
+    unsigned short int lvl;
+    
+
+
     
     
 }
