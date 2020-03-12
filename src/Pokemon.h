@@ -1,9 +1,12 @@
 #ifndef _POKEMON
 #define _POKEMON
 
+#include <string>
+
 class Pokemon 
 {
-    private :
+    
+protected:
 
     unsigned short int idP;
     string name;
