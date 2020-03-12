@@ -26,31 +26,33 @@ protected:
     ~Pokemon();
 
     ///@brief accessor 
-    unsigned int getId ();
+    unsigned short int getId ();
     ///@brief accessor 
     string getName ();
     ///@brief accessor 
-    unsigned int getType ();
+    unsigned short int getType ();
     ///@brief accessor 
-    unsigned int getHP ();
+    unsigned short int getHP ();
     ///@brief accessor 
-    unsigned int getAtk ();
+    unsigned short int getAtk ();
     ///@brief accessor 
-    unsigned int getSAtk ();
+    unsigned short int getSAtk ();
     ///@brief accessor 
-    unsigned int getDef ();
+    unsigned short int getDef ();
     ///@brief accessor 
-    unsigned int getSDef ();
+    unsigned short int getSDef ();
     ///@brief accessor 
-    unsigned int getSpeed ();
+    unsigned short int getSpeed ();
     ///@brief accessor 
-    unsigned int getLvl ();
+    unsigned short int getLvl ();
 
     ///@brief mutator
-    setHP(unsigned int );
+    setHP(unsigned short int );
     ///@brief mutator
-    setLvl (unsigned int );
+    setLvl (unsigned short int );
 
     
     
 }
+
+#endif
