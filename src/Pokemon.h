@@ -3,10 +3,10 @@
 
 #include <string>
 
-
 class Pokemon 
 {
-    private :
+    
+protected:
 
     unsigned short int idP;
     string name;
