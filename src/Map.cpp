@@ -8,19 +8,21 @@
 Map::Map(unsigned short int totalLayers)
 {
   // Initialization of variables
+  nLayers=totalLayers;
   myMap = GraphMap();
-  eventsInLayer = new short int[totalLayers];
-  for (unsigned short int i = 0; i<totalLayers; i++)
+  eventsInLayer = new short int[nLayers];
+  for (unsigned short int i = 0; i<nLayers; i++)
       eventsInLayer[i]=0;
 
   // Boss layer
   Vertex vertexF = add_vertex(myMap);
   myMap[vertexF].event=BOSS_EVENT;
-  myMap[vertexF].layer=totalLayers-1;
-  eventsInLayer[totalLayers-1]++;
+  myMap[vertexF].layer=nLayers-1;
+  eventsInLayer[nLayers-1]++;
 
   // Start of the recursive method
-  createVerticesBelow(vertexF, totalLayers-2);
+  createVerticesBelow(vertexF, nLayers-2);
+  setContent();
 }
 
 Map::~Map()
@@ -29,7 +31,7 @@ Map::~Map()
   std::cout<<"Map succesfully destroyed"<<std::endl;
 }
 
-void Map::createVerticesBelow(Vertex vertexF, unsigned short int layer)
+void Map::createVerticesBelow(const Vertex & vertexF, unsigned short int layer)
 {
     Vertex vertexS;
     unsigned short int randomVertices = rand()%2+1;
@@ -43,24 +45,29 @@ void Map::createVerticesBelow(Vertex vertexF, unsigned short int layer)
     }
 }
 
+void Map::setContent()
+{
+  auto vPair = vertices(myMap);
+  vPair.first++;
+  for (auto iter = vPair.first; iter!=vPair.second; iter++)
+  {
+    // For Testing Purposes. Replace when event code is done.
+    myMap[*iter].event = rand()%500+1;
+  }
+}
+
 void Map::drawMap(short int mode)
 {
     switch(mode)
     {
         default:
             auto vPair = vertices(myMap);
-            int i = 0;
+            vPair.first++;
             for (auto iter = vPair.first; iter!=vPair.second; iter++)
             {
-                std::cout<< "Vertex n" << i++<< " is in layer "<< myMap[*iter].layer
-                <<std::endl;
+                std::cout << "Vertex with value " << myMap[*iter].event;
+                std::cout << " is in layer " << myMap[*iter].layer << " and its upper step is ";
+                std::cout << myMap[*(adjacent_vertices(*iter, myMap).first)].event <<std::endl;
             }
     }
-}
-
-int main(void)
-{
-    Map pokemonMap(5);
-    pokemonMap.drawMap();
-    return 0;
 }

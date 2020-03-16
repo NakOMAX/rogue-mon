@@ -27,7 +27,7 @@ struct Node{
 };
 
 typedef boost::adjacency_list<boost::listS, boost::listS,
-                              boost::undirectedS, Node>
+                              boost::bidirectionalS, Node>
                               GraphMap;
 typedef boost::graph_traits<GraphMap>::vertex_descriptor Vertex;
 
@@ -66,8 +66,14 @@ private:
   // Number of events in each layer
   short int * eventsInLayer;
 
+  // Number of layers
+  unsigned short int nLayers;
+
   // Creates one or two vertices in layer linked to vertxF. Recursive method.
-  void createVerticesBelow(Vertex vertexF, unsigned short int layer);
+  void createVerticesBelow(const Vertex & vertexF, unsigned short int layer);
+
+  // Set the content of the events
+  void setContent();
 
 };
 
