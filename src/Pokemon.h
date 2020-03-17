@@ -3,7 +3,8 @@
 
 #include <string>
 
-class Pokemon 
+class Pokemon /**\class A Pokemon is describe by a its name, its HP, its attack and its defense 
+of course it also have a level. A Pokemon can be used during a fight and sometimes you should take care of it.*/ 
 {
     
 protected:
@@ -21,7 +22,12 @@ protected:
 
 
     ///@brief class constructor 
-    Pokemon ();
+    Pokemon(
+    unsigned short int type ///@param The Pokemon can be 1: water, 2: Fire, 3 : Grass
+    unsigned short int lvlinit =1,  ///@param This is for a new Pokemon with a better lvl
+    unsigned short int atkinit =10,  ///@param The Pokemon can be stronger 
+    unsigned short int definit =10 ///@param The Pokemon can be stronger 
+    )
     ///@brief class destructor
     ~Pokemon();
 
