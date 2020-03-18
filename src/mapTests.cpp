@@ -6,10 +6,8 @@
 
 int main(void)
 {
-  srand(time(NULL));
+  srand(0);
   Map pokemonMap(7);
   pokemonMap.drawMap();
-  int a;
-  std::cin>>a;
   return 0;
 }

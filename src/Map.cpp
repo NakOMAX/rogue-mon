@@ -18,6 +18,7 @@ Map::Map(unsigned short int totalLayers)
   Vertex vertexF = add_vertex(myMap);
   myMap[vertexF].event=BOSS_EVENT;
   myMap[vertexF].layer=nLayers-1;
+  myMap[vertexF].state=STATE_REACHABLE;
   eventsInLayer[nLayers-1]++;
 
   // Start of the recursive method
@@ -39,6 +40,7 @@ void Map::createVerticesBelow(const Vertex & vertexF, unsigned short int layer)
     {
         vertexS = add_vertex(myMap);
         myMap[vertexS].layer=layer;
+        myMap[vertexS].state=STATE_REACHABLE;
         add_edge(vertexS, vertexF, myMap);
         if (layer!=0)
             createVerticesBelow(vertexS, layer-1);
@@ -49,7 +51,7 @@ void Map::setContent()
 {
   auto vPair = vertices(myMap);
   vPair.first++;
-  for (auto iter = vPair.first; iter!=vPair.second; iter++)
+  for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
   {
     // For Testing Purposes. Replace when event code is done.
     myMap[*iter].event = rand()%500+1;
@@ -63,11 +65,56 @@ void Map::drawMap(short int mode)
         default:
             auto vPair = vertices(myMap);
             vPair.first++;
-            for (auto iter = vPair.first; iter!=vPair.second; iter++)
+            for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
             {
                 std::cout << "Vertex with value " << myMap[*iter].event;
                 std::cout << " is in layer " << myMap[*iter].layer << " and its upper step is ";
                 std::cout << myMap[*(adjacent_vertices(*iter, myMap).first)].event <<std::endl;
             }
     }
+}
+
+std::vector<VIterator> * Map::getStarts()
+{
+    std::vector<VIterator> * v = new std::vector<VIterator>;
+    auto vPair = vertices(myMap);
+    for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
+    {
+        if(myMap[*iter].layer==0)
+        {
+            v->push_back(iter);
+        }
+    }
+    return v;
+}
+
+void Map::selectPath(VIterator start)
+{
+    auto vPair = vertices(myMap);
+    for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
+    {
+        myMap[*iter].state = STATE_UNREACHABLE;
+    }
+    auto climbIterator = adjacent_vertices(*start, myMap);
+    do{
+        myMap[*climbIterator.first].state = STATE_REACHABLE;
+        climbIterator = adjacent_vertices(*climbIterator.first, myMap);
+    }while(myMap[*climbIterator.first].layer != nLayers-1);
+    myMap[*climbIterator.first].state = STATE_REACHABLE;
+}
+
+Path Map::climbFrom(VIterator current)
+{
+    // There is only one option to go upwards. If it changed, change this code
+    // to return a vector of Path and call selectPath on the desired option.
+    myMap[*current].state = STATE_VISITED;
+    return adjacent_vertices(*current, myMap);
+}
+
+Path Map::climbFrom(Path current)
+{
+    // There is only one option to go upwards. If it changed, change this code
+    // to return a vector of Path and call selectPath on the desired option.
+    myMap[*current].state = STATE_VISITED;
+    return adjacent_vertices(*current, myMap);
 }

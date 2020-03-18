@@ -1,5 +1,5 @@
-#ifndef POKE_MAP_H
-#define POKE_MAP_H
+#ifndef _POKE_MAP_H
+#define _POKE_MAP_H
 
 
 #include <boost/graph/adjacency_list.hpp>
@@ -12,6 +12,11 @@
 #define TRAINER_EVENT 2
 #define HEAL_EVENT 3
 
+#define STATE_VISITED 0
+#define STATE_REACHABLE 1
+#define STATE_UNREACHABLE 2
+#define STATE_SELECTED 3
+
 struct Node{
   //Event * event;
   unsigned short int event;
@@ -22,7 +27,7 @@ struct Node{
   unsigned short int posX;
   unsigned short int posY;
 
-  // Visited, current, unreachable, reachable
+  // Visited, unreachable, reachable or selected.
   unsigned short int state;
 };
 
@@ -30,6 +35,8 @@ typedef boost::adjacency_list<boost::listS, boost::listS,
                               boost::bidirectionalS, Node>
                               GraphMap;
 typedef boost::graph_traits<GraphMap>::vertex_descriptor Vertex;
+typedef boost::graph_traits<GraphMap>::vertex_iterator VIterator;
+typedef boost::graph_traits<GraphMap>::adjacency_iterator Path;
 
 class Map{
 public:
@@ -42,16 +49,26 @@ public:
   /** @brief Class destructor. Deallocates memory. */
   ~Map();
 
-  /** @brief paths and numberOfPaths updated to start the run */
-  /** paths become an array of size numberOfPaths that stocks the first
-  events id, where the run will start */
-  /** @param paths array where the ids will be stocked */
-  /** @param numberOfPaths size of paths array */
-  void getStarts(Node *& starts, unsigned short int & numberOfPaths);
+  /** @brief Returns initial points where the game can start from */
+  /** The vector contains pointers to the first layer vertices */
+  std::vector<VIterator> * getStarts();
 
-  /** @brief Returns pointer to the event number eventId */
-  /** @param eventId Current event Id */
-  //Event * getEvent(const Node * n);
+  /** @brief Selects a path to start*/
+  /** Selects a path and sets every unreachable vertex to STATE_UNREACHABLE */
+  /** @param start VIterator from the array got in getStarts() */
+  void selectPath(VIterator start);
+
+  /** @brief Returns iterator towards next vertex*/
+  /** Returns iterator towards next vertex and set state of *current
+  to STATE_VISITED*/
+  /** @param current VIterator got from getStarts() */
+  Path climbFrom(VIterator current);
+
+  /** @brief Returns iterator towards next vertex*/
+  /** Returns iterator towards next vertex and set state of *current
+  to STATE_VISITED*/
+  /** @param current Path got from climbFrom */
+  Path climbFrom(Path current);
 
   /** @brief Draws the map*/
   /** Draws the map in console mode or in graphic mode with SDL */
