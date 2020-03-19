@@ -1,10 +1,10 @@
 #include "Pokemon.h"
 
 #include <iostream>
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <vector>
+
 using namespace std;
 
 #define const unsigned short int HPMAX=100
