@@ -9,7 +9,7 @@ of course it also have a level. A Pokemon can be used during a fight and sometim
     
 protected:
 
-    unsigned short int idP;
+    unsigned short int id;
     string name;
     unsigned short int type;
     unsigned short int HP;
@@ -32,30 +32,30 @@ protected:
     ~Pokemon();
 
     ///@brief accessor 
-    unsigned short int getId ();
+    unsigned short int getId () const ;
     ///@brief accessor 
-    string getName ();
+    string getName () const ;
     ///@brief accessor 
-    unsigned short int getType ();
+    unsigned short int getType() const ;
     ///@brief accessor 
-    unsigned short int getHP ();
+    unsigned short int getHP () const ;
     ///@brief accessor 
-    unsigned short int getAtk ();
+    unsigned short int getAtk () const ;
     ///@brief accessor 
-    unsigned short int getSAtk ();
+    unsigned short int getSAtk () const ;
     ///@brief accessor 
-    unsigned short int getDef ();
+    unsigned short int getDef () const ;
     ///@brief accessor 
-    unsigned short int getSDef ();
+    unsigned short int getSDef () const ;
     ///@brief accessor 
-    unsigned short int getSpeed ();
+    unsigned short int getSpeed () const ;
     ///@brief accessor 
-    unsigned short int getLvl ();
+    unsigned short int getLvl () const ;
 
     ///@brief mutator
-    setHP(unsigned short int );
+    setHP(unsigned short int newHP );
     ///@brief mutator
-    setLvl (unsigned short int );
+    setLvl (unsigned short int newLvl );
 
     
     
