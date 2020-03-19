@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-Map::Map(unsigned short int totalLayers)
+Map::Map(unsigned short int totalLayers, int seed)
 {
   // Initialization of variables
+  if (seed == 1) { srand(time(NULL)); }
+  else { srand(seed); }
   nLayers=totalLayers;
   myMap = GraphMap();
   eventsInLayer = new short int[nLayers];
@@ -58,22 +60,6 @@ void Map::setContent()
   }
 }
 
-void Map::drawMap(short int mode)
-{
-    switch(mode)
-    {
-        default:
-            auto vPair = vertices(myMap);
-            vPair.first++;
-            for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
-            {
-                std::cout << "Vertex with value " << myMap[*iter].event;
-                std::cout << " is in layer " << myMap[*iter].layer << " and its upper step is ";
-                std::cout << myMap[*(adjacent_vertices(*iter, myMap).first)].event <<std::endl;
-            }
-    }
-}
-
 std::vector<VIterator> * Map::getStarts()
 {
     std::vector<VIterator> * v = new std::vector<VIterator>;
@@ -95,6 +81,7 @@ void Map::selectPath(VIterator start)
     {
         myMap[*iter].state = STATE_UNREACHABLE;
     }
+    myMap[*start].state = STATE_SELECTED;
     auto climbIterator = adjacent_vertices(*start, myMap);
     do{
         myMap[*climbIterator.first].state = STATE_REACHABLE;
@@ -103,18 +90,54 @@ void Map::selectPath(VIterator start)
     myMap[*climbIterator.first].state = STATE_REACHABLE;
 }
 
-Path Map::climbFrom(VIterator current)
+PathI Map::climbFrom(VIterator current)
 {
     // There is only one option to go upwards. If it changed, change this code
-    // to return a vector of Path and call selectPath on the desired option.
+    // to return a vector of PathI and call selectPathI on the desired option.
     myMap[*current].state = STATE_VISITED;
-    return adjacent_vertices(*current, myMap);
+    PathI next = adjacent_vertices(*current, myMap).first;
+    myMap[*next].state = STATE_SELECTED;
+    return next;
 }
 
-Path Map::climbFrom(Path current)
+PathI Map::climbFrom(PathI current)
 {
     // There is only one option to go upwards. If it changed, change this code
-    // to return a vector of Path and call selectPath on the desired option.
+    // to return a vector of PathI and call selectPathI on the desired option.
     myMap[*current].state = STATE_VISITED;
-    return adjacent_vertices(*current, myMap);
+    PathI next = adjacent_vertices(*current, myMap).first;
+    myMap[*next].state = STATE_SELECTED;
+    return next;
+}
+
+void Map::drawMap(short int mode)
+{
+    switch(mode)
+    {
+        default:
+            auto vPair = vertices(myMap);
+
+            std::cout << "Vertex with value:" << myMap[*vPair.first].event<<std::endl;
+            std::cout << " is root";
+            std::cout << "with state:" << myMap[*vPair.first].state<<std::endl<<std::endl;
+
+            vPair.first++;
+            for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
+            {
+                std::cout << "Vertex with value:" << myMap[*iter].event<<std::endl;
+                std::cout << "is in layer" << myMap[*iter].layer << " and its upper step is ";
+                std::cout << myMap[*(adjacent_vertices(*iter, myMap).first)].event <<std::endl;
+                std::cout << "with state:" << myMap[*iter].state<<std::endl<<std::endl;
+            }
+    }
+}
+
+void Map::highlight(std::vector<VIterator> * options, unsigned short int selected)
+{
+    auto size = options->size();
+    for (unsigned short int i = 0; i<size; i++)
+    {
+        myMap[*options->at(i)].state = STATE_REACHABLE;
+    }
+    myMap[*options->at(selected)].state = STATE_SELECTED;
 }
