@@ -1,2 +1,4 @@
 obj/*.o
 bin/*
+include/boost*
+include/S*
