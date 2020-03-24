@@ -19,6 +19,7 @@ ifeq ($(OS),Windows_NT)
 	endif
 	ifeq ($(PROCESSOR_ARCHITECTURE),x86)
 		LIB_SDL = -L$(LIB_DIR)/w_x86
+	endif
 else
 	LIB_SDL = -L$(LIB_DIR)/linux
 endif
@@ -43,10 +44,6 @@ event: event_run
 
 ## Setup -----------------------------------------------------------------------
 setup: make_dir
-
-# Installs SDL2 on Linux or finds SDL2 lib on Windows
-install_sdl:
-
 
 # Makes necessary directories if empty
 make_dir:
