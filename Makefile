@@ -1,24 +1,54 @@
-##  ----------------------------------------------------- Constants -----------
-COMP = g++ -Wall
+## Constants -------------------------------------------------------------------
+# General
+CC = g++ -Wall
 
 OBJ_DIR = obj
 BIN_DIR = bin
 SRC_DIR = src
+LIB_DIR = lib
 
-BOOST = include/boost_1_72_0/
-## ------------------------------------------------------build commands--------
+# Include-related
+INC_BOOST = -Iinclude/boost_1_72_0/
+INC_SDL2 = -Iinclude/SDL2/
+INCLUDE_FLAGS = $(INC_BOOST) $(INC_SDL2)
 
-# default builds everything
-default : map event
+# Library-related
+ifeq ($(OS),Windows_NT)
+	ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
+		LIB_SDL = -L$(LIB_DIR)/w_x64
+	endif
+	ifeq ($(PROCESSOR_ARCHITECTURE),x86)
+		LIB_SDL = -L$(LIB_DIR)/w_x86
+else
+	LIB_SDL = -L$(LIB_DIR)/linux
+endif
+LIBRARIES_FLAGS = $(LIB_SDL)
 
-# make map makes the map test
-map: make_dir map_run
+# Link-related
+LINK_SDL2 = -lSDL2
+LINKER_FLAGS = $(LINK_SDL2)
 
-# make event makes the event test
-event: make_dir event_run
-## ----------------------------------------------- make_dir ------------------
 
-# makes necessary directories if empty
+## Build commands---------------------------------------------------------------
+
+# Builds everything
+default : setup map event
+
+# Map tests
+map: map_run
+
+# Event tests
+event: event_run
+
+
+## Setup -----------------------------------------------------------------------
+setup: make_dir
+
+# Installs SDL2 on Linux or finds SDL2 lib on Windows
+install_sdl:
+
+
+# Makes necessary directories if empty
 make_dir:
 ifeq ($(OS),Windows_NT)
 	if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
@@ -28,33 +58,35 @@ else
 	test -d $(BIN_DIR) || mkdir -p $(BIN_DIR)
 endif
 
-## ------------------------------------------------- runs ---------------------
 
+## Runs ------------------------------------------------------------------------
 map_run: $(BIN_DIR)/mapTests
 
 event_run: $(BIN_DIR)/eventTests
-## ----------------------------------------------------------- actual builds --
-# main builds (binairies)
+
+
+## Actual builds ---------------------------------------------------------------
+
+# Binairies
 $(BIN_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o
-	$(COMP) $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o -o $(BIN_DIR)/eventTests
+	$(CC) $^ -o $@
 
 $(BIN_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
-	$(COMP) $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o -o $(BIN_DIR)/mapTests
+	$(CC) $(LIBRARIES_FLAGS) $(LINK_SDL2) $^ -o $@
 
-## objects builds
-# mains :
+# Main objects
 $(OBJ_DIR)/eventTests.o: $(SRC_DIR)/main/eventTests.cpp $(SRC_DIR)/event/Event.h $(SRC_DIR)/event/InheritedEvents.h
-	$(COMP) -c $(SRC_DIR)/main/eventTests.cpp -o $(OBJ_DIR)/eventTests.o
+	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/mapTests.o: $(SRC_DIR)/main/mapTests.cpp $(SRC_DIR)/Map.h
-	$(COMP) -I $(BOOST) -c $(SRC_DIR)/main/mapTests.cpp -o $(OBJ_DIR)/mapTests.o
+	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
-# files :
+# Required objects
 $(OBJ_DIR)/InheritedEvents.o : $(SRC_DIR)/event/InheritedEvents.cpp $(SRC_DIR)/event/InheritedEvents.h $(SRC_DIR)/event/Event.h
-	$(COMP) -c $(SRC_DIR)/event/InheritedEvents.cpp -o $(OBJ_DIR)/InheritedEvents.o
+	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/Event.o: $(SRC_DIR)/event/Event.cpp $(SRC_DIR)/event/Event.h
-	$(COMP) -c $(SRC_DIR)/event/Event.cpp -o $(OBJ_DIR)/Event.o
+	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
-	$(COMP) -I $(BOOST) -c $(SRC_DIR)/Map.cpp -o $(OBJ_DIR)/Map.o
+	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
