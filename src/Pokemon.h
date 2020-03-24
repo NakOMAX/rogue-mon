@@ -11,7 +11,7 @@ protected:
 
     unsigned short int id;
     string name;
-    unsigned short int type;
+    unsigned short int type; // 1 = Water, 2= Grass, 3= Fire
     unsigned short int HP;
     unsigned short int atk;
     unsigned short int sAtk;
@@ -22,12 +22,7 @@ protected:
 
 
     ///@brief class constructor 
-    Pokemon(
-    unsigned short int type ///@param The Pokemon can be 1: water, 2: Fire, 3 : Grass
-    unsigned short int lvlinit =1,  ///@param This is for a new Pokemon with a better lvl
-    unsigned short int atkinit =10,  ///@param The Pokemon can be stronger 
-    unsigned short int definit =10 ///@param The Pokemon can be stronger 
-    )
+    Pokemon()
     ///@brief class destructor
     ~Pokemon();
 

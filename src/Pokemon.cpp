@@ -7,24 +7,13 @@
 
 using namespace std;
 
-#define const unsigned short int HPMAX=100
+//à mettre dans la classe fille : #define const unsigned short int HPMAX=100
 
 
-Pokemon :: Pokemon(unsigned short int ntype, unsigned short int lvlinit=1, unsigned short int atkinit=10, unsigned short int definit=10)
-// c'est une idée de constructeur mais il faut que les classe soient heritées donc, je pense qu'il ne ser pas comme ca au final. 
-//Et concernant le tas ou la pile je sais pas si il faut faire un choix plus judicieux
+Pokemon :: Pokemon()
+ //Concernant le tas ou la pile je sais pas si il faut faire un choix plus judicieux
 {
-    HP = HPmax;
-    type = ntype;
-    atk = atkinit;
-    sAtk = atk/2;
-    def = definit;
-    sDef =def/2;
-    lvl = lvlinit;
-    speed = rand()%10-1;
-    name = /* je sais pas faire */
-    // il faut aussi generer l'ID
-
+       // il faut generer l'ID
 }
 
 unsigned short int Pokemon :: getId ()const 
