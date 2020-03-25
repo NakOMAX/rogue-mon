@@ -6,7 +6,6 @@
 #include <vector>
 using namespace std;
 
-
 Item :: Item()
 {
 
@@ -21,7 +20,7 @@ Item :: Item()
 unsigned short int Pokemon :: getId ()const
 {
     return id;
-} 
+}
 
 string Pokemon :: getName ()const
 {

@@ -1,5 +1,4 @@
 #include "Pokemon.h"
-
 #include <iostream>
 //#include <stdio.h>
 #include <stdlib.h>
@@ -21,21 +20,19 @@ Pokemon::Pokemon(unsigned short int new_Id, string new_Name,unsigned short int n
                  unsigned short int new_Atk,unsigned short int new_sAtk, unsigned short int new_Def,
                  unsigned short int new_sDef,unsigned short int new_speed, unsigned short int new_lvl)
 {
-  id = new_Id;
-  name = new_Name;
-  type = new_Type;
-  HP = new_HP;
-  atk = new_Atk;
-  sAtk = new_sAtk;
-  def = new_Def;
-  sDef = new_sDef;
-  speed = new_speed;
-  lvl = new_lvl;
+  id = newId;
+  name = newName;
+  type = newType;
+  Hp = newHP;
+  atk = newAtk;
+  sAtk = newSatk;
+  def = newDef;
+  sDef = newSdef;
+  speed = newSpeed;
+  lvl = newLvl;
 }
 
 Pokemon :: ~Pokemon() {} // destructor
-
-
 
 unsigned short int Pokemon :: getId ()const
 {
@@ -53,9 +50,9 @@ unsigned short int Pokemon :: getType ()const
     return type;
 }
 
-unsigned short int Pokemon :: getHP ()const
-{
-    return HP;
+unsigned short int Pokemon :: getHp ()const
+{// impossible car unsigned short int = int entre 0 et 65 535
+    return Hp;
 }
 
 unsigned short int Pokemon :: getAtk ()const
@@ -74,7 +71,7 @@ unsigned short int Pokemon :: getDef ()const
 }
 
 unsigned short int Pokemon :: getId ()const
-{
+{// impossible car unsigned short int = int entre 0 et 65 535
     return Id;
 }
 
@@ -96,16 +93,20 @@ unsigned short int Pokemon :: getLvl ()const
 
 void Pokemon :: setHP (unsigned short int newHP)
 {
-    if (newHP>0 && newHP<HPMAX)
-    {HP=newHP;}
+    Hp = newHP;
+    /* // impossible car unsigned short int = int entre 0 et 65 535
+    if (newHP>0 && newHP<HPMAX){}
     else
     {cout<< "HP invalide";}
+    */
 }
 
 void Pokemon :: setLvl (unsigned short int newLvl)
 {
-    if (newLvl>0)
-    {lvl=newLvl;}
+    lvl = newLvl;
+    /* // impossible car unsigned short int = int entre 0 et 65 535
+    if (newLvl>0){}
     else
     {cout<< "niveau du Pokémon négatif";}
+    */
 }

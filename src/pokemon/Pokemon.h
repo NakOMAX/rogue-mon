@@ -12,7 +12,7 @@ protected:
     unsigned short int id;
     string name;
     unsigned short int type; // 1 = Water, 2= Grass, 3= Fire
-    unsigned short int HP;
+    unsigned short int Hp;
     unsigned short int atk;
     unsigned short int sAtk;
     unsigned short int def;
@@ -57,8 +57,6 @@ protected:
     setHP(unsigned short int newHP );
     ///@brief mutator
     setLvl (unsigned short int newLvl );
-
-
 
 }
 
