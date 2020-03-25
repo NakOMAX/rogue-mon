@@ -4,7 +4,7 @@
 include <string>
 class Item
 {
-protected : 
+protected :
 
     string name ;
     unsigned short int amount;
@@ -24,8 +24,8 @@ public :
     ///@brief accessor
     unsigned short int getAmount();
     /**@brief The fonction use the caracteristic of the item*/
-     Item useItem();
-     
+    Item useItem();
+
 
 
 }

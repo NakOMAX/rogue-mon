@@ -13,71 +13,92 @@ using namespace std;
 Pokemon :: Pokemon()
  //Concernant le tas ou la pile je sais pas si il faut faire un choix plus judicieux
 {
-       // il faut generer l'ID
+      // il faut generer l'ID
 }
 
-unsigned short int Pokemon :: getId ()const 
+// constructeur par copie
+Pokemon::Pokemon(unsigned short int new_Id, string new_Name,unsigned short int new_Type,unsigned short int new_HP,
+                 unsigned short int new_Atk,unsigned short int new_sAtk, unsigned short int new_Def,
+                 unsigned short int new_sDef,unsigned short int new_speed, unsigned short int new_lvl)
 {
-    return Id;
+  id = new_Id;
+  name = new_Name;
+  type = new_Type;
+  HP = new_HP;
+  atk = new_Atk;
+  sAtk = new_sAtk;
+  def = new_Def;
+  sDef = new_sDef;
+  speed = new_speed;
+  lvl = new_lvl;
 }
 
-string Pokemon :: getName ()const 
+Pokemon :: ~Pokemon() {} // destructor
+
+
+
+unsigned short int Pokemon :: getId ()const
+{
+    return id;
+}
+
+string Pokemon :: getName ()const
 {
     return name;
-    
+
 }
 
-unsigned short int Pokemon :: getType ()const 
+unsigned short int Pokemon :: getType ()const
 {
     return type;
 }
 
-unsigned short int Pokemon :: getHP ()const 
+unsigned short int Pokemon :: getHP ()const
 {
     return HP;
 }
 
-unsigned short int Pokemon :: getAtk ()const 
+unsigned short int Pokemon :: getAtk ()const
 {
     return atk;
 
 
-unsigned short int Pokemon :: getSAtk ()const 
+unsigned short int Pokemon :: getSAtk ()const
 {
     return sAtk;
 }
 
-unsigned short int Pokemon :: getDef ()const 
+unsigned short int Pokemon :: getDef ()const
 {
     return def;
 }
 
-unsigned short int Pokemon :: getId ()const 
+unsigned short int Pokemon :: getId ()const
 {
     return Id;
 }
 
 
-unsigned short int Pokemon :: getSDef ()const 
+unsigned short int Pokemon :: getSDef ()const
 {
     return sDef;
 }
 
-unsigned short int Pokemon :: getSpeed ()const 
+unsigned short int Pokemon :: getSpeed ()const
 {
     return speed;
 }
 
-unsigned short int Pokemon :: getLvl ()const 
+unsigned short int Pokemon :: getLvl ()const
 {
     return lvl;
 }
 
 void Pokemon :: setHP (unsigned short int newHP)
 {
-    if (newHP>0 && newHP<HPMAX) 
+    if (newHP>0 && newHP<HPMAX)
     {HP=newHP;}
-    else 
+    else
     {cout<< "HP invalide";}
 }
 
@@ -85,6 +106,6 @@ void Pokemon :: setLvl (unsigned short int newLvl)
 {
     if (newLvl>0)
     {lvl=newLvl;}
-    else 
+    else
     {cout<< "niveau du Pokémon négatif";}
 }
