@@ -6,6 +6,8 @@ OBJ_DIR = obj
 BIN_DIR = bin
 SRC_DIR = src
 LIB_DIR = lib
+MAIN_DIR = $(SRC_DIR)/main
+EVENT_DIR = $(SRC_DIR)/event
 
 # Include-related
 INC_BOOST = -Iinclude/boost_1_72_0/
@@ -26,8 +28,8 @@ endif
 LIBRARIES_FLAGS = $(LIB_SDL)
 
 # Link-related
-LINK_SDL2 = -lSDL2
-LINKER_FLAGS = $(LINK_SDL2)
+LINK_SDL = -lSDL2
+LINKER_FLAGS = $(LINK_SDL)
 
 
 ## Build commands---------------------------------------------------------------
@@ -40,6 +42,9 @@ map: map_run
 
 # Event tests
 event: event_run
+
+# GameManager tests
+gm: gamemanager_run
 
 # Cleans executables
 clean:
@@ -68,6 +73,8 @@ map_run: $(BIN_DIR)/mapTests
 
 event_run: $(BIN_DIR)/eventTests
 
+gamemanager_run: $(BIN_DIR)/gmTests
+
 
 ## Actual builds ---------------------------------------------------------------
 
@@ -76,20 +83,29 @@ $(BIN_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR
 	$(CC) $^ -o $@
 
 $(BIN_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
-	$(CC) $(LIBRARIES_FLAGS) $(LINK_SDL2) $^ -o $@
+	$(CC) $(LIB_SDL) $(LINK_SDL) $^ -o $@
+
+$(BIN_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o
+	$(CC) $^ -o $@
 
 # Main objects
-$(OBJ_DIR)/eventTests.o: $(SRC_DIR)/main/eventTests.cpp $(SRC_DIR)/event/Event.h $(SRC_DIR)/event/InheritedEvents.h
+$(OBJ_DIR)/eventTests.o: $(MAIN_DIR)/eventTests.cpp $(EVENT_DIR)/*.h
 	$(CC) -c $< -o $@
 
-$(OBJ_DIR)/mapTests.o: $(SRC_DIR)/main/mapTests.cpp $(SRC_DIR)/Map.h
+$(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
+$(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h
+	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
+
 # Required objects
-$(OBJ_DIR)/InheritedEvents.o : $(SRC_DIR)/event/InheritedEvents.cpp $(SRC_DIR)/event/InheritedEvents.h $(SRC_DIR)/event/Event.h
+$(OBJ_DIR)/InheritedEvents.o : $(EVENT_DIR)/InheritedEvents.cpp $(EVENT_DIR)/*.h
 	$(CC) -c $< -o $@
 
-$(OBJ_DIR)/Event.o: $(SRC_DIR)/event/Event.cpp $(SRC_DIR)/event/Event.h
+$(OBJ_DIR)/GameManager.o: $(SRC_DIR)/GameManager.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h
+	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
+
+$(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
