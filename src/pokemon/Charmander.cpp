@@ -11,7 +11,8 @@ using namespace std;
 
 Charmander  :: Charmander  () {
 
-    HP = HPMAX;
+    id = 004;
+    Hp = HPMAX;
     name = "Charmander";
     type = 3; // 3= Fire
     lvl = 1;

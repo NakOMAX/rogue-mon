@@ -17,12 +17,9 @@ Item :: Item(unsigned unsigned int newId, string newName, unsigned short int new
   id = newId
   name = newName;
   amount = newAmount
-
 }
 
-Item :: ~Item(){
-
-}
+Item :: ~Item(){}
 
 unsigned short int Pokemon :: getId ()const
 {

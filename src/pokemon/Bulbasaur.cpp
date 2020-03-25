@@ -11,11 +11,12 @@ using namespace std;
 
 
 Bulbasaur :: Bulbasaur () {
-    
-    HP = HPMAX;
+
+    id = 001;
+    Hp = HPMAX;
     name = "Bulbasaur";
     type = 2;// 2= Grass
-    lvl = 1;  
+    lvl = 1;
     atk = 10; // j'y connais pas grand chose il faut peut etre modifier ces valeurs avec def
     sAtk = 2;
     def = 10 ;
