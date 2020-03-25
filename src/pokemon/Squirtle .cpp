@@ -11,11 +11,12 @@ using namespace std;
 
 
 Squirtle  :: Squirtle  () {
-    
-    HP = HPMAX;
+
+    id = 007;
+    Hp = HPMAX;
     name = "Squirtle";
     type = 1; // 1= Water
-    lvl = 1;  
+    lvl = 1;
     atk = 10; // j'y connais pas grand chose il faut peut etre modifier ces valeurs avec def
     sAtk = 2;
     def = 10 ;
@@ -24,4 +25,3 @@ Squirtle  :: Squirtle  () {
 }
 
 Squirtle  :: ~Squirtle  () {}
-
