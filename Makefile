@@ -41,6 +41,13 @@ map: map_run
 # Event tests
 event: event_run
 
+# Cleans executables
+clean:
+	rm $(BIN_DIR)/mapTests $(BIN_DIR)/eventTests
+
+# Cleans executables and objects
+realclean: clean
+	rm $(OBJ_DIR)/*.o
 
 ## Setup -----------------------------------------------------------------------
 setup: make_dir
