@@ -14,6 +14,8 @@ public :
 
     ///@brief class constructor
     Item ()
+    ///@brief class copy constructor
+    Item ( unsigned unsigned int newId, string newName, unsigned short int newAmount)
     ///@brief class destructor
     ~Item()
 
@@ -24,9 +26,6 @@ public :
     ///@brief accessor
     unsigned short int getAmount();
     /**@brief The fonction use the caracteristic of the item*/
-    Item useItem();
-
-
-
+    Item useItem(unsigned short int amount, unsigned unsigned int id);
 }
 #endif

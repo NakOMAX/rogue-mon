@@ -12,7 +12,16 @@ using namespace std;
 Pokemon :: Pokemon()
  //Concernant le tas ou la pile je sais pas si il faut faire un choix plus judicieux
 {
-      // il faut generer l'ID
+  id = 0;
+  name = NULL;
+  type = 0;
+  Hp = 0;
+  atk = 0;
+  sAtk = 0;
+  def = 0;
+  sDef = 0;
+  speed = 0;
+  lvl = 0;
 }
 
 // constructeur par copie
