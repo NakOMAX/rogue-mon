@@ -1,0 +1,33 @@
+#ifndef ATTACK_H
+#define ATTACK_H
+
+#include <string>
+
+class attack{
+  protected:
+	string name;
+	unsigned short int power;
+  unsigned short int type;
+	unsigned short int pp;
+	unsigned short int maxPP;
+
+  public:
+  attack(string&, unsigned short int&, unsigned short int&, unsigned short int&, unsigned short int&);
+
+  ~attack()
+
+  string getName();
+
+  unsigned short int getPower();
+
+  unsigned short int getType();
+
+  unsigned short int getPP();
+
+  void usePP();
+
+  void resetPP();
+
+};
+
+#endif
