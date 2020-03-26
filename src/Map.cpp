@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "SDL_image.h"
 
 Map::Map(unsigned short int totalLayers, int seed)
 {
@@ -15,6 +16,7 @@ Map::Map(unsigned short int totalLayers, int seed)
   eventsInLayer = new short int[nLayers];
   for (unsigned short int i = 0; i<nLayers; i++)
       eventsInLayer[i]=0;
+  sur_bg = IMG_Load("../data/map.jpg");
 
   // Boss layer
   Vertex vertexF = add_vertex(myMap);
@@ -110,26 +112,14 @@ PathI Map::climbFrom(PathI current)
     return next;
 }
 
-void Map::drawMap(short int mode)
+void Map::setRenderer(SDL_Renderer * renderer)
 {
-    switch(mode)
-    {
-        default:
-            auto vPair = vertices(myMap);
+  tex_bg = SDL_CreateTextureFromSurface(renderer, sur_bg);
+}
 
-            std::cout << "Vertex with value:" << myMap[*vPair.first].event<<std::endl;
-            std::cout << " is root";
-            std::cout << "with state:" << myMap[*vPair.first].state<<std::endl<<std::endl;
-
-            vPair.first++;
-            for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
-            {
-                std::cout << "Vertex with value:" << myMap[*iter].event<<std::endl;
-                std::cout << "is in layer" << myMap[*iter].layer << " and its upper step is ";
-                std::cout << myMap[*(adjacent_vertices(*iter, myMap).first)].event <<std::endl;
-                std::cout << "with state:" << myMap[*iter].state<<std::endl<<std::endl;
-            }
-    }
+void Map::drawMap(SDL_Renderer * renderer)
+{
+  SDL_RenderCopy(renderer, tex_bg, NULL, NULL);
 }
 
 void Map::highlight(std::vector<VIterator> * options, unsigned short int selected)

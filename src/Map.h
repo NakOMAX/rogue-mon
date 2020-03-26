@@ -1,8 +1,9 @@
 #ifndef _POKE_MAP_H
 #define _POKE_MAP_H
 
-
 #include <boost/graph/adjacency_list.hpp>
+#include "SDL.h"
+#include "SDL_image.h"
 
 #define MAP_TXT 0
 #define MAP_SDL 1
@@ -42,7 +43,7 @@ class Map{
 public:
   /** @brief Class constructor */
   /** The class constructor randomly generates a map of the desired
-  number of layers */
+  number of layers. SDL_image needs to be initialised before creating objects */
   /** @param layers Number of layers that the map will have. Minimun: 1 */
   Map(unsigned short int totalLayers = 10, int seed = 1);
 
@@ -70,14 +71,18 @@ public:
   /** @param current PathI got from climbFrom */
   PathI climbFrom(PathI current);
 
+  /** @brief Transforms surfaces into textures for SDL */
+  void setRenderer(SDL_Renderer * renderer);
+
   /** @brief Draws the map*/
-  /** Draws the map in console mode or in graphic mode with SDL */
-  /** @param mode MAP_TXT to txt mode MAP_SDL to graphic mode.
-  Default: console mode, single print in the terminal*/
-  void drawMap(short int mode = -1);
+  /** Draws the map in console mode or in graphic mode. */
+  void drawMap(SDL_Renderer * renderer);
 
   /** @brief Runs the event for the current vertex*/
   void runEvent(PathI current);
+
+  /** @brief Runs the event for the current vertex*/
+  void runEvent(VIterator current);
 
   /** @brief Highlights one vertex at a time while in map screen */
   /** @param selected VIterator got from getStarts */
@@ -99,6 +104,9 @@ private:
   // Set the content of the events in a procedural way
   void setContent();
 
+  // SDL Images. Each pair represents an image.
+  SDL_Surface * sur_bg;
+  SDL_Texture * tex_bg;
 };
 
 #endif

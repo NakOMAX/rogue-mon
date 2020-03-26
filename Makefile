@@ -28,7 +28,7 @@ endif
 LIBRARIES_FLAGS = $(LIB_SDL)
 
 # Link-related
-LINK_SDL = -lSDL2
+LINK_SDL = -lSDL2 -lSDL2_image
 LINKER_FLAGS = $(LINK_SDL)
 
 
@@ -48,7 +48,13 @@ gm: gamemanager_run
 
 # Cleans executables
 clean:
-	rm $(BIN_DIR)/mapTests $(BIN_DIR)/eventTests
+ifeq ($(OS),Windows_NT)
+	if exist $(BIN_DIR)/mapTests.exe rm $(BIN_DIR)/mapTests.exe
+	if exist $(BIN_DIR)/eventTests.exe rm $(BIN_DIR)/eventTests.exe
+else
+	test ! -e $(BIN_DIR)/mapTests || rm $(BIN_DIR)/mapTests
+	test ! -e $(BIN_DIR)/eventTests || rm $(BIN_DIR)/eventTests
+endif
 
 # Cleans executables and objects
 realclean: clean
@@ -60,8 +66,6 @@ setup: make_dir
 # Makes necessary directories if empty
 make_dir:
 ifeq ($(OS),Windows_NT)
-	if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
-	if not exist $(BIN_DIR) mkdir $(BIN_DIR)
 else
 	test -d $(OBJ_DIR) || mkdir -p $(OBJ_DIR)
 	test -d $(BIN_DIR) || mkdir -p $(BIN_DIR)
@@ -83,7 +87,7 @@ $(BIN_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR
 	$(CC) $^ -o $@
 
 $(BIN_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
-	$(CC) $(LIB_SDL) $(LINK_SDL) $^ -o $@
+	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(BIN_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o
 	$(CC) $^ -o $@
