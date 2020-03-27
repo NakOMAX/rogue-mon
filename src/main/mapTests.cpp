@@ -7,7 +7,10 @@
 int main(int argc, char **argv)
 {
   if (argc!=3)
+  {
+    printf("Invalid number of arguments\n");
     return -1;
+  }
 
   // SDL2 init
   unsigned short int wdimx = atoi(argv[1]);
@@ -38,26 +41,26 @@ int main(int argc, char **argv)
   Map pokemonMap(8);
   pokemonMap.setRenderer(renderer, wdimy);
 
-  pokemonMap.drawMap(renderer);
+  pokemonMap.drawMap();
   SDL_RenderPresent(renderer);
   SDL_Delay(3000);
 
   std::vector<VIterator> * options = pokemonMap.getStarts();
   pokemonMap.selectPath(options->at(0));
 
-  pokemonMap.drawMap(renderer);
+  pokemonMap.drawMap();
   SDL_RenderPresent(renderer);
   SDL_Delay(3000);
 
   PathI path = pokemonMap.climbFrom(options->at(0));
-  pokemonMap.drawMap(renderer);
+  pokemonMap.drawMap();
   SDL_RenderPresent(renderer);
   SDL_Delay(3000);
 
   for (unsigned short int i = 2; i<8; i++)
   {
     path = pokemonMap.climbFrom(path);
-    pokemonMap.drawMap(renderer);
+    pokemonMap.drawMap();
     SDL_RenderPresent(renderer);
     SDL_Delay(3000);
   }

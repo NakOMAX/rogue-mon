@@ -72,11 +72,13 @@ public:
   PathI climbFrom(PathI current);
 
   /** @brief Transforms surfaces into textures for SDL */
-  void setRenderer(SDL_Renderer * renderer, unsigned short int wdimy);
+  /** @param newRenderer SDL_Renderer linked to an open window */
+  /** @param wdimy window height in pixels */
+  void setRenderer(SDL_Renderer * newRenderer, unsigned short int wdimy);
 
   /** @brief Draws the map*/
-  /** Draws the map in console mode or in graphic mode. */
-  void drawMap(SDL_Renderer * renderer);
+  /** Draws the map in graphic mode. */
+  void drawMap();
 
   /** @brief Runs the event for the current vertex*/
   void runEvent(PathI current);
@@ -106,10 +108,14 @@ private:
 
   // SDL Rect -> Map scrolling
   SDL_Rect * focusRect;
+  SDL_Renderer * renderer;
 
   // SDL Images. Each pair represents an image.
   SDL_Surface * sur_bg;
   SDL_Texture * tex_bg;
+
+  // Moves the focus to the next layer smoothly.
+  void smoothScroll(unsigned short int startL);
 };
 
 #endif

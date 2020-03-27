@@ -128,7 +128,7 @@ PathI Map::climbFrom(VIterator current)
     myMap[*current].state = STATE_VISITED;
     PathI next = adjacent_vertices(*current, myMap).first;
     myMap[*next].state = STATE_SELECTED;
-    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-float(myMap[*next].layer)/(nLayers-1));
+    smoothScroll(myMap[*current].layer);
     return next;
 }
 
@@ -139,11 +139,23 @@ PathI Map::climbFrom(PathI current)
     myMap[*current].state = STATE_VISITED;
     PathI next = adjacent_vertices(*current, myMap).first;
     myMap[*next].state = STATE_SELECTED;
-    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-float(myMap[*next].layer)/(nLayers-1));
+    smoothScroll(myMap[*current].layer);
     return next;
 }
 
-void Map::setRenderer(SDL_Renderer * renderer, unsigned short int wdimy)
+void Map::smoothScroll(unsigned short int startL)
+{
+  for (unsigned short int i = 0; i<800; i++)
+  {
+    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-(startL + float(i)/800)/(nLayers-1));
+    drawMap();
+    SDL_RenderPresent(renderer);
+    SDL_Delay(1);
+  }
+  focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-float(startL + 1)/(nLayers-1));
+}
+
+void Map::setRenderer(SDL_Renderer * newRenderer, unsigned short int wdimy)
 {
   focusRect = new SDL_Rect;
   focusRect->w = MAP_WIDTH;
@@ -151,10 +163,12 @@ void Map::setRenderer(SDL_Renderer * renderer, unsigned short int wdimy)
   focusRect->x = 0;
   focusRect->y = MAP_HEIGHT-wdimy;
 
+  renderer=newRenderer;
+
   tex_bg = SDL_CreateTextureFromSurface(renderer, sur_bg);
 }
 
-void Map::drawMap(SDL_Renderer * renderer)
+void Map::drawMap()
 {
   SDL_RenderCopy(renderer, tex_bg, focusRect, NULL);
 }
