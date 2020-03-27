@@ -7,6 +7,28 @@
 #include "SDL_image.h"
 #include <string>
 
+SDL_Surface * loadImage(const std::string & filename)
+{
+  SDL_Surface * surface;
+  surface = IMG_Load(filename.c_str());
+  if (surface==NULL)
+  {
+    std::string modFilename;
+    modFilename = "../" + filename;
+    surface = IMG_Load(modFilename.c_str());
+    if (surface==NULL)
+    {
+      modFilename = "../" + modFilename;
+      surface = IMG_Load(modFilename.c_str());
+      if (surface==NULL)
+      {
+        printf("Error: %s\n", SDL_GetError());
+      }
+    }
+  }
+  return surface;
+}
+
 Map::Map(unsigned short int totalLayers, int seed)
 {
   // Initialization of variables
@@ -20,21 +42,7 @@ Map::Map(unsigned short int totalLayers, int seed)
 
   // SDL2 loading
   std::string filename = "data/map.jpg";
-  sur_bg = IMG_Load(filename.c_str());
-  if (sur_bg==NULL)
-  {
-    filename = "../" + filename;
-    sur_bg = IMG_Load(filename.c_str());
-    if (sur_bg==NULL)
-    {
-      filename = "../" + filename;
-      sur_bg = IMG_Load(filename.c_str());
-      if (sur_bg==NULL)
-      {
-        printf("Error: %s\n", SDL_GetError());
-      }
-    }
-  }
+  sur_bg = loadImage(filename);
 
   // Boss layer
   Vertex vertexF = add_vertex(myMap);
