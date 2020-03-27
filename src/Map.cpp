@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "SDL_image.h"
+#include <string>
 
 Map::Map(unsigned short int totalLayers, int seed)
 {
@@ -16,7 +17,24 @@ Map::Map(unsigned short int totalLayers, int seed)
   eventsInLayer = new short int[nLayers];
   for (unsigned short int i = 0; i<nLayers; i++)
       eventsInLayer[i]=0;
-  sur_bg = IMG_Load("../data/map.jpg");
+
+  // SDL2 loading
+  std::string filename = "data/map.jpg";
+  sur_bg = IMG_Load(filename.c_str());
+  if (sur_bg==NULL)
+  {
+    filename = "../" + filename;
+    sur_bg = IMG_Load(filename.c_str());
+    if (sur_bg==NULL)
+    {
+      filename = "../" + filename;
+      sur_bg = IMG_Load(filename.c_str());
+      if (sur_bg==NULL)
+      {
+        printf("Error: %s\n", SDL_GetError());
+      }
+    }
+  }
 
   // Boss layer
   Vertex vertexF = add_vertex(myMap);
