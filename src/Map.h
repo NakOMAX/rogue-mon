@@ -72,7 +72,7 @@ public:
   PathI climbFrom(PathI current);
 
   /** @brief Transforms surfaces into textures for SDL */
-  void setRenderer(SDL_Renderer * renderer);
+  void setRenderer(SDL_Renderer * renderer, unsigned short int wdimy);
 
   /** @brief Draws the map*/
   /** Draws the map in console mode or in graphic mode. */
@@ -98,11 +98,14 @@ private:
   // Number of layers
   unsigned short int nLayers;
 
-  // Creates one or two vertices in layer linked to vertxF. Recursive method.
+  // Creates one or two vertices in layer linked to vertexF. Recursive method.
   void createVerticesBelow(const Vertex & vertexF, unsigned short int layer);
 
   // Set the content of the events in a procedural way
   void setContent();
+
+  // SDL Rect -> Map scrolling
+  SDL_Rect * focusRect;
 
   // SDL Images. Each pair represents an image.
   SDL_Surface * sur_bg;

@@ -4,9 +4,14 @@
 #include <time.h>
 #include <iostream>
 
-int main(void)
+int main(int argc, char **argv)
 {
+  if (argc!=3)
+    return -1;
+
   // SDL2 init
+  unsigned short int wdimx = atoi(argv[1]);
+  unsigned short int wdimy = atoi(argv[2]);
   if( SDL_Init( SDL_INIT_VIDEO ) < 0)
   {
     printf("SDL error on init: %s\n", SDL_GetError() );
@@ -19,21 +24,42 @@ int main(void)
     printf("IMG_Init: %s\n", IMG_GetError());
   }
 
-  // SDL set up
+  // SDL window set up
   SDL_Window * window = SDL_CreateWindow("MapTests", SDL_WINDOWPOS_UNDEFINED,
-  SDL_WINDOWPOS_UNDEFINED, 800, 800, SDL_WINDOW_SHOWN);
+  SDL_WINDOWPOS_UNDEFINED, wdimx, wdimy, SDL_WINDOW_SHOWN);
   if(window==NULL)
   {
     printf("SDL error on window creation: %s\n", SDL_GetError() );
   }
   SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
 
-  Map pokemonMap(4);
-  pokemonMap.setRenderer(renderer);
+
+  // Tests
+  Map pokemonMap(8);
+  pokemonMap.setRenderer(renderer, wdimy);
+
   pokemonMap.drawMap(renderer);
   SDL_RenderPresent(renderer);
+  SDL_Delay(3000);
 
-  SDL_Delay(2000);
+  std::vector<VIterator> * options = pokemonMap.getStarts();
+  pokemonMap.selectPath(options->at(0));
 
+  pokemonMap.drawMap(renderer);
+  SDL_RenderPresent(renderer);
+  SDL_Delay(3000);
+
+  PathI path = pokemonMap.climbFrom(options->at(0));
+  pokemonMap.drawMap(renderer);
+  SDL_RenderPresent(renderer);
+  SDL_Delay(3000);
+
+  for (unsigned short int i = 2; i<8; i++)
+  {
+    path = pokemonMap.climbFrom(path);
+    pokemonMap.drawMap(renderer);
+    SDL_RenderPresent(renderer);
+    SDL_Delay(3000);
+  }
   return 0;
 }

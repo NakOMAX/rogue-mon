@@ -7,6 +7,9 @@
 #include "SDL_image.h"
 #include <string>
 
+#define MAP_HEIGHT 3190
+#define MAP_WIDTH 1600
+
 SDL_Surface * loadImage(const std::string & filename)
 {
   SDL_Surface * surface;
@@ -38,7 +41,7 @@ Map::Map(unsigned short int totalLayers, int seed)
   myMap = GraphMap();
   eventsInLayer = new short int[nLayers];
   for (unsigned short int i = 0; i<nLayers; i++)
-      eventsInLayer[i]=0;
+    eventsInLayer[i]=0;
 
   // SDL2 loading
   std::string filename = "data/map.jpg";
@@ -64,17 +67,17 @@ Map::~Map()
 
 void Map::createVerticesBelow(const Vertex & vertexF, unsigned short int layer)
 {
-    Vertex vertexS;
-    unsigned short int randomVertices = rand()%2+1;
-    for (unsigned short int i = 0; i < randomVertices; i++)
-    {
-        vertexS = add_vertex(myMap);
-        myMap[vertexS].layer=layer;
-        myMap[vertexS].state=STATE_REACHABLE;
-        add_edge(vertexS, vertexF, myMap);
-        if (layer!=0)
-            createVerticesBelow(vertexS, layer-1);
-    }
+  Vertex vertexS;
+  unsigned short int randomVertices = rand()%2+1;
+  for (unsigned short int i = 0; i < randomVertices; i++)
+  {
+    vertexS = add_vertex(myMap);
+    myMap[vertexS].layer=layer;
+    myMap[vertexS].state=STATE_REACHABLE;
+    add_edge(vertexS, vertexF, myMap);
+    if (layer!=0)
+      createVerticesBelow(vertexS, layer-1);
+  }
 }
 
 void Map::setContent()
@@ -125,6 +128,7 @@ PathI Map::climbFrom(VIterator current)
     myMap[*current].state = STATE_VISITED;
     PathI next = adjacent_vertices(*current, myMap).first;
     myMap[*next].state = STATE_SELECTED;
+    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-float(myMap[*next].layer)/(nLayers-1));
     return next;
 }
 
@@ -135,17 +139,24 @@ PathI Map::climbFrom(PathI current)
     myMap[*current].state = STATE_VISITED;
     PathI next = adjacent_vertices(*current, myMap).first;
     myMap[*next].state = STATE_SELECTED;
+    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-float(myMap[*next].layer)/(nLayers-1));
     return next;
 }
 
-void Map::setRenderer(SDL_Renderer * renderer)
+void Map::setRenderer(SDL_Renderer * renderer, unsigned short int wdimy)
 {
+  focusRect = new SDL_Rect;
+  focusRect->w = MAP_WIDTH;
+  focusRect->h = wdimy;
+  focusRect->x = 0;
+  focusRect->y = MAP_HEIGHT-wdimy;
+
   tex_bg = SDL_CreateTextureFromSurface(renderer, sur_bg);
 }
 
 void Map::drawMap(SDL_Renderer * renderer)
 {
-  SDL_RenderCopy(renderer, tex_bg, NULL, NULL);
+  SDL_RenderCopy(renderer, tex_bg, focusRect, NULL);
 }
 
 void Map::highlight(std::vector<VIterator> * options, unsigned short int selected)
