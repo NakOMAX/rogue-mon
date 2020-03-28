@@ -18,12 +18,15 @@ INCLUDE_FLAGS = $(INC_BOOST) $(INC_SDL2)
 ifeq ($(OS),Windows_NT)
 	ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
 		LIB_SDL = -L$(LIB_DIR)/w_x64
+		TARGET_DIR = $(BIN_DIR)/w_x64
 	endif
 	ifeq ($(PROCESSOR_ARCHITECTURE),x86)
 		LIB_SDL = -L$(LIB_DIR)/w_x86
+		TARGET_DIR = $(BIN_DIR)/w_x86
 	endif
 else
 	LIB_SDL = -L$(LIB_DIR)/linux
+	TARGET_DIR = $(BIN_DIR)
 endif
 LIBRARIES_FLAGS = $(LIB_SDL)
 
@@ -49,11 +52,11 @@ gm: gamemanager_run
 # Cleans executables
 clean:
 ifeq ($(OS),Windows_NT)
-	if exist $(BIN_DIR)/mapTests.exe rm $(BIN_DIR)/mapTests.exe
-	if exist $(BIN_DIR)/eventTests.exe rm $(BIN_DIR)/eventTests.exe
+	if exist $(TARGET_DIR)/mapTests.exe rm $(TARGET_DIR)/mapTests.exe
+	if exist $(TARGET_DIR)/eventTests.exe rm $(TARGET_DIR)/eventTests.exe
 else
-	test ! -e $(BIN_DIR)/mapTests || rm $(BIN_DIR)/mapTests
-	test ! -e $(BIN_DIR)/eventTests || rm $(BIN_DIR)/eventTests
+	test ! -e $(TARGET_DIR)/mapTests || rm $(TARGET_DIR)/mapTests
+	test ! -e $(TARGET_DIR)/eventTests || rm $(TARGET_DIR)/eventTests
 endif
 
 # Cleans executables and objects
@@ -73,23 +76,23 @@ endif
 
 
 ## Runs ------------------------------------------------------------------------
-map_run: $(BIN_DIR)/mapTests
+map_run: $(TARGET_DIR)/mapTests
 
-event_run: $(BIN_DIR)/eventTests
+event_run: $(TARGET_DIR)/eventTests
 
-gamemanager_run: $(BIN_DIR)/gmTests
+gamemanager_run: $(TARGET_DIR)/gmTests
 
 
 ## Actual builds ---------------------------------------------------------------
 
 # Binairies
-$(BIN_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o
+$(TARGET_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o
 	$(CC) $^ -o $@
 
-$(BIN_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
+$(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(BIN_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o
+$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o
 	$(CC) $^ -o $@
 
 # Main objects
