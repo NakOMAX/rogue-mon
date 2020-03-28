@@ -196,7 +196,6 @@ void Map::setContent()
     //myMap[*iter].rect->x = myMap[*iter].posX - ICON_SIZE/2;
     //myMap[*iter].rect->y = myMap[*iter].posY - ICON_SIZE/2;
   }
-  printf("Loop?\n" );
 }
 
 std::vector<VIterator> * Map::getStarts()
