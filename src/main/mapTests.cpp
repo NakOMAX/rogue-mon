@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
   // Tests
   Map pokemonMap(8);
-  pokemonMap.setRenderer(renderer, wdimy);
+  pokemonMap.init(renderer, wdimy);
 
   pokemonMap.drawMap();
   SDL_RenderPresent(renderer);

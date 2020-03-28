@@ -7,9 +7,6 @@
 #include "SDL_image.h"
 #include <string>
 
-#define MAP_HEIGHT 3190
-#define MAP_WIDTH 1600
-
 SDL_Surface * loadImage(const std::string & filename)
 {
   SDL_Surface * surface;
@@ -44,25 +41,47 @@ Map::Map(unsigned short int totalLayers, int seed)
     eventsInLayer[i]=0;
 
   // SDL2 loading
-  std::string filename = "data/map.jpg";
-  sur_bg = loadImage(filename);
+  surBg = loadImage("data/map.jpg");
+  surTrainer = loadImage("data/double.png");
+  surWild = loadImage("data/simple.png");
+  surShop = loadImage("data/store.png");
+  surHeal = loadImage("data/rest.png");
 
   // Boss layer
   Vertex vertexF = add_vertex(myMap);
-  myMap[vertexF].event=BOSS_EVENT;
   myMap[vertexF].layer=nLayers-1;
   myMap[vertexF].state=STATE_REACHABLE;
   eventsInLayer[nLayers-1]++;
 
   // Start of the recursive method
   createVerticesBelow(vertexF, nLayers-2);
-  setContent();
+  allVertices = vertices(myMap);
 }
 
 Map::~Map()
 {
   delete [] eventsInLayer;
   std::cout<<"Map succesfully destroyed"<<std::endl;
+}
+
+void Map::init(SDL_Renderer * newRenderer, unsigned short int wdimy)
+{
+  // Setting up SDL_Rect for scrolling purposes
+  focusRect = new SDL_Rect;
+  focusRect->w = MAP_WIDTH;
+  focusRect->h = wdimy;
+  focusRect->x = 0;
+  focusRect->y = MAP_HEIGHT-wdimy;
+
+  renderer=newRenderer;
+
+  // Surfaces -> Textures
+  texBg = SDL_CreateTextureFromSurface(renderer, surBg);
+  texTrainer = SDL_CreateTextureFromSurface(renderer, surTrainer);
+  texWild = SDL_CreateTextureFromSurface(renderer, surWild);
+  texShop = SDL_CreateTextureFromSurface(renderer, surShop);
+  texHeal = SDL_CreateTextureFromSurface(renderer, surHeal);
+  setContent();
 }
 
 void Map::createVerticesBelow(const Vertex & vertexF, unsigned short int layer)
@@ -82,20 +101,108 @@ void Map::createVerticesBelow(const Vertex & vertexF, unsigned short int layer)
 
 void Map::setContent()
 {
-  auto vPair = vertices(myMap);
-  vPair.first++;
-  for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
+  // Used to represent percentages (0 to 100)
+  unsigned short int randomNumber;
+  // Used to keep track of treated events per layer
+  unsigned short int placedEvents[nLayers]={0};
+
+  // For Testing Purposes. Replace when event code is done.
+    // Boss event
+  myMap[*allVertices.first].event=BOSS_EVENT;
+  myMap[*allVertices.first].iconTexture=texTrainer;
+  myMap[*allVertices.first].rect = new SDL_Rect;
+  myMap[*allVertices.first].rect->h = 3*ICON_SIZE;
+  myMap[*allVertices.first].rect->w = 3*ICON_SIZE;
+  myMap[*allVertices.first].posY = (MAP_HEIGHT*(nLayers-myMap[*allVertices.first].layer+1))/(nLayers+1);
+  myMap[*allVertices.first].posX = MAP_WIDTH/2;
+  //myMap[*allVertices.first].rect->x = myMap[*allVertices.first].posX - 3*ICON_SIZE/2;
+  //myMap[*allVertices.first].rect->y = myMap[*allVertices.first].posY - 3*ICON_SIZE/2;
+
+    // Not boss events
+  VIterator notFirst = allVertices.first;
+  notFirst++;
+  for (VIterator iter = notFirst; iter!=allVertices.second; iter++)
   {
-    // For Testing Purposes. Replace when event code is done.
-    myMap[*iter].event = rand()%500+1;
+    // Setting events
+    switch ((nLayers-2-myMap[*iter].layer)%4)
+    {
+    case 0:
+      myMap[*iter].event = HEAL_EVENT;
+      myMap[*iter].iconTexture = texHeal;
+      break;
+
+    case 1:
+      randomNumber = rand()%101;
+      if (randomNumber<=50)
+      {
+        myMap[*iter].event = TRAINER_EVENT;
+        myMap[*iter].iconTexture = texTrainer;
+        break;
+      }
+      if (randomNumber<=90)
+      {
+        myMap[*iter].event = WILD_EVENT;
+        myMap[*iter].iconTexture = texWild;
+        break;
+      }
+      myMap[*iter].event = SHOP_EVENT;
+      myMap[*iter].iconTexture = texShop;
+      break;
+
+    case 2:
+      randomNumber = rand()%101;
+      if (randomNumber<=10)
+      {
+        myMap[*iter].event = TRAINER_EVENT;
+        myMap[*iter].iconTexture = texTrainer;
+        break;
+      }
+      if (randomNumber<=40)
+      {
+        myMap[*iter].event = WILD_EVENT;
+        myMap[*iter].iconTexture = texWild;
+        break;
+      }
+      if (randomNumber<=70)
+      {
+        myMap[*iter].event = HEAL_EVENT;
+        myMap[*iter].iconTexture = texHeal;
+        break;
+      }
+      myMap[*iter].event = SHOP_EVENT;
+      myMap[*iter].iconTexture = texShop;
+      break;
+
+    default:
+      randomNumber = rand()%101;
+      if (randomNumber<=25)
+      {
+        myMap[*iter].event = TRAINER_EVENT;
+        myMap[*iter].iconTexture = texTrainer;
+        break;
+      }
+      myMap[*iter].event = WILD_EVENT;
+      myMap[*iter].iconTexture = texWild;
+      break;
+    }
+
+    // Setting coordinates
+    myMap[*iter].posY = MAP_HEIGHT*(float(nLayers-myMap[*iter].layer+1))/(nLayers+1) + rand()%10;
+    myMap[*iter].posX = MAP_WIDTH*(float(placedEvents[myMap[*iter].layer] + 1))/(eventsInLayer[myMap[*iter].layer]+1) + rand()%10;
+    placedEvents[myMap[*iter].layer]++;
+    myMap[*iter].rect = new SDL_Rect;
+    myMap[*iter].rect->h = ICON_SIZE;
+    myMap[*iter].rect->w = ICON_SIZE;
+    //myMap[*iter].rect->x = myMap[*iter].posX - ICON_SIZE/2;
+    //myMap[*iter].rect->y = myMap[*iter].posY - ICON_SIZE/2;
   }
+  printf("Loop?\n" );
 }
 
 std::vector<VIterator> * Map::getStarts()
 {
     std::vector<VIterator> * v = new std::vector<VIterator>;
-    auto vPair = vertices(myMap);
-    for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
+    for (VIterator iter = allVertices.first; iter!=allVertices.second; iter++)
     {
         if(myMap[*iter].layer==0)
         {
@@ -107,8 +214,7 @@ std::vector<VIterator> * Map::getStarts()
 
 void Map::selectPath(VIterator start)
 {
-    auto vPair = vertices(myMap);
-    for (VIterator iter = vPair.first; iter!=vPair.second; iter++)
+    for (VIterator iter = allVertices.first; iter!=allVertices.second; iter++)
     {
         myMap[*iter].state = STATE_UNREACHABLE;
     }
@@ -155,22 +261,10 @@ void Map::smoothScroll(unsigned short int startL)
   focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-float(startL + 1)/(nLayers-1));
 }
 
-void Map::setRenderer(SDL_Renderer * newRenderer, unsigned short int wdimy)
-{
-  focusRect = new SDL_Rect;
-  focusRect->w = MAP_WIDTH;
-  focusRect->h = wdimy;
-  focusRect->x = 0;
-  focusRect->y = MAP_HEIGHT-wdimy;
-
-  renderer=newRenderer;
-
-  tex_bg = SDL_CreateTextureFromSurface(renderer, sur_bg);
-}
-
 void Map::drawMap()
 {
-  SDL_RenderCopy(renderer, tex_bg, focusRect, NULL);
+  // Background
+  SDL_RenderCopy(renderer, texBg, focusRect, NULL);
 }
 
 void Map::highlight(std::vector<VIterator> * options, unsigned short int selected)

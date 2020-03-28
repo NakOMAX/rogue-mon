@@ -5,18 +5,22 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
-#define MAP_TXT 0
-#define MAP_SDL 1
-
 #define BOSS_EVENT 0
 #define WILD_EVENT 1
 #define TRAINER_EVENT 2
 #define HEAL_EVENT 3
+#define SHOP_EVENT 4
 
 #define STATE_VISITED 0
 #define STATE_REACHABLE 1
 #define STATE_UNREACHABLE 2
 #define STATE_SELECTED 3
+
+// map.jpg size
+#define MAP_HEIGHT 3190
+#define MAP_WIDTH 1600
+
+#define ICON_SIZE 50
 
 struct Node{
   //Event * event;
@@ -24,9 +28,11 @@ struct Node{
   /* 0<=layer<totalLayers */
   unsigned short int layer;
 
-  //For SDL purposes
+  //For SDL purposes. In pixels.
   unsigned short int posX;
   unsigned short int posY;
+  SDL_Texture * iconTexture;
+  SDL_Rect * rect;
 
   // Visited, unreachable, reachable or selected.
   unsigned short int state;
@@ -50,6 +56,11 @@ public:
   /** @brief Class destructor. Deallocates memory. */
   ~Map();
 
+  /** @brief Initialize events and SDL data */
+  /** @param newRenderer SDL_Renderer linked to an open window */
+  /** @param wdimy window height in pixels */
+  void init(SDL_Renderer * newRenderer, unsigned short int wdimy);
+
   /** @brief Returns initial points where the game can start from */
   /** The vector contains pointers to the first layer vertices */
   std::vector<VIterator> * getStarts();
@@ -71,11 +82,6 @@ public:
   /** @param current PathI got from climbFrom */
   PathI climbFrom(PathI current);
 
-  /** @brief Transforms surfaces into textures for SDL */
-  /** @param newRenderer SDL_Renderer linked to an open window */
-  /** @param wdimy window height in pixels */
-  void setRenderer(SDL_Renderer * newRenderer, unsigned short int wdimy);
-
   /** @brief Draws the map*/
   /** Draws the map in graphic mode. */
   void drawMap();
@@ -94,6 +100,9 @@ private:
   // Container that stores the map structure
   GraphMap myMap;
 
+  // Pair storing the first and last vertex
+  std::pair<VIterator,VIterator> allVertices;
+  
   // Number of events in each layer
   short int * eventsInLayer;
 
@@ -111,8 +120,20 @@ private:
   SDL_Renderer * renderer;
 
   // SDL Images. Each pair represents an image.
-  SDL_Surface * sur_bg;
-  SDL_Texture * tex_bg;
+  SDL_Surface * surBg;
+  SDL_Texture * texBg;
+
+  SDL_Surface * surTrainer;
+  SDL_Texture * texTrainer;
+
+  SDL_Surface * surWild;
+  SDL_Texture * texWild;
+
+  SDL_Surface * surShop;
+  SDL_Texture * texShop;
+
+  SDL_Surface * surHeal;
+  SDL_Texture * texHeal;
 
   // Moves the focus to the next layer smoothly.
   void smoothScroll(unsigned short int startL);
