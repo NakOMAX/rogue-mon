@@ -98,7 +98,7 @@ $(TARGET_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_
 	$(CC) $^ -o $@
 
 $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
-	$(CC) $^ -o $@ $(LINK_SDL) $(LIB_SDL)
+	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o
 	$(CC) $^ -o $@
