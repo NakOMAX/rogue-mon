@@ -39,7 +39,7 @@ protected:
     ///@brief accessor
     unsigned short int getType() const ;
     ///@brief accessor
-    unsigned short int getHP () const ;
+    unsigned short int getHp () const ;
     ///@brief accessor
     unsigned short int getAtk () const ;
     ///@brief accessor

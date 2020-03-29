@@ -32,8 +32,16 @@ LIBRARIES_FLAGS = $(LIB_SDL)
 
 # Link-related
 LINK_SDL = -lSDL2 -lSDL2_image
-LINKER_FLAGS = $(LINK_SDL)
-
+ifeq ($(OS),Windows_NT)
+	ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
+		LINKER_FLAGS = -lmingw64 $(LINK_SDL)
+	endif
+	ifeq ($(PROCESSOR_ARCHITECTURE),x86)
+		LINKER_FLAGS = -lmingw32 $(LINK_SDL)
+	endif
+else
+	LINKER_FLAGS = $(LINK_SDL)
+endif
 
 ## Build commands---------------------------------------------------------------
 
