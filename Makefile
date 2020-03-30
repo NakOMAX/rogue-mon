@@ -96,7 +96,7 @@ _event_run: $(TARGET_DIR)/eventTests
 
 _gamemanager_run: $(TARGET_DIR)/gmTests
 
-_pokemon_run: $(POKEMON_DIR)/%.o
+_pokemon_run: $(POKEMON_DIR)/*.o
 
 
 ## Actual builds ---------------------------------------------------------------
