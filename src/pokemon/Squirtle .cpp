@@ -1,5 +1,5 @@
 #include "Pokemon.h"
-#include "Squirtle .h"
+#include "Squirtle.h"
 
 #include <iostream>
 //#include <stdio.h>
