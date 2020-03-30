@@ -52,13 +52,16 @@ endif
 default : setup map event
 
 # Map tests
-map: map_run
+map: _map_run
 
 # Event tests
-event: event_run
+event: _event_run
 
 # GameManager tests
-gm: gamemanager_run
+gm: _gamemanager_run
+
+# Pokemon class tests
+pokemon: _pokemon_run
 
 # Cleans executables
 clean:
@@ -87,11 +90,13 @@ endif
 
 
 ## Runs ------------------------------------------------------------------------
-map_run: $(TARGET_DIR)/mapTests
+_map_run: $(TARGET_DIR)/mapTests
 
-event_run: $(TARGET_DIR)/eventTests
+_event_run: $(TARGET_DIR)/eventTests
 
-gamemanager_run: $(TARGET_DIR)/gmTests
+_gamemanager_run: $(TARGET_DIR)/gmTests
+
+_pokemon_run: $(POKEMON_DIR)/%.o
 
 
 ## Actual builds ---------------------------------------------------------------
@@ -128,3 +133,6 @@ $(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h
 
 $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
+
+$(POKEMON_DIR)/%.o: $(POKEMON_DIR)/%.cpp $(POKEMON_DIR)/%.h $(POKEMON_DIR)/Pokemon.h
+	$(CC) -c $< -o $@
