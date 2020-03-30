@@ -8,6 +8,9 @@ SRC_DIR = src
 LIB_DIR = lib
 MAIN_DIR = $(SRC_DIR)/main
 EVENT_DIR = $(SRC_DIR)/event
+ATTACK_DIR = $(SRC_DIR)/attack
+ITEM_DIR = $(SRC_DIR)/item
+POKEMON_DIR = $(SRC_DIR)/pokemon
 
 # Include-related
 INC_BOOST = -Iinclude/boost_1_72_0/
