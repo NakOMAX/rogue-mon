@@ -20,7 +20,7 @@
 #define MAP_HEIGHT 3190
 #define MAP_WIDTH 1600
 
-#define ICON_SIZE 50
+#define ICON_SIZE 160
 
 struct Node{
   //Event * event;
@@ -37,6 +37,8 @@ struct Node{
   // Visited, unreachable, reachable or selected.
   unsigned short int state;
 };
+
+SDL_Surface * loadImage(const std::string & filename);
 
 typedef boost::adjacency_list<boost::listS, boost::listS,
                               boost::bidirectionalS, Node>
@@ -59,7 +61,8 @@ public:
   /** @brief Initialize events and SDL data */
   /** @param newRenderer SDL_Renderer linked to an open window */
   /** @param wdimy window height in pixels */
-  void init(SDL_Renderer * newRenderer, unsigned short int wdimy);
+  /** @param wdimx window width in pixels */
+  void init(SDL_Renderer * newRenderer, unsigned short int wdimy, unsigned short int wdimx);
 
   /** @brief Returns initial points where the game can start from */
   /** The vector contains pointers to the first layer vertices */
@@ -102,9 +105,9 @@ private:
 
   // Pair storing the first and last vertex
   std::pair<VIterator,VIterator> allVertices;
-  
+
   // Number of events in each layer
-  short int * eventsInLayer;
+  unsigned short int * eventsInLayer;
 
   // Number of layers
   unsigned short int nLayers;
@@ -118,6 +121,8 @@ private:
   // SDL Rect -> Map scrolling
   SDL_Rect * focusRect;
   SDL_Renderer * renderer;
+  // Real Image / Window Size
+  float ratio;
 
   // SDL Images. Each pair represents an image.
   SDL_Surface * surBg;
@@ -137,6 +142,9 @@ private:
 
   // Moves the focus to the next layer smoothly.
   void smoothScroll(unsigned short int startL);
+
+  // Replaces event icons in the screen depending on camera position
+  void replaceIconsOnScroll();
 };
 
 #endif
