@@ -9,6 +9,7 @@
 #include <windows.h>
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow) {
+  printf("OS: Windows\n");
   int w_argc = 0;
   LPWSTR* w_argv = CommandLineToArgvW(GetCommandLineW(), &w_argc);
   if (w_argv) {
@@ -65,13 +66,14 @@ int main(int argc, char *argv[])
   {
     printf("SDL error on window creation: %s\n", SDL_GetError() );
   }
-  SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
-
+  //auto sdlFlags = ;
+  SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
 
   // Tests
-  Map pokemonMap(8);
-  pokemonMap.init(renderer, wdimy);
+  Map pokemonMap(10);
+  pokemonMap.init(renderer, wdimy, wdimx);
 
+  SDL_RenderClear(renderer);
   pokemonMap.drawMap();
   SDL_RenderPresent(renderer);
   SDL_Delay(3000);
@@ -81,19 +83,19 @@ int main(int argc, char *argv[])
 
   pokemonMap.drawMap();
   SDL_RenderPresent(renderer);
-  SDL_Delay(3000);
+  SDL_Delay(1000);
 
   PathI path = pokemonMap.climbFrom(options->at(0));
   pokemonMap.drawMap();
   SDL_RenderPresent(renderer);
-  SDL_Delay(3000);
+  SDL_Delay(1000);
 
-  for (unsigned short int i = 2; i<8; i++)
+  for (unsigned short int i = 2; i<10; i++)
   {
     path = pokemonMap.climbFrom(path);
     pokemonMap.drawMap();
     SDL_RenderPresent(renderer);
-    SDL_Delay(3000);
+    SDL_Delay(1000);
   }
   return 0;
 }
