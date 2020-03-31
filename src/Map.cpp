@@ -103,7 +103,7 @@ void Map::setContent()
   myMap[*allVertices.first].posX = MAP_WIDTH/2;
   myMap[*allVertices.first].rect->h = 3*ICON_SIZE*ratio;
   myMap[*allVertices.first].rect->w = 3*ICON_SIZE*ratio;
-  myMap[*allVertices.first].rect->x = ratio*myMap[*allVertices.first].posX;
+  myMap[*allVertices.first].rect->x = ratio*myMap[*allVertices.first].posX-myMap[*allVertices.first].rect->w/2;
 
     // Not boss events
   VIterator notFirst = allVertices.first;
@@ -174,37 +174,32 @@ void Map::setContent()
     }
 
     // Setting coordinates
-    myMap[*iter].posY = MAP_HEIGHT*(float(nLayers-myMap[*iter].layer+1))/(nLayers+1) + rand()%10;
+    myMap[*iter].posY = (MAP_HEIGHT*(nLayers-myMap[*iter].layer+1))/(nLayers+1);
     myMap[*iter].posX = (MAP_WIDTH*(placedEvents[myMap[*iter].layer] + 1))/(eventsInLayer[myMap[*iter].layer]+1);
     placedEvents[myMap[*iter].layer]++;
     myMap[*iter].rect = new SDL_Rect;
     myMap[*iter].rect->h = ICON_SIZE*ratio;
     myMap[*iter].rect->w = ICON_SIZE*ratio;
-    myMap[*iter].rect->x = ratio*myMap[*iter].posX;
+    myMap[*iter].rect->x = ratio*myMap[*iter].posX-myMap[*iter].rect->w/2;
   }
 }
 
 void Map::replaceIconsOnScroll()
 {
+  printf("focus rect y %i\n", focusRect->y);
+  printf("first posy %i\n", myMap[*allVertices.first].posY);
+  printf("ratio %f\n", ratio);
   for (VIterator iter = allVertices.first; iter!=allVertices.second; iter++)
   {
-    myMap[*iter].rect->y=(myMap[*iter].posY-focusRect->y)*ratio;
-
-    //if(myMap[*iter].posY>=focusRect->y && myMap[*iter].posY<=focusRect->y+focusRect->h)
-    //{
-    //} else {
-    //  myMap[*iter].rect->y=-1;
-    //}
-
-
-    //myMap[*iter].rect->y=(myMap[*iter].posY-focusRect->y)*ratio;
+    myMap[*iter].rect->y=(myMap[*iter].posY-focusRect->y)*ratio - myMap[*iter].rect->h;
   }
+  printf("first y %i\n", myMap[*allVertices.first].rect->y);
 }
 
 void Map::createVerticesBelow(const Vertex & vertexF, unsigned short int layer)
 {
   Vertex vertexS;
-  unsigned short int randomVertices = rand()%3%2+1;
+  unsigned short int randomVertices = rand()%4%3%2+1;
   for (unsigned short int i = 0; i < randomVertices; i++)
   {
     vertexS = add_vertex(myMap);
@@ -269,9 +264,9 @@ PathI Map::climbFrom(PathI current)
 
 void Map::smoothScroll(unsigned short int startL)
 {
-  for (unsigned short int i = 0; i<200; i++)
+  for (float i = 0; i<150; i++)
   {
-    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-(startL + float(i)/200)/(nLayers-1));
+    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-(startL + i/150)/(nLayers-1));
     replaceIconsOnScroll();
     drawMap();
     SDL_RenderPresent(renderer);
