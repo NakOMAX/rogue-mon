@@ -3,6 +3,7 @@
 
 #include <string>
 
+
 class Pokemon /**\class A Pokemon is describe by a its name, its HP, its attack and its defense
 of course it also have a level. A Pokemon can be used during a fight and sometimes you should take care of it.*/
 {
@@ -10,7 +11,7 @@ of course it also have a level. A Pokemon can be used during a fight and sometim
 protected:
 
     unsigned short int id;
-    string name;
+    std::string name;
     unsigned short int type; // 1 = Water, 2= Grass, 3= Fire
     unsigned short int Hp;
     unsigned short int atk;
@@ -22,12 +23,12 @@ protected:
 
 
     ///@brief class constructor
-    Pokemon()
+    Pokemon();
 
     ///@brief class copy constructor
-    Pokemon(unsigned short int new_Id, string new_Name,unsigned short int new_Type,unsigned short int new_HP,
+    Pokemon(unsigned short int new_Id,std::string new_Name,unsigned short int new_Type,unsigned short int new_HP,
             unsigned short int new_Atk,unsigned short int new_sAtk, unsigned short int new_Def,
-            unsigned short int new_sDef,unsigned short int new_speed, unsigned short int new_lvl)
+            unsigned short int new_sDef,unsigned short int new_speed, unsigned short int new_lvl);
 
     ///@brief class destructor
     ~Pokemon();
@@ -35,7 +36,7 @@ protected:
     ///@brief accessor
     unsigned short int getId () const ;
     ///@brief accessor
-    string getName () const ;
+    std::string getName () const ;
     ///@brief accessor
     unsigned short int getType() const ;
     ///@brief accessor
@@ -54,10 +55,9 @@ protected:
     unsigned short int getLvl () const ;
 
     ///@brief mutator
-    setHP(unsigned short int newHP );
+    void setHP(unsigned short int newHP );
     ///@brief mutator
-    setLvl (unsigned short int newLvl );
-
-}
+    void setLvl (unsigned short int newLvl );
+};
 
 #endif
