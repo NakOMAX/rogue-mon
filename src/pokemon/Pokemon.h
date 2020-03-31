@@ -4,7 +4,7 @@
 #include <string>
 
 
-class Pokemon /**\class A Pokemon is describe by a its name, its HP, its attack and its defense
+class Pokemon /**\class Pokemon is describe by a its name, its HP, its attack and its defense
 of course it also have a level. A Pokemon can be used during a fight and sometimes you should take care of it.*/
 {
 

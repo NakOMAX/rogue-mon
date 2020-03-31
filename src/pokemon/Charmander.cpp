@@ -7,12 +7,11 @@
 #include <time.h>
 using namespace std;
 
-#define const unsigned short int HPMAX=100
 
 Charmander  :: Charmander  () {
 
     id = 004;
-    Hp = HPMAX;
+    Hp = 100;
     name = "Charmander";
     type = 3; // 3= Fire
     lvl = 1;
