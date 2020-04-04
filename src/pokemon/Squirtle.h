@@ -9,12 +9,12 @@ class Squirtle  : public Pokemon
     public :
     
 ///@brief class constructor
-Squirtle ()
+Squirtle ();
 
 ///@brief class destructor
-~Squirtle()
+~Squirtle();
 
 
 
-}
+};
 #endif

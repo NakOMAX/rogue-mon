@@ -7,13 +7,12 @@
 #include <time.h>
 using namespace std;
 
-#define const unsigned short int HPMAX=100
 
 
-Bulbasaur :: Bulbasaur () {
+Bulbasaur:: Bulbasaur () {
 
     id = 001;
-    Hp = HPMAX;
+    Hp = 100;
     name = "Bulbasaur";
     type = 2;// 2= Grass
     lvl = 1;
@@ -24,4 +23,4 @@ Bulbasaur :: Bulbasaur () {
     speed = rand()%10-1;
 }
 
-Bulbasaur :: ~Bulbasaur () {}
+Bulbasaur:: ~Bulbasaur () {}

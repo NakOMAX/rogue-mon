@@ -6,13 +6,13 @@
 
 class Bulbasaur : public Pokemon
 {
-Public : 
+ public : 
 
   ///@brief class constructor
-  Bulbasaur ()
+  Bulbasaur ();
 
   ///@brief class destructor
-  ~Bulbasaur ()
+  ~Bulbasaur ();
 
-}
+};
 #endif

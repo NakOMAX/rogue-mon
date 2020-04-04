@@ -9,12 +9,12 @@ class Charmander  : public Pokemon
   public :  
 
   ///@brief class constructor
-  Charmander ()
+  Charmander ();
 
   ///@brief class destructor
-  ~Charmander ()
+  ~Charmander ();
 
 
 
-}
+};
 #endif
