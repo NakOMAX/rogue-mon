@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['drawmap_4',['drawMap',['../class_map.html#ac71a96597edb90d2b5197e286f9b075f',1,'Map']]]
+  ['data_6',['data',['../structdata.html',1,'']]],
+  ['drawmap_7',['drawMap',['../class_map.html#ae206cb92ab2c008e89fbc070dfcbd63e',1,'Map']]]
 ];

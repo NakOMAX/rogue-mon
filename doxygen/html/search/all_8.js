@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layer_11',['layer',['../class_event.html#a43f5de8010c845e62c2718503b829b33',1,'Event']]]
+  ['map_20',['Map',['../class_map.html',1,'Map'],['../class_map.html#aca8f4c0d0aa9527e12712770f2a23ff5',1,'Map::Map()']]]
 ];

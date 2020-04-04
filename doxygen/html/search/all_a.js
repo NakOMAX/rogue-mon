@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['node_13',['Node',['../struct_node.html',1,'']]]
+  ['player_22',['Player',['../class_player.html',1,'']]],
+  ['potion_23',['Potion',['../class_potion.html',1,'']]]
 ];

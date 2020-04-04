@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['climbfrom_25',['climbFrom',['../class_map.html#ac7350e115c743122c96f3361c053c0d1',1,'Map::climbFrom(VIterator current)'],['../class_map.html#a19e585111d563f5d4610a3daafc812cd',1,'Map::climbFrom(PathI current)']]]
+  ['additem_49',['addItem',['../class_player.html#ad42add2eddcb90d6d427d68d47c7b501',1,'Player']]]
 ];

@@ -71,6 +71,9 @@ $(function() {
 <div class="title">Event Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>events launched in gameplay An event launched by interacting with a node. Overrides gameplay.  
+ <a href="class_event.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Event:</div>
 <div class="dyncontent">
@@ -80,34 +83,69 @@ Inheritance diagram for Event:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a596fd5184034fce4264bfd1d9b290236"><td class="memItemLeft" align="right" valign="top"><a id="a596fd5184034fce4264bfd1d9b290236"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Event</b> (int <a class="el" href="class_event.html#a43f5de8010c845e62c2718503b829b33">layer</a>)</td></tr>
+<tr class="memitem:a5a40dd4708297f7031e29b39e039ae10"><td class="memItemLeft" align="right" valign="top"><a id="a5a40dd4708297f7031e29b39e039ae10"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a5a40dd4708297f7031e29b39e039ae10">Event</a> ()</td></tr>
+<tr class="memdesc:a5a40dd4708297f7031e29b39e039ae10"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_event.html" title="events launched in gameplay An event launched by interacting with a node. Overrides gameplay.">Event</a> constructor used so inherited classes can have a default. <br /></td></tr>
+<tr class="separator:a5a40dd4708297f7031e29b39e039ae10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a596fd5184034fce4264bfd1d9b290236"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a596fd5184034fce4264bfd1d9b290236">Event</a> (int layer)</td></tr>
+<tr class="memdesc:a596fd5184034fce4264bfd1d9b290236"><td class="mdescLeft">&#160;</td><td class="mdescRight">event constructor never used due to being impractical with inheritace  <a href="class_event.html#a596fd5184034fce4264bfd1d9b290236">More...</a><br /></td></tr>
 <tr class="separator:a596fd5184034fce4264bfd1d9b290236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7704ec01ce91e673885792054214b3d2"><td class="memItemLeft" align="right" valign="top"><a id="a7704ec01ce91e673885792054214b3d2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a7704ec01ce91e673885792054214b3d2">~Event</a> ()</td></tr>
+<tr class="memdesc:a7704ec01ce91e673885792054214b3d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">event destructor <br /></td></tr>
+<tr class="separator:a7704ec01ce91e673885792054214b3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085d45ce39fbd53468b5bb8126739d47"><td class="memItemLeft" align="right" valign="top"><a id="a085d45ce39fbd53468b5bb8126739d47"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a085d45ce39fbd53468b5bb8126739d47">init</a> ()</td></tr>
+<tr class="memdesc:a085d45ce39fbd53468b5bb8126739d47"><td class="mdescLeft">&#160;</td><td class="mdescRight">init method called when launching event, launches <a class="el" href="class_event.html#a6d053bf30abbf06bc3e08a59c17021ec" title="mainloop for the event overrides the normal mainloop until returned. Returns 0 if exited properly,...">run()</a>, performs setup. Returns 0 if everything went correctly, else errorcode <br /></td></tr>
 <tr class="separator:a085d45ce39fbd53468b5bb8126739d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973c02d044a5a6b07a044de0df1923cf"><td class="memItemLeft" align="right" valign="top"><a id="a973c02d044a5a6b07a044de0df1923cf"></a>
+short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a973c02d044a5a6b07a044de0df1923cf">getScaling</a> ()</td></tr>
+<tr class="memdesc:a973c02d044a5a6b07a044de0df1923cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">get method for scaling <br /></td></tr>
+<tr class="separator:a973c02d044a5a6b07a044de0df1923cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d053bf30abbf06bc3e08a59c17021ec"><td class="memItemLeft" align="right" valign="top"><a id="a6d053bf30abbf06bc3e08a59c17021ec"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a6d053bf30abbf06bc3e08a59c17021ec">run</a> ()</td></tr>
+<tr class="memdesc:a6d053bf30abbf06bc3e08a59c17021ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">mainloop for the event overrides the normal mainloop until returned. Returns 0 if exited properly, errorcode else. <br /></td></tr>
 <tr class="separator:a6d053bf30abbf06bc3e08a59c17021ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a887b5e16d575202ffe3d84b453e60ec8"><td class="memItemLeft" align="right" valign="top"><a id="a887b5e16d575202ffe3d84b453e60ec8"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><b>getLayer</b> ()</td></tr>
-<tr class="separator:a887b5e16d575202ffe3d84b453e60ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cec97a360e1d9f486ae5336bef83a4b"><td class="memItemLeft" align="right" valign="top"><a id="a3cec97a360e1d9f486ae5336bef83a4b"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><b>getEventType</b> ()</td></tr>
-<tr class="separator:a3cec97a360e1d9f486ae5336bef83a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a43f5de8010c845e62c2718503b829b33"><td class="memItemLeft" align="right" valign="top"><a id="a43f5de8010c845e62c2718503b829b33"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a43f5de8010c845e62c2718503b829b33">layer</a></td></tr>
-<tr class="memdesc:a43f5de8010c845e62c2718503b829b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">layer in the map, 0 means top layer <br /></td></tr>
-<tr class="separator:a43f5de8010c845e62c2718503b829b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89af965f2ba94e2b40824256dafa6cd6"><td class="memItemLeft" align="right" valign="top"><a id="a89af965f2ba94e2b40824256dafa6cd6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>eventType</b></td></tr>
-<tr class="separator:a89af965f2ba94e2b40824256dafa6cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c8d19e1cf4d6813eb0cf3881c4cb791"><td class="memItemLeft" align="right" valign="top"><a id="a5c8d19e1cf4d6813eb0cf3881c4cb791"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a5c8d19e1cf4d6813eb0cf3881c4cb791">scaling</a></td></tr>
+<tr class="memdesc:a5c8d19e1cf4d6813eb0cf3881c4cb791"><td class="mdescLeft">&#160;</td><td class="mdescRight">scaling value of event used in order to choose difficulty and rewards <br /></td></tr>
+<tr class="separator:a5c8d19e1cf4d6813eb0cf3881c4cb791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="_event_8h_source.html">Event.h</a></li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>events launched in gameplay An event launched by interacting with a node. Overrides gameplay. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a596fd5184034fce4264bfd1d9b290236"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a596fd5184034fce4264bfd1d9b290236">&#9670;&nbsp;</a></span>Event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Event::Event </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>event constructor never used due to being impractical with inheritace </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td>used in scaling </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/event/<a class="el" href="_event_8h_source.html">Event.h</a></li>
+<li>src/event/Event.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

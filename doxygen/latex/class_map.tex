@@ -8,6 +8,8 @@
 \mbox{\Hypertarget{class_map_aa403fbe09394ccf39747588f5168e3b2}\label{class_map_aa403fbe09394ccf39747588f5168e3b2}} 
 \mbox{\hyperlink{class_map_aa403fbe09394ccf39747588f5168e3b2}{$\sim$\+Map}} ()
 \begin{DoxyCompactList}\small\item\em Class destructor. Deallocates memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_ab8c6632c0a85348557d6cd7c51de21b8}{init}} (S\+D\+L\+\_\+\+Renderer $\ast$new\+Renderer, unsigned short int wdimy, unsigned short int wdimx)
+\begin{DoxyCompactList}\small\item\em Initialize events and S\+DL data. \end{DoxyCompactList}\item 
 std\+::vector$<$ V\+Iterator $>$ $\ast$ \mbox{\hyperlink{class_map_ae8e28b1f2749348d9357b26634d81b9c}{get\+Starts}} ()
 \begin{DoxyCompactList}\small\item\em Returns initial points where the game can start from. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_map_ad51d86818223b7b15e75eefe82bf4897}{select\+Path}} (V\+Iterator start)
@@ -16,10 +18,13 @@ PathI \mbox{\hyperlink{class_map_ac7350e115c743122c96f3361c053c0d1}{climb\+From}
 \begin{DoxyCompactList}\small\item\em Returns iterator towards next vertex. \end{DoxyCompactList}\item 
 PathI \mbox{\hyperlink{class_map_a19e585111d563f5d4610a3daafc812cd}{climb\+From}} (PathI current)
 \begin{DoxyCompactList}\small\item\em Returns iterator towards next vertex. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_map_ac71a96597edb90d2b5197e286f9b075f}{draw\+Map}} (short int mode=-\/1)
+void \mbox{\hyperlink{class_map_ae206cb92ab2c008e89fbc070dfcbd63e}{draw\+Map}} ()
 \begin{DoxyCompactList}\small\item\em Draws the map. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_map_a2c1280f4cb9fed9125e9019f9d1319a7}\label{class_map_a2c1280f4cb9fed9125e9019f9d1319a7}} 
 void \mbox{\hyperlink{class_map_a2c1280f4cb9fed9125e9019f9d1319a7}{run\+Event}} (PathI current)
+\begin{DoxyCompactList}\small\item\em Runs the event for the current vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_map_a79bfa46cf11329a5d923ea6c3bbb0ded}\label{class_map_a79bfa46cf11329a5d923ea6c3bbb0ded}} 
+void \mbox{\hyperlink{class_map_a79bfa46cf11329a5d923ea6c3bbb0ded}{run\+Event}} (V\+Iterator current)
 \begin{DoxyCompactList}\small\item\em Runs the event for the current vertex. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_map_a4a37c8aa4be96d1177da689fa6c0ff24}{highlight}} (std\+::vector$<$ V\+Iterator $>$ $\ast$options, unsigned short int selected)
 \begin{DoxyCompactList}\small\item\em Highlights one vertex at a time while in map screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -36,7 +41,7 @@ void \mbox{\hyperlink{class_map_a4a37c8aa4be96d1177da689fa6c0ff24}{highlight}} (
 
 Class constructor. 
 
-The class constructor randomly generates a map of the desired number of layers 
+The class constructor randomly generates a map of the desired number of layers. S\+D\+L\+\_\+image needs to be initialised before creating objects 
 \begin{DoxyParams}{Parameters}
 {\em layers} & Number of layers that the map will have. Minimun\+: 1 \\
 \hline
@@ -74,22 +79,17 @@ Returns iterator towards next vertex and set state of $\ast$current to S\+T\+A\+
 {\em current} & V\+Iterator got from \mbox{\hyperlink{class_map_ae8e28b1f2749348d9357b26634d81b9c}{get\+Starts()}} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_map_ac71a96597edb90d2b5197e286f9b075f}\label{class_map_ac71a96597edb90d2b5197e286f9b075f}} 
+\mbox{\Hypertarget{class_map_ae206cb92ab2c008e89fbc070dfcbd63e}\label{class_map_ae206cb92ab2c008e89fbc070dfcbd63e}} 
 \index{Map@{Map}!drawMap@{drawMap}}
 \index{drawMap@{drawMap}!Map@{Map}}
 \doxysubsubsection{\texorpdfstring{drawMap()}{drawMap()}}
-{\footnotesize\ttfamily void Map\+::draw\+Map (\begin{DoxyParamCaption}\item[{short int}]{mode = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Map\+::draw\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Draws the map. 
 
-Draws the map in console mode or in graphic mode with S\+DL 
-\begin{DoxyParams}{Parameters}
-{\em mode} & M\+A\+P\+\_\+\+T\+XT to txt mode M\+A\+P\+\_\+\+S\+DL to graphic mode. Default\+: console mode, single print in the terminal \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_map_ae8e28b1f2749348d9357b26634d81b9c}\label{class_map_ae8e28b1f2749348d9357b26634d81b9c}} 
+Draws the map in graphic mode. \mbox{\Hypertarget{class_map_ae8e28b1f2749348d9357b26634d81b9c}\label{class_map_ae8e28b1f2749348d9357b26634d81b9c}} 
 \index{Map@{Map}!getStarts@{getStarts}}
 \index{getStarts@{getStarts}!Map@{Map}}
 \doxysubsubsection{\texorpdfstring{getStarts()}{getStarts()}}
@@ -112,6 +112,25 @@ Highlights one vertex at a time while in map screen.
 
 \begin{DoxyParams}{Parameters}
 {\em selected} & V\+Iterator got from get\+Starts \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_ab8c6632c0a85348557d6cd7c51de21b8}\label{class_map_ab8c6632c0a85348557d6cd7c51de21b8}} 
+\index{Map@{Map}!init@{init}}
+\index{init@{init}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Map\+::init (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{new\+Renderer,  }\item[{unsigned short int}]{wdimy,  }\item[{unsigned short int}]{wdimx }\end{DoxyParamCaption})}
+
+
+
+Initialize events and S\+DL data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Renderer} & S\+D\+L\+\_\+\+Renderer linked to an open window \\
+\hline
+{\em wdimy} & window height in pixels \\
+\hline
+{\em wdimx} & window width in pixels \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_map_ad51d86818223b7b15e75eefe82bf4897}\label{class_map_ad51d86818223b7b15e75eefe82bf4897}} 

@@ -2,37 +2,63 @@
 \label{class_event}\index{Event@{Event}}
 
 
+events launched in gameplay An event launched by interacting with a node. Overrides gameplay.  
+
+
+
+
 Inheritance diagram for Event\+:
 % FIG 0
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_event_a596fd5184034fce4264bfd1d9b290236}\label{class_event_a596fd5184034fce4264bfd1d9b290236}} 
-{\bfseries Event} (int \mbox{\hyperlink{class_event_a43f5de8010c845e62c2718503b829b33}{layer}})
-\item 
+\mbox{\Hypertarget{class_event_a5a40dd4708297f7031e29b39e039ae10}\label{class_event_a5a40dd4708297f7031e29b39e039ae10}} 
+\mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_event}{Event}} constructor used so inherited classes can have a default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_event_a596fd5184034fce4264bfd1d9b290236}{Event}} (int layer)
+\begin{DoxyCompactList}\small\item\em event constructor never used due to being impractical with inheritace \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_event_a7704ec01ce91e673885792054214b3d2}\label{class_event_a7704ec01ce91e673885792054214b3d2}} 
+\mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{$\sim$\+Event}} ()
+\begin{DoxyCompactList}\small\item\em event destructor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_event_a085d45ce39fbd53468b5bb8126739d47}\label{class_event_a085d45ce39fbd53468b5bb8126739d47}} 
-short int {\bfseries init} ()
-\item 
+short int \mbox{\hyperlink{class_event_a085d45ce39fbd53468b5bb8126739d47}{init}} ()
+\begin{DoxyCompactList}\small\item\em init method called when launching event, launches \mbox{\hyperlink{class_event_a6d053bf30abbf06bc3e08a59c17021ec}{run()}}, performs setup. Returns 0 if everything went correctly, else errorcode \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_event_a973c02d044a5a6b07a044de0df1923cf}\label{class_event_a973c02d044a5a6b07a044de0df1923cf}} 
+short int \mbox{\hyperlink{class_event_a973c02d044a5a6b07a044de0df1923cf}{get\+Scaling}} ()
+\begin{DoxyCompactList}\small\item\em get method for scaling \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_event_a6d053bf30abbf06bc3e08a59c17021ec}\label{class_event_a6d053bf30abbf06bc3e08a59c17021ec}} 
-short int {\bfseries run} ()
-\item 
-\mbox{\Hypertarget{class_event_a887b5e16d575202ffe3d84b453e60ec8}\label{class_event_a887b5e16d575202ffe3d84b453e60ec8}} 
-short int {\bfseries get\+Layer} ()
-\item 
-\mbox{\Hypertarget{class_event_a3cec97a360e1d9f486ae5336bef83a4b}\label{class_event_a3cec97a360e1d9f486ae5336bef83a4b}} 
-short int {\bfseries get\+Event\+Type} ()
-\end{DoxyCompactItemize}
+short int \mbox{\hyperlink{class_event_a6d053bf30abbf06bc3e08a59c17021ec}{run}} ()
+\begin{DoxyCompactList}\small\item\em mainloop for the event overrides the normal mainloop until returned. Returns 0 if exited properly, errorcode else. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_event_a43f5de8010c845e62c2718503b829b33}\label{class_event_a43f5de8010c845e62c2718503b829b33}} 
-int \mbox{\hyperlink{class_event_a43f5de8010c845e62c2718503b829b33}{layer}}
-\begin{DoxyCompactList}\small\item\em layer in the map, 0 means top layer \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_event_a89af965f2ba94e2b40824256dafa6cd6}\label{class_event_a89af965f2ba94e2b40824256dafa6cd6}} 
-int {\bfseries event\+Type}
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{class_event_a5c8d19e1cf4d6813eb0cf3881c4cb791}\label{class_event_a5c8d19e1cf4d6813eb0cf3881c4cb791}} 
+int \mbox{\hyperlink{class_event_a5c8d19e1cf4d6813eb0cf3881c4cb791}{scaling}}
+\begin{DoxyCompactList}\small\item\em scaling value of event used in order to choose difficulty and rewards \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Detailed Description}
+events launched in gameplay An event launched by interacting with a node. Overrides gameplay. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_a596fd5184034fce4264bfd1d9b290236}\label{class_event_a596fd5184034fce4264bfd1d9b290236}} 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{int}]{layer }\end{DoxyParamCaption})}
+
+
+
+event constructor never used due to being impractical with inheritace 
+
+
+\begin{DoxyParams}{Parameters}
+{\em layer} & used in scaling \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/Event.\+h\end{DoxyCompactItemize}
+src/event/Event.\+h\item 
+src/event/Event.\+cpp\end{DoxyCompactItemize}

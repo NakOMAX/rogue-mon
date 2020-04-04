@@ -80,6 +80,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#aa403fbe09394ccf39747588f5168e3b2">~Map</a> ()</td></tr>
 <tr class="memdesc:aa403fbe09394ccf39747588f5168e3b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor. Deallocates memory. <br /></td></tr>
 <tr class="separator:aa403fbe09394ccf39747588f5168e3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8c6632c0a85348557d6cd7c51de21b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#ab8c6632c0a85348557d6cd7c51de21b8">init</a> (SDL_Renderer *newRenderer, unsigned short int wdimy, unsigned short int wdimx)</td></tr>
+<tr class="memdesc:ab8c6632c0a85348557d6cd7c51de21b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize events and SDL data.  <a href="class_map.html#ab8c6632c0a85348557d6cd7c51de21b8">More...</a><br /></td></tr>
+<tr class="separator:ab8c6632c0a85348557d6cd7c51de21b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8e28b1f2749348d9357b26634d81b9c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; VIterator &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#ae8e28b1f2749348d9357b26634d81b9c">getStarts</a> ()</td></tr>
 <tr class="memdesc:ae8e28b1f2749348d9357b26634d81b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns initial points where the game can start from.  <a href="class_map.html#ae8e28b1f2749348d9357b26634d81b9c">More...</a><br /></td></tr>
 <tr class="separator:ae8e28b1f2749348d9357b26634d81b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,13 +95,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a19e585111d563f5d4610a3daafc812cd"><td class="memItemLeft" align="right" valign="top">PathI&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a19e585111d563f5d4610a3daafc812cd">climbFrom</a> (PathI current)</td></tr>
 <tr class="memdesc:a19e585111d563f5d4610a3daafc812cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns iterator towards next vertex.  <a href="class_map.html#a19e585111d563f5d4610a3daafc812cd">More...</a><br /></td></tr>
 <tr class="separator:a19e585111d563f5d4610a3daafc812cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac71a96597edb90d2b5197e286f9b075f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#ac71a96597edb90d2b5197e286f9b075f">drawMap</a> (short int mode=-1)</td></tr>
-<tr class="memdesc:ac71a96597edb90d2b5197e286f9b075f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the map.  <a href="class_map.html#ac71a96597edb90d2b5197e286f9b075f">More...</a><br /></td></tr>
-<tr class="separator:ac71a96597edb90d2b5197e286f9b075f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae206cb92ab2c008e89fbc070dfcbd63e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#ae206cb92ab2c008e89fbc070dfcbd63e">drawMap</a> ()</td></tr>
+<tr class="memdesc:ae206cb92ab2c008e89fbc070dfcbd63e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the map.  <a href="class_map.html#ae206cb92ab2c008e89fbc070dfcbd63e">More...</a><br /></td></tr>
+<tr class="separator:ae206cb92ab2c008e89fbc070dfcbd63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c1280f4cb9fed9125e9019f9d1319a7"><td class="memItemLeft" align="right" valign="top"><a id="a2c1280f4cb9fed9125e9019f9d1319a7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a2c1280f4cb9fed9125e9019f9d1319a7">runEvent</a> (PathI current)</td></tr>
 <tr class="memdesc:a2c1280f4cb9fed9125e9019f9d1319a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the event for the current vertex. <br /></td></tr>
 <tr class="separator:a2c1280f4cb9fed9125e9019f9d1319a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79bfa46cf11329a5d923ea6c3bbb0ded"><td class="memItemLeft" align="right" valign="top"><a id="a79bfa46cf11329a5d923ea6c3bbb0ded"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a79bfa46cf11329a5d923ea6c3bbb0ded">runEvent</a> (VIterator current)</td></tr>
+<tr class="memdesc:a79bfa46cf11329a5d923ea6c3bbb0ded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the event for the current vertex. <br /></td></tr>
+<tr class="separator:a79bfa46cf11329a5d923ea6c3bbb0ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a37c8aa4be96d1177da689fa6c0ff24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a4a37c8aa4be96d1177da689fa6c0ff24">highlight</a> (std::vector&lt; VIterator &gt; *options, unsigned short int selected)</td></tr>
 <tr class="memdesc:a4a37c8aa4be96d1177da689fa6c0ff24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Highlights one vertex at a time while in map screen.  <a href="class_map.html#a4a37c8aa4be96d1177da689fa6c0ff24">More...</a><br /></td></tr>
 <tr class="separator:a4a37c8aa4be96d1177da689fa6c0ff24"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,7 +138,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>Class constructor. </p>
-<p>The class constructor randomly generates a map of the desired number of layers </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The class constructor randomly generates a map of the desired number of layers. SDL_image needs to be initialised before creating objects </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">layers</td><td>Number of layers that the map will have. Minimun: 1 </td></tr>
   </table>
@@ -193,8 +200,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="ac71a96597edb90d2b5197e286f9b075f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac71a96597edb90d2b5197e286f9b075f">&#9670;&nbsp;</a></span>drawMap()</h2>
+<a id="ae206cb92ab2c008e89fbc070dfcbd63e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae206cb92ab2c008e89fbc070dfcbd63e">&#9670;&nbsp;</a></span>drawMap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,20 +209,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname">void Map::drawMap </td>
           <td>(</td>
-          <td class="paramtype">short int&#160;</td>
-          <td class="paramname"><em>mode</em> = <code>-1</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Draws the map. </p>
-<p>Draws the map in console mode or in graphic mode with SDL </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mode</td><td>MAP_TXT to txt mode MAP_SDL to graphic mode. Default: console mode, single print in the terminal </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Draws the map in graphic mode. </p>
 
 </div>
 </div>
@@ -269,6 +270,50 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">selected</td><td>VIterator got from getStarts </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab8c6632c0a85348557d6cd7c51de21b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8c6632c0a85348557d6cd7c51de21b8">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::init </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>newRenderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>wdimy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>wdimx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize events and SDL data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newRenderer</td><td>SDL_Renderer linked to an open window </td></tr>
+    <tr><td class="paramname">wdimy</td><td>window height in pixels </td></tr>
+    <tr><td class="paramname">wdimx</td><td>window width in pixels </td></tr>
   </table>
   </dd>
 </dl>
