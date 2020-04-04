@@ -2,6 +2,7 @@
 #include "Event.h"
 // #include "../player/Player.h"
 #include <iostream> //testing/debug only
+#include "SDL_ttf.h"
 
 short int Test::init(/*Player p*/) {
   ennemy[0].hp = 10;

@@ -4,6 +4,8 @@
 #define POKE_EVI_H
 
 #include "Event.h"
+#include "SDL.h"
+#include "SDL_ttf.h"
 
 /*------------------ TESTING BLOCK STRUCTURE ---------------------------------*/
 struct data {

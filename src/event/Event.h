@@ -1,5 +1,12 @@
 /** @file header file for the Event class*/
 
+#include "SDL.h"
+#include "SDL_ttf.h"
+#include "SDL_image.h"
+#include "event/Component.h"
+#include <stdlib.h>
+#include <string.h>
+
 #ifndef POKE_EVE_H
 #define POKE_EVE_H
 
@@ -35,5 +42,11 @@ protected:
   /** @brief scaling value of event
       used in order to choose difficulty and rewards*/
   int scaling;
+
+  /** @brief background of event*/
+  SDL_Texture * background;
+
+  /**@brief array of components to draw*/
+  std::vector<Component> components;
 };
 #endif
