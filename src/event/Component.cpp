@@ -52,21 +52,36 @@ unsigned short int DialogueBox::_init() {
   // load textbox texture
   surface = loadImage("../data.Components/dialogueBox.png");
   image = SDL_CreateTextureFromSurface(surface);
+  // generate SDL_Rect : position
+  // assumes WIN_X and WIN_Y sizes of screen
+  int padding = 25; // distance between box and text
+  transform.x = 0; transform.y = WIN_Y; transform.w = WIN_X; transform.h = WIN_Y/4; // whole textbox
+  text_transform.x = transform.x+padding; text_transform.y = transform.y-padding;
+  text_transform.w = transform.w - padding; text_transform.h = transform.h-padding; // texbox - padding
   // return 0 if everything went well
   return 0;
 }
 
-unsigned short int DialogueBox::_update() {
+unsigned short int DialogueBox::_update(SDL_Renderer render) {
+  // render textbox background
+  if (SDL_RenderCopy(render, image, NULL, transform) < 0) {
+    return ERRCODE_NO_RENDER;
+  }
   // if there is text, render it
   if (aff != NULL) {
     if(!(txtSurface = TTF_RenderText_Solid(font, aff, color))) {
       // the text did not render
       return ERRCODE_NO_AFF;
     } else {
-      //everything worked, take care of the rest
+      // here if text did render
+      txt_image = SDL_CreateTextureFromSurface(txtSurface); // transform surface into texture
+      if (SDL_RenderCopy(render, txt_image, NULL, text_transform)) {
+        // if render of text surface failed
+        return ERRCODE_NO_RENDER;
+      }
     }
   }
-
+  //everything went well
   return 0;
 }
 

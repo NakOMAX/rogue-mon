@@ -28,11 +28,11 @@ short int Event::getScaling() {
   return scaling;
 }
 
-short int Event::run() {
+short int Event::run(SDL_Renderer render) {
   bool hasFinished = false;
   while (!hasFinished)
     for (int i = 0; i < components.size(); i++) {
-      components[i]._update();
+      components[i]._update(render);
     }
     hasFinished = !hasFinished;
   }

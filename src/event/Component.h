@@ -13,6 +13,7 @@
 #define ERRCODE_FONT_NOT_LOADED 2
 #define ERRCODE_NO_TTF 3
 #define ERRCODE_NO_AFF 4
+#define ERRCODE_NO_RENDER 5
 
 /** @class Component
     @brief container class for Components
@@ -40,7 +41,7 @@ class DialogueBox : public Component {
       called by parent, ends when the event is closed or when an error happens
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _update();
+  unsigned short int _update(SDL_Renderer render);
 
   /**@brief << operator for writing
     used to write a string to the box*/
@@ -50,13 +51,18 @@ class DialogueBox : public Component {
   void clean();
 
 protected :
-  SDL_Texture * image;
+  // for the background
+  SDL_Rect * transform;
   SDL_Surface * surface;
+  SDL_Texture * image;
+
+  // for the text
+  SDL_Rect * text_transform;
   SDL_Surface * txtSurface;
-  //int x, y;
-  //SDL_RWops *textio;
-  TTF_Font *font;
-  char * aff = NULL;
+  SDL_Texture * txt_image;
+
+  TTF_Font *font; // used font (Power Green ftw)
+  char * aff = NULL; // current line
   SDL_Color color = {0,0,0}; //black by default, might be changed by constructor or method later
 };
 
