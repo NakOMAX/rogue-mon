@@ -5,7 +5,7 @@
 #include "SDL_image.h"
 #include "SDL.h"
 #include <stdlib.h>
-#include <string.h>
+#include <cstring>
 
 // BLOC POUR TEST, INCLU AVEC MAP.cpp
 SDL_Surface * loadImage(const std::string & filename)
@@ -39,6 +39,11 @@ unsigned short int Component::_update() {
   return ERRCODE_NO_COMP;
 }
 
+DialogueBox::~DialogueBox() {
+  SDL_FreeSurface(surface);
+  SDL_FreeSurface(txt_surface);
+}
+
 unsigned short int DialogueBox::_init() {
   // test correct initialisation
   if (!TTF_WasInit()) {
@@ -69,12 +74,12 @@ unsigned short int DialogueBox::_update(SDL_Renderer render) {
   }
   // if there is text, render it
   if (aff != NULL) {
-    if(!(txtSurface = TTF_RenderText_Solid(font, aff, color))) {
+    if(!(txt_surface = TTF_RenderText_Solid(font, aff, color))) {
       // the text did not render
       return ERRCODE_NO_AFF;
     } else {
       // here if text did render
-      txt_image = SDL_CreateTextureFromSurface(txtSurface); // transform surface into texture
+      txt_image = SDL_CreateTextureFromSurface(txt_surface); // transform surface into texture
       if (SDL_RenderCopy(render, txt_image, NULL, text_transform)) {
         // if render of text surface failed
         return ERRCODE_NO_RENDER;
@@ -86,9 +91,12 @@ unsigned short int DialogueBox::_update(SDL_Renderer render) {
 }
 
 void DialogueBox::operator<<(const char* str) {
-  aff = str;
+  strncopy(aff, str, CHARLIM);
+  if ( strlen( str ) >= CHARLIM ) {
+        aff[ CHARLIM -1 ] = '\0';
+    }
 }
 
 void DialogueBox::clean() {
-  //
+  aff = NULL;
 }

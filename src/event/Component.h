@@ -3,12 +3,14 @@
 #ifndef POKE_CPN_H
 #define POKE_CPN_H
 
+//includes
 #include "SDL_ttf.h"
 #include "SDL_image.h"
 #include "SDL.h"
 #include <stdlib.h>
 #include <string.h>
 
+// Error codes
 #define ERRCODE_NO_COMP 1
 #define ERRCODE_FONT_NOT_LOADED 2
 #define ERRCODE_NO_TTF 3
@@ -26,10 +28,15 @@ public:
 protected:
 };
 
-
+// Max number of characters in textbox (to adapt later)
+#define CHARLIM 275
 /** @class dialogueBox
     @brief Component box that gets sent text files and reads them*/
 class DialogueBox : public Component {
+
+  /** @brief class destructor
+  */
+  ~DialogueBox();
 
   /** @brief init method
       called when launched and not when created, loads ressources
@@ -58,7 +65,7 @@ protected :
 
   // for the text
   SDL_Rect * text_transform;
-  SDL_Surface * txtSurface;
+  SDL_Surface * txt_surface;
   SDL_Texture * txt_image;
 
   TTF_Font *font; // used font (Power Green ftw)
