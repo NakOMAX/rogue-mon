@@ -44,9 +44,11 @@ DialogueBox::~DialogueBox() {
   SDL_FreeSurface(txt_surface);
 }
 
-unsigned short int DialogueBox::_init() {
+//#N C'est le game manager qui fixe la dimension de l'écran et tu vas avoir besoin de te la faire passer
+unsigned short int DialogueBox::_init( /*unsigned short int dimX, unsigned short int dimY */) {
   // test correct initialisation
   if (!TTF_WasInit()) {
+    //#N Pour appeler component GameManager doit avoir initialisé TTF, c'est ça?
     return ERRCODE_NO_TTF;
   }
   // load font
@@ -58,29 +60,43 @@ unsigned short int DialogueBox::_init() {
   surface = loadImage("../data.Components/dialogueBox.png");
   image = SDL_CreateTextureFromSurface(surface);
   // generate SDL_Rect : position
-  // assumes WIN_X and WIN_Y sizes of screen
+  // assumes dimX and dimY sizes of screen
   int padding = 25; // distance between box and text
-  transform.x = 0; transform.y = WIN_Y; transform.w = WIN_X; transform.h = WIN_Y/4; // whole textbox
-  text_transform.x = transform.x+padding; text_transform.y = transform.y-padding;
-  text_transform.w = transform.w - padding; text_transform.h = transform.h-padding; // texbox - padding
+
+  // whole textbox
+  //#N pointeur vers une struct, donc ->
+  transform->w = dimX;
+  transform->h = dimY/4;
+  transform->x = 0;
+  transform->y = dimY - transform->h;
+  //#N Si y=dimY le haut de la boite sera en bas de la page car (0,0) c'est en haut à gauche
+
+
+  text_transform->x = transform->x + padding;
+  text_transform->y = transform->y + padding;
+  text_transform->w = transform->w - padding;
+  text_transform->h = transform->h - padding; // texbox - padding
   // return 0 if everything went well
   return 0;
 }
 
-unsigned short int DialogueBox::_update(SDL_Renderer render) {
+unsigned short int DialogueBox::_update(SDL_Renderer * render) {
   // render textbox background
   if (SDL_RenderCopy(render, image, NULL, transform) < 0) {
     return ERRCODE_NO_RENDER;
   }
   // if there is text, render it
   if (aff != NULL) {
-    if(!(txt_surface = TTF_RenderText_Solid(font, aff, color))) {
+    txt_surface = TTF_RenderText_Solid(font, aff, color);
+    //#N C'est mieux de ne pas utliser ! avec un pointeur, d'ailleurs je ne suis pas sur que ça marche
+    if(txt_surface == NULL) {
       // the text did not render
       return ERRCODE_NO_AFF;
     } else {
       // here if text did render
       txt_image = SDL_CreateTextureFromSurface(txt_surface); // transform surface into texture
-      if (SDL_RenderCopy(render, txt_image, NULL, text_transform)) {
+      //#N Pour l'instant il y a une seule ligne, c'est ça?
+      if (SDL_RenderCopy(render, txt_image, NULL, text_transform)<0) {
         // if render of text surface failed
         return ERRCODE_NO_RENDER;
       }
@@ -91,8 +107,10 @@ unsigned short int DialogueBox::_update(SDL_Renderer render) {
 }
 
 void DialogueBox::operator<<(const char* str) {
+  //#N Je ne sais pas si strncopy est une fonction à toi mais en tout cas il y a strcpy qui fait ça dèja
   strncopy(aff, str, CHARLIM);
   if ( strlen( str ) >= CHARLIM ) {
+        //#N En principe t'as pas le droit de faire ça. Ton tableau n'est pas initialisé. Il manque un new char[CHARLIM] quelquepart
         aff[ CHARLIM -1 ] = '\0';
     }
 }

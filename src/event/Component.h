@@ -70,7 +70,8 @@ protected :
 
   TTF_Font *font; // used font (Power Green ftw)
   char * aff = NULL; // current line
-  SDL_Color color = {0,0,0}; //black by default, might be changed by constructor or method later
+  //#N En principe t'as pas besoin des acolades
+  SDL_Color color = 0,0,0; //black by default, might be changed by constructor or method later
 };
 
 #endif
