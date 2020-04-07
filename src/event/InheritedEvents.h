@@ -40,12 +40,12 @@ public :
   /** class constructor */
   Cinematic(std::string text_adress, std::string image_adress);
   /** @brief see Event init() */
-  short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * & render);
+  short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
   /** @brief see Event run()*/
-  short int run(SDL_Renderer * & render);
+  short int run(SDL_Renderer * render);
 private :
   /** @brief text reader */
-  short int read(DialogueBox * dBox);
+  short int read(std::shared_ptr<DialogueBox> db);
   /** @brief cinematic text file adress */
   std::string txt_source;
   /** @brief background adress */

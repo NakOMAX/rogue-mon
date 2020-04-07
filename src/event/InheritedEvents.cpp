@@ -67,15 +67,15 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
   background_source = image_adress;
 }
 
-short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * & renderer) {
+short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) {
   // init components
   components.push_back(std::make_shared<DialogueBox>());
-  for (long long unsigned int i = 0; i < components.size(); i++) {
-    if (!components[i]->_init(dimX, dimY)) return 1;
+  for (short unsigned int i = 0; i < components.size(); i++) {
+    if (!(components[i]->_init(dimX, dimY, renderer))) return 1;
   }
 
   //init background
-  SDL_Surface surf = loadImage(background_source);
+  SDL_Surface * surf = loadImage(background_source);
   background = SDL_CreateTextureFromSurface(renderer, surf);
 
   //init file ifstream
@@ -84,20 +84,21 @@ short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_
   return run(renderer);
 }
 
-short int Cinematic::run(SDL_Renderer * & renderer) {
+short int Cinematic::run(SDL_Renderer * renderer) {
   bool hasFinished = false;
   SDL_Event evt;
   do {
-    read(components[0].get()); //component 0 is always a dialoguebox
+    read(components[0]); //component 0 is always a dialoguebox
     // update every component
-    for (int i = 0; i < components.size(); i++) {
+    for (unsigned int i = 0; i < components.size(); i++) {
       if (!components[i]->_update(renderer)) return 1;
     }
     // get every event back
     while ( SDL_PollEvent(&evt) ) {
       switch (evt.type) {
         case SDL_QUIT: hasFinished = false; break;
-        case SDL_KEYUP : read(components[0].get()); //component 0 is dialoguebox
+        case SDL_KEYUP : read(components[0]); //component 0 is dialoguebox
+        default: break;
       }
     }
   } while (!hasFinished);
@@ -106,15 +107,15 @@ short int Cinematic::run(SDL_Renderer * & renderer) {
   return 0;
 }
 
-short int Cinematic::read(DialogueBox * db) {
+short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
   if (!myfile.is_open()) {
     myfile.open(txt_source);
   } else {
     if(!myfile.eof()) {
       std::string buf;
       getline(myfile, buf);
-      db.clean();
-      db<<buf.c_str();
+      db->clean();
+      (*db)<<buf.c_str();
     } else {
       return 1;
     }

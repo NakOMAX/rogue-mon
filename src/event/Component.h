@@ -23,7 +23,9 @@
 */
 class Component {
 public:
-  unsigned short int _init();
+  Component();
+  ~Component();
+  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
   unsigned short int _update(SDL_Renderer * render);
 protected:
 };
@@ -33,7 +35,8 @@ protected:
 /** @class dialogueBox
     @brief Component box that gets sent text files and reads them*/
 class DialogueBox : public Component {
-
+ public:
+  DialogueBox();
   /** @brief class destructor
   */
   ~DialogueBox();
@@ -42,13 +45,13 @@ class DialogueBox : public Component {
       called when launched and not when created, loads ressources
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * & render);
+  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
 
   /** @brief update method
       called by parent, ends when the event is closed or when an error happens
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _update(SDL_Renderer * & render);
+  unsigned short int _update(SDL_Renderer * render);
 
   /**@brief << operator for writing
     used to write a string to the box*/
@@ -57,8 +60,8 @@ class DialogueBox : public Component {
   /**@brief cleans the textbox*/
   void clean();
 
-/** @brief changes color */
-void setColor(const SDL_Color & color);
+  /** @brief changes color */
+  void setColor(const SDL_Color & color);
 
 protected :
   // for the background

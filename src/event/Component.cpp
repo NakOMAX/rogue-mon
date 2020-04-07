@@ -47,7 +47,7 @@ DialogueBox::~DialogueBox() {
 }
 
 //#N C'est le game manager qui fixe la dimension de l'écran et tu vas avoir besoin de te la faire passer
-unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer & * render ) {
+unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render ) {
   // test correct initialisation
   if (!TTF_WasInit()) {
     //#N Pour appeler component GameManager doit avoir initialisé TTF, c'est ça?
@@ -85,7 +85,7 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
   return 0;
 }
 
-unsigned short int DialogueBox::_update(SDL_Renderer * & render) {
+unsigned short int DialogueBox::_update(SDL_Renderer * render) {
   // render textbox background
   if (SDL_RenderCopy(render, image, NULL, transform) < 0) {
     return ERRCODE_NO_RENDER;
