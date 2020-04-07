@@ -6,6 +6,7 @@
 #include "SDL.h"
 #include <stdlib.h>
 #include <cstring>
+#include <string.h>
 
 // BLOC POUR TEST, INCLU AVEC MAP.cpp
 SDL_Surface * loadImage(const std::string & filename)
@@ -31,21 +32,22 @@ SDL_Surface * loadImage(const std::string & filename)
 }
 // FIN BLOC TEST
 
-unsigned short int Component::_init() {
+unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY) {
   return ERRCODE_NO_COMP;
 }
 
-unsigned short int Component::_update() {
+unsigned short int Component::_update(SDL_Renderer * render) {
   return ERRCODE_NO_COMP;
 }
 
 DialogueBox::~DialogueBox() {
   SDL_FreeSurface(surface);
   SDL_FreeSurface(txt_surface);
+  delete aff;
 }
 
 //#N C'est le game manager qui fixe la dimension de l'écran et tu vas avoir besoin de te la faire passer
-unsigned short int DialogueBox::_init( /*unsigned short int dimX, unsigned short int dimY */) {
+unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer & * render ) {
   // test correct initialisation
   if (!TTF_WasInit()) {
     //#N Pour appeler component GameManager doit avoir initialisé TTF, c'est ça?
@@ -58,7 +60,7 @@ unsigned short int DialogueBox::_init( /*unsigned short int dimX, unsigned short
   }
   // load textbox texture
   surface = loadImage("../data.Components/dialogueBox.png");
-  image = SDL_CreateTextureFromSurface(surface);
+  image = SDL_CreateTextureFromSurface(render,surface);
   // generate SDL_Rect : position
   // assumes dimX and dimY sizes of screen
   int padding = 25; // distance between box and text
@@ -76,11 +78,14 @@ unsigned short int DialogueBox::_init( /*unsigned short int dimX, unsigned short
   text_transform->y = transform->y + padding;
   text_transform->w = transform->w - padding;
   text_transform->h = transform->h - padding; // texbox - padding
+
+  // init char *
+  aff = new char [CHARLIM];
   // return 0 if everything went well
   return 0;
 }
 
-unsigned short int DialogueBox::_update(SDL_Renderer * render) {
+unsigned short int DialogueBox::_update(SDL_Renderer * & render) {
   // render textbox background
   if (SDL_RenderCopy(render, image, NULL, transform) < 0) {
     return ERRCODE_NO_RENDER;
@@ -94,7 +99,7 @@ unsigned short int DialogueBox::_update(SDL_Renderer * render) {
       return ERRCODE_NO_AFF;
     } else {
       // here if text did render
-      txt_image = SDL_CreateTextureFromSurface(txt_surface); // transform surface into texture
+      txt_image = SDL_CreateTextureFromSurface(render, txt_surface); // transform surface into texture
       //#N Pour l'instant il y a une seule ligne, c'est ça?
       if (SDL_RenderCopy(render, txt_image, NULL, text_transform)<0) {
         // if render of text surface failed
@@ -108,7 +113,7 @@ unsigned short int DialogueBox::_update(SDL_Renderer * render) {
 
 void DialogueBox::operator<<(const char* str) {
   //#N Je ne sais pas si strncopy est une fonction à toi mais en tout cas il y a strcpy qui fait ça dèja
-  strncopy(aff, str, CHARLIM);
+  strncpy(aff, str, CHARLIM);
   if ( strlen( str ) >= CHARLIM ) {
         //#N En principe t'as pas le droit de faire ça. Ton tableau n'est pas initialisé. Il manque un new char[CHARLIM] quelquepart
         aff[ CHARLIM -1 ] = '\0';
@@ -116,5 +121,9 @@ void DialogueBox::operator<<(const char* str) {
 }
 
 void DialogueBox::clean() {
-  aff = NULL;
+  aff[0] = '\0';
+}
+
+void DialogueBox::setColor(const SDL_Color & c) {
+  color = c;
 }

@@ -1,0 +1,5 @@
+Hello ! This is a dialogue dialogue box
+this, too, is a dialogue line
+This is good for testing purposes
+Character count for SDL_Limit, because yknow maybe 255 is a lot and we could go lower, assuming the program even compiles at all which is not a given in this fucking economy with all the shitty shitheads and all the things and yeah I hate myself and I wanna die and cry
+Oh hi mark

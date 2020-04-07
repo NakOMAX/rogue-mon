@@ -55,7 +55,7 @@ default : setup map event
 map: _map_run
 
 # Event tests
-event: _event_run
+event: _event_run _event_sdl_run
 
 # GameManager tests
 gm: _gamemanager_run
@@ -98,12 +98,17 @@ _gamemanager_run: $(TARGET_DIR)/gmTests
 
 _pokemon_run: $(POKEMON_DIR)/*.o
 
+_event_sdl_run: $(TARGET_DIR)/eventTestSDL
+
 
 ## Actual builds ---------------------------------------------------------------
 
 # Binairies
 $(TARGET_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
+
+$(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o
+	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
@@ -115,6 +120,9 @@ $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/
 $(OBJ_DIR)/eventTests.o: $(MAIN_DIR)/eventTests.cpp $(EVENT_DIR)/*.h
 	$(CC) -c $< -o $@
 
+$(OBJ_DIR)/eventTestSDL.o: $(MAIN_DIR)/eventTestSDL.cpp $(EVENT_DIR)/Component.h $(EVENT_DIR)/Event.h $(EVENT_DIR)/InheritedEvents.h
+	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
+
 $(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
@@ -123,13 +131,16 @@ $(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR
 
 # Required objects
 $(OBJ_DIR)/InheritedEvents.o : $(EVENT_DIR)/InheritedEvents.cpp $(EVENT_DIR)/*.h
-	$(CC) -c $< -o $@
+	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
+
+$(OBJ_DIR)/Component.o : $(EVENT_DIR)/Component.cpp $(EVENT_DIR)/*.h
+	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/GameManager.o: $(SRC_DIR)/GameManager.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h
 	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
 
 $(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h
-	$(CC) -c $< -o $@
+	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@

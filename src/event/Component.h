@@ -24,7 +24,7 @@
 class Component {
 public:
   unsigned short int _init();
-  unsigned short int _update();
+  unsigned short int _update(SDL_Renderer * render);
 protected:
 };
 
@@ -42,13 +42,13 @@ class DialogueBox : public Component {
       called when launched and not when created, loads ressources
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _init();
+  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * & render);
 
   /** @brief update method
       called by parent, ends when the event is closed or when an error happens
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _update(SDL_Renderer render);
+  unsigned short int _update(SDL_Renderer * & render);
 
   /**@brief << operator for writing
     used to write a string to the box*/
@@ -56,6 +56,9 @@ class DialogueBox : public Component {
 
   /**@brief cleans the textbox*/
   void clean();
+
+/** @brief changes color */
+void setColor(const SDL_Color & color);
 
 protected :
   // for the background
@@ -71,7 +74,7 @@ protected :
   TTF_Font *font; // used font (Power Green ftw)
   char * aff = NULL; // current line
   //#N En principe t'as pas besoin des acolades
-  SDL_Color color = 0,0,0; //black by default, might be changed by constructor or method later
+  SDL_Color color = {0,0,0}; //black by default, might be changed by constructor or method later
 };
 
 #endif

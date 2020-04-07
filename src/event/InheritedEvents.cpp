@@ -2,7 +2,39 @@
 #include "Event.h"
 // #include "../player/Player.h"
 #include <iostream> //testing/debug only
+#include <string.h>
+#include <fstream>
+#include <memory>
 #include "SDL_ttf.h"
+#include "SDL.h"
+#include "SDL_image.h"
+#include "Component.h"
+
+// BLOC POUR TEST, INCLU AVEC MAP.cpp
+SDL_Surface * loadImage(const std::string & filename)
+{
+  SDL_Surface * surface;
+  surface = IMG_Load(filename.c_str());
+  if (surface==NULL)
+  {
+    std::string modFilename;
+    modFilename = "../" + filename;
+    surface = IMG_Load(modFilename.c_str());
+    if (surface==NULL)
+    {
+      modFilename = "../" + modFilename;
+      surface = IMG_Load(modFilename.c_str());
+      if (surface==NULL)
+      {
+        printf("Error: %s\n", SDL_GetError());
+      }
+    }
+  }
+  return surface;
+}
+// FIN BLOC TEST
+
+// ---------------- Test
 
 short int Test::init(/*Player p*/) {
   ennemy[0].hp = 10;
@@ -24,6 +56,68 @@ short int Test::run(/*Player p*/) {
     }
     std::cout<<" Wait I forgot to implement logic"<<std::endl;
     hasFinished = !hasFinished;
+  }
+  return 0;
+}
+
+// ------------ cinematic
+
+Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
+  txt_source = text_adress;
+  background_source = image_adress;
+}
+
+short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * & renderer) {
+  // init components
+  components.push_back(std::make_shared<DialogueBox>());
+  for (long long unsigned int i = 0; i < components.size(); i++) {
+    if (!components[i]->_init(dimX, dimY)) return 1;
+  }
+
+  //init background
+  SDL_Surface surf = loadImage(background_source);
+  background = SDL_CreateTextureFromSurface(renderer, surf);
+
+  //init file ifstream
+  myfile.open(txt_source);
+
+  return run(renderer);
+}
+
+short int Cinematic::run(SDL_Renderer * & renderer) {
+  bool hasFinished = false;
+  SDL_Event evt;
+  do {
+    read(components[0].get()); //component 0 is always a dialoguebox
+    // update every component
+    for (int i = 0; i < components.size(); i++) {
+      if (!components[i]->_update(renderer)) return 1;
+    }
+    // get every event back
+    while ( SDL_PollEvent(&evt) ) {
+      switch (evt.type) {
+        case SDL_QUIT: hasFinished = false; break;
+        case SDL_KEYUP : read(components[0].get()); //component 0 is dialoguebox
+      }
+    }
+  } while (!hasFinished);
+  //end of event
+  myfile.close();
+  return 0;
+}
+
+short int Cinematic::read(DialogueBox * db) {
+  if (!myfile.is_open()) {
+    myfile.open(txt_source);
+  } else {
+    if(!myfile.eof()) {
+      std::string buf;
+      getline(myfile, buf);
+      db.clean();
+      db<<buf.c_str();
+    } else {
+      return 1;
+    }
   }
   return 0;
 }

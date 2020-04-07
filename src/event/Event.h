@@ -3,9 +3,11 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "SDL_image.h"
-#include "event/Component.h"
+#include "Component.h"
 #include <stdlib.h>
 #include <string.h>
+#include <vector>
+#include <memory>
 
 #ifndef POKE_EVE_H
 #define POKE_EVE_H
@@ -29,14 +31,14 @@ public:
 
   /** @brief init method
       called when launching event, launches run(), performs setup. Returns 0 if everything went correctly, else errorcode*/
-  short int init();
+  short int init(SDL_Renderer * render);
 
   /** @brief get method for scaling*/
   short int getScaling();
 
   /** @brief mainloop for the event
   overrides the normal mainloop until returned. Returns 0 if exited properly, errorcode else.*/
-  short int run();
+  short int run(SDL_Renderer * render);
 
 protected:
   /** @brief scaling value of event
@@ -47,6 +49,6 @@ protected:
   SDL_Texture * background;
 
   /**@brief array of components to draw*/
-  std::vector<Component> components;
+  std::vector<std::shared_ptr<Component>> components;
 };
 #endif
