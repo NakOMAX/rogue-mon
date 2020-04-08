@@ -34,7 +34,7 @@ endif
 LIBRARIES_FLAGS = $(LIB_SDL)
 
 # Link-related
-LINK_SDL = -lSDL2 -lSDL2_image -lSDL_ttf
+LINK_SDL = -lSDL2 -lSDL2_image -lSDL2_ttf
 ifeq ($(OS),Windows_NT)
 	ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
 		LINKER_FLAGS = -lmingw64 $(LINK_SDL)
@@ -139,7 +139,7 @@ $(OBJ_DIR)/Component.o : $(EVENT_DIR)/Component.cpp $(EVENT_DIR)/*.h
 $(OBJ_DIR)/GameManager.o: $(SRC_DIR)/GameManager.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h
 	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
 
-$(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h
+$(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h $(EVENT_DIR)/Component.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h

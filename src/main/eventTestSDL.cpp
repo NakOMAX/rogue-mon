@@ -4,6 +4,7 @@
 #include "SDL.h"
 
 // BLOC POUR TEST, INCLU AVEC MAP.cpp
+/*
 SDL_Surface * loadImage(const std::string & filename)
 {
   SDL_Surface * surface;
@@ -24,7 +25,7 @@ SDL_Surface * loadImage(const std::string & filename)
     }
   }
   return surface;
-}
+} */
 // FIN BLOC TEST
 
 #ifdef __WIN32__
