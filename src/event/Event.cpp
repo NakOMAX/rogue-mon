@@ -5,7 +5,7 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include <stdlib.h>
-#include <string.h>
+#include <string>
 #include <vector>
 #include <memory>
 

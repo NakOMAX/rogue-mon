@@ -34,7 +34,7 @@ endif
 LIBRARIES_FLAGS = $(LIB_SDL)
 
 # Link-related
-LINK_SDL = -lSDL2 -lSDL2_image
+LINK_SDL = -lSDL2 -lSDL2_image -lSDL_ttf
 ifeq ($(OS),Windows_NT)
 	ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
 		LINKER_FLAGS = -lmingw64 $(LINK_SDL)
@@ -55,7 +55,7 @@ default : setup map event
 map: _map_run
 
 # Event tests
-event: _event_run _event_sdl_run
+event: _event_sdl_run
 
 # GameManager tests
 gm: _gamemanager_run
@@ -92,7 +92,7 @@ endif
 ## Runs ------------------------------------------------------------------------
 _map_run: $(TARGET_DIR)/mapTests
 
-_event_run: $(TARGET_DIR)/eventTests
+#_event_run: $(TARGET_DIR)/eventTests
 
 _gamemanager_run: $(TARGET_DIR)/gmTests
 
@@ -104,8 +104,8 @@ _event_sdl_run: $(TARGET_DIR)/eventTestSDL
 ## Actual builds ---------------------------------------------------------------
 
 # Binairies
-$(TARGET_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o
-	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
+#$(TARGET_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o
+#	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
@@ -118,7 +118,7 @@ $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/
 
 # Main objects
 $(OBJ_DIR)/eventTests.o: $(MAIN_DIR)/eventTests.cpp $(EVENT_DIR)/*.h
-	$(CC) -c $< -o $@
+	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
 
 $(OBJ_DIR)/eventTestSDL.o: $(MAIN_DIR)/eventTestSDL.cpp $(EVENT_DIR)/Component.h $(EVENT_DIR)/Event.h $(EVENT_DIR)/InheritedEvents.h
 	$(CC) -c $(INCLUDE_FLAGS) $< -o $@

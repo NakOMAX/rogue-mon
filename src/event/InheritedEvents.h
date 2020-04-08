@@ -4,9 +4,10 @@
 #define POKE_EVI_H
 
 #include "Event.h"
+#include "Component.h"
 #include "SDL.h"
 #include "SDL_ttf.h"
-#include <string.h>
+#include <string>
 #include <fstream>
 #include <memory>
 
@@ -52,6 +53,8 @@ private :
   std::string background_source;
   /** @brief text flux */
   std::ifstream myfile;
+  /** @brief dialogue box for cinematic*/
+  std::shared_ptr<DialogueBox> box;
 };
 
 #endif

@@ -3,6 +3,30 @@
 #include "../event/InheritedEvents.h"
 #include "SDL.h"
 
+// BLOC POUR TEST, INCLU AVEC MAP.cpp
+SDL_Surface * loadImage(const std::string & filename)
+{
+  SDL_Surface * surface;
+  surface = IMG_Load(filename.c_str());
+  if (surface==NULL)
+  {
+    std::string modFilename;
+    modFilename = "../" + filename;
+    surface = IMG_Load(modFilename.c_str());
+    if (surface==NULL)
+    {
+      modFilename = "../" + modFilename;
+      surface = IMG_Load(modFilename.c_str());
+      if (surface==NULL)
+      {
+        printf("Error: %s\n", SDL_GetError());
+      }
+    }
+  }
+  return surface;
+}
+// FIN BLOC TEST
+
 #ifdef __WIN32__
 #include <windows.h>
 
@@ -49,7 +73,7 @@ int main(int argc, char const *argv[]) {
     printf("SDL error on init: %s\n", SDL_GetError() );
   }
   // SDL Image init
-  int flags = IMG_INIT_PNG|IMG_INIT_JPG|IMG_INIT_GIF;
+  int flags = IMG_INIT_PNG|IMG_INIT_JPG|IMG_INIT_TIF;
   int initted = IMG_Init(flags);
   if((initted&flags) != flags) {
     printf("IMG_Init: Failed to init required jpg and png support!\n");

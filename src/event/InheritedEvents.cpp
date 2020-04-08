@@ -2,7 +2,7 @@
 #include "Event.h"
 // #include "../player/Player.h"
 #include <iostream> //testing/debug only
-#include <string.h>
+#include <string>
 #include <fstream>
 #include <memory>
 #include "SDL_ttf.h"
@@ -69,7 +69,7 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
 
 short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) {
   // init components
-  components.push_back(std::make_shared<DialogueBox>());
+  box = std::make_shared<DialogueBox>();
   for (short unsigned int i = 0; i < components.size(); i++) {
     if (!(components[i]->_init(dimX, dimY, renderer))) return 1;
   }
@@ -88,16 +88,17 @@ short int Cinematic::run(SDL_Renderer * renderer) {
   bool hasFinished = false;
   SDL_Event evt;
   do {
-    read(components[0]); //component 0 is always a dialoguebox
+    read(box);
     // update every component
     for (unsigned int i = 0; i < components.size(); i++) {
+      box->_update(renderer);
       if (!components[i]->_update(renderer)) return 1;
     }
     // get every event back
     while ( SDL_PollEvent(&evt) ) {
       switch (evt.type) {
         case SDL_QUIT: hasFinished = false; break;
-        case SDL_KEYUP : read(components[0]); //component 0 is dialoguebox
+        case SDL_KEYUP : read(box); //component 0 is dialoguebox
         default: break;
       }
     }

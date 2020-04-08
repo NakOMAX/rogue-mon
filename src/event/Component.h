@@ -8,7 +8,7 @@
 #include "SDL_image.h"
 #include "SDL.h"
 #include <stdlib.h>
-#include <string.h>
+#include <string>
 
 // Error codes
 #define ERRCODE_NO_COMP 1
@@ -25,7 +25,7 @@ class Component {
 public:
   Component();
   ~Component();
-  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
+  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer *& render);
   unsigned short int _update(SDL_Renderer * render);
 protected:
 };

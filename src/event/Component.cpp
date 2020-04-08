@@ -1,15 +1,15 @@
 /** @file cpp file for component class */
 
-#include "event/Component.h"
+#include "Component.h"
 #include "SDL_ttf.h"
 #include "SDL_image.h"
 #include "SDL.h"
 #include <stdlib.h>
 #include <cstring>
-#include <string.h>
+#include <string>
 
 // BLOC POUR TEST, INCLU AVEC MAP.cpp
-SDL_Surface * loadImage(const std::string & filename)
+SDL_Surface * loadImage2(const std::string & filename)
 {
   SDL_Surface * surface;
   surface = IMG_Load(filename.c_str());
@@ -32,7 +32,7 @@ SDL_Surface * loadImage(const std::string & filename)
 }
 // FIN BLOC TEST
 
-unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY) {
+unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer *& render) {
   return ERRCODE_NO_COMP;
 }
 
@@ -59,7 +59,7 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
     return ERRCODE_FONT_NOT_LOADED;
   }
   // load textbox texture
-  surface = loadImage("../data.Components/dialogueBox.png");
+  surface = loadImage2("../data.Components/dialogueBox.png");
   image = SDL_CreateTextureFromSurface(render,surface);
   // generate SDL_Rect : position
   // assumes dimX and dimY sizes of screen
