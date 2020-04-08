@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <memory>
+#include <iostream> //debug
 #include "SDL_ttf.h"
 #include "SDL.h"
 #include "SDL_image.h"
@@ -68,8 +69,10 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
 }
 
 short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) {
+  std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
+
   // init components
-  box = std::make_shared<DialogueBox>();
+  box->_init(dimX, dimY, renderer);
   for (short unsigned int i = 0; i < components.size(); i++) {
     if (!(components[i]->_init(dimX, dimY, renderer))) return 1;
   }
@@ -87,13 +90,17 @@ short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_
 short int Cinematic::run(SDL_Renderer * renderer) {
   bool hasFinished = false;
   SDL_Event evt;
+  std::cout<<"Launched cinematic loop"<<std::endl; //debug
   do {
     read(box);
     // update every component
+    if ((box->_update(renderer))>0) std::cout<<"update box failed"<<std::endl;
     for (unsigned int i = 0; i < components.size(); i++) {
-      box->_update(renderer);
-      if (!components[i]->_update(renderer)) return 1;
+      if ((!components[i]->_update(renderer))>0) return 1;
     }
+    //render
+    std::cout<<"render"<<std::endl;
+    SDL_RenderPresent(renderer);
     // get every event back
     while ( SDL_PollEvent(&evt) ) {
       switch (evt.type) {
@@ -115,6 +122,7 @@ short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
     if(!myfile.eof()) {
       std::string buf;
       getline(myfile, buf);
+      std::cout<<buf<<std::endl; //debug
       db->clean();
       (*db)<<buf.c_str();
     } else {

@@ -6,6 +6,7 @@
 #include "SDL.h"
 #include <stdlib.h>
 #include <cstring>
+#include <iostream> //debug
 #include <string>
 
 // BLOC POUR TEST, INCLU AVEC MAP.cpp
@@ -32,6 +33,12 @@ SDL_Surface * loadImage2(const std::string & filename)
 }
 // FIN BLOC TEST
 
+Component::Component() {
+}
+
+Component::~Component() {
+}
+
 unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer *& render) {
   return ERRCODE_NO_COMP;
 }
@@ -48,19 +55,27 @@ DialogueBox::~DialogueBox() {
 
 //#N C'est le game manager qui fixe la dimension de l'écran et tu vas avoir besoin de te la faire passer
 unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render ) {
+  std::cout<<"Initiated dialogue box"<<std::endl;
   // test correct initialisation
   if (!TTF_WasInit()) {
     //#N Pour appeler component GameManager doit avoir initialisé TTF, c'est ça?
+    std::cout<<"TTF not init"<<std::endl;
     return ERRCODE_NO_TTF;
   }
   // load font
-  font = TTF_OpenFont("../../data/Font/Pkmnem.ttf", 16);
+  std::cout<<"open font"<<std::endl;
+  font = TTF_OpenFont("../../data/Font/Pkmnem.ttf", 16); //crash here
+  std::cout<<"font opened"<<std::endl;
   if (!font) {
+    std::cout<<"Font absent"<<std::endl;
     return ERRCODE_FONT_NOT_LOADED;
   }
   // load textbox texture
-  surface = loadImage2("../data.Components/dialogueBox.png");
+  std::cout<<"surface and image start"<<std::endl;
+  surface = loadImage2("data/Components/dialogueBox.png");
+  std::cout<<"surface done"<<std::endl;
   image = SDL_CreateTextureFromSurface(render,surface);
+  std::cout<<"surface and image worked"<<std::endl;
   // generate SDL_Rect : position
   // assumes dimX and dimY sizes of screen
   int padding = 25; // distance between box and text

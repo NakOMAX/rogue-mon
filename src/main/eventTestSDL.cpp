@@ -56,10 +56,11 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nC
 
     LocalFree(w_argv);
   }
+  return 0;
 }
 #endif
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char *argv[]) {
   if (argc!=3)
   {
     printf("Invalid number of arguments\n");
@@ -74,7 +75,7 @@ int main(int argc, char const *argv[]) {
     printf("SDL error on init: %s\n", SDL_GetError() );
   }
   // SDL Image init
-  int flags = IMG_INIT_PNG|IMG_INIT_JPG|IMG_INIT_TIF;
+  int flags = IMG_INIT_PNG|IMG_INIT_JPG;
   int initted = IMG_Init(flags);
   if((initted&flags) != flags) {
     printf("IMG_Init: Failed to init required jpg and png support!\n");
@@ -98,8 +99,8 @@ int main(int argc, char const *argv[]) {
   SDL_RenderClear(renderer);
 
   // TESTS
-  Cinematic introduction("../../data/Text/intro.txt", "../../data/Backgrounds/bg_intro.gif");
-  introduction.init(wdimx, wdimy, renderer);
+  Cinematic introduction("data/Text/intro.txt", "data/Backgrounds/bg_intro.png");
+  if (introduction.init(wdimx, wdimy, renderer)>0) printf("Failed somewhere I guess");
 
   return 0;
 }
