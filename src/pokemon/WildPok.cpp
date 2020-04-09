@@ -1,5 +1,5 @@
 #include "Pokemon.h"
-#include "Bulbasaur.h"
+#include "WildPok.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -9,18 +9,21 @@ using namespace std;
 
 
 
-Bulbasaur:: Bulbasaur () {
+WildPok:: WildPok () {
 
     id = 001;
     Hp = 100;
-    name = "Bulbasaur";
-    type = 2;// 2= Grass
+    name = "WildPok";
+    type = rand()%3;
     lvl = 1;
-    atk = 3; 
+    atk = 2; 
     sAtk = 2;
     def = 10 ;
     sDef = 2;
-    speed = rand()%10-1;
+    speed = 9;
 }
 
-Bulbasaur:: ~Bulbasaur () {}
+WildPok:: ~WildPok () {}
+
+
+

@@ -8,7 +8,7 @@ class attack{
 	string name;
 	unsigned short int power;
   unsigned short int type;
-	unsigned short int pp;
+	unsigned short int pp;//nombre d'utilisation d'une attaque
 	unsigned short int maxPP;
 
   public:

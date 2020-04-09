@@ -1,5 +1,5 @@
 #include "Pokemon.h"
-#include "Bulbasaur.h"
+#include "Mewthree.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -9,18 +9,18 @@ using namespace std;
 
 
 
-Bulbasaur:: Bulbasaur () {
+Mewthree:: Mewthree () {
 
     id = 001;
     Hp = 100;
-    name = "Bulbasaur";
+    name = "Mewthree";
     type = 2;// 2= Grass
     lvl = 1;
-    atk = 3; 
+    atk = 8; 
     sAtk = 2;
-    def = 10 ;
+    def = 20 ;
     sDef = 2;
-    speed = rand()%10-1;
+    speed = 0;
 }
 
-Bulbasaur:: ~Bulbasaur () {}
+Mewthree:: ~Mewthree () {}
