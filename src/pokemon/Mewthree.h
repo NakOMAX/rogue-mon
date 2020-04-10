@@ -4,6 +4,9 @@
 #include <string>
 #include "Pokemon.h"
 
+
+// Faut-il associer les attaques à chaque Pokemon ?
+
 class Mewthree : public Pokemon
 {
  public : 

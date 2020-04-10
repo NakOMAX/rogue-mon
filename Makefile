@@ -63,6 +63,9 @@ gm: _gamemanager_run
 # Pokemon class tests
 pokemon: _pokemon_run
 
+#Attack class tests
+attack : _attack_run
+
 # Cleans executables
 clean:
 ifeq ($(OS),Windows_NT)
@@ -99,6 +102,8 @@ _gamemanager_run: $(TARGET_DIR)/gmTests
 _pokemon_run: $(POKEMON_DIR)/*.o
 
 _event_sdl_run: $(TARGET_DIR)/eventTestSDL
+
+_attack_run : $(ATTACK_DIR)/*.o
 
 
 ## Actual builds ---------------------------------------------------------------
@@ -145,14 +150,26 @@ $(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h $(EVENT_DIR)/Com
 $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
-$(POKEMON_DIR)/Pokemon.o: $(POKEMON_DIR)/Pokemon.cpp $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Pokemon.o: $(POKEMON_DIR)/Pokemon.cpp $(POKEMON_DIR)/Pokemon.h
 	$(CC) -c $< -o $@
 
-$(POKEMON_DIR)/Charmander.o: $(POKEMON_DIR)/Charmander.cpp $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Charmander.o: $(POKEMON_DIR)/Charmander.cpp $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Pokemon.h
 	$(CC) -c $< -o $@
 
-$(POKEMON_DIR)/Bulbasaur.o: $(POKEMON_DIR)/Bulbasaur.cpp $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Bulbasaur.o: $(POKEMON_DIR)/Bulbasaur.cpp $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Pokemon.h
 	$(CC) -c $< -o $@
 
-$(POKEMON_DIR)/Squirtle.o: $(POKEMON_DIR)/Squirtle.cpp $(POKEMON_DIR)/Squirtle.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Squirtle.o: $(POKEMON_DIR)/Squirtle.cpp $(POKEMON_DIR)/Squirtle.h $(POKEMON_DIR)/Pokemon.h
+	$(CC) -c $< -o $@
+
+$(OBJ_DIR)/Mewthree.o: $(POKEMON_DIR)/Mewthree.cpp $(POKEMON_DIR)/Mewthree.h $(POKEMON_DIR)/Pokemon.h
+	$(CC) -c $< -o $@
+
+$(OBJ_DIR)/WildPok.o: $(POKEMON_DIR)/WildPok.cpp $(POKEMON_DIR)/WildPok.h $(POKEMON_DIR)/Pokemon.h
+	$(CC) -c $< -o $@
+
+$(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h 
+	$(CC) -c $< -o $@
+
+$(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@

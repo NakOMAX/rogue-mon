@@ -2,8 +2,11 @@
 #define _ATTACK
 
 #include <string>
+using namespace std;
 
-class attack{
+// Faut-il associer les attaques à chaque Pokemon ?
+
+class Attack{
   protected:
 	string name;
 	unsigned short int power;
@@ -12,9 +15,9 @@ class attack{
 	unsigned short int maxPP;
 
   public:
-  attack(string&, unsigned short int&, unsigned short int&, unsigned short int&, unsigned short int&);
+  Attack(string& newName, unsigned short int& newType, unsigned short int& newPower, unsigned short int& newPP);
 
-  ~attack()
+  ~Attack();
 
   string getName();
 
