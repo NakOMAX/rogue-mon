@@ -32,6 +32,6 @@ class Player{
   void deletePokemon(unsigned short int i);
 	void deleteItem(unsigned short int i);
 
-	int isDie();
+	unsigned short int isDie();
 };
 #endif

@@ -9,13 +9,16 @@ using namespace std;
 class Attack{
   protected:
 	string name;
-	unsigned short int power;
-  unsigned short int type;
+	unsigned short int power; // je comprends pas cette valeur 
+  unsigned short int type;// 1 fait perdre des pdv, 2 fait gagner en def et att
 	unsigned short int pp;//nombre d'utilisation d'une attaque
 	unsigned short int maxPP;
+  unsigned short int gainPower; 
+  unsigned short int gaindefense;
+  unsigned short int impact;
 
   public:
-  Attack(string& newName, unsigned short int& newType, unsigned short int& newPower, unsigned short int& newPP);
+  Attack();
 
   ~Attack();
 

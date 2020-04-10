@@ -3,13 +3,7 @@
 #include <string>
 using namespace std;
 
-Attack :: Attack(string& newName, unsigned short int& newType, unsigned short int& newPower, unsigned short int& newPP){
-  name = newName;
-  type = newType;
-  power = newPower;
-  pp = newPP;
-  maxPP = pp;
-}
+Attack :: Attack(){} // j'ai fait l'initialisation dans la classe fille
 
 Attack :: ~Attack(){}
 
