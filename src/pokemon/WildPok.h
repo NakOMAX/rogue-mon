@@ -16,6 +16,6 @@ class WildPok : public Pokemon
   ///@brief class destructor
   ~WildPok ();
   
-
+ // à créer : wildisdie
 };
 #endif

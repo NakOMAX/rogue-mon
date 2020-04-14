@@ -5,7 +5,7 @@
 
 #include <string>
 
-//j'ai l'impression de faire n'importe quoi avec les pointeurs et les références...
+
 
 Fight :: Fight (const Player& newme, const WildPok & newopposant)
 {
@@ -15,14 +15,13 @@ Fight :: Fight (const Player& newme, const WildPok & newopposant)
 
 Fight :: ~Fight ()
 
-Pokemon* Fight :: choicePok (Pokemon* old=Null)
+Pokemon* Fight :: choicePok (Pokemon* old)
 {
-    if (nbPokemon=0) {std :: cout<<"il n'y a pas de Pokemons stockés"; return old; }
     do{
         unsigned short int choice;
         std :: cout<< "Quel Pokemon voulez-vous utliser ? " <<endl;
         std :: cin>> choice;
-    } while (((choice-1)>0) && ((choice-1)<nbPokemon)&& (old!= &(choice-1)));
+    } while (((choice-1)>=0) && ((choice-1)<nbPokemon) && (old!= (&(choice-1))));//la derniere condition est bizarre
     return me.getPokemon (choice-1); 
 }
 
@@ -44,7 +43,7 @@ void Fight :: effectsatt (const Attack& att)
     attacker.atk += att.gaindef;
 }
 
-void Fight :: acitem(Pokemon* Pok)
+void Fight :: acitem(Pokemon* Pok) // à completer
 {
     if (me.nbItem= 0) {return;}
     int numit;
@@ -52,31 +51,39 @@ void Fight :: acitem(Pokemon* Pok)
     std :: cout<< "Quel objet vous-vous utiliser ?";
     std :: cin>> numit;
     thisItem= me.getItem(numit-1); 
-    thisItem.action(Pok)
+    thisItem.action(Pok);
 }
 
 void Fight :: action ()
 {
     Pok= new Pokemon;
     char act;
-    Pok=choicePok();
-    do {
-        std :: cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
-        std :: cin>>act;
-    }while (act != 'x' || act != 'c' || act != 's')
-    switch (act)
-        {
-            case x: raid(Pok); break;
+    Pok=me.getPokemon(0);
+    if(!me.isDie() && !opposant.wildisdie)
+    {
+        do {
+            std :: cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
+            std :: cin>>act;
+        }while (act != 'x' || act != 'c' || act != 's')
+        switch (act)
+            {
+                case x: raid(Pok); break;
 
-            case c: acitem(Pok);break;
+                case c: acitem(Pok);break;
 
-            case s: choicePok(Pok); break;
+                case s: choicePok(Pok); break;
 
-            else : break;
+                else : break;
 
-        }
-    
-
-    delete Pok
-
+            }
+        
+    }
+    else
+    {
+        if (me.isDie()){std :: cout<<"Vous avez perdu"}// bizarre pour l'appelle
+        else {std :: cout<<"Vous avez gagné ! Bravo !!!"}
+    }   
+       
+     delete Pok;
+   
 }
