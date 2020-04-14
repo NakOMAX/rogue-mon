@@ -11,7 +11,7 @@ using namespace std;
 
 WildPok:: WildPok () {
 
-    id = 001;
+    id = 013;
     Hp = 100;
     name = "WildPok";
     type = rand()%3;

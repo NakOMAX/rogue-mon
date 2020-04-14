@@ -9,10 +9,12 @@ class Potion : public Item
 Public :
 
  ///@brief class constructor
- Potion ()
+ Potion ();
 
  ///@brief class destructor
- ~Potion ()
+ ~Potion ();
 
+    ///@brief action of this item
+    void action(Pokemon &Pok);
 }
 #endif

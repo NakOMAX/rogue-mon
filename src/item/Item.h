@@ -1,31 +1,34 @@
 #ifndef _Item
 #define _Item
 
-include <string>
+#include <string>
+#include "Pokemon.h"
 class Item
 {
 protected :
 
-    string name ;
+    std ::string name ;
     unsigned short int amount;
-    unsigned unsigned int id;
+    unsigned int id;
 
 public :
 
     ///@brief class constructor
-    Item ()
+    Item ();
     ///@brief class copy constructor
-    Item ( unsigned unsigned int newId, string newName, unsigned short int newAmount)
+    Item ( unsigned int newId, std :: string newName, unsigned short int newAmount);
     ///@brief class destructor
-    ~Item()
+    ~Item();
 
     ///@brief accessor
     unsigned short int getId();
     ///@brief accessor
-    string getName ();
+    std :: string getName ();
     ///@brief accessor
     unsigned short int getAmount();
     /**@brief The fonction use the caracteristic of the item*/
-    Item useItem(unsigned short int amount, unsigned unsigned int id);
-}
+   /* Item useItem(unsigned short int amount, unsigned unsigned int id);*/
+    ///@brief action of an item
+    void action();
+};
 #endif

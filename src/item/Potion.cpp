@@ -8,7 +8,6 @@
 #include <time.h>
 using namespace std;
 
-#define const unsigned short int HPMAX=100
 
 
 Potion :: Potion () {
@@ -19,3 +18,9 @@ Potion :: Potion () {
 }
 
 Potion :: ~Potion () {}
+
+void Potion :: action(Pokemon &Pok)
+{
+    Pok.Hp=100;
+    Item:: action();
+}

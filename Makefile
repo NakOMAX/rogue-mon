@@ -65,6 +65,10 @@ pokemon: _pokemon_run
 
 #Attack class tests
 attack : _attack_run
+#en vrac pour ML mais je rangerai :)
+fight : _fight_run
+player : _player_run
+item : _item_run
 
 # Cleans executables
 clean:
@@ -104,6 +108,13 @@ _pokemon_run: $(POKEMON_DIR)/*.o
 _event_sdl_run: $(TARGET_DIR)/eventTestSDL
 
 _attack_run : $(ATTACK_DIR)/*.o
+
+_fight_run : $(EVENT_DIR)/Fight.o
+
+_player_run : $(SRC_DIR)/Player.o
+
+_item_run : $(ITEM_DIR)/Item.o
+
 
 
 ## Actual builds ---------------------------------------------------------------
@@ -172,4 +183,14 @@ $(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Attack.h
+	$(CC) -c $< -o $@
+#J'ai essayé là mais ca doit pas etre ca 
+$(OBJ_DIR)/Item.o: $(ITEM_DIR)/item.cpp $(ITEM_DIR)/item.h $(POKEMON_DIR)/pokemon.h
+	$(CC) -c $< -o $@
+#meme chose
+$(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h
+	$(CC) -c $< -o $@
+
+#Essai pour compiler fight mais je ne le sens pas 1
+$(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/WildPok $(ITEM_DIR)/Item.h
 	$(CC) -c $< -o $@

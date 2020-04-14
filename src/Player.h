@@ -20,11 +20,11 @@ class Player{
 
   ~Player(){};
 
-	string getUserName();   ///@brief getter
-  Pokemon* getPokemon(unsigned short int id);   ///@brief getter
-	Item* getItem(unsigned short int id);   ///@brief getter
+	string getUserName();   ///@brief accessor
+  Pokemon* getPokemon(unsigned short int id);   ///@brief accessor
+	Item* getItem(unsigned short int id);   ///@brief accessor
 
-	void setPokemon();  ///@brief setter
+	void setPokemon();  ///@brief mutatorme.myitem
 
   void addItem(Item *);
 	void addPokemon(Pokemon*);

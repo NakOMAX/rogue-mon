@@ -11,7 +11,7 @@ using namespace std;
 
 Mewthree:: Mewthree () {
 
-    id = 001;
+    id = 011;
     Hp = 100;
     name = "Mewthree";
     type = 2;// 2= Grass

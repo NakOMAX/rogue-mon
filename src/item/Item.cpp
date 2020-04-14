@@ -1,4 +1,5 @@
 #include "Item.h"
+#include "Pokemon.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,17 +7,13 @@
 #include <vector>
 using namespace std;
 
-Item :: Item(){
-  id = 0;
-  name = NULL;
-  amount = 0;
-}
+Item :: Item(){}
 
-Item :: Item(unsigned unsigned int newId, string newName, unsigned short int newAmount)
+Item :: Item(unsigned int newId, string newName, unsigned short int newAmount)
 {
-  id = newId
+  id = newId;
   name = newName;
-  amount = newAmount
+  amount = newAmount;
 }
 
 Item :: ~Item(){}
@@ -31,6 +28,15 @@ string Pokemon :: getName ()const
     return name;
 }
 
-Item useItem(){
+/*Item :: useItem(){//cet intitulé est bizarre
     amount--;
+}*/
+
+void Item :: action ()
+{
+  amount--;
+  if( amount<=0)
+  {
+    
+  }
 }

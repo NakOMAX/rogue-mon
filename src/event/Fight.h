@@ -4,7 +4,9 @@
 #include "Player.h"
 #include "WildPok.h"
 #include "Attack.h"
+#include "Item.h"
 
+#include <string>
 
 class Fight 
 {
@@ -13,8 +15,11 @@ class Fight
         WildPok* opposant;
 
         ///@brief  produces the effects of the attack
-        void effects(const Attack &att);
-
+        void effectsatt(const Attack &att);
+        ///@brief player attack
+        void raid(Pokemon* pok);
+        ///@brief action of the item
+        void acitem(Pokemon* Pok);
     public :
 
     ///@brief class constructor
@@ -24,10 +29,11 @@ class Fight
     ///@brief first part of the round
     //void playerplay ();
 
-    ///@ choising a pokemon in your inventory
-    pokemon choice();
-    ///@brief player attack
-    void raid();
+    ///@brief choising a pokemon in your inventory
+    Pokemon* choicePok(Pokemon* old);
+    ///@brief menu of the actions during the fight
+    void action ();
+    
     
 
 };
