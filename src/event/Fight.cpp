@@ -15,14 +15,15 @@ Fight :: Fight (const Player& newme, const WildPok & newopposant)
 
 Fight :: ~Fight ()
 
-Pokemon* Fight :: choicePok (Pokemon* old)
+Pokemon* Fight :: choicePok (Pokemon* old=Null)
 {
+    if (nbPokemon=0) {std :: cout<<"il n'y a pas de Pokemons stockés"; return old; }
     do{
         unsigned short int choice;
         std :: cout<< "Quel Pokemon voulez-vous utliser ? " <<endl;
         std :: cin>> choice;
     } while (((choice-1)>0) && ((choice-1)<nbPokemon)&& (old!= &(choice-1)));
-    retrun me.getPokemon (choice-1); 
+    return me.getPokemon (choice-1); 
 }
 
 void Fight :: raid  (Pokemon* Pok)
@@ -45,6 +46,7 @@ void Fight :: effectsatt (const Attack& att)
 
 void Fight :: acitem(Pokemon* Pok)
 {
+    if (me.nbItem= 0) {return;}
     int numit;
     Item thisItem;
     std :: cout<< "Quel objet vous-vous utiliser ?";
@@ -58,20 +60,22 @@ void Fight :: action ()
     Pok= new Pokemon;
     char act;
     Pok=choicePok();
-    std :: cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
-    std :: cin>>act;
-
+    do {
+        std :: cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
+        std :: cin>>act;
+    }while (act != 'x' || act != 'c' || act != 's')
     switch (act)
-    {
-        case x: raid(Pok); break;
+        {
+            case x: raid(Pok); break;
 
-        case c: acitem(Pok);
+            case c: acitem(Pok);break;
 
-        case s: choicePok(Pok)
+            case s: choicePok(Pok); break;
 
-    }
+            else : break;
 
-
+        }
+    
 
     delete Pok
 

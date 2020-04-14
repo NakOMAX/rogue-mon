@@ -185,12 +185,12 @@ $(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h
 $(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
 #J'ai essayé là mais ca doit pas etre ca 
-$(OBJ_DIR)/Item.o: $(ITEM_DIR)/item.cpp $(ITEM_DIR)/item.h $(POKEMON_DIR)/pokemon.h
+$(OBJ_DIR)/Item.o: $(ITEM_DIR)/item.cpp $(ITEM_DIR)/item.h $(OBJ_DIR)/pokemon.o
 	$(CC) -c $< -o $@
 #meme chose
 $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h
 	$(CC) -c $< -o $@
 
-#Essai pour compiler fight mais je ne le sens pas 1
-$(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/WildPok $(ITEM_DIR)/Item.h
+#Essai pour compiler fight mais je ne le sens pas
+$(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h
 	$(CC) -c $< -o $@
