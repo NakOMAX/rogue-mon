@@ -56,7 +56,7 @@ default : setup map event
 map: _map_run
 
 # Event tests
-event: _event_sdl_run
+event: _event_sdl_run _test_ttf
 
 # GameManager tests
 gm: _gamemanager_run
@@ -104,19 +104,19 @@ _map_run: $(TARGET_DIR)/mapTests
 
 _gamemanager_run: $(TARGET_DIR)/gmTests
 
-_pokemon_run: $(POKEMON_DIR)/*.o
+_pokemon_run: $(OBJ_DIR)/Bulbasaur.o $(OBJ_DIR)/Charmander.o $(OBJ_DIR)/Mewthree.o $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Squirtle.o $(OBJ_DIR)/WildPok.o
 
 _event_sdl_run: $(TARGET_DIR)/eventTestSDL
 
-_attack_run : $(ATTACK_DIR)/*.o
+_attack_run : $(OBJ_DIR)/Attack.o $(OBJ_DIR)/First.o
 
-_fight_run : $(EVENT_DIR)/Fight.o
+_fight_run : $(OBJ_DIR)/Fight.o
 
-_player_run : $(SRC_DIR)/Player.o
+_player_run : $(OBJ_DIR)/Player.o
 
-_item_run : $(ITEM_DIR)/Item.o
+_item_run : $(OBJ_DIR)/Item.o
 
-
+_test_ttf : $(TARGET_DIR)/ttfTests
 
 ## Actual builds ---------------------------------------------------------------
 
@@ -163,35 +163,34 @@ $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/Pokemon.o: $(POKEMON_DIR)/Pokemon.cpp $(POKEMON_DIR)/Pokemon.h
-	$(CC) -c $< -o $@
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Charmander.o: $(POKEMON_DIR)/Charmander.cpp $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Pokemon.h
-	$(CC) -c $< -o $@
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Bulbasaur.o: $(POKEMON_DIR)/Bulbasaur.cpp $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Pokemon.h
-	$(CC) -c $< -o $@
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Squirtle.o: $(POKEMON_DIR)/Squirtle.cpp $(POKEMON_DIR)/Squirtle.h $(POKEMON_DIR)/Pokemon.h
-	$(CC) -c $< -o $@
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Mewthree.o: $(POKEMON_DIR)/Mewthree.cpp $(POKEMON_DIR)/Mewthree.h $(POKEMON_DIR)/Pokemon.h
-	$(CC) -c $< -o $@
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/WildPok.o: $(POKEMON_DIR)/WildPok.cpp $(POKEMON_DIR)/WildPok.h $(POKEMON_DIR)/Pokemon.h
-	$(CC) -c $< -o $@
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
-#J'ai essayé là mais ca doit pas etre ca
+
 $(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h $(POKEMON_DIR)/Pokemon.h
 	$(CC) -c $< -o $@
-#meme chose
+
 $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h
 	$(CC) -c $< -o $@
 
-#Essai pour compiler fight mais je ne le sens pas
 $(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h
 	$(CC) $(INC_SRC) -c $< -o $@
