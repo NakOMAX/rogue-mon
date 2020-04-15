@@ -2,15 +2,16 @@
 #define _Fight
 
 #include "Player.h"
+#include "Pokemon.h"
 #include "WildPok.h"
 #include "Attack.h"
 #include "Item.h"
 
 #include <string>
 
-class Fight 
+class Fight
 {
-    private : 
+    private :
         Player* me;
         WildPok* opposant;
 
@@ -33,8 +34,8 @@ class Fight
     Pokemon* choicePok(Pokemon* old);
     ///@brief menu of the actions during the fight
     void action ();
-    
-    
+
+
 
 };
 

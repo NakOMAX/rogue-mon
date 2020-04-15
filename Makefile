@@ -15,6 +15,7 @@ POKEMON_DIR = $(SRC_DIR)/pokemon
 # Include-related
 INC_BOOST = -Iinclude/boost_1_72_0/
 INC_SDL2 = -Iinclude/SDL2/
+INC_SRC = -I$(SRC_DIR) -I$(EVENT_DIR) -I$(ATTACK_DIR) -I$(ITEM_DIR) -I$(POKEMON_DIR)
 INCLUDE_FLAGS = $(INC_BOOST) $(INC_SDL2)
 
 # Library-related
@@ -179,18 +180,18 @@ $(OBJ_DIR)/Mewthree.o: $(POKEMON_DIR)/Mewthree.cpp $(POKEMON_DIR)/Mewthree.h $(P
 $(OBJ_DIR)/WildPok.o: $(POKEMON_DIR)/WildPok.cpp $(POKEMON_DIR)/WildPok.h $(POKEMON_DIR)/Pokemon.h
 	$(CC) -c $< -o $@
 
-$(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h 
+$(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
-#J'ai essayé là mais ca doit pas etre ca 
-$(OBJ_DIR)/Item.o: $(ITEM_DIR)/item.cpp $(ITEM_DIR)/item.h $(OBJ_DIR)/pokemon.o
+#J'ai essayé là mais ca doit pas etre ca
+$(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h $(POKEMON_DIR)/Pokemon.h
 	$(CC) -c $< -o $@
 #meme chose
 $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h
 	$(CC) -c $< -o $@
 
 #Essai pour compiler fight mais je ne le sens pas
-$(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h
-	$(CC) -c $< -o $@
+$(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h
+	$(CC) $(INC_SRC) -c $< -o $@

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Pokemon.h"
 #include "WildPok.h"
 #include "Attack.h"
 #include "Item.h"
@@ -22,7 +23,7 @@ Pokemon* Fight :: choicePok (Pokemon* old)
         std :: cout<< "Quel Pokemon voulez-vous utliser ? " <<endl;
         std :: cin>> choice;
     } while (((choice-1)>=0) && ((choice-1)<nbPokemon) && (old!= (&(choice-1))));//la derniere condition est bizarre
-    return me.getPokemon (choice-1); 
+    return me.getPokemon (choice-1);
 }
 
 void Fight :: raid  (Pokemon* Pok)
@@ -50,7 +51,7 @@ void Fight :: acitem(Pokemon* Pok) // à completer
     Item thisItem;
     std :: cout<< "Quel objet vous-vous utiliser ?";
     std :: cin>> numit;
-    thisItem= me.getItem(numit-1); 
+    thisItem= me.getItem(numit-1);
     thisItem.action(Pok);
 }
 
@@ -76,14 +77,14 @@ void Fight :: action ()
                 else : break;
 
             }
-        
+
     }
     else
     {
         if (me.isDie()){std :: cout<<"Vous avez perdu"}// bizarre pour l'appelle
         else {std :: cout<<"Vous avez gagné ! Bravo !!!"}
-    }   
-       
+    }
+
      delete Pok;
-   
+
 }
