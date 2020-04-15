@@ -1,5 +1,5 @@
 #include "Pokemon.h"
-#include "Charmander.h"
+#include "WildPok.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -8,20 +8,24 @@
 using namespace std;
 
 
-Charmander  :: Charmander  () {
 
-    id = 004;
+WildPok:: WildPok () {
+
+    id = 013;
     Hp = 100;
-    name = "Charmander";
-    type = 3; // 3= Fire
+    name = "WildPok";
+    type = rand()%3;
     lvl = 1;
-    atk = 10; // j'y connais pas grand chose il faut peut etre modifier ces valeurs avec def
+    atk = 2; 
     sAtk = 2;
     def = 10 ;
     sDef = 2;
-    speed = rand()%10-1;
+    speed = 10;
     myattacks[0]= First first // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
     //myattacks[1]= Second second // faire quand on aura une attaque en plus.
 }
 
-Charmander  :: ~Charmander  () {}
+WildPok:: ~WildPok () {}
+
+
+

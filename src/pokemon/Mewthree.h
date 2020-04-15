@@ -1,20 +1,21 @@
-#ifndef _BULBASAUR
-#define _BULBASAUR
+#ifndef _MEWTHREE
+#define _MEWTHREE
 
 #include <string>
 #include "Pokemon.h"
 
 
 // Faut-il associer les attaques à chaque Pokemon ?
-class Bulbasaur : public Pokemon
+
+class Mewthree : public Pokemon
 {
  public : 
 
   ///@brief class constructor
-  Bulbasaur ();
+  Mewthree ();
 
   ///@brief class destructor
-  ~Bulbasaur ();
+  ~Mewthree ();
 
 };
 #endif

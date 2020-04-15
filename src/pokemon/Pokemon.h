@@ -2,6 +2,7 @@
 #define _POKEMON
 
 #include <string>
+#include "Attack.h"
 
 
 class Pokemon /**\class Pokemon is describe by a its name, its HP, its attack and its defense
@@ -20,6 +21,7 @@ protected:
     unsigned short int sDef;
     unsigned short int speed;
     unsigned short int lvl;
+    Attack *myattaks[2];
 
 
     ///@brief class constructor

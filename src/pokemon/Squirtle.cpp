@@ -1,5 +1,5 @@
 #include "Pokemon.h"
-#include "Charmander.h"
+#include "Squirtle.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -8,12 +8,13 @@
 using namespace std;
 
 
-Charmander  :: Charmander  () {
 
-    id = 004;
+Squirtle  :: Squirtle  () {
+
+    id = 007;
     Hp = 100;
-    name = "Charmander";
-    type = 3; // 3= Fire
+    name = "Squirtle";
+    type = 1; // 1= Water
     lvl = 1;
     atk = 10; // j'y connais pas grand chose il faut peut etre modifier ces valeurs avec def
     sAtk = 2;
@@ -24,4 +25,4 @@ Charmander  :: Charmander  () {
     //myattacks[1]= Second second // faire quand on aura une attaque en plus.
 }
 
-Charmander  :: ~Charmander  () {}
+Squirtle  :: ~Squirtle  () {}

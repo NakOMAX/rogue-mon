@@ -1,5 +1,5 @@
 #include "Pokemon.h"
-#include "Charmander.h"
+#include "Mewthree.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -8,20 +8,21 @@
 using namespace std;
 
 
-Charmander  :: Charmander  () {
 
-    id = 004;
+Mewthree:: Mewthree () {
+
+    id = 011;
     Hp = 100;
-    name = "Charmander";
-    type = 3; // 3= Fire
+    name = "Mewthree";
+    type = 2;// 2= Grass
     lvl = 1;
-    atk = 10; // j'y connais pas grand chose il faut peut etre modifier ces valeurs avec def
+    atk = 8; 
     sAtk = 2;
-    def = 10 ;
+    def = 20 ;
     sDef = 2;
-    speed = rand()%10-1;
+    speed = 0;
     myattacks[0]= First first // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
     //myattacks[1]= Second second // faire quand on aura une attaque en plus.
 }
 
-Charmander  :: ~Charmander  () {}
+Mewthree:: ~Mewthree () {}
