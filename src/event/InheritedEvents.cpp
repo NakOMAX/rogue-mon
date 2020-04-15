@@ -71,6 +71,8 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
 short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) {
   std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
 
+  box = std::make_shared<DialogueBox>();
+
   // init components
   box->_init(dimX, dimY, renderer);
   for (short unsigned int i = 0; i < components.size(); i++) {
@@ -99,7 +101,7 @@ short int Cinematic::run(SDL_Renderer * renderer) {
       if ((!components[i]->_update(renderer))>0) return 1;
     }
     //render
-    std::cout<<"render"<<std::endl;
+    std::cout<<"render"<<std::endl; //debug
     SDL_RenderPresent(renderer);
     // get every event back
     while ( SDL_PollEvent(&evt) ) {

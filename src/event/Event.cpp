@@ -24,7 +24,7 @@ Event::~Event() {
 }
 
 short int Event::init(SDL_Renderer * render) {
-  std::cout<<std::endl<<"Event initialised"<<std::endl;
+  std::cout<<std::endl<<"Event initialised"<<std::endl; //debug
   return run(render);
 }
 
@@ -41,6 +41,6 @@ short int Event::run(SDL_Renderer * render) {
     }
     hasFinished = !hasFinished;
   }
-  std::cout<<"event normal exit"<<std::endl;
+  std::cout<<"event normal exit"<<std::endl; //debug
   return 0;
 }

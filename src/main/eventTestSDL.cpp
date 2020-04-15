@@ -61,15 +61,19 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nC
 #endif
 
 int main(int argc, char *argv[]) {
+  unsigned short int wdimx, wdimy;
   if (argc!=3)
   {
     printf("Invalid number of arguments\n");
-    return -1;
+    //return -1;
+    wdimx = 1200;
+    wdimy = 750;
+  } else {
+    wdimx = atoi(argv[1]);
+    wdimy = atoi(argv[2]);
   }
 
   // SDL2 init
-  unsigned short int wdimx = atoi(argv[1]);
-  unsigned short int wdimy = atoi(argv[2]);
   if( SDL_Init( SDL_INIT_VIDEO ) < 0)
   {
     printf("SDL error on init: %s\n", SDL_GetError() );
