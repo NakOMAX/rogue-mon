@@ -56,7 +56,7 @@ default : setup map event
 map: _map_run
 
 # Event tests
-event: _event_sdl_run _test_ttf
+event: _event_sdl_run
 
 # GameManager tests
 gm: _gamemanager_run
@@ -124,7 +124,7 @@ _test_ttf : $(TARGET_DIR)/ttfTests
 #$(TARGET_DIR)/eventTests: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/eventTests.o
 #	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o
+$(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
@@ -148,10 +148,10 @@ $(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR
 
 # Required objects
 $(OBJ_DIR)/InheritedEvents.o : $(EVENT_DIR)/InheritedEvents.cpp $(EVENT_DIR)/*.h
-	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/Component.o : $(EVENT_DIR)/Component.cpp $(EVENT_DIR)/*.h
-	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/GameManager.o: $(SRC_DIR)/GameManager.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h
 	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
@@ -194,3 +194,6 @@ $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Po
 
 $(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h
 	$(CC) $(INC_SRC) -c $< -o $@
+
+$(OBJ_DIR)/sdlTools.o: $(SRC_DIR)/sdlTools.cpp
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@

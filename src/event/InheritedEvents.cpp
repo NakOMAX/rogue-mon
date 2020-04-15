@@ -6,34 +6,11 @@
 #include <fstream>
 #include <memory>
 #include <iostream> //debug
-#include "SDL_ttf.h"
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
+#include "sdlTools.h"
 #include "Component.h"
-
-// BLOC POUR TEST, INCLU AVEC MAP.cpp
-SDL_Surface * loadImage(const std::string & filename)
-{
-  SDL_Surface * surface;
-  surface = IMG_Load(filename.c_str());
-  if (surface==NULL)
-  {
-    std::string modFilename;
-    modFilename = "../" + filename;
-    surface = IMG_Load(modFilename.c_str());
-    if (surface==NULL)
-    {
-      modFilename = "../" + modFilename;
-      surface = IMG_Load(modFilename.c_str());
-      if (surface==NULL)
-      {
-        printf("Error: %s\n", SDL_GetError());
-      }
-    }
-  }
-  return surface;
-}
-// FIN BLOC TEST
 
 // ---------------- Test
 
@@ -94,16 +71,23 @@ short int Cinematic::run(SDL_Renderer * renderer) {
   SDL_Event evt;
   std::cout<<"Launched cinematic loop"<<std::endl; //debug
   do {
-    read(box);
+    //read(box);
+    *box<<"Hello";
     // update every component
-    if ((box->_update(renderer))>0) std::cout<<"update box failed"<<std::endl;
-    for (unsigned int i = 0; i < components.size(); i++) {
-      if ((!components[i]->_update(renderer))>0) return 1;
+    if (box->_update(renderer) > 0)
+    {
+      // error during rendering, exit
+      break;
     }
+
+    for (unsigned int i = 0; i < components.size(); i++) {
+      if ((!components[i]->_update(renderer))>0)
+        return 1;
+    }
+
     //render
-    std::cout<<"render"<<std::endl; //debug
     SDL_RenderPresent(renderer);
-    // get every event back
+    // event treatement
     while ( SDL_PollEvent(&evt) ) {
       switch (evt.type) {
         case SDL_QUIT: hasFinished = false; break;

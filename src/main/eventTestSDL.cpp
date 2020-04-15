@@ -3,31 +3,6 @@
 #include "../event/InheritedEvents.h"
 #include "SDL.h"
 
-// BLOC POUR TEST, INCLU AVEC MAP.cpp
-/*
-SDL_Surface * loadImage(const std::string & filename)
-{
-  SDL_Surface * surface;
-  surface = IMG_Load(filename.c_str());
-  if (surface==NULL)
-  {
-    std::string modFilename;
-    modFilename = "../" + filename;
-    surface = IMG_Load(modFilename.c_str());
-    if (surface==NULL)
-    {
-      modFilename = "../" + modFilename;
-      surface = IMG_Load(modFilename.c_str());
-      if (surface==NULL)
-      {
-        printf("Error: %s\n", SDL_GetError());
-      }
-    }
-  }
-  return surface;
-} */
-// FIN BLOC TEST
-
 #ifdef __WIN32__
 #include <windows.h>
 
@@ -64,7 +39,7 @@ int main(int argc, char *argv[]) {
   unsigned short int wdimx, wdimy;
   if (argc!=3)
   {
-    printf("Invalid number of arguments\n");
+    printf("Resolution set to default\n");
     //return -1;
     wdimx = 1200;
     wdimy = 750;
