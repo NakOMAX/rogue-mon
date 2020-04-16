@@ -57,8 +57,8 @@ short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_
   }
 
   //init background
-  SDL_Surface * surf = loadImage(background_source);
-  background = SDL_CreateTextureFromSurface(renderer, surf);
+  back_text = loadImage(background_source);
+  background = SDL_CreateTextureFromSurface(renderer, back_text);
 
   //init file ifstream
   myfile.open(txt_source);
@@ -70,9 +70,16 @@ short int Cinematic::run(SDL_Renderer * renderer) {
   bool hasFinished = false;
   SDL_Event evt;
   std::cout<<"Launched cinematic loop"<<std::endl; //debug
+  read(box);
   do {
-    //read(box);
-    *box<<"Hello";
+    //render bg
+    if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0) {
+      printf("Box: No renderer error. Forcing exit...\n" );
+      return ERRCODE_NO_RENDER;
+    }
+
+    // read(box);
+    //*box<<"Hello";
     // update every component
     if (box->_update(renderer) > 0)
     {
@@ -90,8 +97,8 @@ short int Cinematic::run(SDL_Renderer * renderer) {
     // event treatement
     while ( SDL_PollEvent(&evt) ) {
       switch (evt.type) {
-        case SDL_QUIT: hasFinished = false; break;
-        case SDL_KEYUP : read(box); //component 0 is dialoguebox
+        case SDL_QUIT: hasFinished = !hasFinished; break; // devra être mis dans le controlleur
+        case SDL_KEYUP : if (read(box)>0) hasFinished = !hasFinished; break; //component 0 is dialoguebox
         default: break;
       }
     }

@@ -51,6 +51,8 @@ private :
   std::string txt_source;
   /** @brief background adress */
   std::string background_source;
+  SDL_Texture * background;
+  SDL_Surface * back_text;
   /** @brief text flux */
   std::ifstream myfile;
   /** @brief dialogue box for cinematic*/

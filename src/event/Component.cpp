@@ -85,7 +85,7 @@ unsigned short int DialogueBox::_update(SDL_Renderer * render) {
   }
 
   // if there is text, render it
-  if (aff != NULL) {
+  if (aff != NULL && aff[0]!='\0') {
     txt_surface = TTF_RenderText_Solid(font, aff, color);
 
     if(txt_surface == NULL) {
