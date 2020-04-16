@@ -8,8 +8,8 @@ using namespace std;
 Player :: Player(){ // je sais pas comment le faire en sdl :/
   cout << "Enter your name: "<<endl;
   cin >> name;
-  myPokemon[0];
-  myItem[0];
+  myPokemon = new Pokemon[6];
+  myItem = new Item[6];
   nbPokemon = 0;
   nbItem = 0;
   setPokemon();
@@ -31,6 +31,10 @@ Pokemon* Player :: getPokemon(unsigned short int i){
   return myPokemon[i];
 }
 
+unsigned short int Player :: getNumberOfPokemons() {
+  return nbPokemon;
+}
+
 Item* Player :: getItem(unsigned short int i){
   return myItem[i];
 }
@@ -42,7 +46,7 @@ void Player::setPokemon(){
 
 void Player::addPokemon(Pokemon* newPokemon){
   if (nbPokemon < 6){
-  myPokemon[i] = newPokemon;
+  myPokemon[nbPokemon] = newPokemon;
   nbPokemon++;
   }
 }

@@ -12,6 +12,7 @@ using namespace std;
 Squirtle  :: Squirtle  () {
 
     id = 007;
+    maxHp = 100;
     Hp = 100;
     name = "Squirtle";
     type = 1; // 1= Water

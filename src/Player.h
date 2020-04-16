@@ -8,7 +8,7 @@
 class Player{
 
   protected:
-  string name;
+  std::string name;
   Pokemon *myPokemon[];
   Item *myItem[];
   unsigned short int nbPokemon;
@@ -20,8 +20,9 @@ class Player{
 
   ~Player(){};
 
-	string getUserName();   ///@brief accessor
+	std::string getUserName();   ///@brief accessor
   Pokemon* getPokemon(unsigned short int id);   ///@brief accessor
+  unsigned short int getNumberOfPokemons(); ///@brief accessor
 	Item* getItem(unsigned short int id);   ///@brief accessor
 
 	void setPokemon();  ///@brief mutatorme.myitem

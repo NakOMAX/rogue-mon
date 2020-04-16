@@ -14,6 +14,7 @@ protected:
     unsigned short int id;
     std::string name;
     unsigned short int type; // 1 = Water, 2= Grass, 3= Fire
+    unsigned short int maxHp;
     unsigned short int Hp;
     unsigned short int atk;
     unsigned short int sAtk;
@@ -23,7 +24,7 @@ protected:
     unsigned short int lvl;
     Attack *myattaks[2];
 
-
+public:
     ///@brief class constructor
     Pokemon();
 
@@ -43,6 +44,8 @@ protected:
     unsigned short int getType() const ;
     ///@brief accessor
     unsigned short int getHp () const ;
+    ///@brief accessor
+    unsigned short int getMaxHp () const ;
     ///@brief accessor
     unsigned short int getAtk () const ;
     ///@brief accessor
