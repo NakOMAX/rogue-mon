@@ -9,8 +9,8 @@ class Player{
 
   protected:
   std::string name;
-  Pokemon *myPokemon[];
-  Item *myItem[];
+  Pokemon *myPokemon;
+  Item *myItem;
   unsigned short int nbPokemon;
   unsigned short int nbItem;
 
@@ -33,6 +33,6 @@ class Player{
   void deletePokemon(unsigned short int i);
 	void deleteItem(unsigned short int i);
 
-	unsigned short int isDie();
+	short int isDie();
 };
 #endif

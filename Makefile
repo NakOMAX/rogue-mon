@@ -130,7 +130,7 @@ $(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OB
 $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o
+$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o
 	$(CC) $^ -o $@
 
 # Main objects
@@ -143,8 +143,8 @@ $(OBJ_DIR)/eventTestSDL.o: $(MAIN_DIR)/eventTestSDL.cpp $(EVENT_DIR)/Component.h
 $(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
-$(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h
-	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
+$(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $(INCLUDE_FLAGS) $< -o $@
 
 # Required objects
 $(OBJ_DIR)/InheritedEvents.o : $(EVENT_DIR)/InheritedEvents.cpp $(EVENT_DIR)/*.h
@@ -153,8 +153,8 @@ $(OBJ_DIR)/InheritedEvents.o : $(EVENT_DIR)/InheritedEvents.cpp $(EVENT_DIR)/*.h
 $(OBJ_DIR)/Component.o : $(EVENT_DIR)/Component.cpp $(EVENT_DIR)/*.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
-$(OBJ_DIR)/GameManager.o: $(SRC_DIR)/GameManager.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h
-	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
+$(OBJ_DIR)/GameManager.o: $(SRC_DIR)/GameManager.cpp $(SRC_DIR)/GameManager.h $(SRC_DIR)/Map.h $(SRC_DIR)/Player.h $(SRC_DIR)/sdlTools.h
+	$(CC) -c $(INC_SRC) $(INCLUDE_FLAGS) $< -o $@
 
 $(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h $(EVENT_DIR)/Component.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
@@ -190,10 +190,10 @@ $(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h $(POKEMON_DIR)/Pokemo
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h
-	$(CC) -c $< -o $@
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h
 	$(CC) $(INC_SRC) -c $< -o $@
 
-$(OBJ_DIR)/sdlTools.o: $(SRC_DIR)/sdlTools.cpp
+$(OBJ_DIR)/sdlTools.o: $(SRC_DIR)/sdlTools.cpp $(SRC_DIR)/sdlTools.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
