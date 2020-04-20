@@ -12,11 +12,12 @@ using namespace std;
 WildPok:: WildPok () {
 
     id = 013;
+    maxHp = 100;
     Hp = 100;
     name = "WildPok";
     type = rand()%3;
     lvl = 1;
-    atk = 2; 
+    atk = 2;
     sAtk = 2;
     def = 10 ;
     sDef = 2;
@@ -26,6 +27,3 @@ WildPok:: WildPok () {
 }
 
 WildPok:: ~WildPok () {}
-
-
-

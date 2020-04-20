@@ -1,5 +1,8 @@
 #include "GameManager.h"
+#include "sdlTools.h"
 #include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
 
 GameManager::GameManager()
 {
@@ -13,29 +16,21 @@ GameManager::~GameManager()
 {
   //delete player;
   delete map;
-  SDL_DestroyTexture(texture);
-  SDL_FreeSurface(image);
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   IMG_Quit();
+  TTF_Quit();
   SDL_Quit();
 }
 
-void GameManager::init(unsigned short int cheatCode, unsigned short int numberOfLayers) {
-  //player=new Player(cheatCode);
-  map=new Map(numberOfLayers);
+short int GameManager::init(unsigned short int cheatCode, unsigned short int numberOfLayers, unsigned short int dimx, unsigned short int dimy)
+{
 
   // SDL2 init
-  if( SDL_Init( SDL_INIT_VIDEO ) < 0)
+  if(sdlFullInit())
   {
-    printf("SDL error on init: %s\n", SDL_GetError() );
-  }
-  // SDL Image init
-  int flags = IMG_INIT_PNG|IMG_INIT_JPG;
-  int initted = IMG_Init(flags);
-  if((initted&flags) != flags) {
-    printf("IMG_Init: Failed to init required jpg and png support!\n");
-    printf("IMG_Init: %s\n", IMG_GetError());
+    printf("Failed on SDL init\n");
+    return -1;
   }
 
   // SDL set up
@@ -44,31 +39,83 @@ void GameManager::init(unsigned short int cheatCode, unsigned short int numberOf
   if(window==NULL)
   {
     printf("SDL error on window creation: %s\n", SDL_GetError() );
+    return -2;
   }
   renderer = SDL_CreateRenderer(window, -1, 0);
   surface = SDL_GetWindowSurface(window);
+
+  player=new Player(/*cheatCode*/);
+  map=new Map(numberOfLayers);
+  map->init(renderer, dimx, dimy);
+
+  return 0;
 }
 
-void GameManager::graph_run(unsigned short int dimx, unsigned short int dimy){
-
+void GameManager::run()
+{
   // Loop managers
   bool quit = false;
+  bool selected = false;
+  const Uint8 * keys;
+  std::vector<VIterator> * options = map->getStarts();
+  unsigned short int size = options->size();
+  unsigned short int selectedEvent = 0;
+  map->highlight(options, selectedEvent);
+  PathI pathIterator;
 
-  // Game loop
+  // Start loop
   do{
     // Event loop
-    while( SDL_PollEvent( &event ) != 0 )
+    while( SDL_PollEvent( &e ) != 0 )
     {
+      // User requests quit
+      if( e.type == SDL_QUIT )
+      {
+        // Both needed to exit both loops
+        quit = true;
+        selected = true;
+
+      } else if ( e.type == SDL_KEYDOWN) {
+        keys = SDL_GetKeyboardState(NULL);
+        if (keys[SDLK_RIGHT] == SDL_PRESSED)
+        {
+          selectedEvent = (selectedEvent + 1) % size;
+          map->highlight(options, selectedEvent);
+        } else if (keys[SDLK_LEFT] == SDL_PRESSED)
+        {
+          selectedEvent = (selectedEvent - 1) % size;
+          map->highlight(options, selectedEvent);
+        } else if (keys[SDLK_KP_ENTER] == SDL_PRESSED)
+        {
+          map->selectPath(options->at(selectedEvent));
+          selected=true;
+          pathIterator = map->climbFrom(options->at(selectedEvent));
+        }
+      }
+    }
+    // Drawing
+    map->drawMap();
+
+    // Game loop
+    while (selected && !quit){
+      // Event loop
+      while( SDL_PollEvent( &e ) != 0 )
+      {
         //User requests quit
-        if( event.type == SDL_QUIT )
+        if( e.type == SDL_QUIT )
         {
             quit = true;
+        } else if ( e.type == SDL_KEYDOWN )
+        {
+          if (keys[SDLK_KP_ENTER] == SDL_PRESSED)
+          {
+            pathIterator = map->climbFrom(pathIterator);
+          }
         }
+      }
+
+      // Drawing
+      map->drawMap();
     }
-
-    // Drawing
-    map->drawMap(renderer);
-  } while (!quit);
-
-
+  } while (!selected);
 }

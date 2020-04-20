@@ -232,6 +232,10 @@ void Map::selectPath(VIterator start)
         myMap[*iter].state = STATE_UNREACHABLE;
     }
     myMap[*start].state = STATE_SELECTED;
+    myMap[*start].rect->h = ICON_SIZE*1.2*ratio;
+    myMap[*start].rect->w = ICON_SIZE*1.2*ratio;
+    myMap[*start].rect->x = ratio*myMap[*start].posX-myMap[*start].rect->w/2;
+
     auto climbIterator = adjacent_vertices(*start, myMap);
     do{
         myMap[*climbIterator.first].state = STATE_REACHABLE;
@@ -242,24 +246,42 @@ void Map::selectPath(VIterator start)
 
 PathI Map::climbFrom(VIterator current)
 {
-    // There is only one option to go upwards. If it changed, change this code
-    // to return a vector of PathI and call selectPathI on the desired option.
-    myMap[*current].state = STATE_VISITED;
-    PathI next = adjacent_vertices(*current, myMap).first;
-    myMap[*next].state = STATE_SELECTED;
-    smoothScroll(myMap[*current].layer);
-    return next;
+  // There is only one option to go upwards. If it changed, change this code
+  // to return a vector of PathI and call selectPathI on the desired option.
+  myMap[*current].state = STATE_VISITED;
+  myMap[*current].rect->h = ICON_SIZE*ratio;
+  myMap[*current].rect->w = ICON_SIZE*ratio;
+  myMap[*current].rect->x = ratio*myMap[*current].posX-myMap[*current].rect->w/2;
+
+  PathI next = adjacent_vertices(*current, myMap).first;
+
+  myMap[*next].state = STATE_SELECTED;
+  myMap[*next].rect->h = ICON_SIZE*1.2*ratio;
+  myMap[*next].rect->w = ICON_SIZE*1.2*ratio;
+  myMap[*next].rect->x = ratio*myMap[*next].posX-myMap[*next].rect->w/2;
+
+  smoothScroll(myMap[*current].layer);
+  return next;
 }
 
 PathI Map::climbFrom(PathI current)
 {
-    // There is only one option to go upwards. If it changed, change this code
-    // to return a vector of PathI and call selectPathI on the desired option.
-    myMap[*current].state = STATE_VISITED;
-    PathI next = adjacent_vertices(*current, myMap).first;
-    myMap[*next].state = STATE_SELECTED;
-    smoothScroll(myMap[*current].layer);
-    return next;
+  // There is only one option to go upwards. If it changed, change this code
+  // to return a vector of PathI and call selectPathI on the desired option.
+  myMap[*current].state = STATE_VISITED;
+  myMap[*current].rect->h = ICON_SIZE*ratio;
+  myMap[*current].rect->w = ICON_SIZE*ratio;
+  myMap[*current].rect->x = ratio*myMap[*current].posX-myMap[*current].rect->w/2;
+
+  PathI next = adjacent_vertices(*current, myMap).first;
+
+  myMap[*next].state = STATE_SELECTED;
+  myMap[*next].rect->h = ICON_SIZE*1.2*ratio;
+  myMap[*next].rect->w = ICON_SIZE*1.2*ratio;
+  myMap[*next].rect->x = ratio*myMap[*next].posX-myMap[*next].rect->w/2;
+
+  smoothScroll(myMap[*current].layer);
+  return next;
 }
 
 void Map::smoothScroll(unsigned short int startL)
@@ -293,6 +315,14 @@ void Map::highlight(std::vector<VIterator> * options, unsigned short int selecte
     for (unsigned short int i = 0; i<size; i++)
     {
         myMap[*options->at(i)].state = STATE_REACHABLE;
+        myMap[*options->at(i)].rect->h = ICON_SIZE*ratio;
+        myMap[*options->at(i)].rect->w = ICON_SIZE*ratio;
+        myMap[*options->at(i)].rect->x = ratio*myMap[*options->at(i)].posX
+        -myMap[*options->at(i)].rect->w/2;
     }
     myMap[*options->at(selected)].state = STATE_SELECTED;
+    myMap[*options->at(selected)].rect->h = ICON_SIZE*1.2*ratio;
+    myMap[*options->at(selected)].rect->w = ICON_SIZE*1.2*ratio;
+    myMap[*options->at(selected)].rect->x = ratio*myMap[*options->at(selected)].posX
+    -myMap[*options->at(selected)].rect->w/2;
 }
