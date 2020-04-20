@@ -35,6 +35,11 @@ Item* Player :: getItem(unsigned short int i){
   return myItem[i];
 }
 
+unsigned short int Player :: getNbPokemon()
+{
+  return nbPokemon;
+}
+
 void Player::setPokemon(){
   //
   // ????

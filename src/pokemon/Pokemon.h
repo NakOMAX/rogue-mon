@@ -21,7 +21,7 @@ protected:
     unsigned short int sDef;
     unsigned short int speed;
     unsigned short int lvl;
-    Attack *myattaks[2];
+    Attack *myattacks[2];
 
 
     ///@brief class constructor

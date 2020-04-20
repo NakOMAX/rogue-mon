@@ -24,7 +24,7 @@ class Fight
     public :
 
     ///@brief class constructor
-    Fight (const Player& newme, const WildPok & newopposant);
+    Fight (Player& newme, WildPok & newopposant);
     ///@brief class destructor
     ~Fight ();
     ///@brief first part of the round

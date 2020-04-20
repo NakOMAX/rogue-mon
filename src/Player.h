@@ -9,7 +9,7 @@ class Player{
 
   protected:
   string name;
-  Pokemon *myPokemon[];
+  Pokemon *myPokemon[];// on ne defini pas comme ca un vector...
   Item *myItem[];
   unsigned short int nbPokemon;
   unsigned short int nbItem;
@@ -23,6 +23,7 @@ class Player{
 	string getUserName();   ///@brief accessor
   Pokemon* getPokemon(unsigned short int id);   ///@brief accessor
 	Item* getItem(unsigned short int id);   ///@brief accessor
+  unsigned short int getNbPokemon(); ///@brief accessor
 
 	void setPokemon();  ///@brief mutatorme.myitem
 

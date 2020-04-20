@@ -3,55 +3,59 @@
 #include "WildPok.h"
 #include "Attack.h"
 #include "Item.h"
+#include "Fight.h"
 
 #include <string>
+#include <iostream>
+using namespace std;
 
 
 
-Fight :: Fight (const Player& newme, const WildPok & newopposant)
+Fight :: Fight (Player& newme, WildPok & newopposant)
 {
     me = &newme;
     opposant = &newopposant;
 }
 
-Fight :: ~Fight ()
+Fight :: ~Fight () {}
 
 Pokemon* Fight :: choicePok (Pokemon* old)
-{
+{   
+    int choice;
     do{
-        unsigned short int choice;
-        std :: cout<< "Quel Pokemon voulez-vous utliser ? " <<endl;
-        std :: cin>> choice;
-    } while (((choice-1)>=0) && ((choice-1)<nbPokemon) && (old!= (&(choice-1))));//la derniere condition est bizarre
-    return me.getPokemon (choice-1);
+        
+        cout<< "Quel Pokemon voulez-vous utliser ? " <<endl;
+        cin>> choice;
+    } while (((choice-1)>=0) && ((choice-1)<me->getNbPokemon()) && (old!= (&(choice-1))));//la derniere condition est bizarre
+    return me->getPokemon (choice-1);
 }
 
 void Fight :: raid  (Pokemon* Pok)
 {
     unsigned short int att;
 
-    std :: cout << "Quelle attaque voulez-vous effectuer ?  1 est " << me.myattacks[1]; // étendre avec un pour quand on aura plus d'attques
-    std :: cin>>att;
+     cout << "Quelle attaque voulez-vous effectuer ?  1 est " << Pok->myattacks[0]; // étendre avec un pour quand on aura plus d'attques
+     cin>>att;
 
-    effectsatt(Pok.myattacks[att-1]);
+    effectsatt(Pok->myattacks[att-1]);
 
 }
 
 void Fight :: effectsatt (const Attack& att)
 {
-    opposant.Hp= opposant.Hp- (att.impact*(Pok->atk)-opposant.def);
-    attacker.def += att.gainatk;
-    attacker.atk += att.gaindef;
+    opposant->Hp= opposant->Hp- (att->impact*(Pok->atk)-opposant->def);
+    attacker->def += att->gainatk;
+    attacker->atk += att->gaindef;
 }
 
 void Fight :: acitem(Pokemon* Pok) // à completer
 {
-    if (me.nbItem= 0) {return;}
+    if (me->nbItem= 0) {return;}
     int numit;
     Item thisItem;
-    std :: cout<< "Quel objet vous-vous utiliser ?";
-    std :: cin>> numit;
-    thisItem= me.getItem(numit-1);
+     cout<< "Quel objet vous-vous utiliser ?";
+     cin>> numit;
+    thisItem= me->getItem(numit-1);
     thisItem.action(Pok);
 }
 
@@ -59,12 +63,12 @@ void Fight :: action ()
 {
     Pok= new Pokemon;
     char act;
-    Pok=me.getPokemon(0);
-    if(!me.isDie() && !opposant.wildisdie)
+    Pok=me->getPokemon(0);
+    if(!me->isDie() && !opposant->wildisdie)
     {
         do {
-            std :: cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
-            std :: cin>>act;
+             cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
+             cin>>act;
         }while (act != 'x' || act != 'c' || act != 's')
         switch (act)
             {
@@ -81,8 +85,8 @@ void Fight :: action ()
     }
     else
     {
-        if (me.isDie()){std :: cout<<"Vous avez perdu"}// bizarre pour l'appelle
-        else {std :: cout<<"Vous avez gagné ! Bravo !!!"}
+        if (me->isDie()){ cout<<"Vous avez perdu"}// bizarre pour l'appelle
+        else { cout<<"Vous avez gagné ! Bravo !!!"}
     }
 
      delete Pok;
