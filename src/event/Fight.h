@@ -16,7 +16,8 @@ class Fight
         WildPok* opposant;
 
         ///@brief  produces the effects of the attack
-        void effectsatt(const Attack &att);
+        void effectsatt (Attack* att, Pokemon* Pok);
+        
         ///@brief player attack
         void raid(Pokemon* pok);
         ///@brief action of the item

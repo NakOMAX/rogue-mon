@@ -15,6 +15,12 @@ unsigned short int Attack::getType(){ return type; }
 
 unsigned short int Attack::getPP(){ return pp; }
 
+unsigned short int Attack::getImpact(){ return impact; }
+
+unsigned short int Attack::getGainPower(){ return gainPower; }
+
+unsigned short int Attack::getGainDefense(){ return gainDefense; }
+
 void Attack :: usePP(){
   if(pp != 0){
     pp--;

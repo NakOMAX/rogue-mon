@@ -30,8 +30,8 @@ string getUserName(){
 Pokemon* Player :: getPokemon(unsigned short int i){
   return myPokemon[i];
 }
-
-unsigned short int Player :: getNumberOfPokemons() {
+unsigned short int Player :: getNbPokemon()
+{
   return nbPokemon;
 }
 
@@ -39,10 +39,10 @@ Item* Player :: getItem(unsigned short int i){
   return myItem[i];
 }
 
-unsigned short int Player :: getNbPokemon()
-{
-  return nbPokemon;
+unsigned short int Player :: getNbItem() {
+  return nbItem;
 }
+
 
 void Player::setPokemon(){
   //

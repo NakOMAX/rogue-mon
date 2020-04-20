@@ -22,7 +22,7 @@ protected:
     unsigned short int sDef;
     unsigned short int speed;
     unsigned short int lvl;
-    Attack *myattacks[2];
+    Attack *myAttacks[2];
 
 public:
     ///@brief class constructor
@@ -58,6 +58,8 @@ public:
     unsigned short int getSpeed () const ;
     ///@brief accessor
     unsigned short int getLvl () const ;
+    ///@brief accessor 
+    Attack getMyAttacks (unsigned short int i);
 
     ///@brief mutator
     void setHP(unsigned short int newHP );

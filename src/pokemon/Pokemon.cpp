@@ -93,6 +93,13 @@ unsigned short int Pokemon:: getLvl ()const
     return lvl;
 }
 
+Attack Pokemon :: getMyAttacks (unsigned short int i)
+{
+    return myAttacks[i];
+}
+
+
+
 void Pokemon:: setHP (unsigned short int newHP)
 {
     Hp = newHP;

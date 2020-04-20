@@ -14,21 +14,28 @@ class Attack{
 	unsigned short int pp;//nombre d'utilisation d'une attaque
 	unsigned short int maxPP;
   unsigned short int gainPower; 
-  unsigned short int gaindefense;
+  unsigned short int gainDefense;
   unsigned short int impact;
 
   public:
+  ///@brief constructor
   Attack();
-
+  ///@brief destructor
   ~Attack();
-
+  ///@brief accessor
   string getName();
-
+  ///@brief accessor
   unsigned short int getPower();
-
+  ///@brief accessor
   unsigned short int getType();
-
+  ///@brief accessor
   unsigned short int getPP();
+  ///@brief accessor
+  unsigned short int getImpact();
+  ///@brief accessor
+  unsigned short int getGainDefense();
+  ///@brief accessor
+  unsigned short int getGainPower();
 
   void usePP();
 
