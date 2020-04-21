@@ -24,6 +24,8 @@ unsigned short int Component::_update(SDL_Renderer * render) {
   return ERRCODE_NO_COMP;
 }
 
+/// -------------------------------------------------------------- DIALOGUE BOX
+
 DialogueBox::DialogueBox() {
 
 }
@@ -120,4 +122,26 @@ void DialogueBox::clean() {
 
 void DialogueBox::setColor(const SDL_Color & c) {
   color = c;
+}
+
+/// ----------------------------------------------------------- CLICKABLE BUTTON
+
+Button::Button(SDL_Rect * pos /*, function pointer*/){
+  transform = pos;
+}
+
+Button::~Button(){
+  SDL_FreeSurface(surface);
+  SDL_FreeSurface(txt_surface);
+  delete aff;
+  delete transform;
+  delete txt_transform;
+}
+
+unsigned short int Button::_init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
+  return ERRCODE_NO_COMP;
+}
+
+unsigned short int Button::_update(SDL_Renderer * render) {
+  return ERRCODE_NO_COMP;
 }
