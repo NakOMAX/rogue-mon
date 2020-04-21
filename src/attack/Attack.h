@@ -13,7 +13,7 @@ class Attack{
   unsigned short int type;// 1 fait perdre des pdv, 2 fait gagner en def et att
 	unsigned short int pp;//nombre d'utilisation d'une attaque
 	unsigned short int maxPP;
-  unsigned short int gainPower; 
+  unsigned short int gainAtk; 
   unsigned short int gainDefense;
   unsigned short int impact;
 
@@ -35,7 +35,7 @@ class Attack{
   ///@brief accessor
   unsigned short int getGainDefense();
   ///@brief accessor
-  unsigned short int getGainPower();
+  unsigned short int getGainAtk();
 
   void usePP();
 

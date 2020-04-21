@@ -46,7 +46,7 @@ void Fight :: effectsatt (Attack* att, Pokemon* Pok)
 {
     opposant->setHp( opposant->getHp()- (att->getImpact()*(Pok->getAtk())-opposant->getDef()));
     Pok->defIncrease( att->getGainDefense() );
-    Pok->atkIncrease( att->getGainPower() );
+    Pok->atkIncrease( att->getGainAtk() );
 }
 
 void Fight :: acitem(Pokemon* Pok) // à completer

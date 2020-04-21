@@ -17,7 +17,7 @@ unsigned short int Attack::getPP(){ return pp; }
 
 unsigned short int Attack::getImpact(){ return impact; }
 
-unsigned short int Attack::getGainPower(){ return gainPower; }
+unsigned short int Attack::getGainAtk(){ return gainAtk; }
 
 unsigned short int Attack::getGainDefense(){ return gainDefense; }
 
