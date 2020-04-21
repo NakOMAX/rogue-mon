@@ -100,7 +100,7 @@ Attack Pokemon :: getMyAttacks (unsigned short int i)
 
 
 
-void Pokemon:: setHP (unsigned short int newHP)
+void Pokemon:: setHp (unsigned short int newHP)
 {
     Hp = newHP;
 
@@ -110,4 +110,26 @@ void Pokemon:: setLvl (unsigned short int newLvl)
 {
     lvl = newLvl;
 
+}
+
+void Pokemon:: atkIncrease (unsigned short int newAtk)
+{
+    atk += newAtk;
+
+}
+
+void Pokemon:: defIncrease (unsigned short int newDef)
+{
+    def += newDef;
+}
+
+
+bool Pokemon :: pokIsDead()
+{
+    if (Hp == 0)
+    {
+        delete *this;
+        return true;
+    }
+    else {return false;}
 }

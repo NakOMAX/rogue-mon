@@ -62,9 +62,18 @@ public:
     Attack getMyAttacks (unsigned short int i);
 
     ///@brief mutator
-    void setHP(unsigned short int newHP );
-    ///@brief mutator
+    void setHp(unsigned short int newHP );
+     ///@brief mutator
     void setLvl (unsigned short int newLvl );
+
+    ///@brief addition atk with the param
+    ///@param newAtk is the value you need to add to atk
+    void atkIncrease(unsigned short int newAtk );
+    ///@brief addition def with the param
+    ///@param newDef is the value you need to add to def
+    void defIncrease(unsigned short int newDef );
+
+    bool pokIsDead();
 };
 
 #endif

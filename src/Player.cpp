@@ -71,7 +71,7 @@ void Player::deleteItem(unsigned short int i){
     myItem[i] = NULL;
 }
 
-short int Player::isDie(){
+/*short int Player::isDie(){
   for(unsigned int i = 0; i<nbPokemon; i++){
       if(myPokemon[i].getHp() > 0 ){
         //cout << "Pokemon : "<<i<<" alive" <<endl;
@@ -84,4 +84,20 @@ short int Player::isDie(){
   }
   cout << "player is defeated";
   return 1;
+}*/
+
+bool Player :: pokIsdead(Pokemon* Pok)
+{
+  if ( Pokemon:: pok.pokIsdead())
+  {
+    nbPokemon--;
+    return true;
+  }
+  else {return false;}
+}
+
+bool Player :: playerIsdead ()
+{
+  if (nbPokemon==0)  {return true;}
+  else {return false;}
 }

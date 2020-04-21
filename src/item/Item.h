@@ -30,5 +30,7 @@ public :
    /* Item useItem(unsigned short int amount, unsigned unsigned int id);*/
     ///@brief action of an item
     void action();
+
+    void operator= (Item copy);
 };
 #endif

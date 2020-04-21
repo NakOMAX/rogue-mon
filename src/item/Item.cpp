@@ -9,7 +9,7 @@ using namespace std;
 
 Item :: Item(){}
 
-Item :: Item(unsigned int newId, string newName, unsigned short int newAmount)
+Item :: Item(unsigned int newId, string newName, unsigned short int newAmount=0)
 {
   id = newId;
   name = newName;
@@ -39,4 +39,12 @@ void Item :: action ()
   {
     
   }
+}
+
+void Item :: operator= (Item copy)
+{
+  name=copy.name ;
+  amount = copy.amount;
+  id = copy.id;
+
 }

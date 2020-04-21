@@ -26,7 +26,8 @@ class Player{
 	Item* getItem(unsigned short int id);   ///@brief accessor
   unsigned short int getNbItem(); ///@brief accessor
 
-	void setPokemon();  ///@brief mutatorme.myitem
+	void setPokemon();  ///@brief mutator
+  //me.myitem
 
   void addItem(Item *);
 	void addPokemon(Pokemon*);
@@ -34,6 +35,11 @@ class Player{
   void deletePokemon(unsigned short int i);
 	void deleteItem(unsigned short int i);
 
-	short int isDie();
+	//unsigned short int isDie();
+
+  ///@brief check if a pokemon is dead
+  bool pokIsDead ();
+  ///@brief check if the player is dead
+  bool playerIsDead ();
 };
 #endif

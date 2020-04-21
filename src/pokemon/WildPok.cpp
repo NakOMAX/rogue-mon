@@ -27,3 +27,10 @@ WildPok:: WildPok () {
 }
 
 WildPok:: ~WildPok () {}
+
+bool WildPok wildIsDead();
+{
+    bool dead = false;
+    if (Hp==0){dead= true;}
+    return dead;
+}

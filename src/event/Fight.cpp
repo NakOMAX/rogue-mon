@@ -26,8 +26,9 @@ Pokemon* Fight :: choicePok (Pokemon* old)
         
         cout<< "Quel Pokemon voulez-vous utliser ? " <<endl;
         cin>> choice;
-    } while (((choice-1)>=0) && ((choice-1)<me->getNbPokemon()) /*&& (old!= (*(choice-1)))*/);//la derniere condition est bizarre
+    } while (((choice-1)>=0) && ((choice-1)<me->getNbPokemon()) && (old!= me->getPokemon(choice-1)));
     return me->getPokemon (choice-1);
+
 }
 
 void Fight :: raid  (Pokemon* Pok)
@@ -37,25 +38,25 @@ void Fight :: raid  (Pokemon* Pok)
      cout << "Quelle attaque voulez-vous effectuer ?  1 est " << Pok->getMyAttacks(0).getName(); // étendre avec un pour quand on aura plus d'attques
      cin>>att;
 
-    effectsatt(Pok->getMyAttacks(att-1), Pok);
+    effectsatt(&(Pok->getMyAttacks(att-1)), Pok); // je vois pas comment faire
 
 }
 
 void Fight :: effectsatt (Attack* att, Pokemon* Pok)
 {
-    opposant->getHp()= opposant->getHp()- (att->getImpact()*(Pok->getAtk())-opposant->getDef());
-    Pok->getDef() += att->getGainDefense() ;
-    Pok->getAtk() += att->getGainPower() ;// Il faut mettre des set et pas des gets
+    opposant->setHp( opposant->getHp()- (att->getImpact()*(Pok->getAtk())-opposant->getDef()));
+    Pok->defIncrease( att->getGainDefense() );
+    Pok->atkIncrease( att->getGainPower() );
 }
 
 void Fight :: acitem(Pokemon* Pok) // à completer
 {
-    if (me->getNbItem() = 0) {return;}
+    if (me->getNbItem() == 0) {return;}
     int numit;
     Item thisItem;
      cout<< "Quel objet vous-vous utiliser ?";
      cin>> numit;
-    thisItem = me->getItem(numit-1); // surcharger l'oprérateur +
+    thisItem = me->getItem(numit-1); 
     thisItem.action(Pok);
 }
 
@@ -64,12 +65,17 @@ void Fight :: action ()
     Pokemon* Pok= new Pokemon;
     char act;
     Pok=me->getPokemon(0);
-    if(!me->isDie() && !opposant->wildisdie)//fonction à écrire
+    if(!me->playerIsDead() && !opposant->wildIsDead())//fonction à écrire
     {
-        do {
-             cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
-             cin>>act;
+        if (me->pokIsDead())
+            {act = 's';}
+        else 
+        {
+            do {
+                cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
+                cin>>act;
             }while (act != 'x' || act != 'c' || act != 's');
+        }
         switch (act)
             {
                 case 'x': raid(Pok); break;
@@ -85,7 +91,7 @@ void Fight :: action ()
     }
     else
     {
-        if (me->isDie()){ cout<<"Vous avez perdu";}// bizarre pour l'appelle
+        if (me->playerIsDead()){ cout<<"Vous avez perdu";}// bizarre pour l'appel
         else { cout<<"Vous avez gagné ! Bravo !!!";}
     }
 

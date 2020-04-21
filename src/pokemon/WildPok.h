@@ -8,14 +8,16 @@
 
 class WildPok : public Pokemon
 {
- public : 
+public : 
 
-  ///@brief class constructor
-  WildPok ();
+    ///@brief class constructor 
+    WildPok ();
 
-  ///@brief class destructor
-  ~WildPok ();
-  
- // à créer : wildisdie
+    ///@brief class destructor
+    ~WildPok ();
+    
+    ///@brief check if the WildPokemon is dead
+    bool wildIsDead();
+
 };
 #endif
