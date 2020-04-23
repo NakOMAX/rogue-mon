@@ -60,11 +60,11 @@ private :
 };
 /*----------------------------------------------------------------------------*/
 
-class Healing : public Event {
+/*class Healing : public Event {
 public:
   Healing();
   ~Healing();
   short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player);
 };
-
+*/
 #endif

@@ -129,7 +129,7 @@ short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
 //-------------------------------->HEALING<-----------------------------------//
 //____________________________________________________________________________//
 
-short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
+/*short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
 {
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 20);
   for (unsigned short int i = 0; i < 100; i++)
@@ -137,7 +137,7 @@ short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Re
     SDL_RenderDrawRect(renderer, NULL);
     SDL_Delay(5);
   }
-  unsigned short int n = player.getNumberOfPokemons();
+  unsigned short int n = player.getNumberOfPokemons();//changer le nom de la fonction 
   Pokemon * current;
   for (unsigned short int i = 0; i<n; i++)
   {
@@ -145,4 +145,4 @@ short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Re
     current->setHP(current->getMaxHp());
   }
   return 0;
-}
+}*/
