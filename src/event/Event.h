@@ -31,14 +31,14 @@ public:
 
   /** @brief init method
       called when launching event, launches run(), performs setup. Returns 0 if everything went correctly, else errorcode*/
-  short int init(SDL_Renderer * render);
+  virtual short int init(SDL_Renderer * render);
 
   /** @brief get method for scaling*/
   short int getScaling();
 
   /** @brief mainloop for the event
   overrides the normal mainloop until returned. Returns 0 if exited properly, errorcode else.*/
-  short int run(SDL_Renderer * render);
+  virtual short int run(SDL_Renderer * render);
 
 protected:
   /** @brief scaling value of event

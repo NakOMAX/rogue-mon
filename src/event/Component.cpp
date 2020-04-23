@@ -16,13 +16,13 @@ Component::Component() {
 Component::~Component() {
 }
 
-unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
-  return ERRCODE_NO_COMP;
-}
-
-unsigned short int Component::_update(SDL_Renderer * render) {
-  return ERRCODE_NO_COMP;
-}
+// unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
+//   return ERRCODE_NO_COMP;
+// }
+//
+// unsigned short int Component::_update(SDL_Renderer * render) {
+//   return ERRCODE_NO_COMP;
+// }
 
 /// -------------------------------------------------------------- DIALOGUE BOX
 

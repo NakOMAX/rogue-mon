@@ -48,10 +48,11 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
 short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) {
   std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
 
-  box = std::make_shared<DialogueBox>();
+  // box = std::make_shared<DialogueBox>();
+  components.push_back(std::shared_ptr<Component>(&box)); //boxtest
 
   // init components
-  box->_init(dimX, dimY, renderer);
+  //box->_init(dimX, dimY, renderer); boxtest
   for (short unsigned int i = 0; i < components.size(); i++) {
     if (!(components[i]->_init(dimX, dimY, renderer))) return 1;
   }
@@ -78,14 +79,14 @@ short int Cinematic::run(SDL_Renderer * renderer) {
       return ERRCODE_NO_RENDER;
     }
 
-    // read(box);
-    //*box<<"Hello";
+    read(box);
+    box<<"Hello";
     // update every component
-    if (box->_update(renderer) > 0)
-    {
-      // error during rendering, exit
-      break;
-    }
+    // if (box->_update(renderer) > 0)
+    // {
+    //   // error during rendering, exit
+    //   break;
+    // } //boxtest
 
     for (unsigned int i = 0; i < components.size(); i++) {
       if ((!components[i]->_update(renderer))>0)
@@ -108,7 +109,7 @@ short int Cinematic::run(SDL_Renderer * renderer) {
   return 0;
 }
 
-short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
+short int Cinematic::read(DialogueBox db) {
   if (!myfile.is_open()) {
     myfile.open(txt_source);
   } else {
@@ -116,8 +117,8 @@ short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
       std::string buf;
       getline(myfile, buf);
       std::cout<<buf<<std::endl; //debug
-      db->clean();
-      (*db)<<buf.c_str();
+      db.clean();
+      db<<buf.c_str();
     } else {
       return 1;
     }
@@ -129,20 +130,20 @@ short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
 //-------------------------------->HEALING<-----------------------------------//
 //____________________________________________________________________________//
 
-short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
-{
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 20);
-  for (unsigned short int i = 0; i < 100; i++)
-  {
-    SDL_RenderDrawRect(renderer, NULL);
-    SDL_Delay(5);
-  }
-  unsigned short int n = player.getNumberOfPokemons();
-  Pokemon * current;
-  for (unsigned short int i = 0; i<n; i++)
-  {
-    current = player.getPokemon(i);
-    current->setHP(current->getMaxHp());
-  }
-  return 0;
-}
+// short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
+// {
+//   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 20);
+//   for (unsigned short int i = 0; i < 100; i++)
+//   {
+//     SDL_RenderDrawRect(renderer, NULL);
+//     SDL_Delay(5);
+//   }
+//   unsigned short int n = player.getNumberOfPokemons();
+//   Pokemon * current;
+//   for (unsigned short int i = 0; i<n; i++)
+//   {
+//     current = player.getPokemon(i);
+//     current->setHP(current->getMaxHp());
+//   }
+//   return 0;
+// }

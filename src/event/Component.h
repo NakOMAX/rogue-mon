@@ -25,8 +25,8 @@ class Component {
 public:
   Component();
   ~Component();
-  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
-  unsigned short int _update(SDL_Renderer * render);
+  virtual unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) = 0;
+  virtual unsigned short int _update(SDL_Renderer * render) = 0;
 protected:
 };
 
@@ -45,13 +45,13 @@ class DialogueBox : public Component {
       called when launched and not when created, loads ressources
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
+  virtual unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
 
   /** @brief update method
       called by parent, ends when the event is closed or when an error happens
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _update(SDL_Renderer * render);
+  virtual unsigned short int _update(SDL_Renderer * render);
 
   /**@brief << operator for writing
     used to write a string to the box*/
