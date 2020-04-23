@@ -5,7 +5,6 @@
 #include <string>
 #include <fstream>
 #include <memory>
-#include <iostream> //debug
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
