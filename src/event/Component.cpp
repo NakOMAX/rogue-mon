@@ -59,20 +59,25 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
   int padding = 50; // distance between box and text
 
   transform = new SDL_Rect;
+  std::cout<<"SDL_Rect exists"<<std::endl; //debug
   // whole textbox
   //#N pointeur vers une struct, donc ->
   transform->w = dimX;
   transform->h = dimY/4;
   transform->x = 0;
   transform->y = dimY - transform->h;
+  std::cout<<"SDL_Rect full"<<std::endl;//debug
   //#N Si y=dimY le haut de la boite sera en bas de la page car (0,0) c'est en haut à gauche
 
+  std::cout<<"Transform creation"<<std::endl; //debug
   text_transform = new SDL_Rect;
   text_transform->x = transform->x + padding;
   text_transform->y = transform->y + padding/2;
+  std::cout<<"Text made"<<std::endl; //debug
 
   // init char *
   aff = new char [CHARLIM];
+  std::cout<<"char made"<<std::endl;//debug
   // return 0 if everything went well
   return 0;
 }

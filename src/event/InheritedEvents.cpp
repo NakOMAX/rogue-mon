@@ -49,12 +49,15 @@ short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_
   std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
 
   // box = std::make_shared<DialogueBox>();
-  components.push_back(std::shared_ptr<Component>(&box)); //boxtest
+  box = new DialogueBox;
+  std::cout<<"DB made"<<std::endl; //boxtest
+  components.push_back(box); //boxtest
 
   // init components
   //box->_init(dimX, dimY, renderer); boxtest
   for (short unsigned int i = 0; i < components.size(); i++) {
-    if (!(components[i]->_init(dimX, dimY, renderer))) return 1;
+    int temp = components[i]->_init(dimX, dimY, renderer);
+    if (!(temp)) return temp;
   }
 
   //init background
@@ -80,7 +83,7 @@ short int Cinematic::run(SDL_Renderer * renderer) {
     }
 
     read(box);
-    box<<"Hello";
+    (*box)<<"Hello";
     // update every component
     // if (box->_update(renderer) > 0)
     // {
@@ -89,8 +92,9 @@ short int Cinematic::run(SDL_Renderer * renderer) {
     // } //boxtest
 
     for (unsigned int i = 0; i < components.size(); i++) {
-      if ((!components[i]->_update(renderer))>0)
-        return 1;
+      int temp = components[i]->_update(renderer);
+      if (temp>0)
+        return temp;
     }
 
     //render
@@ -109,7 +113,7 @@ short int Cinematic::run(SDL_Renderer * renderer) {
   return 0;
 }
 
-short int Cinematic::read(DialogueBox db) {
+short int Cinematic::read(DialogueBox* db) {
   if (!myfile.is_open()) {
     myfile.open(txt_source);
   } else {
@@ -117,10 +121,10 @@ short int Cinematic::read(DialogueBox db) {
       std::string buf;
       getline(myfile, buf);
       std::cout<<buf<<std::endl; //debug
-      db.clean();
-      db<<buf.c_str();
+      db->clean();
+      (*db)<<buf.c_str();
     } else {
-      return 1;
+      return 99;
     }
   }
   return 0;

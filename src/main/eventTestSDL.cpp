@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../event/Event.h"
 #include "../event/Component.h"
 #include "../event/InheritedEvents.h"
@@ -79,7 +80,8 @@ int main(int argc, char *argv[]) {
 
   // TESTS
   Cinematic introduction("data/Text/intro.txt", "data/Backgrounds/bg_intro.png");
-  if (introduction.init(wdimx, wdimy, renderer)>0) printf("Failed somewhere I guess");
+  int res = introduction.init(wdimx, wdimy, renderer);
+  if (res>0) std::cout<<"Failed somewhere I guess. Errcode : "<<res<<std::endl;
 
   return 0;
 }

@@ -46,7 +46,7 @@ public :
   virtual short int run(SDL_Renderer * render);
 private :
   /** @brief text reader */
-  short int read(DialogueBox db);
+  short int read(DialogueBox* db);
   /** @brief cinematic text file adress */
   std::string txt_source;
   /** @brief background adress */
@@ -56,7 +56,7 @@ private :
   /** @brief text flux */
   std::ifstream myfile;
   /** @brief dialogue box for cinematic*/
-  DialogueBox box;
+  DialogueBox * box;
 };
 /*----------------------------------------------------------------------------*/
 

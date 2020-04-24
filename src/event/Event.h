@@ -49,6 +49,6 @@ protected:
   SDL_Texture * background;
 
   /**@brief array of components to draw*/
-  std::vector<std::shared_ptr<Component>> components;
+  std::vector<Component*> components;
 };
 #endif
