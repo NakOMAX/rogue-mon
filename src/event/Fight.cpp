@@ -8,8 +8,9 @@
 #include "InheritedEvents.h"
 #include "Event.h"
 //#include "../player/Player.h"
-#include <iostream> //testing/debug only 
+#include <iostream> //testing/debug only
 #include <string>
+#include <cstring>
 #include <memory>
 #include "SDL.h"
 #include "SDL_image.h"
@@ -32,11 +33,11 @@ Fight :: Fight (Player& newme, WildPok & newopposant)
 Fight :: ~Fight () {}
 
 Pokemon* Fight :: choicePok (Pokemon* old)
-{   
+{
     SDL_Event event;
-    (*box)= std :: make_shared<DialogueBox>();
-    
-    box << "Quel Pokemon voulez-vous utliser ? " ;
+    // box= std :: make_shared<DialogueBox>();
+
+    (*box) << "Quel Pokemon voulez-vous utliser ? " ;
     SDL_WaitEvent(&event);
     switch(event.type)
     {
@@ -47,22 +48,23 @@ Pokemon* Fight :: choicePok (Pokemon* old)
 
                 case 2 :if ((1<me->getNbPokemon()) && (old!= me->getPokemon(1))) return me->getPokemon(1);
 
-                case 3 :if ((2<me->getNbPokemon()) && (old!= me->getPokemon(2))) return me->getPokemon(2); 
-                case 4 :if ((3<me->getNbPokemon()) && (old!= me->getPokemon(3))) return me->getPokemon(3); 
+                case 3 :if ((2<me->getNbPokemon()) && (old!= me->getPokemon(2))) return me->getPokemon(2);
+                case 4 :if ((3<me->getNbPokemon()) && (old!= me->getPokemon(3))) return me->getPokemon(3);
                 case 5 :if ((4<me->getNbPokemon()) && (old!= me->getPokemon(4))) return me->getPokemon(4);
                 case 6 :if ((5<me->getNbPokemon()) && (old!= me->getPokemon(5))) return me->getPokemon(5);
             }
         default : return choicePok (old); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
         //Faut-il faire d'autre cas ?
-    } 
+    }
 
 }
 
 void Fight :: raid  (Pokemon* Pok)
 {
     SDL_Event event;
-       (*box)= std :: make_shared<DialogueBox>();
-    box << "Quelle attaque voulez-vous effectuer ?  1 est " << Pok->getMyAttacks(0).getName(); // étendre avec un pour quand on aura plus d'attques
+       // (*box)= std :: make_shared<DialogueBox>();
+
+    (*box) << strcat("Quelle attaque voulez-vous effectuer ?  1 est ", Pok->getMyAttacks(0).getName().c_str()); // étendre avec un pour quand on aura plus d'attques
     SDL_WaitEvent(&event);
     switch(event.type)
     {
@@ -71,15 +73,15 @@ void Fight :: raid  (Pokemon* Pok)
             {
                 case 1 :  effectsatt(&(Pok->getMyAttacks(0)), Pok);break;
 
-                case 2 :effectsatt(&(Pok->getMyAttacks(1)), Pok);break;
+                case 2 :  effectsatt(&(Pok->getMyAttacks(1)), Pok);break;
 
             }
         default : return raid(Pok); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
         //Faut-il faire d'autre cas ?
- 
+
     }
 
-     
+
 
 }
 
@@ -94,9 +96,9 @@ void Fight :: acitem(Pokemon* Pok) // à completer
 {
     if (me->getNbItem() == 0) return;
     SDL_Event event;
-    (*box)= std :: make_shared<DialogueBox>();
-    
-    box << "Quel objet vous-vous utiliser ? " ;
+    // (*box)= std :: make_shared<DialogueBox>();
+
+    (*box) << "Quel objet vous-vous utiliser ? " ;
     SDL_WaitEvent(&event);
     switch(event.type)
     {
@@ -115,11 +117,11 @@ void Fight :: acitem(Pokemon* Pok) // à completer
 
                 case 6 :if (5<me->getNbItem())   (me->getItem(5))->action(Pok); break;
             }
-        default :  acitem(Pok); 
+        default :  acitem(Pok);
         //Faut-il faire d'autre cas ?
-    } 
-    
-    
+    }
+
+
 }
 
 /*
@@ -132,7 +134,7 @@ void Fight :: action ()
     {
         if (me->pokIsDead())
             {act = 's';}
-        else 
+        else
         {
             do {
                 cout<< "Quelle action voulez-vous effectuer ? x: attaquer; c: item; s: changer de pokemon" <<endl;
@@ -162,12 +164,12 @@ void Fight :: action ()
 
 }*/
 
-short int Fight::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) 
+short int Fight::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer)
 {
     //std :: cout<<"Fight correct initialisation"<<endl; //debug
 
-    (*box)= std :: make_shared<DialogueBox>();
-    
+    box= std :: make_shared<DialogueBox>();
+
     Pokemon* Pok= new Pokemon;
     Pok=me->getPokemon(0);
 
@@ -181,7 +183,7 @@ short int Fight::init(unsigned short int dimX, unsigned short int dimY, SDL_Rend
     /*//init background
     back_text = loadImage(background_source);
     background = SDL_CreateTextureFromSurface(renderer, back_text);
-    
+
 
     //init file ifstream
     myfile.open(txt_source);
@@ -193,10 +195,10 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
   bool hasFinished = false;
   SDL_Event evt;
   std :: cout<<"Launched cinematic loop"<<endl; //debug
-  
-  do{ 
+
+  do{
     //render bg
-    if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0) 
+    if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0)
     {
         printf("Box: No renderer error. Forcing exit...\n" );
         return ERRCODE_NO_RENDER;
@@ -209,7 +211,7 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
         break;
     }
 
-    for (unsigned int i = 0; i < components.size(); i++) 
+    for (unsigned int i = 0; i < components.size(); i++)
     {
         if ((!components[i]->_update(renderer))>0)
             return 1;
@@ -217,17 +219,17 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
 
     if(opposant->wildIsDead())
     {
-        box<<"Vous avez gagné le combat";
+        (*box)<<"Vous avez gagné le combat";
         hasFinished = true;
     }
 
-    
+
     if(me->pokIsDead())
     {
-        box<<"Votre Pokémon n'a plus de point de vie";
+        (*box)<<"Votre Pokémon n'a plus de point de vie";
         if (me->playerIsDead())
         {
-            box<<"Vous avez perdu";
+            (*box)<<"Vous avez perdu";
             hasFinished = true;
         }
         else choicePok(Pok);
@@ -238,7 +240,7 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
     //render
     SDL_RenderPresent(renderer);
     // event treatement
-    while ( SDL_PollEvent(&evt) ) 
+    while ( SDL_PollEvent(&evt) )
     {
         switch(evt.type)
         {
@@ -246,17 +248,17 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
                 hasFinished= true;
                 break;
             case SDL_KEYDOWN:
-                switch (evt.key.keysym.sym) 
+                switch (evt.key.keysym.sym)
                 {
                     case SDLK_x : raid(Pok); break;
-                
+
                     case SDLK_c : acitem(Pok); break;
 
                     case SDLK_s : choicePok(Pok); break;
                 }
             default: break;
         }
-        //Je sais pas si il faut mettre le tour de l'opposant ici 
+        //Je sais pas si il faut mettre le tour de l'opposant ici
     }
     // ou si il faut le faire jouer ici
     } while (!hasFinished);
