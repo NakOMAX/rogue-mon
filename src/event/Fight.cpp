@@ -34,7 +34,7 @@ Fight :: ~Fight () {}
 Pokemon* Fight :: choicePok (Pokemon* old)
 {   
     SDL_Event event;
-    
+    (*box)= std :: make_shared<DialogueBox>();
     
     box << "Quel Pokemon voulez-vous utliser ? " ;
     SDL_WaitEvent(&event);
@@ -61,7 +61,7 @@ Pokemon* Fight :: choicePok (Pokemon* old)
 void Fight :: raid  (Pokemon* Pok)
 {
     SDL_Event event;
-       
+       (*box)= std :: make_shared<DialogueBox>();
     box << "Quelle attaque voulez-vous effectuer ?  1 est " << Pok->getMyAttacks(0).getName(); // étendre avec un pour quand on aura plus d'attques
     SDL_WaitEvent(&event);
     switch(event.type)
@@ -94,7 +94,7 @@ void Fight :: acitem(Pokemon* Pok) // à completer
 {
     if (me->getNbItem() == 0) return;
     SDL_Event event;
-    
+    (*box)= std :: make_shared<DialogueBox>();
     
     box << "Quel objet vous-vous utiliser ? " ;
     SDL_WaitEvent(&event);
@@ -115,7 +115,7 @@ void Fight :: acitem(Pokemon* Pok) // à completer
 
                 case 6 :if (5<me->getNbItem())   (me->getItem(5))->action(Pok); break;
             }
-        default :  acitem(Pok); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
+        default :  acitem(Pok); 
         //Faut-il faire d'autre cas ?
     } 
     
@@ -166,7 +166,7 @@ short int Fight::init(unsigned short int dimX, unsigned short int dimY, SDL_Rend
 {
     //std :: cout<<"Fight correct initialisation"<<endl; //debug
 
-    box = std :: make_shared<DialogueBox>();
+    (*box)= std :: make_shared<DialogueBox>();
     
     Pokemon* Pok= new Pokemon;
     Pok=me->getPokemon(0);

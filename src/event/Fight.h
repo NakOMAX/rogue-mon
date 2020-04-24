@@ -54,7 +54,7 @@ class Fight : public Event
     ///@brief see event run
     short int run(SDL_Renderer * renderer, Pokemon * Pok);
     /** @brief dialogue box for cinematic*/
-    //std::shared_ptr<DialogueBox> box;
+    std::shared_ptr<DialogueBox> box;
 
 
 
