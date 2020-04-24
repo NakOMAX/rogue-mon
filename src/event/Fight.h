@@ -15,12 +15,13 @@
 #include <memory>
 
 
-class Fight : event
+class Fight : public Event
 
 {
     private :
         Player* me;
         WildPok* opposant;
+        
 
         ///@brief  produces the effects of the attack
         void effectsatt (Attack* att, Pokemon* Pok);
@@ -28,6 +29,7 @@ class Fight : event
         ///@brief player attack
         void raid(Pokemon* pok);
         ///@brief action of the item
+        ///precondition : The player must have at least an Item 
         void acitem(Pokemon* Pok);
 
 
@@ -50,7 +52,9 @@ class Fight : event
     ///@brief see event init
     short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer);
     ///@brief see event run
-    short int run(SDL_Renderer * renderer) {
+    short int run(SDL_Renderer * renderer, Pokemon * Pok);
+    /** @brief dialogue box for cinematic*/
+    //std::shared_ptr<DialogueBox> box;
 
 
 

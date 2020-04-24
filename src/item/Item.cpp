@@ -32,7 +32,7 @@ string Pokemon :: getName ()const
     amount--;
 }*/
 
-void Item :: action ()
+void Item :: action (Pokemon* Pok)
 {
   amount--;
   if( amount<=0)

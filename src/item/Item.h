@@ -29,7 +29,7 @@ public :
     /**@brief The fonction use the caracteristic of the item*/
    /* Item useItem(unsigned short int amount, unsigned unsigned int id);*/
     ///@brief action of an item
-    void action();
+    void action(Pokemon* Pok);
 
     void operator= (Item copy);
 };
