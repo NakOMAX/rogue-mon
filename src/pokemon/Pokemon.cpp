@@ -10,26 +10,29 @@ using namespace std;
 
 
 Pokemon:: Pokemon()
- //Concernant le tas ou la pile je sais pas si il faut faire un choix plus judicieux
-{}
+{
+    myAttacks = new Attack[2] ;
+}
 
 // constructeur par copie
-Pokemon::Pokemon(unsigned short int new_Id, string new_Name,unsigned short int new_Type, unsigned short int new_HP, unsigned short int new_maxHP,
-                 unsigned short int new_Atk,unsigned short int new_sAtk, unsigned short int new_Def,
-                 unsigned short int new_sDef,unsigned short int new_speed, unsigned short int new_lvl)
+Pokemon::Pokemon(const Pokemon& old)
 
 {
-  id = new_Id;
-  name = new_Name;
-  type = new_Type;
-  maxHp = new_maxHP;
-  Hp = new_HP;
-  atk = new_Atk;
-  sAtk = new_sAtk;
-  def = new_Def;
-  sDef = new_sDef;
-  speed = new_speed;
-  lvl = new_lvl;
+    id = old.getId;
+    name = old.getName;
+    type = old.getType;
+    maxHp = old.getMaxHp;
+    Hp = old.getHp;
+    atk = old.getAtk;
+    sAtk = old.getSAtk;
+    def = old.getDef;
+    sDef = old.getSDef;
+    speed = old.getSpeed;
+    lvl = old.getLvl;
+    myAttacks = new Attack[2] ;
+    myAttacks [0]= old.getmyAttacks(0);
+    myAttacks [1]= old.getmyAttacks(1);
+
 }
 
 Pokemon:: ~Pokemon() {} // destructor
@@ -93,9 +96,9 @@ unsigned short int Pokemon:: getLvl ()const
     return lvl;
 }
 
-Attack Pokemon :: getMyAttacks (unsigned short int i)
+Attack* Pokemon :: getMyAttacks (unsigned short int i)
 {
-    return myAttacks[i];
+    return &myAttacks[i];
 }
 
 

@@ -2,13 +2,13 @@
 #define _ATTACK
 
 #include <string>
-using namespace std;
 
-// Faut-il associer les attaques à chaque Pokemon ?
+
+
 
 class Attack{
   protected:
-	string name;
+	std :: string name;
 	unsigned short int power;
   unsigned short int type;
 	unsigned short int pp;
@@ -23,7 +23,7 @@ class Attack{
   ///@brief destructor
   ~Attack();
   ///@brief accessor
-  string getName();
+  std :: string getName();
   ///@brief accessor : return the name
   unsigned short int getPower();
   ///@brief accessor : return the attack power
@@ -37,9 +37,10 @@ class Attack{
   ///@brief accessor
   unsigned short int getGainAtk();
 
-  void usePP();  ///@brief decrease pp after every attack
-
-  void resetPP(); ///@brief reset number of times an attack can be used
+  ///@brief decrease pp after every attack
+  void usePP();
+  ///@brief reset number of times an attack can be used
+  void resetPP(); 
 
 };
 

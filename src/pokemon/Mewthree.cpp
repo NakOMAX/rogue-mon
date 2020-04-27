@@ -23,7 +23,7 @@ Mewthree:: Mewthree () {
     sDef = 2;
     speed = 0;
     myattacks[0]= new First; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    //myattacks[1]= Second second // faire quand on aura une attaque en plus.
-}
+    myattacks[1]= Second second
+    }
 
 Mewthree:: ~Mewthree () {}

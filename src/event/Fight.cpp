@@ -27,7 +27,7 @@ Fight :: Fight (Player& newme, WildPok & newopposant)
 {
     me = &newme;
     opposant = &newopposant;
-    //box = std :: make_shared<DialogueBox>();
+    
 }
 
 Fight :: ~Fight () {}
@@ -35,7 +35,6 @@ Fight :: ~Fight () {}
 Pokemon* Fight :: choicePok (Pokemon* old)
 {
     SDL_Event event;
-    // box= std :: make_shared<DialogueBox>();
 
     (*box) << "Quel Pokemon voulez-vous utliser ? " ;
     SDL_WaitEvent(&event);
@@ -64,16 +63,16 @@ void Fight :: raid  (Pokemon* Pok)
     SDL_Event event;
        // (*box)= std :: make_shared<DialogueBox>();
 
-    (*box) << strcat("Quelle attaque voulez-vous effectuer ?  1 est ", Pok->getMyAttacks(0).getName().c_str()); // étendre avec un pour quand on aura plus d'attques
+    (*box) << strcat("Quelle attaque voulez-vous effectuer ?  1 est ", Pok->getMyAttacks(0)->getName().c_str()); // étendre avec un pour quand on aura plus d'attques
     SDL_WaitEvent(&event);
     switch(event.type)
     {
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
-                case 1 :  effectsatt(&(Pok->getMyAttacks(0)), Pok);break;
+                case 1 :  effectsattPlayer(Pok->getMyAttacks(0), Pok);break;
 
-                case 2 :  effectsatt(&(Pok->getMyAttacks(1)), Pok);break;
+                case 2 :  effectsattPlayer(Pok->getMyAttacks(1), Pok);break;
 
             }
         default : return raid(Pok); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
@@ -85,7 +84,7 @@ void Fight :: raid  (Pokemon* Pok)
 
 }
 
-void Fight :: effectsatt (Attack* att, Pokemon* Pok)
+void Fight :: effectsattPlayer (Attack* att, Pokemon* Pok)
 {
     opposant->setHp( opposant->getHp()- (att->getImpact()*(Pok->getAtk())-opposant->getDef()));
     Pok->defIncrease( att->getGainDefense() );
@@ -122,6 +121,21 @@ void Fight :: acitem(Pokemon* Pok) // à completer
     }
 
 
+}
+
+void Fight :: actionOpposant (Pokemon* defender)
+{
+    short int att;
+    att = rand()%2 - 1;
+    (*box) << strcat(strcat(opposant->getName().c_str(),"Effectue "), opposant->getMyAttacks(att)->getName().c_str());
+    effectsattopposant (opposant->getMyAttacks(att), defender);
+}
+
+void Fight :: effectsattopposant (Attack* att, Pokemon* defender)
+{
+    defender->setHp( defender->getHp()- (att->getImpact()*(opposant->getAtk())-defender->getDef()));
+    opposant->defIncrease( att->getGainDefense() );
+    opposant->atkIncrease( att->getGainAtk() );
 }
 
 /*
@@ -194,7 +208,7 @@ short int Fight::init(unsigned short int dimX, unsigned short int dimY, SDL_Rend
 short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
   bool hasFinished = false;
   SDL_Event evt;
-  std :: cout<<"Launched cinematic loop"<<endl; //debug
+  std :: cout<<"Launched cinematic loop"<< std :: endl; //debug
 
   do{
     //render bg
@@ -258,9 +272,9 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
                 }
             default: break;
         }
-        //Je sais pas si il faut mettre le tour de l'opposant ici
+        
     }
-    // ou si il faut le faire jouer ici
+    //Je pense que l'opposant doit jouer ici mais ca va poser probleme dans la boucle
     } while (!hasFinished);
     //end of event
     delete Pok;

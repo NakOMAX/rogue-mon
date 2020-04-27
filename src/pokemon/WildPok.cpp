@@ -9,8 +9,8 @@ using namespace std;
 
 
 
-WildPok:: WildPok () {
-
+WildPok:: WildPok ()
+{
     id = 013;
     maxHp = 100;
     Hp = 100;
@@ -23,7 +23,7 @@ WildPok:: WildPok () {
     sDef = 2;
     speed = 10;
     myattacks[0]= First first // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    //myattacks[1]= Second second // faire quand on aura une attaque en plus.
+    myattacks[1]= Second second 
 }
 
 WildPok:: ~WildPok () {}

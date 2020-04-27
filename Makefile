@@ -134,7 +134,7 @@ $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/
 	$(CC) $^ -o $@
 
 $(TARGET_DIR)/FightTest: $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 # Main objects
 $(OBJ_DIR)/eventTests.o: $(MAIN_DIR)/eventTests.cpp $(EVENT_DIR)/*.h

@@ -29,9 +29,7 @@ public:
     Pokemon();
 
     ///@brief class copy constructor
-    Pokemon(unsigned short int new_Id,std::string new_Name,unsigned short int new_Type,unsigned short int new_HP,
-            unsigned short int new_Atk,unsigned short int new_sAtk, unsigned short int new_Def,
-            unsigned short int new_sDef,unsigned short int new_speed, unsigned short int new_lvl);
+    Pokemon(const Pokemon& old);
 
     ///@brief class destructor
     ~Pokemon();
@@ -39,7 +37,7 @@ public:
     ///@brief accessor
     unsigned short int getId () const ;
     ///@brief accessor
-    std::string getName () const ;
+    std::string getName () ;
     ///@brief accessor
     unsigned short int getType() const ;
     ///@brief accessor
@@ -59,18 +57,21 @@ public:
     ///@brief accessor
     unsigned short int getLvl () const ;
     ///@brief accessor 
-    Attack getMyAttacks (unsigned short int i);
+    ///@param i {the number in the array of the attack you want}
+    Attack* getMyAttacks (unsigned short int i);
 
     ///@brief mutator
+    ///@param newHP {the new value of Hp}
     void setHp(unsigned short int newHP );
-     ///@brief mutator
+    ///@brief mutator
+    ///@param newLvl {the new value of lvl}
     void setLvl (unsigned short int newLvl );
 
     ///@brief addition atk with the param
-    ///@param newAtk is the value you need to add to atk
+    ///@param newAtk {the value you want to add to atk}
     void atkIncrease(unsigned short int newAtk );
     ///@brief addition def with the param
-    ///@param newDef is the value you need to add to def
+    ///@param newDef {the value you want to add to def}
     void defIncrease(unsigned short int newDef );
 
     bool pokIsDead();

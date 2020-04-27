@@ -10,14 +10,11 @@
 class Squirtle  : public Pokemon
 {
     public :
-    
-///@brief class constructor
-Squirtle ();
+        
+    ///@brief class constructor
+    Squirtle ();
 
-///@brief class destructor
-~Squirtle();
-
-
-
+    ///@brief class destructor
+    ~Squirtle();
 };
 #endif
