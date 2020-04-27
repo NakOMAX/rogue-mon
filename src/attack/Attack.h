@@ -9,11 +9,11 @@ using namespace std;
 class Attack{
   protected:
 	string name;
-	unsigned short int power; // je comprends pas cette valeur 
-  unsigned short int type;// 1 fait perdre des pdv, 2 fait gagner en def et att
-	unsigned short int pp;//nombre d'utilisation d'une attaque
+	unsigned short int power;
+  unsigned short int type;
+	unsigned short int pp;
 	unsigned short int maxPP;
-  unsigned short int gainAtk; 
+  unsigned short int gainAtk;
   unsigned short int gainDefense;
   unsigned short int impact;
 
@@ -24,22 +24,22 @@ class Attack{
   ~Attack();
   ///@brief accessor
   string getName();
-  ///@brief accessor
+  ///@brief accessor : return the name
   unsigned short int getPower();
-  ///@brief accessor
+  ///@brief accessor : return the attack power
   unsigned short int getType();
-  ///@brief accessor
+  ///@brief accessor : return the type of Pokemon
   unsigned short int getPP();
-  ///@brief accessor
+  ///@brief accessor : return the number of times 1 attack can be used
   unsigned short int getImpact();
   ///@brief accessor
   unsigned short int getGainDefense();
   ///@brief accessor
   unsigned short int getGainAtk();
 
-  void usePP();
+  void usePP();  ///@brief decrease pp after every attack
 
-  void resetPP();
+  void resetPP(); ///@brief reset number of times an attack can be used
 
 };
 
