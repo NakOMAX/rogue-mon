@@ -10,7 +10,6 @@
 using namespace std;
 
 
-
 WildPok:: WildPok ()
 {
     id = 013;
@@ -31,9 +30,9 @@ WildPok:: WildPok ()
 
 WildPok:: ~WildPok () {}
 
-bool WildPok :: wildIsDead()
+bool WildPok:: wildIsDead()
 {
-    bool dead ;
+    bool dead;
     dead = false;
     if (Hp==0){dead= true;}
     return dead;

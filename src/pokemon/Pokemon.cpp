@@ -12,7 +12,6 @@ using namespace std;
 
 Pokemon:: Pokemon()
 {
-    
     myAttacks = new Attack[2];
 }
 
@@ -39,7 +38,7 @@ Pokemon:: Pokemon()
 
 Pokemon:: ~Pokemon() {
     delete myAttacks;
-} 
+}
 
 unsigned short int Pokemon:: getId ()const
 {
@@ -82,9 +81,6 @@ unsigned short int Pokemon:: getDef ()const
     return def;
 }
 
-
-
-
 unsigned short int Pokemon:: getSDef ()const
 {
     return sDef;
@@ -105,18 +101,14 @@ Attack* Pokemon :: getMyAttacks (unsigned short int i)
     return &myAttacks[i];
 }
 
-
-
 void Pokemon:: setHp (unsigned short int newHP)
 {
     Hp = newHP;
-
 }
 
 void Pokemon:: setLvl (unsigned short int newLvl)
 {
     lvl = newLvl;
-
 }
 
 void Pokemon:: atkIncrease (unsigned short int newAtk)
