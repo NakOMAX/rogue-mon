@@ -22,14 +22,14 @@ protected:
     unsigned short int sDef;
     unsigned short int speed;
     unsigned short int lvl;
-    Attack *myAttacks[2];
+    Attack *myAttacks;
 
 public:
     ///@brief class constructor
     Pokemon();
 
     ///@brief class copy constructor
-    Pokemon(const Pokemon& old);
+    //Pokemon(const Pokemon& old);
 
     ///@brief class destructor
     ~Pokemon();

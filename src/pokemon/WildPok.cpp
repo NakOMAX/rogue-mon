@@ -22,8 +22,8 @@ WildPok:: WildPok ()
     def = 10 ;
     sDef = 2;
     speed = 10;
-    myattacks[0]= First first // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    myattacks[1]= Second second 
+    myAttacks[0]= new Attack; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
+    myAttacks[1]= new Attack;
 }
 
 WildPok:: ~WildPok () {}

@@ -1,6 +1,6 @@
 #include "Pokemon.h"
 #include "Bulbasaur.h"
-#include "attack.h"
+#include "Attack.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -23,8 +23,8 @@ Bulbasaur:: Bulbasaur () {
     def = 10 ;
     sDef = 2;
     speed = rand()%10-1;
-    myattacks[0]= new First; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    myattacks[1]= Second second 
+    myAttacks[0]= First; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
+    myAttacks[1]= Second;
 }
 
 Bulbasaur:: ~Bulbasaur () {}

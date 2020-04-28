@@ -1,5 +1,6 @@
 #include "Pokemon.h"
 #include <iostream>
+#include "Attack.h"
 //#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -11,11 +12,11 @@ using namespace std;
 
 Pokemon:: Pokemon()
 {
-    myAttacks = new Attack[2] ;
+    myAttacks = new Attack[2];
 }
 
 // constructeur par copie
-Pokemon::Pokemon(const Pokemon& old)
+/*Pokemon::Pokemon(const Pokemon& old)
 
 {
     id = old.getId;
@@ -30,19 +31,21 @@ Pokemon::Pokemon(const Pokemon& old)
     speed = old.getSpeed;
     lvl = old.getLvl;
     myAttacks = new Attack[2] ;
-    myAttacks [0]= old.getmyAttacks(0);
-    myAttacks [1]= old.getmyAttacks(1);
+    myAttacks [0]= old.getMyAttacks(0);
+    myAttacks [1]= old.getMyAttacks(1);
 
-}
+}*/
 
-Pokemon:: ~Pokemon() {} // destructor
+Pokemon:: ~Pokemon() {
+    delete myAttacks;
+} 
 
 unsigned short int Pokemon:: getId ()const
 {
     return id;
 }
 
-string Pokemon:: getName ()const
+string Pokemon:: getName ()
 {
     return name;
 
@@ -98,7 +101,7 @@ unsigned short int Pokemon:: getLvl ()const
 
 Attack* Pokemon :: getMyAttacks (unsigned short int i)
 {
-    return &myAttacks[i];
+    return myAttacks[i];
 }
 
 
@@ -131,7 +134,7 @@ bool Pokemon :: pokIsDead()
 {
     if (Hp == 0)
     {
-        delete *this;
+        delete this;
         return true;
     }
     else {return false;}

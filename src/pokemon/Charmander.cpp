@@ -21,8 +21,8 @@ Charmander  :: Charmander  () {
     def = 10 ;
     sDef = 2;
     speed = rand()%10-1;
-    myattacks[0]= new First; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    myattacks[1]= Second second 
+    myAttacks[0]= new Attack; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
+    myAttacks[1]= new Attack;
 }
 
 Charmander  :: ~Charmander  () {}
