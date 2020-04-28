@@ -105,15 +105,15 @@ void Fight :: acitem (Pokemon* Pok) // à completer
             {
                 case 1:   (me->getItem(0))->actionItem(Pok);break;
 
-                case 2 :if (1<me->getNbItem())   me->actionItem(me->getItem(1),Pok);break;
+                case 2 :if (1<me->getNbItem())   (me->getItem(1))->actionItem(Pok);break;
 
-                case 3 :if (2<me->getNbItem())   me->actionItem(me->getItem(2),Pok); break;
+                case 3 :if (2<me->getNbItem())   (me->getItem(2))->actionItem(Pok); break;
 
-                case 4 :if (3<me->getNbItem())   me->actionItem(me->getItem(3),Pok); break;
+                case 4 :if (3<me->getNbItem())   (me->getItem(3))->actionItem(Pok); break;
 
-                case 5 :if (4<me->getNbItem())   me->actionItem(me->getItem(4),Pok); break;
+                case 5 :if (4<me->getNbItem())   (me->getItem(4))->actionItem(Pok); break;
 
-                case 6 :if (5<me->getNbItem())   me->actionItem(me->getItem(5), Pok); break;
+                case 6 :if (5<me->getNbItem())   (me->getItem(5))->actionItem(Pok); break;
             }
         default :  acitem(Pok);
         //Faut-il faire d'autre cas ?

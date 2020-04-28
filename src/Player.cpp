@@ -105,15 +105,4 @@ bool Player :: playerIsDead ()
   else {return false;}
 }
 
-/*Item :: useItem(){//cet intitulé est bizarre
-    amount--;
-}*/
 
-void Player :: actionItem(Item* it, Pokemon* Pok)
-{
-  nbItem--;
-  if( nbItem<=0)
-  {
-
-  }
-}
