@@ -27,3 +27,11 @@ string Item::getName()
 {
     return name;
 }
+
+void Item :: operator= (Item copy)
+{
+  name=copy.name ;
+  amount = copy.amount;
+  id = copy.id;
+
+}

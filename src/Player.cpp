@@ -17,20 +17,15 @@ Player:: Player(){ // je sais pas comment le faire en sdl :/
   setPokemon();
 }
 
-Player:: ~Player(){
-  delete myPokemon[];
-  myPokemon[] = NULL;
-  delete myItem[];
-  myItem[] = NULL;
-}
+Player:: ~Player(){}
 
 
-string getUserName(){
+string Player:: getUserName(){
   return name;
 }
 
 Pokemon* Player :: getPokemon(unsigned short int i){
-  return myPokemon[i];
+  return &myPokemon[i];
 }
 
 
@@ -48,32 +43,35 @@ unsigned short int Player :: getNbItem() {
 }
 
 void Player::setPokemon(){
-  myPokemon[0] = new Bulbasaur;
-  myPokemon[1] = new Charmander;
-  myPokemon[2] = new Bulbasaur;
-  nbPokemon++;
+  Bulbasaur Bulbasaur;
+  Charmander Charmander;
+  myPokemon[0] = Bulbasaur;
+  myPokemon[1] = Charmander;
+  nbPokemon = 2;
 }
 
-void Player::addPokemon(Pokemon* newPokemon){
+void Player::addPokemon(Pokemon newPokemon){
   if (nbPokemon < 6){
-  myPokemon[nbPokemon] = new Pokemon;
+  myPokemon[nbPokemon] = newPokemon;
   nbPokemon++;
   }
 }
 
-void Player::addItem(Item* newItem){
+void Player::addItem(Item newItem){
   nbItem++;
   myItem[nbItem] = newItem;
 }
 
 void Player::deletePokemon(unsigned short int i){
-    delete myPokemon[i];
-    myPokemon[i] = NULL;
+    *myPokemon =myPokemon[i];
+    delete myPokemon;
+    myPokemon = NULL;
 }
 
 void Player::deleteItem(unsigned short int i){
-    delete myItem[i];
-    myItem[i] = NULL;
+    *myItem = myItem[i];
+    delete myItem;
+    myItem = NULL;
 }
 
 /*short int Player::isDie(){
@@ -107,24 +105,14 @@ bool Player :: playerIsdead ()
   else {return false;}
 }
 
-
 /*Item :: useItem(){//cet intitulé est bizarre
     amount--;
 }*/
-
-void Item :: action (Pokemon* Pok)
+void Player :: action (Pokemon* Pok)
 {
-  amount--;
-  if( amount<=0)
+  nbItem--;
+  if( nbItem<=0)
   {
 
   }
-}
-
-void Item :: operator= (Item copy)
-{
-  name=copy.name ;
-  amount = copy.amount;
-  id = copy.id;
-
 }
