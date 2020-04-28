@@ -3,9 +3,6 @@
 
 #include <string>
 
-
-
-
 class Attack{
   protected:
 	std :: string name;
@@ -40,7 +37,7 @@ class Attack{
   ///@brief decrease pp after every attack
   void usePP();
   ///@brief reset number of times an attack can be used
-  void resetPP(); 
+  void resetPP();
   ///@brief operator =
   void operator=(Attack atk);
 

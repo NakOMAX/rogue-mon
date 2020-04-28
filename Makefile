@@ -108,7 +108,7 @@ _pokemon_run: $(OBJ_DIR)/Bulbasaur.o $(OBJ_DIR)/Charmander.o $(OBJ_DIR)/Mewthree
 
 _event_sdl_run: $(TARGET_DIR)/eventTestSDL
 
-_attack_run : $(OBJ_DIR)/Attack.o $(OBJ_DIR)/First.o
+_attack_run : $(OBJ_DIR)/Attack.o $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
 
 _fight_run : $(OBJ_DIR)/Fight.o
 
@@ -189,7 +189,10 @@ $(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h
 $(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
 
-$(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h 
+$(OBJ_DIR)/Second.o: $(ATTACK_DIR)/Second.cpp $(ATTACK_DIR)/Second.h $(ATTACK_DIR)/attack.h
+	$(CC) -c $< -o $@
+
+$(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Squirtle.h
@@ -202,7 +205,4 @@ $(OBJ_DIR)/sdlTools.o: $(SRC_DIR)/sdlTools.cpp $(SRC_DIR)/sdlTools.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 #$(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/attack.h
-#	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
-
-#$(OBJ_DIR)/Second.o:$(ATTACK_DIR)/Second.cpp $(ATTACK_DIR)/Second.h $(ATTACK_DIR)/attack.h
 #	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
