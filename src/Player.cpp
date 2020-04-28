@@ -17,23 +17,10 @@ Player:: Player(){ // je sais pas comment le faire en sdl :/
   setPokemon();
 }
 
-<<<<<<< HEAD
-Player:: ~Player()
-{
-  delete myPokemon[];
-  myPokemon[] = NULL;
-  delete myItem[];
-  myItem[] = NULL;
-}
-
-
-string Player :: getUserName(){
-=======
 Player:: ~Player(){}
 
 
 string Player:: getUserName(){
->>>>>>> e1abd7de331932d09740ae7c28c126076e66bc9d
   return name;
 }
 
@@ -102,9 +89,9 @@ void Player::deleteItem(unsigned short int i){
   return 1;
 }*/
 
-bool Player :: pokIsdead(Pokemon* Pok)
+bool Player :: pokIsDead(Pokemon* Pok)
 {
-  if ( Pokemon:: pok.pokIsdead())
+  if (Pok->pokIsDead())
   {
     nbPokemon--;
     return true;
@@ -112,7 +99,7 @@ bool Player :: pokIsdead(Pokemon* Pok)
   else {return false;}
 }
 
-bool Player :: playerIsdead ()
+bool Player :: playerIsDead ()
 {
   if (nbPokemon==0)  {return true;}
   else {return false;}
@@ -121,19 +108,11 @@ bool Player :: playerIsdead ()
 /*Item :: useItem(){//cet intitulé est bizarre
     amount--;
 }*/
-<<<<<<< HEAD
 
-void Player :: actionItem (Item* it,Pokemon* Pok)
-{
-  
-  amount--;
-  if( amount<=0)
-=======
-void Player :: action (Pokemon* Pok)
+void Player :: actionItem(Item* it, Pokemon* Pok)
 {
   nbItem--;
   if( nbItem<=0)
->>>>>>> e1abd7de331932d09740ae7c28c126076e66bc9d
   {
 
   }

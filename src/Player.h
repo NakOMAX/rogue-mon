@@ -3,18 +3,11 @@
 #include "Pokemon.h"
 #include "Item.h"
 #include <string>
-<<<<<<< HEAD
-class Player{
-
-  protected:
-  std:: string name;
-=======
 
 class Player{
 
   protected:
   std::string name;
->>>>>>> e1abd7de331932d09740ae7c28c126076e66bc9d
   Pokemon *myPokemon;
   Item *myItem;
   unsigned short int nbPokemon;
@@ -46,7 +39,7 @@ class Player{
   ///@brief check if the player is dead
   bool playerIsDead();
   ///@brief action of an item
-  void actionitem(Item* it, Pokemon* Pok);
+  void actionItem(Item* it, Pokemon* Pok);
 
 };
 #endif
