@@ -8,6 +8,7 @@ class First : public Attack{
 
     public : 
 
+    First ();
     std :: string getName();
 };
 
