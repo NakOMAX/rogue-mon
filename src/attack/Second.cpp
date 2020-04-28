@@ -11,8 +11,11 @@ Second :: Second()
     type = 2;
     power = 1;
     pp= 9;
-    max=9;
-    gainatk=7; 
-    gaindefense=11;
+    maxPP=9;
+    gainAtk=7;
+    gainDefense=11;
     impact=0;
 }
+
+string Second :: getName ()
+{return name;}
