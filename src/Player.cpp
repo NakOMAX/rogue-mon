@@ -17,7 +17,8 @@ Player:: Player(){ // je sais pas comment le faire en sdl :/
   setPokemon();
 }
 
-Player:: ~Player(){
+Player:: ~Player()
+{
   delete myPokemon[];
   myPokemon[] = NULL;
   delete myItem[];
@@ -25,7 +26,7 @@ Player:: ~Player(){
 }
 
 
-string getUserName(){
+string Player :: getUserName(){
   return name;
 }
 
@@ -51,7 +52,7 @@ void Player::setPokemon(){
   myPokemon[0] = new Bulbasaur;
   myPokemon[1] = new Charmander;
   myPokemon[2] = new Bulbasaur;
-  nbPokemon++;
+  nbPokemon++; //
 }
 
 void Player::addPokemon(Pokemon* newPokemon){
@@ -112,8 +113,9 @@ bool Player :: playerIsdead ()
     amount--;
 }*/
 
-void Item :: action (Pokemon* Pok)
+void Player :: actionItem (Item* it,Pokemon* Pok)
 {
+  
   amount--;
   if( amount<=0)
   {

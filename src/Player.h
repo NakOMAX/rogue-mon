@@ -4,11 +4,10 @@
 #include "Item.h"
 
 #include <string>
-using namespace std;
 class Player{
 
   protected:
-  string name;
+  std:: string name;
   Pokemon *myPokemon;
   Item *myItem;
   unsigned short int nbPokemon;
@@ -16,9 +15,9 @@ class Player{
 
   public:
 
-  Player(){};
+  Player();
 
-  ~Player(){};
+  ~Player();
 
 	std::string getUserName();   ///@brief accessor
   Pokemon getPokemon(unsigned short int id);   ///@brief accessor
@@ -42,7 +41,7 @@ class Player{
   ///@brief check if the player is dead
   bool playerIsDead ();
   ///@brief action of an item
-  void action(Pokemon* Pok);
+  void actionitem(Item* it, Pokemon* Pok);
 
   void operator= (Item copy);
 };

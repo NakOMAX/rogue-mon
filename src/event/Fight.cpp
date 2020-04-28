@@ -91,11 +91,10 @@ void Fight :: effectsattPlayer (Attack* att, Pokemon* Pok)
     Pok->atkIncrease( att->getGainAtk() );
 }
 
-void Fight :: acitem(Pokemon* Pok) // à completer
+void Fight :: acitem (Pokemon* Pok) // à completer
 {
     if (me->getNbItem() == 0) return;
     SDL_Event event;
-    // (*box)= std :: make_shared<DialogueBox>();
 
     (*box) << "Quel objet vous-vous utiliser ? " ;
     SDL_WaitEvent(&event);
@@ -104,17 +103,17 @@ void Fight :: acitem(Pokemon* Pok) // à completer
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
-                case 1:   (me->getItem(0))->action(Pok);break;
+                case 1:   (me->getItem(0))->actionitem(Pok);break;
 
-                case 2 :if (1<me->getNbItem())   (me->getItem(1))->action(Pok);break;
+                case 2 :if (1<me->getNbItem())   me->actionitem(me->getItem(1),Pok);break;
 
-                case 3 :if (2<me->getNbItem())   (me->getItem(2))->action(Pok); break;
+                case 3 :if (2<me->getNbItem())   me->actionitem(me->getItem(2),Pok); break;
 
-                case 4 :if (3<me->getNbItem())   (me->getItem(3))->action(Pok); break;
+                case 4 :if (3<me->getNbItem())   me->actionitem(me->getItem(3),Pok); break;
 
-                case 5 :if (4<me->getNbItem())   (me->getItem(4))->action(Pok); break;
+                case 5 :if (4<me->getNbItem())   me->actionitem(me->getItem(4),Pok); break;
 
-                case 6 :if (5<me->getNbItem())   (me->getItem(5))->action(Pok); break;
+                case 6 :if (5<me->getNbItem())   me->actionitem(me->getItem(5), Pok); break;
             }
         default :  acitem(Pok);
         //Faut-il faire d'autre cas ?
