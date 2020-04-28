@@ -199,7 +199,7 @@ $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Po
 	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h $(EVENT_DIR)/Component.h
-	$(CC) -c $(INC_SRC) $(INCLUDE_FLAGS)-c $< -o $@
+	$(CC) -c $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/sdlTools.o: $(SRC_DIR)/sdlTools.cpp $(SRC_DIR)/sdlTools.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@

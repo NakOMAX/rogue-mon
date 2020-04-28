@@ -23,11 +23,11 @@
 
 
 
-Fight :: Fight (Player& newme, WildPok & newopposant)
+Fight :: Fight (Player * newme, WildPok * newopposant)
 {
-    me = &newme;
-    opposant = &newopposant;
-    
+    me = newme;
+    opposant = newopposant;
+
 }
 
 Fight :: ~Fight () {}
@@ -35,53 +35,56 @@ Fight :: ~Fight () {}
 Pokemon* Fight :: choicePok (Pokemon* old)
 {
     SDL_Event event;
-
-    (*box) << "Quel Pokemon voulez-vous utliser ? " ;
-    SDL_WaitEvent(&event);
-    switch(event.type)
-    {
-        case SDL_KEYDOWN:
-            switch (event.key.keysym.sym)
-            {
-                case 1: if (old!= me->getPokemon(0)) return me->getPokemon(0);
-
-                case 2 :if ((1<me->getNbPokemon()) && (old!= me->getPokemon(1))) return me->getPokemon(1);
-
-                case 3 :if ((2<me->getNbPokemon()) && (old!= me->getPokemon(2))) return me->getPokemon(2);
-                case 4 :if ((3<me->getNbPokemon()) && (old!= me->getPokemon(3))) return me->getPokemon(3);
-                case 5 :if ((4<me->getNbPokemon()) && (old!= me->getPokemon(4))) return me->getPokemon(4);
-                case 6 :if ((5<me->getNbPokemon()) && (old!= me->getPokemon(5))) return me->getPokemon(5);
-            }
-        default : return choicePok (old); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
-        //Faut-il faire d'autre cas ?
-    }
-
+    bool ok = false;
+    do{
+      *box << "Quel Pokemon voulez-vous utliser ? " ;
+      SDL_WaitEvent(&event);
+      if (event.type == SDL_KEYDOWN)
+      {
+        // Number is within range?
+        if (event.key.keysym.sym > 0 && event.key.keysym.sym <= me->getNbPokemon())
+        {
+          // Number is the pokemon that was already fighting?
+          if (old == me->getPokemon(event.key.keysym.sym-1))
+          {
+            *box << "Ce pokemon est déjà sur le champ";
+            SDL_WaitEvent(&event);
+          } else {
+            // Selected pokemon is ok and can be returned
+            return me->getPokemon(event.key.keysym.sym-1);
+          }
+        } else {
+          *box << "Numèro de pokemon invalide";
+          SDL_WaitEvent(&event);
+        }
+      }
+    }while(!ok);
+    return old;
 }
 
 void Fight :: raid  (Pokemon* Pok)
 {
-    SDL_Event event;
-       // (*box)= std :: make_shared<DialogueBox>();
+  SDL_Event event;
+     // (*box)= std :: make_shared<DialogueBox>();
+  bool ok = false;
+  do {
+    std::string text = "Quelle attaque voulez-vous effectuer ?  1 est " + Pok->getMyAttacks(0)->getName();
+    *box << text.c_str(); // étendre avec un pour quand on aura plus d'attques
 
-    (*box) << strcat("Quelle attaque voulez-vous effectuer ?  1 est ", Pok->getMyAttacks(0)->getName().c_str()); // étendre avec un pour quand on aura plus d'attques
     SDL_WaitEvent(&event);
-    switch(event.type)
+    if(event.type == SDL_KEYDOWN)
     {
-        case SDL_KEYDOWN:
-            switch (event.key.keysym.sym)
-            {
-                case 1 :  effectsattPlayer(Pok->getMyAttacks(0), Pok);break;
-
-                case 2 :  effectsattPlayer(Pok->getMyAttacks(1), Pok);break;
-
-            }
-        default : return raid(Pok); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
-        //Faut-il faire d'autre cas ?
-
+      // Number is within range?
+      /* pensez à implementer une fonction pour récuperer le nombre d'attaques*/
+      if (event.key.keysym.sym > 0 && event.key.keysym.sym <= 1)
+      {
+        effectsattPlayer(Pok->getMyAttacks(event.key.keysym.sym), Pok);
+      } else {
+        *box << "Numèro d'attaque invalide";
+        SDL_WaitEvent(&event);
+      }
     }
-
-
-
+  } while (!ok);
 }
 
 void Fight :: effectsattPlayer (Attack* att, Pokemon* Pok)
@@ -93,41 +96,36 @@ void Fight :: effectsattPlayer (Attack* att, Pokemon* Pok)
 
 void Fight :: acitem(Pokemon* Pok) // à completer
 {
-    if (me->getNbItem() == 0) return;
-    SDL_Event event;
-    // (*box)= std :: make_shared<DialogueBox>();
+  // C'est mieux d'éviter d'appeller cette fonction s'il n'y a plus d'items
+  //if (me->getNbItem() == 0) return;
+  // (*box)= std :: make_shared<DialogueBox>();
 
-    (*box) << "Quel objet vous-vous utiliser ? " ;
+  SDL_Event event;
+  bool ok = false;
+  do {
+    *box << "Quel objet vous-vous utiliser ? " ;
+
     SDL_WaitEvent(&event);
-    switch(event.type)
+    if(event.type == SDL_KEYDOWN)
     {
-        case SDL_KEYDOWN:
-            switch (event.key.keysym.sym)
-            {
-                case 1:   (me->getItem(0))->action(Pok);break;
-
-                case 2 :if (1<me->getNbItem())   (me->getItem(1))->action(Pok);break;
-
-                case 3 :if (2<me->getNbItem())   (me->getItem(2))->action(Pok); break;
-
-                case 4 :if (3<me->getNbItem())   (me->getItem(3))->action(Pok); break;
-
-                case 5 :if (4<me->getNbItem())   (me->getItem(4))->action(Pok); break;
-
-                case 6 :if (5<me->getNbItem())   (me->getItem(5))->action(Pok); break;
-            }
-        default :  acitem(Pok);
-        //Faut-il faire d'autre cas ?
+      // Number is within range?
+      if (event.key.keysym.sym > 0 && event.key.keysym.sym <= me->getNbItem())
+      {
+        me->getItem(event.key.keysym.sym)->actionItem(Pok);
+      } else {
+        *box << "Numèro d'attaque invalide";
+        SDL_WaitEvent(&event);
+      }
     }
-
-
+  } while (!ok);
 }
 
 void Fight :: actionOpposant (Pokemon* defender)
 {
-    short int att;
-    att = rand()%2 - 1;
-    (*box) << strcat(strcat(opposant->getName().c_str(),"Effectue "), opposant->getMyAttacks(att)->getName().c_str());
+    /*pensez à implementer une fonction pour recuperer le nombre d'attaques d'un pokemon */
+    short int att = rand()%1;
+    std::string text = opposant->getName() + " enemi effectue " + opposant->getMyAttacks(att)->getName();
+    *box << text.c_str();
     effectsattopposant (opposant->getMyAttacks(att), defender);
 }
 
@@ -238,15 +236,17 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
     }
 
 
-    if(me->pokIsDead())
+    if(Pok->pokIsDead())
     {
         (*box)<<"Votre Pokémon n'a plus de point de vie";
+
+
         if (me->playerIsDead())
         {
             (*box)<<"Vous avez perdu";
             hasFinished = true;
         }
-        else choicePok(Pok);
+        else Pok = choicePok(Pok);
     }
 
 
@@ -264,19 +264,25 @@ short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
             case SDL_KEYDOWN:
                 switch (evt.key.keysym.sym)
                 {
-                    case SDLK_x : raid(Pok); break;
+                case SDLK_x :
+                  raid(Pok);
+                  // Enemy's turn
+                  break;
 
-                    case SDLK_c : acitem(Pok); break;
+                case SDLK_c :
+                  acitem(Pok);
+                  // Enemy's turn
+                  break;
 
-                    case SDLK_s : choicePok(Pok); break;
+                case SDLK_s :
+                  choicePok(Pok);
+                  // Enemy's turn
+                  break;
                 }
             default: break;
         }
-        
+
     }
-    //Je pense que l'opposant doit jouer ici mais ca va poser probleme dans la boucle
     } while (!hasFinished);
-    //end of event
-    delete Pok;
     return 0;
 }
