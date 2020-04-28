@@ -25,5 +25,7 @@ public :
     std :: string getName ();
     ///@brief accessor
     void operator= (Item copy);
+    ///@brief action of an item
+    void actionItem(Pokemon*);
 };
 #endif
