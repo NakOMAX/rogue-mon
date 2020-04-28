@@ -165,22 +165,22 @@ $(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h $(EVENT_DIR)/Com
 $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
-$(OBJ_DIR)/Pokemon.o: $(POKEMON_DIR)/Pokemon.cpp $(POKEMON_DIR)/Pokemon.h $(ATTACK_DIR)/Attack.o
+$(OBJ_DIR)/Pokemon.o: $(POKEMON_DIR)/Pokemon.cpp $(POKEMON_DIR)/Pokemon.h $(Obj_DIR)/Attack.o
 	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Charmander.o: $(POKEMON_DIR)/Charmander.cpp $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Pokemon.h
 	$(CC) $(INC_SRC) -c $< -o $@
 
-$(OBJ_DIR)/Bulbasaur.o: $(POKEMON_DIR)/Bulbasaur.cpp $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Bulbasaur.o: $(POKEMON_DIR)/Bulbasaur.cpp $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Pokemon.h $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
 	$(CC) $(INC_SRC) -c $< -o $@
 
-$(OBJ_DIR)/Squirtle.o: $(POKEMON_DIR)/Squirtle.cpp $(POKEMON_DIR)/Squirtle.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Squirtle.o: $(POKEMON_DIR)/Squirtle.cpp $(POKEMON_DIR)/Squirtle.h $(POKEMON_DIR)/Pokemon.h $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
 	$(CC) $(INC_SRC) -c $< -o $@
 
-$(OBJ_DIR)/Mewthree.o: $(POKEMON_DIR)/Mewthree.cpp $(POKEMON_DIR)/Mewthree.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Mewthree.o: $(POKEMON_DIR)/Mewthree.cpp $(POKEMON_DIR)/Mewthree.h $(POKEMON_DIR)/Pokemon.h $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
 	$(CC) $(INC_SRC) -c $< -o $@
 
-$(OBJ_DIR)/WildPok.o: $(POKEMON_DIR)/WildPok.cpp $(POKEMON_DIR)/WildPok.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/WildPok.o: $(POKEMON_DIR)/WildPok.cpp $(POKEMON_DIR)/WildPok.h $(POKEMON_DIR)/Pokemon.h $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
 	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h
@@ -193,10 +193,16 @@ $(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h $(POKEMON_DIR)/Pokemo
 	$(CC) -c $< -o $@
 
 $(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h
-	$(CC) $(INC_SRC) -c $< -o $@
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h $(EVENT_DIR)/Component.h
-	$(CC) -c $(INC_SRC) $(INCLUDE_FLAGS) $< -o $@
+	$(CC) -c $(INC_SRC) $(INCLUDE_FLAGS)-c $< -o $@
 
 $(OBJ_DIR)/sdlTools.o: $(SRC_DIR)/sdlTools.cpp $(SRC_DIR)/sdlTools.h
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
+
+$(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/attack.h
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
+
+$(OBJ_DIR)/Second.o:$(ATTACK_DIR)/Second.cpp $(ATTACK_DIR)/Second.h $(ATTACK_DIR)/attack.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@

@@ -1,5 +1,5 @@
-#ifndef _SQUIRTLE
-#define _SQUIRTLE
+#ifndef _SQUIRTLE_H
+#define _SQUIRTLE_H
 
 #include <string>
 #include "Pokemon.h"

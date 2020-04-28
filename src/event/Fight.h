@@ -1,6 +1,6 @@
 ///@file Fight header file 
-#ifndef _Fight
-#define _Fight
+#ifndef _FIGHT_H
+#define _FIGHT_H
 
 #include "Player.h"
 #include "Pokemon.h"

@@ -1,5 +1,5 @@
-#ifndef _ATTACK
-#define _ATTACK
+#ifndef _ATTACK_H
+#define _ATTACK_H
 
 #include <string>
 
@@ -41,6 +41,8 @@ class Attack{
   void usePP();
   ///@brief reset number of times an attack can be used
   void resetPP(); 
+  ///@brief operator =
+  void operator=(Attack atk);
 
 };
 

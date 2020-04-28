@@ -30,3 +30,14 @@ void Attack :: usePP(){
 void Attack :: resetPP(){
   pp = maxPP;
 }
+
+void Attack::operator=(Attack atk)
+{
+  power=atk.power;
+  type = atk.type;
+  pp= atk.pp;
+  maxPP= atk.maxPP;
+  gainAtk = atk.gainAtk;
+  gainDefense = atk.gainDefense;
+  impact = atk.impact;
+}

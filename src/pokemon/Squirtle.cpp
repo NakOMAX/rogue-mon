@@ -1,5 +1,7 @@
 #include "Pokemon.h"
 #include "Squirtle.h"
+#include "First.h"
+#include "Second.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -22,8 +24,10 @@ Squirtle  :: Squirtle  ()
     def = 10 ;
     sDef = 2;
     speed = rand()%10-1;
-    myAttacks[0]= new Attack; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    myAttacks[1]= new Attack; 
+    First first;
+    Second second;
+    myAttacks[0]= first; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
+    myAttacks[1]= second;
 }
 
 Squirtle  :: ~Squirtle  () {}

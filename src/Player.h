@@ -1,5 +1,5 @@
-#ifndef _PLAYER
-#define _PLAYER
+#ifndef _PLAYER_H
+#define _PLAYER_H
 #include "Pokemon.h"
 #include "Item.h"
 
@@ -38,7 +38,7 @@ class Player{
 	//unsigned short int isDie();
 
   ///@brief check if a pokemon is dead
-  bool pokIsDead ();
+  bool pokIsDead (Pokemon* Pok);
   ///@brief check if the player is dead
   bool playerIsDead ();
 };

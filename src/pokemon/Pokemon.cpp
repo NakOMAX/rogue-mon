@@ -12,6 +12,7 @@ using namespace std;
 
 Pokemon:: Pokemon()
 {
+    
     myAttacks = new Attack[2];
 }
 

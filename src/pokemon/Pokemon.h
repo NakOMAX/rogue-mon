@@ -1,5 +1,5 @@
-#ifndef _POKEMON
-#define _POKEMON
+#ifndef _POKEMON_H
+#define _POKEMON_H
 
 #include <string>
 #include "Attack.h"
