@@ -102,7 +102,7 @@ unsigned short int Pokemon:: getLvl ()const
 
 Attack* Pokemon :: getMyAttacks (unsigned short int i)
 {
-    return myAttacks[i];
+    return &myAttacks[i];
 }
 
 
