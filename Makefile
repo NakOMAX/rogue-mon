@@ -189,11 +189,11 @@ $(OBJ_DIR)/Attack.o: $(ATTACK_DIR)/Attack.cpp $(ATTACK_DIR)/Attack.h
 $(OBJ_DIR)/First.o: $(ATTACK_DIR)/First.cpp $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Attack.h
 	$(CC) -c $< -o $@
 
-$(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Item.o: $(ITEM_DIR)/Item.cpp $(ITEM_DIR)/Item.h 
 	$(CC) -c $< -o $@
 
-$(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h
-	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
+$(OBJ_DIR)/Player.o: $(SRC_DIR)/Player.cpp $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(ITEM_DIR)/Item.h $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Squirtle.h
+	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Fight.o: $(EVENT_DIR)/Fight.cpp $(EVENT_DIR)/Fight.h $(ATTACK_DIR)/Attack.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/WildPok.h $(ITEM_DIR)/Item.h $(EVENT_DIR)/Component.h
 	$(CC) -c $(INC_SRC) $(INCLUDE_FLAGS)-c $< -o $@

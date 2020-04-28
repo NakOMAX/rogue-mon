@@ -1,15 +1,14 @@
-#ifndef _Item
-#define _Item
-
+#ifndef ITEM_H
+#define ITEM_H
 #include <string>
-#include "Pokemon.h"
+using namespace std;
 class Item
 {
 protected :
 
-    std ::string name ;
+    string name ;
     unsigned short int amount;
-    unsigned int id;
+    unsigned short int id;
 
 public :
 
@@ -25,12 +24,5 @@ public :
     ///@brief accessor
     std :: string getName ();
     ///@brief accessor
-    unsigned short int getAmount();
-    /**@brief The fonction use the caracteristic of the item*/
-   /* Item useItem(unsigned short int amount, unsigned unsigned int id);*/
-    ///@brief action of an item
-    void action(Pokemon* Pok);
-
-    void operator= (Item copy);
 };
 #endif

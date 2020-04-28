@@ -1,11 +1,13 @@
 #include "Player.h"
 #include "Pokemon.h"
+#include "Bulbasaur.h"
+#include "Charmander.h"
+#include "Squirtle.h"
 #include "Item.h"
 #include <iostream>
 using namespace std;
 
-
-Player :: Player(){ // je sais pas comment le faire en sdl :/
+Player:: Player(){ // je sais pas comment le faire en sdl :/
   cout << "Enter your name: "<<endl;
   cin >> name;
   myPokemon = new Pokemon[6];
@@ -15,7 +17,7 @@ Player :: Player(){ // je sais pas comment le faire en sdl :/
   setPokemon();
 }
 
-Player :: ~Player(){
+Player:: ~Player(){
   delete myPokemon[];
   myPokemon[] = NULL;
   delete myItem[];
@@ -30,12 +32,14 @@ string getUserName(){
 Pokemon* Player :: getPokemon(unsigned short int i){
   return myPokemon[i];
 }
+
+
 unsigned short int Player :: getNbPokemon()
 {
   return nbPokemon;
 }
 
-Item* Player :: getItem(unsigned short int i){
+Item Player :: getItem(unsigned short int i){
   return myItem[i];
 }
 
@@ -43,24 +47,23 @@ unsigned short int Player :: getNbItem() {
   return nbItem;
 }
 
-
 void Player::setPokemon(){
   myPokemon[0] = new Bulbasaur;
   myPokemon[1] = new Charmander;
-  myPokemon[2] = new Charmander;
-  nbPokemon = 3;
+  myPokemon[2] = new Bulbasaur;
+  nbPokemon++;
 }
 
 void Player::addPokemon(Pokemon* newPokemon){
   if (nbPokemon < 6){
-  myPokemon[nbPokemon] = newPokemon;
+  myPokemon[nbPokemon] = new Pokemon;
   nbPokemon++;
   }
 }
 
 void Player::addItem(Item* newItem){
-  myItem[i] = newItem;
   nbItem++;
+  myItem[nbItem] = newItem;
 }
 
 void Player::deletePokemon(unsigned short int i){
@@ -102,4 +105,26 @@ bool Player :: playerIsdead ()
 {
   if (nbPokemon==0)  {return true;}
   else {return false;}
+}
+
+
+/*Item :: useItem(){//cet intitulé est bizarre
+    amount--;
+}*/
+
+void Item :: action (Pokemon* Pok)
+{
+  amount--;
+  if( amount<=0)
+  {
+
+  }
+}
+
+void Item :: operator= (Item copy)
+{
+  name=copy.name ;
+  amount = copy.amount;
+  id = copy.id;
+
 }
