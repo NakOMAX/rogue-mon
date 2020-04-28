@@ -101,7 +101,7 @@ bool Player :: pokIsDead(Pokemon* Pok)
 
 bool Player :: playerIsDead ()
 {
-  if (nbPokemon==0)  {return true;}
+  if (nbPokemon==0){return true;}
   else {return false;}
 }
 
