@@ -6,7 +6,7 @@ using namespace std;
 
 First :: First()
 {
-    name="First";
+    name="First"; 
     type = 1;
     power = 2;
     pp= 9;
@@ -15,3 +15,6 @@ First :: First()
     gaindefense=0;
     impact=50;
 }
+
+string First :: getName ()
+{return name;}
