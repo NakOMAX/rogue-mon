@@ -89,9 +89,9 @@ void Player::deleteItem(unsigned short int i){
   return 1;
 }*/
 
-bool Player :: pokIsdead(Pokemon* Pok)
+bool Player :: pokIsDead(Pokemon* Pok)
 {
-  if ( Pokemon:: pok.pokIsdead())
+  if (Pok->pokIsDead())
   {
     nbPokemon--;
     return true;
@@ -99,9 +99,9 @@ bool Player :: pokIsdead(Pokemon* Pok)
   else {return false;}
 }
 
-bool Player :: playerIsdead ()
+bool Player :: playerIsDead ()
 {
-  if (nbPokemon==0)  {return true;}
+  if (nbPokemon==0){return true;}
   else {return false;}
 }
 
