@@ -56,7 +56,7 @@ public:
     unsigned short int getSpeed () const ;
     ///@brief accessor
     unsigned short int getLvl () const ;
-    ///@brief accessor 
+    ///@brief accessor
     ///@param i {the number in the array of the attack you want}
     Attack* getMyAttacks (unsigned short int i);
 
