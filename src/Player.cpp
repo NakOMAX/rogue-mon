@@ -45,8 +45,10 @@ unsigned short int Player :: getNbItem() {
 
 
 void Player::setPokemon(){
-  //
-  // ????
+  myPokemon[0] = new Bulbasaur;
+  myPokemon[1] = new Charmander;
+  myPokemon[2] = new Charmander;
+  nbPokemon = 3;
 }
 
 void Player::addPokemon(Pokemon* newPokemon){
