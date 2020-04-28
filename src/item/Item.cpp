@@ -1,4 +1,5 @@
 #include "Item.h"
+#include "Pokemon.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,3 +36,15 @@ void Item :: operator= (Item copy)
   id = copy.id;
 
 }
+
+/*Item :: useItem(){//cet intitulé est bizarre
+    amount--;
+}*/
+void Player :: actionItem (Pokemon* Pok)
+{
+
+  nbItem--;
+  if( nbItem<=0)
+  {
+
+  }

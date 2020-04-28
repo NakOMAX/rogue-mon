@@ -38,8 +38,6 @@ class Player{
   bool pokIsDead(Pokemon*);
   ///@brief check if the player is dead
   bool playerIsDead();
-  ///@brief action of an item
-  void action(Pokemon*);
 
 };
 #endif
