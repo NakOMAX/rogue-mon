@@ -13,7 +13,6 @@ using namespace std;
 
 
 Bulbasaur:: Bulbasaur () {
-
     id = 001;
     maxHp = 100;
     Hp = 100;

@@ -24,5 +24,6 @@ public :
     ///@brief accessor
     std :: string getName ();
     ///@brief accessor
+    void operator= (Item copy);
 };
 #endif
