@@ -22,7 +22,7 @@ class Player{
 	std::string getUserName();   ///@brief accessor
   Pokemon* getPokemon(unsigned short int id);   ///@brief accessor
   unsigned short int getNbPokemon(); ///@brief accessor
-	Item getItem(unsigned short int id);   ///@brief accessor
+	Item * getItem(unsigned short int id);   ///@brief accessor
   unsigned short int getNbItem(); ///@brief accessor
 
 	void setPokemon();  ///@brief mutator
