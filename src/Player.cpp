@@ -104,8 +104,3 @@ bool Player :: playerIsDead ()
   if (nbPokemon==0){return true;}
   else {return false;}
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 61700c6264da943fddb2dda7b6ae087157524370

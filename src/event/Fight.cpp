@@ -43,14 +43,14 @@ Pokemon* Fight :: choicePok (Pokemon* old)
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
-                case 1: if (old!= me->getPokemon(0)) return me->getPokemon(0);
+                case SDLK_1: if (old!= me->getPokemon(0)) return me->getPokemon(0);
 
-                case 2 :if ((1<me->getNbPokemon()) && (old!= me->getPokemon(1))) return me->getPokemon(1);
+                case SDLK_2 :if ((1<me->getNbPokemon()) && (old!= me->getPokemon(1))) return me->getPokemon(1);
 
-                case 3 :if ((2<me->getNbPokemon()) && (old!= me->getPokemon(2))) return me->getPokemon(2);
-                case 4 :if ((3<me->getNbPokemon()) && (old!= me->getPokemon(3))) return me->getPokemon(3);
-                case 5 :if ((4<me->getNbPokemon()) && (old!= me->getPokemon(4))) return me->getPokemon(4);
-                case 6 :if ((5<me->getNbPokemon()) && (old!= me->getPokemon(5))) return me->getPokemon(5);
+                case SDLK_3 :if ((2<me->getNbPokemon()) && (old!= me->getPokemon(2))) return me->getPokemon(2);
+                case SDLK_4 :if ((3<me->getNbPokemon()) && (old!= me->getPokemon(3))) return me->getPokemon(3);
+                case SDLK_5 :if ((4<me->getNbPokemon()) && (old!= me->getPokemon(4))) return me->getPokemon(4);
+                case SDLK_6 :if ((5<me->getNbPokemon()) && (old!= me->getPokemon(5))) return me->getPokemon(5);
             }
         default : return choicePok (old); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
         //Faut-il faire d'autre cas ?
@@ -70,9 +70,9 @@ void Fight :: raid  (Pokemon* Pok)
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
-                case 1 :  effectsattPlayer(Pok->getMyAttacks(0), Pok);break;
+                case SDLK_1 :  effectsattPlayer(Pok->getMyAttacks(0), Pok);break;
 
-                case 2 :  effectsattPlayer(Pok->getMyAttacks(1), Pok);break;
+                case SDLK_2 :  effectsattPlayer(Pok->getMyAttacks(1), Pok);break;
 
             }
         default : return raid(Pok); //ce return est très laid et consommateur de mémoire et temps, autre idée ?
@@ -103,17 +103,17 @@ void Fight :: acitem (Pokemon* Pok) // à completer
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
-                case 1:   (me->getItem(0))->actionItem(Pok);break;
+                case SDLK_1 :(me->getItem(0))->actionItem(Pok);break;
 
-                case 2 :if (1<me->getNbItem())   (me->getItem(1))->actionItem(Pok);break;
+                case SDLK_2 :if (1<me->getNbItem())   (me->getItem(1))->actionItem(Pok);break;
 
-                case 3 :if (2<me->getNbItem())   (me->getItem(2))->actionItem(Pok); break;
+                case SDLK_3 :if (2<me->getNbItem())   (me->getItem(2))->actionItem(Pok); break;
 
-                case 4 :if (3<me->getNbItem())   (me->getItem(3))->actionItem(Pok); break;
+                case SDLK_4 :if (3<me->getNbItem())   (me->getItem(3))->actionItem(Pok); break;
 
-                case 5 :if (4<me->getNbItem())   (me->getItem(4))->actionItem(Pok); break;
+                case SDLK_5 :if (4<me->getNbItem())   (me->getItem(4))->actionItem(Pok); break;
 
-                case 6 :if (5<me->getNbItem())   (me->getItem(5))->actionItem(Pok); break;
+                case SDLK_6 :if (5<me->getNbItem())   (me->getItem(5))->actionItem(Pok); break;
             }
         default :  acitem(Pok);
         //Faut-il faire d'autre cas ?
