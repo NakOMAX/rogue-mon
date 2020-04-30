@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
 
   // TESTS
   Cinematic introduction("data/Text/intro.txt", "data/Backgrounds/bg_intro.png");
-  int res = introduction.init(wdimx, wdimy, renderer);
+  int res = introduction.launch(renderer, wdimx, wdimy);
   if (res>0) std::cout<<"Failed somewhere I guess. Errcode : "<<res<<std::endl;
 
   return 0;

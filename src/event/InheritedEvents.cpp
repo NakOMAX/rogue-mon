@@ -45,20 +45,13 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
   background_source = image_adress;
 }
 
-short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) {
+short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY) {
   std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
 
   // box = std::make_shared<DialogueBox>();
   box = new DialogueBox;
   std::cout<<"DB made"<<std::endl; //boxtest
-  components.push_back(box); //boxtest
-
-  // init components
-  //box->_init(dimX, dimY, renderer); boxtest
-  for (short unsigned int i = 0; i < components.size(); i++) {
-    int temp = components[i]->_init(dimX, dimY, renderer);
-    if (!(temp)) return temp;
-  }
+  components.push_back(&(*box)); //boxtest
 
   //init background
   back_text = loadImage(background_source);
@@ -67,47 +60,29 @@ short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_
   //init file ifstream
   myfile.open(txt_source);
 
-  return run(renderer);
+  return 0;
 }
 
-short int Cinematic::run(SDL_Renderer * renderer) {
-  bool hasFinished = false;
-  SDL_Event evt;
-  std::cout<<"Launched cinematic loop"<<std::endl; //debug
-  read(box);
-  do {
-    //render bg
-    if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0) {
-      printf("Box: No renderer error. Forcing exit...\n" );
-      return ERRCODE_NO_RENDER;
-    }
+short int Cinematic::run(SDL_Renderer * renderer, SDL_Event evt) {
+  //render bg
+  if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0) {
+    printf("Box: No renderer error. Forcing exit...\n" );
+    return ERRCODE_NO_RENDER;
+  }
 
-    read(box);
-    (*box)<<"Hello";
-    // update every component
-    // if (box->_update(renderer) > 0)
-    // {
-    //   // error during rendering, exit
-    //   break;
-    // } //boxtest
-
-    for (unsigned int i = 0; i < components.size(); i++) {
-      int temp = components[i]->_update(renderer);
-      if (temp>0)
-        return temp;
-    }
-
-    //render
-    SDL_RenderPresent(renderer);
-    // event treatement
-    while ( SDL_PollEvent(&evt) ) {
-      switch (evt.type) {
-        case SDL_QUIT: hasFinished = !hasFinished; break; // devra être mis dans le controlleur
-        case SDL_KEYUP : if (read(box)>0) hasFinished = !hasFinished; break; //component 0 is dialoguebox
+  // event treatement
+  while(SDL_PollEvent(&evt)) {
+    switch (evt.type) {
+        case SDL_QUIT: return -1; // devra être mis dans le controlleur
+        case SDL_KEYUP : if (read(box)>0) return -1;
         default: break;
-      }
     }
-  } while (!hasFinished);
+  }
+  return 0;
+}
+
+short int Cinematic::exit() {
+  std::cout<<"exit event"<<std::endl; //debug
   //end of event
   myfile.close();
   return 0;

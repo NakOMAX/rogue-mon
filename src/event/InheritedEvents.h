@@ -40,10 +40,12 @@ class Cinematic : public Event {
 public :
   /** class constructor */
   Cinematic(std::string text_adress, std::string image_adress);
-  /** @brief see Event init() */
-  virtual short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
   /** @brief see Event run()*/
-  virtual short int run(SDL_Renderer * render);
+  short int run(SDL_Renderer * render, SDL_Event evt);
+  /** @brief see Event init() */
+  short int init(SDL_Renderer * render, unsigned short int dimX, unsigned short int dimY);
+  /**@brief see Event exit()*/
+  short int exit();
 private :
   /** @brief text reader */
   short int read(DialogueBox* db);
