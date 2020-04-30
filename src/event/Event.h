@@ -53,7 +53,10 @@ protected:
       used in order to choose difficulty and rewards*/
   int scaling;
 
-  /**@brief array of components to draw*/
+  /**@brief array of components to draw
+  The core of the event system, every component is drawn in vector order, meaning
+  last in last drawn. That means later elements are drawn over earlier ones.
+  If drawing directly in event, please note that your things will end up under components.*/
   std::vector<Component*> components;
 };
 #endif
