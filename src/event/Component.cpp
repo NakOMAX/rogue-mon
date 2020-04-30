@@ -83,6 +83,7 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
 
   // init char *
   aff = new char [CHARLIM];
+  clean();
   std::cout<<"char made"<<std::endl;//debug
   // return 0 if everything went well
   return 0;
@@ -131,6 +132,10 @@ void DialogueBox::clean() {
   aff[0] = '\0';
 }
 
+bool DialogueBox::isEmpty() {
+  return (aff[0] == '\0' || aff == NULL);
+}
+
 void DialogueBox::setColor(const SDL_Color & c) {
   color = c;
 }
@@ -161,7 +166,7 @@ unsigned short int Sprite::_init(unsigned short int dimX, unsigned short int dim
 
 unsigned short int Sprite::_update(SDL_Renderer * render) {
   if (SDL_RenderCopy(render, texture, NULL, transform)<0) {
-    printf("sprite does not render, exiting... \n")
+    printf("sprite does not render, exiting... \n");
     return ERRCODE_NO_RENDER;
   }
   return 0;

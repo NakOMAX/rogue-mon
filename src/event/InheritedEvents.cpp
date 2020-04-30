@@ -70,6 +70,8 @@ short int Cinematic::run(SDL_Renderer * renderer, SDL_Event evt) {
     return ERRCODE_NO_RENDER;
   }
 
+  if(box->isEmpty()) read(box);
+
   // event treatement
   while(SDL_PollEvent(&evt)) {
     switch (evt.type) {

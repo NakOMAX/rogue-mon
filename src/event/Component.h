@@ -60,6 +60,9 @@ class DialogueBox : public Component {
   /**@brief cleans the textbox*/
   void clean();
 
+  /**@brief returns true if aff is empty or NULL*/
+  bool isEmpty();
+
   /** @brief changes color */
   void setColor(const SDL_Color & color);
 
@@ -89,7 +92,7 @@ public :
   /** @brief class constructor
       @param adress link to the used image file
       @param pos position and size of the img file*/
-  Sprite(const char * adress, const SDL_Rect pos);
+  Sprite(const std::string adress, const SDL_Rect pos);
   /** @brief class destructor*/
   ~Sprite();
   /** @brief see component base init*/
