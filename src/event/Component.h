@@ -76,9 +76,19 @@ protected :
   SDL_Rect * text_transform;
   SDL_Surface * txt_surface;
   SDL_Texture * txt_image;
+  // text line 2
+  SDL_Rect * l2_transform;
+  // text line 3
+  SDL_Rect * l3_transform;
+  // text line 4
+  SDL_Rect * l4_transform;
+  // retrospect : should've done a struct + array
 
   TTF_Font *font; // used font (Power Green ftw)
   char * aff = NULL; // current line
+  char * af2 = NULL;
+  char * af3 = NULL;
+  char * af4 = NULL;
   //#N En principe t'as pas besoin des acolades
   SDL_Color color = {0,0,0}; //black by default, might be changed by constructor or method later
 };
