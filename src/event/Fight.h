@@ -17,9 +17,6 @@
 
 class Fight : public Event
 
-
-class Fight : public Event
-
 {
 private :
   Player* me;
