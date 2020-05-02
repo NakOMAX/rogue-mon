@@ -16,13 +16,13 @@ Component::Component() {
 Component::~Component() {
 }
 
-unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
-  return ERRCODE_NO_COMP;
-}
-
-unsigned short int Component::_update(SDL_Renderer * render) {
-  return ERRCODE_NO_COMP;
-}
+// unsigned short int Component::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
+//   return ERRCODE_NO_COMP;
+// }
+//
+// unsigned short int Component::_update(SDL_Renderer * render) {
+//   return ERRCODE_NO_COMP;
+// }
 
 /// -------------------------------------------------------------- DIALOGUE BOX
 
@@ -32,7 +32,13 @@ DialogueBox::DialogueBox() {
 
 DialogueBox::~DialogueBox() {
   SDL_FreeSurface(surface);
+  surface = NULL;
   SDL_FreeSurface(txt_surface);
+  txt_surface = NULL;
+  TTF_CloseFont(font);
+  font = NULL;
+  SDL_DestroyTexture(image);
+  SDL_DestroyTexture(txt_image);
   delete aff;
   delete transform;
   delete text_transform;
@@ -59,20 +65,26 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
   int padding = 50; // distance between box and text
 
   transform = new SDL_Rect;
+  std::cout<<"SDL_Rect exists"<<std::endl; //debug
   // whole textbox
   //#N pointeur vers une struct, donc ->
   transform->w = dimX;
   transform->h = dimY/4;
   transform->x = 0;
   transform->y = dimY - transform->h;
+  std::cout<<"SDL_Rect full"<<std::endl;//debug
   //#N Si y=dimY le haut de la boite sera en bas de la page car (0,0) c'est en haut à gauche
 
+  std::cout<<"Transform creation"<<std::endl; //debug
   text_transform = new SDL_Rect;
   text_transform->x = transform->x + padding;
   text_transform->y = transform->y + padding/2;
+  std::cout<<"Text made"<<std::endl; //debug
 
   // init char *
   aff = new char [CHARLIM];
+  clean();
+  std::cout<<"char made"<<std::endl;//debug
   // return 0 if everything went well
   return 0;
 }
@@ -120,28 +132,42 @@ void DialogueBox::clean() {
   aff[0] = '\0';
 }
 
+bool DialogueBox::isEmpty() {
+  return (aff[0] == '\0' || aff == NULL);
+}
+
 void DialogueBox::setColor(const SDL_Color & c) {
   color = c;
 }
 
-/// ----------------------------------------------------------- CLICKABLE BUTTON
+/// ----------------------------------------------------------- Drawable Sprite
+//code
 
-Button::Button(SDL_Rect * pos /*, function pointer*/){
-  transform = pos;
+Sprite::Sprite(const std::string adress,const SDL_Rect pos) {
+  transform = new SDL_Rect;
+  RectCopy(*transform, pos);
+  filename = adress;
 }
 
-Button::~Button(){
+Sprite::~Sprite() {
   SDL_FreeSurface(surface);
-  SDL_FreeSurface(txt_surface);
-  delete aff;
+  SDL_DestroyTexture(texture);
   delete transform;
-  delete txt_transform;
+  surface = NULL;
+  texture = NULL;
+  transform = NULL;
 }
 
-unsigned short int Button::_init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
-  return ERRCODE_NO_COMP;
+unsigned short int Sprite::_init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
+  surface = loadImage(filename.c_str());
+  texture = SDL_CreateTextureFromSurface(render,surface);
+  return 0;
 }
 
-unsigned short int Button::_update(SDL_Renderer * render) {
-  return ERRCODE_NO_COMP;
+unsigned short int Sprite::_update(SDL_Renderer * render) {
+  if (SDL_RenderCopy(render, texture, NULL, transform)<0) {
+    printf("sprite does not render, exiting... \n");
+    return ERRCODE_NO_RENDER;
+  }
+  return 0;
 }
