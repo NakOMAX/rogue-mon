@@ -33,7 +33,7 @@ public:
 
     ///@brief class destructor
     ~Pokemon();
-
+    ///@brief operator =
     Pokemon operator = (Pokemon old){}
 
     ///@brief accessor
