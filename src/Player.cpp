@@ -1,64 +1,67 @@
 #include "Player.h"
 #include "Pokemon.h"
+#include "Bulbasaur.h"
+#include "Charmander.h"
+#include "Squirtle.h"
 #include "Item.h"
 #include <iostream>
 using namespace std;
 
-
-Player :: Player(){ // je sais pas comment le faire en sdl :/
+Player:: Player(){ // je sais pas comment le faire en sdl :/
   cout << "Enter your name: "<<endl;
   cin >> name;
-  myPokemon = new Pokemon[6];
   myItem = new Item[6];
   nbPokemon = 0;
   nbItem = 0;
   setPokemon();
 }
 
-Player :: ~Player(){
-  delete myPokemon[];
-  myPokemon[] = NULL;
-  delete myItem[];
-  myItem[] = NULL;
+Player:: ~Player(){
+  for (int i = 0; i<6; i++)
+  {
+    delete myPokemon[i];
+  }
 }
 
 
-string getUserName(){
+string Player:: getUserName(){
   return name;
 }
 
 Pokemon* Player :: getPokemon(unsigned short int i){
   return myPokemon[i];
 }
+
+
 unsigned short int Player :: getNbPokemon()
 {
   return nbPokemon;
 }
 
-Item* Player :: getItem(unsigned short int i){
-  return myItem[i];
+Item* Player :: getItem(unsigned short int id){
+  return &myItem[id];
 }
 
 unsigned short int Player :: getNbItem() {
   return nbItem;
 }
 
-
 void Player::setPokemon(){
-  //
-  // ????
+  myPokemon[0] = new Bulbasaur;
+  myPokemon[1] = new Charmander;
+  nbPokemon = 2;
 }
 
-void Player::addPokemon(Pokemon* newPokemon){
+void Player::addPokemon(Pokemon * newPokemon){
   if (nbPokemon < 6){
-  myPokemon[nbPokemon] = newPokemon;
-  nbPokemon++;
+    myPokemon[nbPokemon] = newPokemon;
+    nbPokemon++;
   }
 }
 
-void Player::addItem(Item* newItem){
-  myItem[i] = newItem;
+void Player::addItem(Item newItem){
   nbItem++;
+  myItem[nbItem] = newItem;
 }
 
 void Player::deletePokemon(unsigned short int i){
@@ -67,8 +70,9 @@ void Player::deletePokemon(unsigned short int i){
 }
 
 void Player::deleteItem(unsigned short int i){
-    delete myItem[i];
-    myItem[i] = NULL;
+    *myItem = myItem[i];
+    delete myItem;
+    myItem = NULL;
 }
 
 /*short int Player::isDie(){
@@ -86,9 +90,9 @@ void Player::deleteItem(unsigned short int i){
   return 1;
 }*/
 
-bool Player :: pokIsdead(Pokemon* Pok)
+bool Player :: pokIsDead(Pokemon* Pok)
 {
-  if ( Pokemon:: pok.pokIsdead())
+  if (Pok->pokIsDead())
   {
     nbPokemon--;
     return true;
@@ -96,8 +100,8 @@ bool Player :: pokIsdead(Pokemon* Pok)
   else {return false;}
 }
 
-bool Player :: playerIsdead ()
+bool Player :: playerIsDead ()
 {
-  if (nbPokemon==0)  {return true;}
+  if (nbPokemon==0){return true;}
   else {return false;}
 }

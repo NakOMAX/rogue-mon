@@ -1,5 +1,6 @@
 #include "Pokemon.h"
 #include <iostream>
+#include "Attack.h"
 //#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -10,36 +11,36 @@ using namespace std;
 
 
 Pokemon:: Pokemon()
- //Concernant le tas ou la pile je sais pas si il faut faire un choix plus judicieux
-{}
-
-// constructeur par copie
-Pokemon::Pokemon(unsigned short int new_Id, string new_Name,unsigned short int new_Type, unsigned short int new_HP, unsigned short int new_maxHP,
-                 unsigned short int new_Atk,unsigned short int new_sAtk, unsigned short int new_Def,
-                 unsigned short int new_sDef,unsigned short int new_speed, unsigned short int new_lvl)
-
 {
-  id = new_Id;
-  name = new_Name;
-  type = new_Type;
-  maxHp = new_maxHP;
-  Hp = new_HP;
-  atk = new_Atk;
-  sAtk = new_sAtk;
-  def = new_Def;
-  sDef = new_sDef;
-  speed = new_speed;
-  lvl = new_lvl;
 }
 
-Pokemon:: ~Pokemon() {} // destructor
+Pokemon :: Pokemon (const Pokemon & old){
+  id = old.getId();
+  name = old.getName();
+  type = old.getType();
+  maxHp = old.getMaxHp();
+  Hp = old.getHp();
+  atk = old.getAtk();
+  sAtk = old.getSAtk();
+  def = old.getDef();
+  sDef = old.getSDef();
+  speed = old.getSpeed();
+  lvl = old.getLvl();
+  myAttacks [0]= old.getMyAttacks(0);
+  myAttacks [1]= old.getMyAttacks(1);
+}
+
+Pokemon:: ~Pokemon() {
+  for (int i = 0; i<4; i++)
+    delete myAttacks[i];
+}
 
 unsigned short int Pokemon:: getId ()const
 {
     return id;
 }
 
-string Pokemon:: getName ()const
+std::string Pokemon::getName () const
 {
     return name;
 
@@ -75,9 +76,6 @@ unsigned short int Pokemon:: getDef ()const
     return def;
 }
 
-
-
-
 unsigned short int Pokemon:: getSDef ()const
 {
     return sDef;
@@ -93,23 +91,19 @@ unsigned short int Pokemon:: getLvl ()const
     return lvl;
 }
 
-Attack Pokemon :: getMyAttacks (unsigned short int i)
+Attack* Pokemon :: getMyAttacks (unsigned short int i) const
 {
     return myAttacks[i];
 }
 
-
-
 void Pokemon:: setHp (unsigned short int newHP)
 {
     Hp = newHP;
-
 }
 
 void Pokemon:: setLvl (unsigned short int newLvl)
 {
     lvl = newLvl;
-
 }
 
 void Pokemon:: atkIncrease (unsigned short int newAtk)
@@ -128,7 +122,7 @@ bool Pokemon :: pokIsDead()
 {
     if (Hp == 0)
     {
-        delete *this;
+        delete this;
         return true;
     }
     else {return false;}

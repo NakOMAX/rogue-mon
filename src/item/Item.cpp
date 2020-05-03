@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <vector>
+#include <string>
 using namespace std;
 
 Item :: Item(){}
@@ -18,33 +19,35 @@ Item :: Item(unsigned int newId, string newName, unsigned short int newAmount=0)
 
 Item :: ~Item(){}
 
-unsigned short int Pokemon :: getId ()const
+unsigned short int Item::getId ()
 {
     return id;
 }
 
-string Pokemon :: getName ()const
+string Item::getName()
 {
     return name;
+}
+
+Item Item :: operator= (Item copy)
+{
+  Item it;
+  it.name=copy.name ;
+  it.amount = copy.amount;
+  it.id = copy.id;
+  return it;
+
 }
 
 /*Item :: useItem(){//cet intitulé est bizarre
     amount--;
 }*/
 
-void Item :: action ()
+void Item :: actionItem (Pokemon* Pok)
 {
   amount--;
   if( amount<=0)
   {
-    
+
   }
-}
-
-void Item :: operator= (Item copy)
-{
-  name=copy.name ;
-  amount = copy.amount;
-  id = copy.id;
-
 }

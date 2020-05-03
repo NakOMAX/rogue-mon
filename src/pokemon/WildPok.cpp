@@ -1,5 +1,8 @@
 #include "Pokemon.h"
 #include "WildPok.h"
+#include "Attack.h"
+#include "First.h"
+#include "Second.h"
 
 #include <iostream>
 //#include <stdio.h>
@@ -8,9 +11,8 @@
 using namespace std;
 
 
-
-WildPok:: WildPok () {
-
+WildPok:: WildPok ()
+{
     id = 013;
     maxHp = 100;
     Hp = 100;
@@ -22,15 +24,16 @@ WildPok:: WildPok () {
     def = 10 ;
     sDef = 2;
     speed = 10;
-    myattacks[0]= First first // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    //myattacks[1]= Second second // faire quand on aura une attaque en plus.
+    myAttacks[0]= new First;
+    myAttacks[1]= new Second;
 }
 
 WildPok:: ~WildPok () {}
 
-bool WildPok wildIsDead();
+bool WildPok:: wildIsDead()
 {
-    bool dead = false;
+    bool dead;
+    dead = false;
     if (Hp==0){dead= true;}
     return dead;
 }

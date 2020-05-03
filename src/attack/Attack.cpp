@@ -5,6 +5,17 @@ using namespace std;
 
 Attack :: Attack(){} // j'ai fait l'initialisation dans la classe fille
 
+Attack::Attack(const Attack & atk)
+{
+  power=atk.power;
+  type = atk.type;
+  pp= atk.pp;
+  maxPP= atk.maxPP;
+  gainAtk = atk.gainAtk;
+  gainDefense = atk.gainDefense;
+  impact = atk.impact;
+}
+
 Attack :: ~Attack(){}
 
 string Attack::getName(){ return name; }

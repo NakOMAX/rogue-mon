@@ -15,6 +15,6 @@ Public :
  ~Potion ();
 
     ///@brief action of this item
-    void action(Pokemon &Pok);
+    //void action(Pokemon &Pok);
 }
 #endif

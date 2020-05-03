@@ -5,7 +5,6 @@
 #include <string>
 #include <fstream>
 #include <memory>
-#include <iostream> //debug
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
@@ -40,20 +39,26 @@ short int Test::run(/*Player p*/) {
 
 // ------------ cinematic
 
-Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
+Cinematic::Cinematic(std::string text_adress, std::string image_adress, std::string sprite_adress) {
   txt_source = text_adress;
   background_source = image_adress;
+  spr_source = sprite_adress;
 }
 
-short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer) {
+short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY) {
   std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
 
-  box = std::make_shared<DialogueBox>();
+  // box = std::make_shared<DialogueBox>();
+  box = new DialogueBox;
+  std::cout<<"DB made"<<std::endl; //boxtest
+  components.push_back(&(*box)); //boxtest
 
-  // init components
-  box->_init(dimX, dimY, renderer);
-  for (short unsigned int i = 0; i < components.size(); i++) {
-    if (!(components[i]->_init(dimX, dimY, renderer))) return 1;
+  //init sprite
+  if (spr_source != "") {
+    SDL_Rect temp;
+    temp.x = dimX/3; temp.y = dimY/3;
+    spr = new Sprite (spr_source, temp);
+    components.push_back(&(*spr));
   }
 
   //init background
@@ -63,52 +68,37 @@ short int Cinematic::init(unsigned short int dimX, unsigned short int dimY, SDL_
   //init file ifstream
   myfile.open(txt_source);
 
-  return run(renderer);
+  return 0;
 }
 
-short int Cinematic::run(SDL_Renderer * renderer) {
-  bool hasFinished = false;
-  SDL_Event evt;
-  std::cout<<"Launched cinematic loop"<<std::endl; //debug
-  read(box);
-  do {
-    //render bg
-    if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0) {
-      printf("Box: No renderer error. Forcing exit...\n" );
-      return ERRCODE_NO_RENDER;
-    }
+short int Cinematic::run(SDL_Renderer * renderer, SDL_Event evt) {
+  //render bg
+  if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0) {
+    printf("Box: No renderer error. Forcing exit...\n" );
+    return ERRCODE_NO_RENDER;
+  }
 
-    // read(box);
-    //*box<<"Hello";
-    // update every component
-    if (box->_update(renderer) > 0)
-    {
-      // error during rendering, exit
-      break;
-    }
+  if(box->isEmpty()) read(box);
 
-    for (unsigned int i = 0; i < components.size(); i++) {
-      if ((!components[i]->_update(renderer))>0)
-        return 1;
-    }
-
-    //render
-    SDL_RenderPresent(renderer);
-    // event treatement
-    while ( SDL_PollEvent(&evt) ) {
-      switch (evt.type) {
-        case SDL_QUIT: hasFinished = !hasFinished; break; // devra être mis dans le controlleur
-        case SDL_KEYUP : if (read(box)>0) hasFinished = !hasFinished; break; //component 0 is dialoguebox
+  // event treatement
+  while(SDL_PollEvent(&evt)) {
+    switch (evt.type) {
+        case SDL_QUIT: return -1; // devra être mis dans le controlleur
+        case SDL_KEYUP : if (read(box)>0) return -1;
         default: break;
-      }
     }
-  } while (!hasFinished);
+  }
+  return 0;
+}
+
+short int Cinematic::exit() {
+  std::cout<<"exit event"<<std::endl; //debug
   //end of event
   myfile.close();
   return 0;
 }
 
-short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
+short int Cinematic::read(DialogueBox* db) {
   if (!myfile.is_open()) {
     myfile.open(txt_source);
   } else {
@@ -119,7 +109,7 @@ short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
       db->clean();
       (*db)<<buf.c_str();
     } else {
-      return 1;
+      return 99;
     }
   }
   return 0;
@@ -128,8 +118,8 @@ short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
 //----------------------------------------------------------------------------//
 //-------------------------------->HEALING<-----------------------------------//
 //____________________________________________________________________________//
-/*
-short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
+
+/*short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
 {
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 20);
   for (unsigned short int i = 0; i < 100; i++)
@@ -137,7 +127,7 @@ short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Re
     SDL_RenderDrawRect(renderer, NULL);
     SDL_Delay(5);
   }
-  unsigned short int n = player.getNumberOfPokemons();
+  unsigned short int n = player.getNumberOfPokemons();//changer le nom de la fonction
   Pokemon * current;
   for (unsigned short int i = 0; i<n; i++)
   {
@@ -145,5 +135,4 @@ short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Re
     current->setHP(current->getMaxHp());
   }
   return 0;
-}
-*/
+}*/

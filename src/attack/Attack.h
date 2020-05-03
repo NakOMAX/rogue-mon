@@ -1,44 +1,44 @@
-#ifndef _ATTACK
-#define _ATTACK
+#ifndef _ATTACK_H
+#define _ATTACK_H
 
 #include <string>
-using namespace std;
-
-// Faut-il associer les attaques à chaque Pokemon ?
 
 class Attack{
   protected:
-	string name;
-	unsigned short int power; // je comprends pas cette valeur 
-  unsigned short int type;// 1 fait perdre des pdv, 2 fait gagner en def et att
-	unsigned short int pp;//nombre d'utilisation d'une attaque
+	std :: string name;
+	unsigned short int power;
+  unsigned short int type;
+	unsigned short int pp;
 	unsigned short int maxPP;
-  unsigned short int gainAtk; 
+  unsigned short int gainAtk;
   unsigned short int gainDefense;
   unsigned short int impact;
 
   public:
   ///@brief constructor
   Attack();
+  ///@brief copy constructor
+  Attack(const Attack & atk);
   ///@brief destructor
   ~Attack();
   ///@brief accessor
-  string getName();
-  ///@brief accessor
+  std :: string getName();
+  ///@brief accessor : return the name
   unsigned short int getPower();
-  ///@brief accessor
+  ///@brief accessor : return the attack power
   unsigned short int getType();
-  ///@brief accessor
+  ///@brief accessor : return the type of Pokemon
   unsigned short int getPP();
-  ///@brief accessor
+  ///@brief accessor : return the number of times 1 attack can be used
   unsigned short int getImpact();
   ///@brief accessor
   unsigned short int getGainDefense();
   ///@brief accessor
   unsigned short int getGainAtk();
 
+  ///@brief decrease pp after every attack
   void usePP();
-
+  ///@brief reset number of times an attack can be used
   void resetPP();
 
 };

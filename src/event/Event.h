@@ -21,34 +21,42 @@ public:
       used so inherited classes can have a default*/
   Event();
 
-  /** @brief event constructor
-      never used due to being impractical with inheritace
-      @param layer used in scaling*/
-  Event(int layer);
-
   /** @brief event destructor*/
   ~Event();
 
+  /** @brief mainloop for the event
+  overrides the normal mainloop until returned. Returns 0 if while continues, -1 if mainloop exited, errorcode else. Called every frame.*/
+  virtual short int run(SDL_Renderer * render, SDL_Event event) = 0;
+
   /** @brief init method
-      called when launching event, launches run(), performs setup. Returns 0 if everything went correctly, else errorcode*/
-  short int init(SDL_Renderer * render);
+  called when launching event, launches run(), performs setup. Returns 0 if everything went correctly, else errorcode*/
+  virtual short int init(SDL_Renderer * render, unsigned short int dimX, unsigned short int dimY) = 0;
+
+  /** @brief exit method
+    called once when event closes*/
+  virtual short int exit() = 0;
+
+
+  /** @brief meta version of init()
+      called when launching event */
+  short int launch(SDL_Renderer * render, unsigned short int dimX, unsigned short int dimY);
 
   /** @brief get method for scaling*/
   short int getScaling();
 
-  /** @brief mainloop for the event
-  overrides the normal mainloop until returned. Returns 0 if exited properly, errorcode else.*/
-  short int run(SDL_Renderer * render);
+  /** @brief actual mainloop
+  Calls run every frame after updating every components. Also get keyboard events.*/
+  short int mainloop(SDL_Renderer * render);
 
 protected:
   /** @brief scaling value of event
       used in order to choose difficulty and rewards*/
   int scaling;
 
-  /** @brief background of event*/
-  SDL_Texture * background;
-
-  /**@brief array of components to draw*/
-  std::vector<std::shared_ptr<Component>> components;
+  /**@brief array of components to draw
+  The core of the event system, every component is drawn in vector order, meaning
+  last in last drawn. That means later elements are drawn over earlier ones.
+  If drawing directly in event, please note that your things will end up under components.*/
+  std::vector<Component*> components;
 };
 #endif

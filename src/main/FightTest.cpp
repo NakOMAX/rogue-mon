@@ -1,7 +1,9 @@
+#include "../event/Fight.h"
+#include "Player.h"
+#include "WildPok.h"
+#include "Event.h"
 #include <iostream>
-#include "../event/Event.h"
-#include "../event/Component.h"
-#include "../event/InheritedEvents.h"
+
 #include "SDL.h"
 
 #ifdef __WIN32__
@@ -36,8 +38,9 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nC
 }
 #endif
 
-int main(int argc, char *argv[]) {
-  unsigned short int wdimx, wdimy;
+int main(int argc, char *argv[])
+{
+    unsigned short int wdimx, wdimy;
   if (argc!=3)
   {
     printf("Resolution set to default\n");
@@ -49,7 +52,7 @@ int main(int argc, char *argv[]) {
     wdimy = atoi(argv[2]);
   }
 
-  // SDL2 init
+    // SDL2 init
   if( SDL_Init( SDL_INIT_VIDEO ) < 0)
   {
     printf("SDL error on init: %s\n", SDL_GetError() );
@@ -62,12 +65,12 @@ int main(int argc, char *argv[]) {
     printf("IMG_Init: %s\n", IMG_GetError());
   }
   // SDL TTF init
-  if( TTF_Init() == -1) {
+  if( TTF_Init() == -1) 
+  {
     printf("TTF Init: Failed to initialise TTF\n");
     printf("TTF Init: %s\n", TTF_GetError());
   }
-
-  // SDL window set up
+    // SDL window set up
   SDL_Window * window = SDL_CreateWindow("MapTests", SDL_WINDOWPOS_UNDEFINED,
   SDL_WINDOWPOS_UNDEFINED, wdimx, wdimy, SDL_WINDOW_SHOWN);
   if(window==NULL)
@@ -78,10 +81,12 @@ int main(int argc, char *argv[]) {
   SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
   SDL_RenderClear(renderer);
 
-  // TESTS
-  Cinematic introduction("data/Text/intro.txt", "data/Backgrounds/bg_intro.png");
-  int res = introduction.launch(renderer, wdimx, wdimy);
-  if (res>0) std::cout<<"Failed somewhere I guess. Errcode : "<<res<<std::endl;
+    Player* player;
+    WildPok* opposant;
+    player = new Player;
+    opposant = new WildPok;
+    Fight firstFight(player,opposant);
+    std :: cout << firstFight.launch(renderer, wdimx, wdimy);
 
-  return 0;
+
 }
