@@ -12,52 +12,27 @@ using namespace std;
 
 Pokemon:: Pokemon()
 {
-    myAttacks = new Attack[2];
 }
 
-// constructeur par copie
-/*Pokemon::Pokemon(const Pokemon& old)
-
-{
-    id = old.getId;
-    name = old.getName;
-    type = old.getType;
-    maxHp = old.getMaxHp;
-    Hp = old.getHp;
-    atk = old.getAtk;
-    sAtk = old.getSAtk;
-    def = old.getDef;
-    sDef = old.getSDef;
-    speed = old.getSpeed;
-    lvl = old.getLvl;
-    myAttacks = new Attack[2] ;
-    myAttacks [0]= old.getMyAttacks(0);
-    myAttacks [1]= old.getMyAttacks(1);
-
-}*/
+Pokemon :: Pokemon (const Pokemon & old){
+  id = old.getId();
+  name = old.getName();
+  type = old.getType();
+  maxHp = old.getMaxHp();
+  Hp = old.getHp();
+  atk = old.getAtk();
+  sAtk = old.getSAtk();
+  def = old.getDef();
+  sDef = old.getSDef();
+  speed = old.getSpeed();
+  lvl = old.getLvl();
+  myAttacks [0]= old.getMyAttacks(0);
+  myAttacks [1]= old.getMyAttacks(1);
+}
 
 Pokemon:: ~Pokemon() {
-    delete myAttacks;
-}
-
-Pokemon :: Pokemon operator= (Pokemon old){
-  Pokemon current;
-  current.id = old.getId;
-  current.name = old.getName;
-  current.type = old.getType;
-  current.maxHp = old.getMaxHp;
-  current.Hp = old.getHp;
-  current.atk = old.getAtk;
-  current.sAtk = old.getSAtk;
-  current.def = old.getDef;
-  current.sDef = old.getSDef;
-  current.speed = old.getSpeed;
-  current.lvl = old.getLvl;
-  current.myAttacks = new Attack[2] ;
-  current.myAttacks [0]= old.getMyAttacks(0);
-  current.myAttacks [1]= old.getMyAttacks(1);
-
-  return current;
+  for (int i = 0; i<4; i++)
+    delete myAttacks[i];
 }
 
 unsigned short int Pokemon:: getId ()const
@@ -65,7 +40,7 @@ unsigned short int Pokemon:: getId ()const
     return id;
 }
 
-string Pokemon:: getName ()
+std::string Pokemon::getName () const
 {
     return name;
 
@@ -116,9 +91,9 @@ unsigned short int Pokemon:: getLvl ()const
     return lvl;
 }
 
-Attack* Pokemon :: getMyAttacks (unsigned short int i)
+Attack* Pokemon :: getMyAttacks (unsigned short int i) const
 {
-    return &myAttacks[i];
+    return myAttacks[i];
 }
 
 void Pokemon:: setHp (unsigned short int newHP)

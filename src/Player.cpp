@@ -10,14 +10,18 @@ using namespace std;
 Player:: Player(){ // je sais pas comment le faire en sdl :/
   cout << "Enter your name: "<<endl;
   cin >> name;
-  myPokemon = new Pokemon[6];
   myItem = new Item[6];
   nbPokemon = 0;
   nbItem = 0;
   setPokemon();
 }
 
-Player:: ~Player(){}
+Player:: ~Player(){
+  for (int i = 0; i<6; i++)
+  {
+    delete myPokemon[i];
+  }
+}
 
 
 string Player:: getUserName(){
@@ -25,7 +29,7 @@ string Player:: getUserName(){
 }
 
 Pokemon* Player :: getPokemon(unsigned short int i){
-  return &myPokemon[i];
+  return myPokemon[i];
 }
 
 
@@ -43,14 +47,12 @@ unsigned short int Player :: getNbItem() {
 }
 
 void Player::setPokemon(){
-  Bulbasaur *Bulbasaur;
-  Charmander *Charmander;
-  myPokemon[0] = Bulbasaur;
-  myPokemon[1] = Charmander;
+  myPokemon[0] = new Bulbasaur;
+  myPokemon[1] = new Charmander;
   nbPokemon = 2;
 }
 
-void Player::addPokemon(Pokemon newPokemon){
+void Player::addPokemon(Pokemon * newPokemon){
   if (nbPokemon < 6){
     myPokemon[nbPokemon] = newPokemon;
     nbPokemon++;
@@ -63,9 +65,8 @@ void Player::addItem(Item newItem){
 }
 
 void Player::deletePokemon(unsigned short int i){
-    *myPokemon =myPokemon[i];
-    delete myPokemon;
-    myPokemon = NULL;
+    delete myPokemon[i];
+    myPokemon[i] = NULL;
 }
 
 void Player::deleteItem(unsigned short int i){

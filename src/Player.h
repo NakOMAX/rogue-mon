@@ -11,8 +11,8 @@ class Player{
 
   protected:
   std::string name;
-  Pokemon *myPokemon;
-  Item *myItem;
+  Pokemon * myPokemon[6];
+  Item * myItem;
   unsigned short int nbPokemon;
   unsigned short int nbItem;
 
@@ -32,7 +32,7 @@ class Player{
   //me.myitem
 
   void addItem(Item);
-	void addPokemon(Pokemon);
+	void addPokemon(Pokemon*);
 
   void deletePokemon(unsigned short int i);
 	void deleteItem(unsigned short int i);
