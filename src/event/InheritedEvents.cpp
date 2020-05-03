@@ -48,18 +48,18 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress, std::str
 short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY) {
   std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
 
+  //init sprite
+  if (spr_source != "") {
+    SDL_Rect temp;
+    temp.x = dimX/2; temp.y = dimY/3;
+    spr = new Sprite (spr_source, temp, false, 10);
+    components.push_back(&(*spr));
+  }
+
   // box = std::make_shared<DialogueBox>();
   box = new DialogueBox;
   std::cout<<"DB made"<<std::endl; //boxtest
   components.push_back(&(*box)); //boxtest
-
-  //init sprite
-  if (spr_source != "") {
-    SDL_Rect temp;
-    temp.x = dimX/3; temp.y = dimY/3;
-    spr = new Sprite (spr_source, temp);
-    components.push_back(&(*spr));
-  }
 
   //init background
   back_text = loadImage(background_source);

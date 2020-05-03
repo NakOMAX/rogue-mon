@@ -218,10 +218,17 @@ void DialogueBox::setColor(const SDL_Color & c) {
 /// ----------------------------------------------------------- Drawable Sprite
 //code
 
-Sprite::Sprite(const std::string adress,const SDL_Rect pos) {
+Sprite::Sprite(const std::string adress,const SDL_Rect pos, bool oversize, unsigned short int multiplier) {
   transform = new SDL_Rect;
-  RectCopy(transform, &pos);
+  transform->x = pos.x;
+  transform->y = pos.y;
+  if (oversize) {
+    transform->h = pos.h;
+    transform->w = pos.w;
+  }
   filename = adress;
+  ovsize = oversize;
+  multi = multiplier;
 }
 
 Sprite::~Sprite() {
@@ -236,6 +243,9 @@ Sprite::~Sprite() {
 unsigned short int Sprite::_init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) {
   surface = loadImage(filename.c_str());
   texture = SDL_CreateTextureFromSurface(render,surface);
+  if(!ovsize) SDL_QueryTexture(texture, NULL, NULL, &transform->w, &transform->h);
+  transform->w *= multi;
+  transform->h *= multi;
   return 0;
 }
 
