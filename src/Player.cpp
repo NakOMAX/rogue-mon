@@ -43,8 +43,8 @@ unsigned short int Player :: getNbItem() {
 }
 
 void Player::setPokemon(){
-  Bulbasaur Bulbasaur;
-  Charmander Charmander;
+  Bulbasaur *Bulbasaur;
+  Charmander *Charmander;
   myPokemon[0] = Bulbasaur;
   myPokemon[1] = Charmander;
   nbPokemon = 2;
@@ -52,8 +52,8 @@ void Player::setPokemon(){
 
 void Player::addPokemon(Pokemon newPokemon){
   if (nbPokemon < 6){
-  myPokemon[nbPokemon] = newPokemon;
-  nbPokemon++;
+    myPokemon[nbPokemon] = newPokemon;
+    nbPokemon++;
   }
 }
 

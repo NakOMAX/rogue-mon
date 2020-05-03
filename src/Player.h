@@ -2,6 +2,9 @@
 #define _PLAYER_H
 #include "Pokemon.h"
 #include "Item.h"
+#include "Bulbasaur.h"
+#include "Charmander.h"
+#include "Squirtle.h"
 #include <string>
 
 class Player{

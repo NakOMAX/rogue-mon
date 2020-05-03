@@ -40,6 +40,26 @@ Pokemon:: ~Pokemon() {
     delete myAttacks;
 }
 
+Pokemon :: Pokemon operator= (Pokemon old){
+  Pokemon current;
+  current.id = old.getId;
+  current.name = old.getName;
+  current.type = old.getType;
+  current.maxHp = old.getMaxHp;
+  current.Hp = old.getHp;
+  current.atk = old.getAtk;
+  current.sAtk = old.getSAtk;
+  current.def = old.getDef;
+  current.sDef = old.getSDef;
+  current.speed = old.getSpeed;
+  current.lvl = old.getLvl;
+  current.myAttacks = new Attack[2] ;
+  current.myAttacks [0]= old.getMyAttacks(0);
+  current.myAttacks [1]= old.getMyAttacks(1);
+
+  return current;
+}
+
 unsigned short int Pokemon:: getId ()const
 {
     return id;

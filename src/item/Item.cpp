@@ -42,11 +42,12 @@ Item Item :: operator= (Item copy)
 /*Item :: useItem(){//cet intitulé est bizarre
     amount--;
 }*/
-void Player :: actionItem (Pokemon* Pok)
-{
 
-  nbItem--;
-  if( nbItem<=0)
+void Item :: actionItem (Pokemon* Pok)
+{
+  amount--;
+  if( amount<=0)
   {
 
   }
+}
