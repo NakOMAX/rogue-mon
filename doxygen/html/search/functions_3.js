@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['event_52',['Event',['../class_event.html#a5a40dd4708297f7031e29b39e039ae10',1,'Event::Event()'],['../class_event.html#a596fd5184034fce4264bfd1d9b290236',1,'Event::Event(int layer)']]]
+  ['charmander_114',['Charmander',['../class_charmander.html#aa6778e8ae8c561011f262be4cbe8d7c8',1,'Charmander']]],
+  ['choicepok_115',['choicePok',['../class_fight.html#aa89e75a9ce0198de13db578bbe32e7ce',1,'Fight']]],
+  ['cinematic_116',['Cinematic',['../class_cinematic.html#a9888728c7c76cec5ac6a6b5d3c470a89',1,'Cinematic']]],
+  ['clean_117',['clean',['../class_dialogue_box.html#af04c18277217bb1a31ad8df5a1051d8a',1,'DialogueBox']]],
+  ['climbfrom_118',['climbFrom',['../class_map.html#ac7350e115c743122c96f3361c053c0d1',1,'Map::climbFrom(VIterator current)'],['../class_map.html#a19e585111d563f5d4610a3daafc812cd',1,'Map::climbFrom(PathI current)']]]
 ];

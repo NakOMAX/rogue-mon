@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gamemanager_41',['GameManager',['../class_game_manager.html',1,'']]]
+  ['fight_90',['Fight',['../class_fight.html',1,'']]],
+  ['first_91',['First',['../class_first.html',1,'']]]
 ];

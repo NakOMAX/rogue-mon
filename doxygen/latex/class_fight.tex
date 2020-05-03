@@ -1,0 +1,146 @@
+\hypertarget{class_fight}{}\doxysection{Fight Class Reference}
+\label{class_fight}\index{Fight@{Fight}}
+
+
+Inheritance diagram for Fight\+:
+% FIG 0
+
+
+Collaboration diagram for Fight\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fight_ad8ae526980c8d4b16157f9f6cc5f0318}\label{class_fight_ad8ae526980c8d4b16157f9f6cc5f0318}} 
+\mbox{\hyperlink{class_fight_ad8ae526980c8d4b16157f9f6cc5f0318}{Fight}} (\mbox{\hyperlink{class_player}{Player}} $\ast$newme, \mbox{\hyperlink{class_wild_pok}{Wild\+Pok}} $\ast$newopposant)
+\begin{DoxyCompactList}\small\item\em class constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_a18cf7a66723c83b0406cf87a1d566e5c}\label{class_fight_a18cf7a66723c83b0406cf87a1d566e5c}} 
+\mbox{\hyperlink{class_fight_a18cf7a66723c83b0406cf87a1d566e5c}{$\sim$\+Fight}} ()
+\begin{DoxyCompactList}\small\item\em class destructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fight_a0d5ecb3954bf567ea470ae6675b0cde9}{effectsatt\+Player}} (\mbox{\hyperlink{class_attack}{Attack}} $\ast$att, \mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$Pok)
+\begin{DoxyCompactList}\small\item\em produces the effects of the attack played by the player \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fight_a84d031a58cbcbc7f1955e6ce2aada580}{raid}} (\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$Pok)
+\begin{DoxyCompactList}\small\item\em player attack \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fight_a004c5924bb8078309a9045bc1396d999}{acitem}} (\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$Pok)
+\begin{DoxyCompactList}\small\item\em action of the item \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$ \mbox{\hyperlink{class_fight_aa89e75a9ce0198de13db578bbe32e7ce}{choice\+Pok}} (\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$old)
+\begin{DoxyCompactList}\small\item\em choising a pokemon in your inventory \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fight_aa7638fc104f8233b53cbb73cece51000}{action\+Opposant}} (\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$defender)
+\begin{DoxyCompactList}\small\item\em Opposant turn. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fight_ac2db07210b6cbde5523f0e0505167789}{effectsattopposant}} (\mbox{\hyperlink{class_attack}{Attack}} $\ast$att, \mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$defender)
+\begin{DoxyCompactList}\small\item\em produces the effects of the attack played by the opposant \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_a5722d8d65f72139b0f74900413dcd07f}\label{class_fight_a5722d8d65f72139b0f74900413dcd07f}} 
+short int \mbox{\hyperlink{class_fight_a5722d8d65f72139b0f74900413dcd07f}{init}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, unsigned short int dimX, unsigned short int dimY)
+\begin{DoxyCompactList}\small\item\em see event init \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_a6db19158f57ec5764351892a292e11f7}\label{class_fight_a6db19158f57ec5764351892a292e11f7}} 
+short int \mbox{\hyperlink{class_fight_a6db19158f57ec5764351892a292e11f7}{run}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, S\+D\+L\+\_\+\+Event evt)
+\begin{DoxyCompactList}\small\item\em see event run \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_ad27c3eb4bc70b6f71f3e9202535debc7}\label{class_fight_ad27c3eb4bc70b6f71f3e9202535debc7}} 
+short int \mbox{\hyperlink{class_fight_ad27c3eb4bc70b6f71f3e9202535debc7}{exit}} ()
+\begin{DoxyCompactList}\small\item\em see event exit \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fight_a251a70704a71ecfcec844b7602379abf}\label{class_fight_a251a70704a71ecfcec844b7602379abf}} 
+\mbox{\hyperlink{class_dialogue_box}{Dialogue\+Box}} $\ast$ \mbox{\hyperlink{class_fight_a251a70704a71ecfcec844b7602379abf}{box}}
+\begin{DoxyCompactList}\small\item\em dialogue box for cinematic \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fight_a004c5924bb8078309a9045bc1396d999}\label{class_fight_a004c5924bb8078309a9045bc1396d999}} 
+\index{Fight@{Fight}!acitem@{acitem}}
+\index{acitem@{acitem}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{acitem()}{acitem()}}
+{\footnotesize\ttfamily void Fight\+::acitem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$}]{Pok }\end{DoxyParamCaption})}
+
+
+
+action of the item 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pok} & \{is the \mbox{\hyperlink{class_pokemon}{Pokemon}} in play\} precondition \+: The player must have at least an \mbox{\hyperlink{class_item}{Item}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fight_aa7638fc104f8233b53cbb73cece51000}\label{class_fight_aa7638fc104f8233b53cbb73cece51000}} 
+\index{Fight@{Fight}!actionOpposant@{actionOpposant}}
+\index{actionOpposant@{actionOpposant}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{actionOpposant()}{actionOpposant()}}
+{\footnotesize\ttfamily void Fight\+::action\+Opposant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$}]{defender }\end{DoxyParamCaption})}
+
+
+
+Opposant turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em defender} & \{is the pokemon from \mbox{\hyperlink{class_player}{Player}} in game\} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fight_aa89e75a9ce0198de13db578bbe32e7ce}\label{class_fight_aa89e75a9ce0198de13db578bbe32e7ce}} 
+\index{Fight@{Fight}!choicePok@{choicePok}}
+\index{choicePok@{choicePok}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{choicePok()}{choicePok()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$ Fight\+::choice\+Pok (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$}]{old }\end{DoxyParamCaption})}
+
+
+
+choising a pokemon in your inventory 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pok} & \{is the \mbox{\hyperlink{class_pokemon}{Pokemon}} you want to remplace\} Precondition \+: The playermust have more than one pokemonin his array \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fight_ac2db07210b6cbde5523f0e0505167789}\label{class_fight_ac2db07210b6cbde5523f0e0505167789}} 
+\index{Fight@{Fight}!effectsattopposant@{effectsattopposant}}
+\index{effectsattopposant@{effectsattopposant}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{effectsattopposant()}{effectsattopposant()}}
+{\footnotesize\ttfamily void Fight\+::effectsattopposant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_attack}{Attack}} $\ast$}]{att,  }\item[{\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$}]{defender }\end{DoxyParamCaption})}
+
+
+
+produces the effects of the attack played by the opposant 
+
+
+\begin{DoxyParams}{Parameters}
+{\em defender} & \{is the pokemon from \mbox{\hyperlink{class_player}{Player}} in game\} att \{is the attack we want to play\} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fight_a0d5ecb3954bf567ea470ae6675b0cde9}\label{class_fight_a0d5ecb3954bf567ea470ae6675b0cde9}} 
+\index{Fight@{Fight}!effectsattPlayer@{effectsattPlayer}}
+\index{effectsattPlayer@{effectsattPlayer}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{effectsattPlayer()}{effectsattPlayer()}}
+{\footnotesize\ttfamily void Fight\+::effectsatt\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_attack}{Attack}} $\ast$}]{att,  }\item[{\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$}]{Pok }\end{DoxyParamCaption})}
+
+
+
+produces the effects of the attack played by the player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em att} & \{is the attack we want to play\} Pok \{is the pokemon who attacks\} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fight_a84d031a58cbcbc7f1955e6ce2aada580}\label{class_fight_a84d031a58cbcbc7f1955e6ce2aada580}} 
+\index{Fight@{Fight}!raid@{raid}}
+\index{raid@{raid}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{raid()}{raid()}}
+{\footnotesize\ttfamily void Fight\+::raid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$}]{Pok }\end{DoxyParamCaption})}
+
+
+
+player attack 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pok} & \{is the \mbox{\hyperlink{class_pokemon}{Pokemon}} in play\} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/event/Fight.\+h\item 
+src/event/Fight.\+cpp\end{DoxyCompactItemize}

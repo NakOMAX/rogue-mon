@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scaling_72',['scaling',['../class_event.html#a5c8d19e1cf4d6813eb0cf3881c4cb791',1,'Event']]]
+  ['box_176',['box',['../class_fight.html#a251a70704a71ecfcec844b7602379abf',1,'Fight']]]
 ];

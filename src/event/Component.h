@@ -32,7 +32,7 @@ protected:
 
 // Max number of characters in textbox (to adapt later)
 #define CHARLIM 71
-/** @class dialogueBox
+/** @class DialogueBox
     @brief Component box that gets sent text files and reads them*/
 class DialogueBox : public Component {
  public:

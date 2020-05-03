@@ -8,22 +8,28 @@ Collaboration diagram for Player\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_player_aad09a51c46e4f178ee07fee6811c9816}\label{class_player_aad09a51c46e4f178ee07fee6811c9816}} 
-string {\bfseries get\+User\+Name} ()
+std\+::string {\bfseries get\+User\+Name} ()
 \item 
 \mbox{\Hypertarget{class_player_a80527d1cf1cd35fd3733c47a2ea08a84}\label{class_player_a80527d1cf1cd35fd3733c47a2ea08a84}} 
-Pokemon $\ast$ \mbox{\hyperlink{class_player_a80527d1cf1cd35fd3733c47a2ea08a84}{get\+Pokemon}} (unsigned short int id)
-\begin{DoxyCompactList}\small\item\em getter \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$ \mbox{\hyperlink{class_player_a80527d1cf1cd35fd3733c47a2ea08a84}{get\+Pokemon}} (unsigned short int id)
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a88f1c55106cda6165d4e7f93ac9d854f}\label{class_player_a88f1c55106cda6165d4e7f93ac9d854f}} 
+unsigned short int \mbox{\hyperlink{class_player_a88f1c55106cda6165d4e7f93ac9d854f}{get\+Nb\+Pokemon}} ()
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_player_a06099c208c5fd83950e5d84ad1746fd7}\label{class_player_a06099c208c5fd83950e5d84ad1746fd7}} 
 \mbox{\hyperlink{class_item}{Item}} $\ast$ \mbox{\hyperlink{class_player_a06099c208c5fd83950e5d84ad1746fd7}{get\+Item}} (unsigned short int id)
-\begin{DoxyCompactList}\small\item\em getter \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a526924eda77c2b48e93ca4a4d6fe9ee6}\label{class_player_a526924eda77c2b48e93ca4a4d6fe9ee6}} 
+unsigned short int \mbox{\hyperlink{class_player_a526924eda77c2b48e93ca4a4d6fe9ee6}{get\+Nb\+Item}} ()
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_player_aff6d881ccbca76b149fe002f50dd01a0}\label{class_player_aff6d881ccbca76b149fe002f50dd01a0}} 
 void \mbox{\hyperlink{class_player_aff6d881ccbca76b149fe002f50dd01a0}{set\+Pokemon}} ()
-\begin{DoxyCompactList}\small\item\em getter \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_player_ad42add2eddcb90d6d427d68d47c7b501}\label{class_player_ad42add2eddcb90d6d427d68d47c7b501}} 
-void \mbox{\hyperlink{class_player_ad42add2eddcb90d6d427d68d47c7b501}{add\+Item}} (\mbox{\hyperlink{class_item}{Item}} $\ast$)
-\begin{DoxyCompactList}\small\item\em setter \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a8209244967af2073876d5bf01a566d7d}\label{class_player_a8209244967af2073876d5bf01a566d7d}} 
+void \mbox{\hyperlink{class_player_a8209244967af2073876d5bf01a566d7d}{add\+Item}} (\mbox{\hyperlink{class_item}{Item}})
+\begin{DoxyCompactList}\small\item\em mutator \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_player_a76c17fc4b4f5aba544ab028b70a1e8dc}\label{class_player_a76c17fc4b4f5aba544ab028b70a1e8dc}} 
-void {\bfseries add\+Pokemon} (Pokemon $\ast$)
+void {\bfseries add\+Pokemon} (\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$)
 \item 
 \mbox{\Hypertarget{class_player_a142468d760a5f32de4df330abcfb8cba}\label{class_player_a142468d760a5f32de4df330abcfb8cba}} 
 void {\bfseries delete\+Pokemon} (unsigned short int i)
@@ -31,20 +37,23 @@ void {\bfseries delete\+Pokemon} (unsigned short int i)
 \mbox{\Hypertarget{class_player_a6ef477a23d4abff61b00298fb9761191}\label{class_player_a6ef477a23d4abff61b00298fb9761191}} 
 void {\bfseries delete\+Item} (unsigned short int i)
 \item 
-\mbox{\Hypertarget{class_player_a278a797285340a6a278328d6ca9988cd}\label{class_player_a278a797285340a6a278328d6ca9988cd}} 
-int {\bfseries is\+Die} ()
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{class_player_ac2c94945f20bacc46cbd152ec06d4ef7}\label{class_player_ac2c94945f20bacc46cbd152ec06d4ef7}} 
+bool \mbox{\hyperlink{class_player_ac2c94945f20bacc46cbd152ec06d4ef7}{pok\+Is\+Dead}} (\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$)
+\begin{DoxyCompactList}\small\item\em check if a pokemon is dead \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a8df8ebdd8bb2f93945c485de27c06b73}\label{class_player_a8df8ebdd8bb2f93945c485de27c06b73}} 
+bool \mbox{\hyperlink{class_player_a8df8ebdd8bb2f93945c485de27c06b73}{player\+Is\+Dead}} ()
+\begin{DoxyCompactList}\small\item\em check if the player is dead \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_player_acf0355128a99ee20ad9931b760fb2de1}\label{class_player_acf0355128a99ee20ad9931b760fb2de1}} 
-string {\bfseries name}
+\mbox{\Hypertarget{class_player_af9c920fabaafdeb7961a645315b521ff}\label{class_player_af9c920fabaafdeb7961a645315b521ff}} 
+std\+::string {\bfseries name}
 \item 
-\mbox{\Hypertarget{class_player_a919bdc2d4242c4334fe9672a37bb9cc4}\label{class_player_a919bdc2d4242c4334fe9672a37bb9cc4}} 
-Pokemon $\ast$ {\bfseries my\+Pokemon} \mbox{[}$\,$\mbox{]}
+\mbox{\Hypertarget{class_player_a9a57b2d735bb6fe53e717eeeef10a4b7}\label{class_player_a9a57b2d735bb6fe53e717eeeef10a4b7}} 
+\mbox{\hyperlink{class_pokemon}{Pokemon}} $\ast$ {\bfseries my\+Pokemon} \mbox{[}6\mbox{]}
 \item 
-\mbox{\Hypertarget{class_player_a8455e0638c39fcb95651088b84816485}\label{class_player_a8455e0638c39fcb95651088b84816485}} 
-\mbox{\hyperlink{class_item}{Item}} $\ast$ {\bfseries my\+Item} \mbox{[}$\,$\mbox{]}
+\mbox{\Hypertarget{class_player_a69c0375de8b83bd582decf0c531ee9d3}\label{class_player_a69c0375de8b83bd582decf0c531ee9d3}} 
+\mbox{\hyperlink{class_item}{Item}} $\ast$ {\bfseries my\+Item}
 \item 
 \mbox{\Hypertarget{class_player_a36edda720c34ad031d15d64cee6462b8}\label{class_player_a36edda720c34ad031d15d64cee6462b8}} 
 unsigned short int {\bfseries nb\+Pokemon}

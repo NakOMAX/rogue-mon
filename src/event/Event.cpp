@@ -31,12 +31,20 @@ short int Event::launch(SDL_Renderer * render, unsigned short int dimX, unsigned
 short int Event::mainloop(SDL_Renderer * render) {
   SDL_Event evt;
   short int res = 0;
+  unsigned int time = 0, current;
   do {
+    current = SDL_GetTicks();
+
     res = run(render, evt);
     for (size_t i = 0; i < components.size(); i++) {
       components[i]->_update(render);
     }
     SDL_RenderPresent(render);
+
+    time = SDL_GetTicks() - current;
+    if (time < 1000/60) {
+      SDL_Delay(1000/60 - time);
+    }
   } while (res == 0);
 
   if (res > 0) {

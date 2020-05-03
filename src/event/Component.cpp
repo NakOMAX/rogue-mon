@@ -50,7 +50,7 @@ DialogueBox::~DialogueBox() {
 
 //#N C'est le game manager qui fixe la dimension de l'écran et tu vas avoir besoin de te la faire passer
 unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render ) {
-  std::cout<<"Initiated dialogue box"<<std::endl; //debug
+
   // test correct initialisation
   if (!TTF_WasInit()) {
     //#N Pour appeler component GameManager doit avoir initialisé TTF, c'est ça?
@@ -59,27 +59,27 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
   }
 
   font = loadFont("data/Font/pkmnem.ttf", 40);
-  std::cout<<"surface and image start"<<std::endl; //debug
+
   surface = loadImage("data/Components/dialogueBox.png");
-  std::cout<<"surface done"<<std::endl; //debug
+
   image = SDL_CreateTextureFromSurface(render,surface);
-  std::cout<<"surface and image worked"<<std::endl; //debug
+
   // generate SDL_Rect : position
   // assumes dimX and dimY sizes of screen
   int padding = 50; // distance between box and text
 
   transform = new SDL_Rect;
-  std::cout<<"SDL_Rect exists"<<std::endl; //debug
+
   // whole textbox
   //#N pointeur vers une struct, donc ->
   transform->w = dimX;
   transform->h = dimY/4;
   transform->x = 0;
   transform->y = dimY - transform->h;
-  std::cout<<"SDL_Rect full"<<std::endl;//debug
+
   //#N Si y=dimY le haut de la boite sera en bas de la page car (0,0) c'est en haut à gauche
 
-  std::cout<<"Transform creation"<<std::endl; //debug
+
   text_transform = new SDL_Rect;
   text_transform->x = transform->x + padding;
   text_transform->y = transform->y + padding/2;
@@ -94,14 +94,14 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
   l3_transform->y = l2_transform->y + 40;
   // RectCopy(l3_transform, l2_transform);
 
-  std::cout<<"Text made"<<std::endl; //debug
+
 
   // init char *
   aff = new char [CHARLIM];
   af2 = new char [CHARLIM];
   af3 = new char [CHARLIM];
   clean();
-  std::cout<<"char made"<<std::endl;//debug
+
   // return 0 if everything went well
   return 0;
 }

@@ -1,0 +1,17 @@
+digraph "Pokemon"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Pokemon",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="Bulbasaur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_bulbasaur.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Charmander",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_charmander.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="Mewthree",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_mewthree.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="Squirtle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_squirtle.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="WildPok",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_wild_pok.html",tooltip=" "];
+}

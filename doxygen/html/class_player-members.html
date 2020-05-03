@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Roguemon
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.9 beta</span>
    </div>
    <div id="projectbrief">Roguelike inspiré de Pokémon</div>
   </td>
@@ -70,22 +70,25 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_player.html">Player</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_player.html#ad42add2eddcb90d6d427d68d47c7b501">addItem</a>(Item *)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_player.html#a8209244967af2073876d5bf01a566d7d">addItem</a>(Item)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>addPokemon</b>(Pokemon *) (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>deleteItem</b>(unsigned short int i) (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>deletePokemon</b>(unsigned short int i) (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_player.html#a06099c208c5fd83950e5d84ad1746fd7">getItem</a>(unsigned short int id)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_player.html#a526924eda77c2b48e93ca4a4d6fe9ee6">getNbItem</a>()</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_player.html#a88f1c55106cda6165d4e7f93ac9d854f">getNbPokemon</a>()</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_player.html#a80527d1cf1cd35fd3733c47a2ea08a84">getPokemon</a>(unsigned short int id)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getUserName</b>() (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>isDie</b>() (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>myItem</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>myPokemon</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>name</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>nbItem</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>nbPokemon</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Player</b>() (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_player.html#aff6d881ccbca76b149fe002f50dd01a0">setPokemon</a>()</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Player</b>() (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>myItem</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>myPokemon</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>name</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>nbItem</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>nbPokemon</b> (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Player</b>() (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_player.html#a8df8ebdd8bb2f93945c485de27c06b73">playerIsDead</a>()</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_player.html#ac2c94945f20bacc46cbd152ec06d4ef7">pokIsDead</a>(Pokemon *)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_player.html#aff6d881ccbca76b149fe002f50dd01a0">setPokemon</a>()</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~Player</b>() (defined in <a class="el" href="class_player.html">Player</a>)</td><td class="entry"><a class="el" href="class_player.html">Player</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['charmander_4',['Charmander',['../class_charmander.html',1,'']]],
-  ['climbfrom_5',['climbFrom',['../class_map.html#ac7350e115c743122c96f3361c053c0d1',1,'Map::climbFrom(VIterator current)'],['../class_map.html#a19e585111d563f5d4610a3daafc812cd',1,'Map::climbFrom(PathI current)']]]
+  ['box_7',['box',['../class_fight.html#a251a70704a71ecfcec844b7602379abf',1,'Fight']]],
+  ['bulbasaur_8',['Bulbasaur',['../class_bulbasaur.html',1,'Bulbasaur'],['../class_bulbasaur.html#af33f6c912b28ad4a1e026a74fcb933c9',1,'Bulbasaur::Bulbasaur()']]]
 ];
