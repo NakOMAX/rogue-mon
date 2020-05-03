@@ -128,7 +128,7 @@ short int Cinematic::read(std::shared_ptr<DialogueBox> db) {
 //----------------------------------------------------------------------------//
 //-------------------------------->HEALING<-----------------------------------//
 //____________________________________________________________________________//
-
+/*
 short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
 {
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 20);
@@ -146,3 +146,4 @@ short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Re
   }
   return 0;
 }
+*/
