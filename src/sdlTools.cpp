@@ -73,9 +73,9 @@ TTF_Font * loadFont(const std::string & filename, int size)
   return font;
 }
 
-void RectCopy(SDL_Rect & r1,const SDL_Rect r2) {
-  r1.w = r2.w;
-  r1.h = r2.h;
-  r1.x = r2.x;
-  r1.y = r2.y;
+void RectCopy(SDL_Rect * r1,const SDL_Rect * r2) {
+  r1->w = r2->w;
+  r1->h = r2->h;
+  r1->x = r2->x;
+  r1->y = r2->y;
 }
