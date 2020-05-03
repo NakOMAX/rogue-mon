@@ -1,5 +1,6 @@
 #include "Pokemon.h"
 #include "Squirtle.h"
+#include "Attack.h"
 #include "First.h"
 #include "Second.h"
 
@@ -11,7 +12,7 @@ using namespace std;
 
 
 
-Squirtle  :: Squirtle  () 
+Squirtle  :: Squirtle  ()
 {
     id = 007;
     maxHp = 100;

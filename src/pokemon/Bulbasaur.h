@@ -3,12 +3,13 @@
 
 #include <string>
 #include "Pokemon.h"
+#include "Attack.h"
 
 
 // Faut-il associer les attaques à chaque Pokemon ?
 class Bulbasaur : public Pokemon
 {
- public : 
+ public :
 
   ///@brief class constructor
   Bulbasaur ();

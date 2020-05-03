@@ -1,5 +1,6 @@
 #include "Pokemon.h"
 #include "WildPok.h"
+#include "Attack.h"
 #include "First.h"
 #include "Second.h"
 

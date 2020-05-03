@@ -3,6 +3,7 @@
 
 #include <string>
 #include "Pokemon.h"
+#include "Attack.h"
 using namespace std;
 
 // Faut-il associer les attaques à chaque Pokemon ?
