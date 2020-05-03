@@ -11,32 +11,6 @@
 #include "sdlTools.h"
 #include "Component.h"
 
-// ---------------- Test
-
-short int Test::init(/*Player p*/) {
-  ennemy[0].hp = 10;
-  ennemy[1].hp = 13;
-  ennemy[0].hp_max = 10;
-  ennemy[1].hp_max = 13;
-  ennemy[0].atk = 1;
-  ennemy[1].atk = 1;
-  ennemy[0].def = 4;
-  ennemy[1].def = 2;
-  return run(/*p*/);
-}
-
-short int Test::run(/*Player p*/) {
-  bool hasFinished = false;
-  while (!hasFinished) {
-    for (int i = 0; i < 2; i++) {
-      std::cout<<"Ennemy number "<<i<<" dealt "<<ennemy[i].atk<<" damage"<<std::endl;
-    }
-    std::cout<<" Wait I forgot to implement logic"<<std::endl;
-    hasFinished = !hasFinished;
-  }
-  return 0;
-}
-
 // ------------ cinematic
 
 Cinematic::Cinematic(std::string text_adress, std::string image_adress, std::string sprite_adress) {
@@ -46,7 +20,7 @@ Cinematic::Cinematic(std::string text_adress, std::string image_adress, std::str
 }
 
 short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY) {
-  std::cout<<"Cinematic correct initialisation"<<std::endl; //debug
+
 
   //init sprite
   if (spr_source != "") {
@@ -92,7 +66,7 @@ short int Cinematic::run(SDL_Renderer * renderer, SDL_Event evt) {
 }
 
 short int Cinematic::exit() {
-  std::cout<<"exit event"<<std::endl; //debug
+
   //end of event
   myfile.close();
   return 0;
@@ -105,7 +79,7 @@ short int Cinematic::read(DialogueBox* db) {
     if(!myfile.eof()) {
       std::string buf;
       getline(myfile, buf);
-      std::cout<<buf<<std::endl; //debug
+
       db->clean();
       (*db)<<buf.c_str();
     } else {

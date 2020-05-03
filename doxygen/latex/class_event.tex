@@ -15,48 +15,40 @@ Inheritance diagram for Event\+:
 \mbox{\Hypertarget{class_event_a5a40dd4708297f7031e29b39e039ae10}\label{class_event_a5a40dd4708297f7031e29b39e039ae10}} 
 \mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}} ()
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_event}{Event}} constructor used so inherited classes can have a default. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_event_a596fd5184034fce4264bfd1d9b290236}{Event}} (int layer)
-\begin{DoxyCompactList}\small\item\em event constructor never used due to being impractical with inheritace \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_event_a7704ec01ce91e673885792054214b3d2}\label{class_event_a7704ec01ce91e673885792054214b3d2}} 
 \mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{$\sim$\+Event}} ()
 \begin{DoxyCompactList}\small\item\em event destructor \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_event_a085d45ce39fbd53468b5bb8126739d47}\label{class_event_a085d45ce39fbd53468b5bb8126739d47}} 
-short int \mbox{\hyperlink{class_event_a085d45ce39fbd53468b5bb8126739d47}{init}} ()
-\begin{DoxyCompactList}\small\item\em init method called when launching event, launches \mbox{\hyperlink{class_event_a6d053bf30abbf06bc3e08a59c17021ec}{run()}}, performs setup. Returns 0 if everything went correctly, else errorcode \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_event_ad469f25d0c6da0cd6bb5d354055cf8c8}\label{class_event_ad469f25d0c6da0cd6bb5d354055cf8c8}} 
+virtual short int \mbox{\hyperlink{class_event_ad469f25d0c6da0cd6bb5d354055cf8c8}{run}} (S\+D\+L\+\_\+\+Renderer $\ast$render, S\+D\+L\+\_\+\+Event event)=0
+\begin{DoxyCompactList}\small\item\em mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues, -\/1 if mainloop exited, errorcode else. Called every frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_event_abfa8ee20e330830a12720403781dd5a0}\label{class_event_abfa8ee20e330830a12720403781dd5a0}} 
+virtual short int \mbox{\hyperlink{class_event_abfa8ee20e330830a12720403781dd5a0}{init}} (S\+D\+L\+\_\+\+Renderer $\ast$render, unsigned short int dimX, unsigned short int dimY)=0
+\begin{DoxyCompactList}\small\item\em init method called when launching event, launches \mbox{\hyperlink{class_event_ad469f25d0c6da0cd6bb5d354055cf8c8}{run()}}, performs setup. Returns 0 if everything went correctly, else errorcode \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_event_af3ceb7f4d2ab1115f8bb282c577d89d9}\label{class_event_af3ceb7f4d2ab1115f8bb282c577d89d9}} 
+virtual short int \mbox{\hyperlink{class_event_af3ceb7f4d2ab1115f8bb282c577d89d9}{exit}} ()=0
+\begin{DoxyCompactList}\small\item\em exit method called once when event closes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_event_a64994b40407662595d584ab6b71fd135}\label{class_event_a64994b40407662595d584ab6b71fd135}} 
+short int \mbox{\hyperlink{class_event_a64994b40407662595d584ab6b71fd135}{launch}} (S\+D\+L\+\_\+\+Renderer $\ast$render, unsigned short int dimX, unsigned short int dimY)
+\begin{DoxyCompactList}\small\item\em meta version of \mbox{\hyperlink{class_event_abfa8ee20e330830a12720403781dd5a0}{init()}} called when launching event \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_event_a973c02d044a5a6b07a044de0df1923cf}\label{class_event_a973c02d044a5a6b07a044de0df1923cf}} 
 short int \mbox{\hyperlink{class_event_a973c02d044a5a6b07a044de0df1923cf}{get\+Scaling}} ()
 \begin{DoxyCompactList}\small\item\em get method for scaling \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_event_a6d053bf30abbf06bc3e08a59c17021ec}\label{class_event_a6d053bf30abbf06bc3e08a59c17021ec}} 
-short int \mbox{\hyperlink{class_event_a6d053bf30abbf06bc3e08a59c17021ec}{run}} ()
-\begin{DoxyCompactList}\small\item\em mainloop for the event overrides the normal mainloop until returned. Returns 0 if exited properly, errorcode else. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{class_event_ab7b220e69b5b08422b056115e24e1e3e}\label{class_event_ab7b220e69b5b08422b056115e24e1e3e}} 
+short int \mbox{\hyperlink{class_event_ab7b220e69b5b08422b056115e24e1e3e}{mainloop}} (S\+D\+L\+\_\+\+Renderer $\ast$render)
+\begin{DoxyCompactList}\small\item\em actual mainloop Calls run every frame after updating every components. Also get keyboard events. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_event_a5c8d19e1cf4d6813eb0cf3881c4cb791}\label{class_event_a5c8d19e1cf4d6813eb0cf3881c4cb791}} 
 int \mbox{\hyperlink{class_event_a5c8d19e1cf4d6813eb0cf3881c4cb791}{scaling}}
-\begin{DoxyCompactList}\small\item\em scaling value of event used in order to choose difficulty and rewards \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em scaling value of event used in order to choose difficulty and rewards \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_event_a324c3cd52972cb45ae785791d2740a51}\label{class_event_a324c3cd52972cb45ae785791d2740a51}} 
+std\+::vector$<$ \mbox{\hyperlink{class_component}{Component}} $\ast$ $>$ \mbox{\hyperlink{class_event_a324c3cd52972cb45ae785791d2740a51}{components}}
+\begin{DoxyCompactList}\small\item\em array of components to draw The core of the event system, every component is drawn in vector order, meaning last in last drawn. That means later elements are drawn over earlier ones. If drawing directly in event, please note that your things will end up under components. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 events launched in gameplay An event launched by interacting with a node. Overrides gameplay. 
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_event_a596fd5184034fce4264bfd1d9b290236}\label{class_event_a596fd5184034fce4264bfd1d9b290236}} 
-\index{Event@{Event}!Event@{Event}}
-\index{Event@{Event}!Event@{Event}}
-\doxysubsubsection{\texorpdfstring{Event()}{Event()}}
-{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{int}]{layer }\end{DoxyParamCaption})}
-
-
-
-event constructor never used due to being impractical with inheritace 
-
-
-\begin{DoxyParams}{Parameters}
-{\em layer} & used in scaling \\
-\hline
-\end{DoxyParams}
-
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

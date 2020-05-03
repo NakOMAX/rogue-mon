@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Roguemon
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.9 beta</span>
    </div>
    <div id="projectbrief">Roguelike inspiré de Pokémon</div>
   </td>
@@ -68,7 +68,7 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_event-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Event Class Reference</div>  </div>
+<div class="title">Event Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -87,25 +87,34 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a5a40dd4708297f7031e29b39e039ae10">Event</a> ()</td></tr>
 <tr class="memdesc:a5a40dd4708297f7031e29b39e039ae10"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_event.html" title="events launched in gameplay An event launched by interacting with a node. Overrides gameplay.">Event</a> constructor used so inherited classes can have a default. <br /></td></tr>
 <tr class="separator:a5a40dd4708297f7031e29b39e039ae10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a596fd5184034fce4264bfd1d9b290236"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a596fd5184034fce4264bfd1d9b290236">Event</a> (int layer)</td></tr>
-<tr class="memdesc:a596fd5184034fce4264bfd1d9b290236"><td class="mdescLeft">&#160;</td><td class="mdescRight">event constructor never used due to being impractical with inheritace  <a href="class_event.html#a596fd5184034fce4264bfd1d9b290236">More...</a><br /></td></tr>
-<tr class="separator:a596fd5184034fce4264bfd1d9b290236"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7704ec01ce91e673885792054214b3d2"><td class="memItemLeft" align="right" valign="top"><a id="a7704ec01ce91e673885792054214b3d2"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a7704ec01ce91e673885792054214b3d2">~Event</a> ()</td></tr>
 <tr class="memdesc:a7704ec01ce91e673885792054214b3d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">event destructor <br /></td></tr>
 <tr class="separator:a7704ec01ce91e673885792054214b3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a085d45ce39fbd53468b5bb8126739d47"><td class="memItemLeft" align="right" valign="top"><a id="a085d45ce39fbd53468b5bb8126739d47"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a085d45ce39fbd53468b5bb8126739d47">init</a> ()</td></tr>
-<tr class="memdesc:a085d45ce39fbd53468b5bb8126739d47"><td class="mdescLeft">&#160;</td><td class="mdescRight">init method called when launching event, launches <a class="el" href="class_event.html#a6d053bf30abbf06bc3e08a59c17021ec" title="mainloop for the event overrides the normal mainloop until returned. Returns 0 if exited properly,...">run()</a>, performs setup. Returns 0 if everything went correctly, else errorcode <br /></td></tr>
-<tr class="separator:a085d45ce39fbd53468b5bb8126739d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="memItemLeft" align="right" valign="top"><a id="ad469f25d0c6da0cd6bb5d354055cf8c8"></a>
+virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8">run</a> (SDL_Renderer *render, SDL_Event event)=0</td></tr>
+<tr class="memdesc:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues, -1 if mainloop exited, errorcode else. Called every frame. <br /></td></tr>
+<tr class="separator:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfa8ee20e330830a12720403781dd5a0"><td class="memItemLeft" align="right" valign="top"><a id="abfa8ee20e330830a12720403781dd5a0"></a>
+virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0">init</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)=0</td></tr>
+<tr class="memdesc:abfa8ee20e330830a12720403781dd5a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">init method called when launching event, launches <a class="el" href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8" title="mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues,...">run()</a>, performs setup. Returns 0 if everything went correctly, else errorcode <br /></td></tr>
+<tr class="separator:abfa8ee20e330830a12720403781dd5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3ceb7f4d2ab1115f8bb282c577d89d9"><td class="memItemLeft" align="right" valign="top"><a id="af3ceb7f4d2ab1115f8bb282c577d89d9"></a>
+virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#af3ceb7f4d2ab1115f8bb282c577d89d9">exit</a> ()=0</td></tr>
+<tr class="memdesc:af3ceb7f4d2ab1115f8bb282c577d89d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">exit method called once when event closes <br /></td></tr>
+<tr class="separator:af3ceb7f4d2ab1115f8bb282c577d89d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64994b40407662595d584ab6b71fd135"><td class="memItemLeft" align="right" valign="top"><a id="a64994b40407662595d584ab6b71fd135"></a>
+short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a64994b40407662595d584ab6b71fd135">launch</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)</td></tr>
+<tr class="memdesc:a64994b40407662595d584ab6b71fd135"><td class="mdescLeft">&#160;</td><td class="mdescRight">meta version of <a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0" title="init method called when launching event, launches run(), performs setup. Returns 0 if everything went...">init()</a> called when launching event <br /></td></tr>
+<tr class="separator:a64994b40407662595d584ab6b71fd135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a973c02d044a5a6b07a044de0df1923cf"><td class="memItemLeft" align="right" valign="top"><a id="a973c02d044a5a6b07a044de0df1923cf"></a>
 short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a973c02d044a5a6b07a044de0df1923cf">getScaling</a> ()</td></tr>
 <tr class="memdesc:a973c02d044a5a6b07a044de0df1923cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">get method for scaling <br /></td></tr>
 <tr class="separator:a973c02d044a5a6b07a044de0df1923cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d053bf30abbf06bc3e08a59c17021ec"><td class="memItemLeft" align="right" valign="top"><a id="a6d053bf30abbf06bc3e08a59c17021ec"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a6d053bf30abbf06bc3e08a59c17021ec">run</a> ()</td></tr>
-<tr class="memdesc:a6d053bf30abbf06bc3e08a59c17021ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">mainloop for the event overrides the normal mainloop until returned. Returns 0 if exited properly, errorcode else. <br /></td></tr>
-<tr class="separator:a6d053bf30abbf06bc3e08a59c17021ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b220e69b5b08422b056115e24e1e3e"><td class="memItemLeft" align="right" valign="top"><a id="ab7b220e69b5b08422b056115e24e1e3e"></a>
+short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ab7b220e69b5b08422b056115e24e1e3e">mainloop</a> (SDL_Renderer *render)</td></tr>
+<tr class="memdesc:ab7b220e69b5b08422b056115e24e1e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">actual mainloop Calls run every frame after updating every components. Also get keyboard events. <br /></td></tr>
+<tr class="separator:ab7b220e69b5b08422b056115e24e1e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -113,37 +122,14 @@ Protected Attributes</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a5c8d19e1cf4d6813eb0cf3881c4cb791">scaling</a></td></tr>
 <tr class="memdesc:a5c8d19e1cf4d6813eb0cf3881c4cb791"><td class="mdescLeft">&#160;</td><td class="mdescRight">scaling value of event used in order to choose difficulty and rewards <br /></td></tr>
 <tr class="separator:a5c8d19e1cf4d6813eb0cf3881c4cb791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324c3cd52972cb45ae785791d2740a51"><td class="memItemLeft" align="right" valign="top"><a id="a324c3cd52972cb45ae785791d2740a51"></a>
+std::vector&lt; <a class="el" href="class_component.html">Component</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a324c3cd52972cb45ae785791d2740a51">components</a></td></tr>
+<tr class="memdesc:a324c3cd52972cb45ae785791d2740a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">array of components to draw The core of the event system, every component is drawn in vector order, meaning last in last drawn. That means later elements are drawn over earlier ones. If drawing directly in event, please note that your things will end up under components. <br /></td></tr>
+<tr class="separator:a324c3cd52972cb45ae785791d2740a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>events launched in gameplay An event launched by interacting with a node. Overrides gameplay. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a596fd5184034fce4264bfd1d9b290236"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a596fd5184034fce4264bfd1d9b290236">&#9670;&nbsp;</a></span>Event()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Event::Event </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>layer</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>event constructor never used due to being impractical with inheritace </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">layer</td><td>used in scaling </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/event/<a class="el" href="_event_8h_source.html">Event.h</a></li>
 <li>src/event/Event.cpp</li>
 </ul>

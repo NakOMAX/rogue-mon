@@ -1,0 +1,78 @@
+\hypertarget{class_attack}{}\doxysection{Attack Class Reference}
+\label{class_attack}\index{Attack@{Attack}}
+
+
+Inheritance diagram for Attack\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_attack_aa2f391755dbfa049a6bc2991fae80017}\label{class_attack_aa2f391755dbfa049a6bc2991fae80017}} 
+\mbox{\hyperlink{class_attack_aa2f391755dbfa049a6bc2991fae80017}{Attack}} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_ac26aab0bc1e9145410dde8d2e9e336bd}\label{class_attack_ac26aab0bc1e9145410dde8d2e9e336bd}} 
+\mbox{\hyperlink{class_attack_ac26aab0bc1e9145410dde8d2e9e336bd}{Attack}} (const \mbox{\hyperlink{class_attack}{Attack}} \&atk)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_a6d3c8266507e4ac0102ab40847f478fe}\label{class_attack_a6d3c8266507e4ac0102ab40847f478fe}} 
+\mbox{\hyperlink{class_attack_a6d3c8266507e4ac0102ab40847f478fe}{$\sim$\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_ac3a5b31761207c48b593c217ccebe761}\label{class_attack_ac3a5b31761207c48b593c217ccebe761}} 
+std \+::string \mbox{\hyperlink{class_attack_ac3a5b31761207c48b593c217ccebe761}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_aad310192b2f1b0dbf64a0874c26f773f}\label{class_attack_aad310192b2f1b0dbf64a0874c26f773f}} 
+unsigned short int \mbox{\hyperlink{class_attack_aad310192b2f1b0dbf64a0874c26f773f}{get\+Power}} ()
+\begin{DoxyCompactList}\small\item\em accessor \+: return the name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_a77487848533d528645fd98f3b998c0a3}\label{class_attack_a77487848533d528645fd98f3b998c0a3}} 
+unsigned short int \mbox{\hyperlink{class_attack_a77487848533d528645fd98f3b998c0a3}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em accessor \+: return the attack power \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_af3de362f24f26ec5ca9b666f32645804}\label{class_attack_af3de362f24f26ec5ca9b666f32645804}} 
+unsigned short int \mbox{\hyperlink{class_attack_af3de362f24f26ec5ca9b666f32645804}{get\+PP}} ()
+\begin{DoxyCompactList}\small\item\em accessor \+: return the type of \mbox{\hyperlink{class_pokemon}{Pokemon}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_aec614b3381ba19b61d0373d78374ada2}\label{class_attack_aec614b3381ba19b61d0373d78374ada2}} 
+unsigned short int \mbox{\hyperlink{class_attack_aec614b3381ba19b61d0373d78374ada2}{get\+Impact}} ()
+\begin{DoxyCompactList}\small\item\em accessor \+: return the number of times 1 attack can be used \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_a3b8a81e8147c4797b91c92e8a1f51cab}\label{class_attack_a3b8a81e8147c4797b91c92e8a1f51cab}} 
+unsigned short int \mbox{\hyperlink{class_attack_a3b8a81e8147c4797b91c92e8a1f51cab}{get\+Gain\+Defense}} ()
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_a5919c461c95237c69e044d7ee3137d82}\label{class_attack_a5919c461c95237c69e044d7ee3137d82}} 
+unsigned short int \mbox{\hyperlink{class_attack_a5919c461c95237c69e044d7ee3137d82}{get\+Gain\+Atk}} ()
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_a14dedc9e713d094f23250cf8f6828b8c}\label{class_attack_a14dedc9e713d094f23250cf8f6828b8c}} 
+void \mbox{\hyperlink{class_attack_a14dedc9e713d094f23250cf8f6828b8c}{use\+PP}} ()
+\begin{DoxyCompactList}\small\item\em decrease pp after every attack \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_attack_a2f87e8fb79aa52199d12dc6d84412943}\label{class_attack_a2f87e8fb79aa52199d12dc6d84412943}} 
+void \mbox{\hyperlink{class_attack_a2f87e8fb79aa52199d12dc6d84412943}{reset\+PP}} ()
+\begin{DoxyCompactList}\small\item\em reset number of times an attack can be used \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_attack_ae99a8a648c835f3425cfe2b4b6d99a8d}\label{class_attack_ae99a8a648c835f3425cfe2b4b6d99a8d}} 
+std \+::string {\bfseries name}
+\item 
+\mbox{\Hypertarget{class_attack_a2ad63e47a832f24cde16542fe49fd343}\label{class_attack_a2ad63e47a832f24cde16542fe49fd343}} 
+unsigned short int {\bfseries power}
+\item 
+\mbox{\Hypertarget{class_attack_a0dac69d7e34bea7f84347f8136cfdb59}\label{class_attack_a0dac69d7e34bea7f84347f8136cfdb59}} 
+unsigned short int {\bfseries type}
+\item 
+\mbox{\Hypertarget{class_attack_ab66ca76bf8be20ad52d5f84bce150963}\label{class_attack_ab66ca76bf8be20ad52d5f84bce150963}} 
+unsigned short int {\bfseries pp}
+\item 
+\mbox{\Hypertarget{class_attack_a5dbe7f1245382fc53da674065742a90c}\label{class_attack_a5dbe7f1245382fc53da674065742a90c}} 
+unsigned short int {\bfseries max\+PP}
+\item 
+\mbox{\Hypertarget{class_attack_afa8d72e78c016c9492d58e0cb091fd50}\label{class_attack_afa8d72e78c016c9492d58e0cb091fd50}} 
+unsigned short int {\bfseries gain\+Atk}
+\item 
+\mbox{\Hypertarget{class_attack_a8b353a4e175cc0bd6a17cf3e61503d53}\label{class_attack_a8b353a4e175cc0bd6a17cf3e61503d53}} 
+unsigned short int {\bfseries gain\+Defense}
+\item 
+\mbox{\Hypertarget{class_attack_add917e769a2e1eed8c8917a073e1e835}\label{class_attack_add917e769a2e1eed8c8917a073e1e835}} 
+unsigned short int {\bfseries impact}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/attack/Attack.\+h\item 
+src/attack/Attack.\+cpp\end{DoxyCompactItemize}

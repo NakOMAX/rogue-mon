@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Roguemon
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.9 beta</span>
    </div>
    <div id="projectbrief">Roguelike inspiré de Pokémon</div>
   </td>
@@ -76,34 +76,52 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define POKE_EVI_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Event.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/*------------------ TESTING BLOCK STRUCTURE ---------------------------------*/</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structdata.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structdata.html">data</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">int</span> hp;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">int</span> hp_max;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">int</span> atk;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">int</span> def;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Component.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;SDL.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;SDL_ttf.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*/</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_test.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_test.html">Test</a> : <span class="keyword">public</span> <a class="code" href="class_event.html">Event</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;public :</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_test.html#a958e84049b7c4a5b7574184f43b3afae">init</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_test.html#a1b8d72d013ccedf6566317249a3c0e39">run</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;private :</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="structdata.html">data</a> ennemy[2];</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_cinematic.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_cinematic.html">Cinematic</a> : <span class="keyword">public</span> <a class="code" href="class_event.html">Event</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;public :</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="class_cinematic.html#a9888728c7c76cec5ac6a6b5d3c470a89">Cinematic</a>(std::string text_adress, std::string image_adress, std::string sprite_adress = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_cinematic.html#af54087bed984abcc4601d6a5e6e4fb08">run</a>(SDL_Renderer * render, SDL_Event evt);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_cinematic.html#a26d01222774b7dcb209650cd57147517">init</a>(SDL_Renderer * render, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> dimX, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> dimY);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_cinematic.html#a584b4d07edac5d572094993de7bd6b61">exit</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;private :</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> read(<a class="code" href="class_dialogue_box.html">DialogueBox</a>* db);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  std::string txt_source;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  std::string background_source;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  SDL_Texture * background;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  SDL_Surface * back_text;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  std::ifstream myfile;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="class_dialogue_box.html">DialogueBox</a> * box;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  std::string spr_source;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="class_sprite.html">Sprite</a> * spr;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*class Healing : public Event {</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">public:</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">  Healing();</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  ~Healing();</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">  short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player &amp; player);</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">};</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructdata_html"><div class="ttname"><a href="structdata.html">data</a></div><div class="ttdef"><b>Definition:</b> InheritedEvents.h:9</div></div>
-<div class="ttc" id="aclass_test_html_a958e84049b7c4a5b7574184f43b3afae"><div class="ttname"><a href="class_test.html#a958e84049b7c4a5b7574184f43b3afae">Test::init</a></div><div class="ttdeci">short int init()</div><div class="ttdoc">see Event init()</div><div class="ttdef"><b>Definition:</b> InheritedEvents.cpp:6</div></div>
-<div class="ttc" id="aclass_event_html"><div class="ttname"><a href="class_event.html">Event</a></div><div class="ttdoc">events launched in gameplay An event launched by interacting with a node. Overrides gameplay.</div><div class="ttdef"><b>Definition:</b> Event.h:9</div></div>
-<div class="ttc" id="aclass_test_html"><div class="ttname"><a href="class_test.html">Test</a></div><div class="ttdoc">testing purposes only yo</div><div class="ttdef"><b>Definition:</b> InheritedEvents.h:20</div></div>
-<div class="ttc" id="aclass_test_html_a1b8d72d013ccedf6566317249a3c0e39"><div class="ttname"><a href="class_test.html#a1b8d72d013ccedf6566317249a3c0e39">Test::run</a></div><div class="ttdeci">short int run()</div><div class="ttdoc">see Event run()</div><div class="ttdef"><b>Definition:</b> InheritedEvents.cpp:18</div></div>
+<div class="ttc" id="aclass_cinematic_html_a584b4d07edac5d572094993de7bd6b61"><div class="ttname"><a href="class_cinematic.html#a584b4d07edac5d572094993de7bd6b61">Cinematic::exit</a></div><div class="ttdeci">short int exit()</div><div class="ttdoc">see Event exit()</div><div class="ttdef"><b>Definition:</b> InheritedEvents.cpp:68</div></div>
+<div class="ttc" id="aclass_cinematic_html_a26d01222774b7dcb209650cd57147517"><div class="ttname"><a href="class_cinematic.html#a26d01222774b7dcb209650cd57147517">Cinematic::init</a></div><div class="ttdeci">short int init(SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)</div><div class="ttdoc">see Event init()</div><div class="ttdef"><b>Definition:</b> InheritedEvents.cpp:22</div></div>
+<div class="ttc" id="aclass_sprite_html"><div class="ttname"><a href="class_sprite.html">Sprite</a></div><div class="ttdef"><b>Definition:</b> Component.h:97</div></div>
+<div class="ttc" id="aclass_dialogue_box_html"><div class="ttname"><a href="class_dialogue_box.html">DialogueBox</a></div><div class="ttdef"><b>Definition:</b> Component.h:37</div></div>
+<div class="ttc" id="aclass_event_html"><div class="ttname"><a href="class_event.html">Event</a></div><div class="ttdoc">events launched in gameplay An event launched by interacting with a node. Overrides gameplay.</div><div class="ttdef"><b>Definition:</b> Event.h:18</div></div>
+<div class="ttc" id="aclass_cinematic_html"><div class="ttname"><a href="class_cinematic.html">Cinematic</a></div><div class="ttdef"><b>Definition:</b> InheritedEvents.h:17</div></div>
+<div class="ttc" id="aclass_cinematic_html_af54087bed984abcc4601d6a5e6e4fb08"><div class="ttname"><a href="class_cinematic.html#af54087bed984abcc4601d6a5e6e4fb08">Cinematic::run</a></div><div class="ttdeci">short int run(SDL_Renderer *render, SDL_Event evt)</div><div class="ttdoc">see Event run()</div><div class="ttdef"><b>Definition:</b> InheritedEvents.cpp:48</div></div>
+<div class="ttc" id="aclass_cinematic_html_a9888728c7c76cec5ac6a6b5d3c470a89"><div class="ttname"><a href="class_cinematic.html#a9888728c7c76cec5ac6a6b5d3c470a89">Cinematic::Cinematic</a></div><div class="ttdeci">Cinematic(std::string text_adress, std::string image_adress, std::string sprite_adress=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> InheritedEvents.cpp:16</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

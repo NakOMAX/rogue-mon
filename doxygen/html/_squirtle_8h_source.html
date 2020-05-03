@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Roguemon
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.9 beta</span>
    </div>
    <div id="projectbrief">Roguelike inspiré de Pokémon</div>
   </td>
@@ -71,26 +71,30 @@ $(function() {
 <div class="title">Squirtle.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _SQUIRTLE</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _SQUIRTLE</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _SQUIRTLE_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _SQUIRTLE_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Pokemon.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_squirtle.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_squirtle.html">Squirtle</a>  : <span class="keyword">public</span> Pokemon</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    public :</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="class_squirtle.html">Squirtle</a> ()</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;~<a class="code" href="class_squirtle.html">Squirtle</a>()</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Attack.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Faut-il associer les attaques à chaque Pokemon ?</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_squirtle.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_squirtle.html">Squirtle</a>  : <span class="keyword">public</span> <a class="code" href="class_pokemon.html">Pokemon</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    public :</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_squirtle.html#a35064752f77af561b7ed13d463495c62">Squirtle</a> ();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_squirtle.html#ab2d22d05cd01e3641a1489fbaf4fe56a">~Squirtle</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_squirtle_html"><div class="ttname"><a href="class_squirtle.html">Squirtle</a></div><div class="ttdef"><b>Definition:</b> Squirtle.h:7</div></div>
+<div class="ttc" id="aclass_pokemon_html"><div class="ttname"><a href="class_pokemon.html">Pokemon</a></div><div class="ttdef"><b>Definition:</b> Pokemon.h:8</div></div>
+<div class="ttc" id="aclass_squirtle_html_ab2d22d05cd01e3641a1489fbaf4fe56a"><div class="ttname"><a href="class_squirtle.html#ab2d22d05cd01e3641a1489fbaf4fe56a">Squirtle::~Squirtle</a></div><div class="ttdeci">~Squirtle()</div><div class="ttdoc">class destructor</div><div class="ttdef"><b>Definition:</b> Squirtle.cpp:33</div></div>
+<div class="ttc" id="aclass_squirtle_html_a35064752f77af561b7ed13d463495c62"><div class="ttname"><a href="class_squirtle.html#a35064752f77af561b7ed13d463495c62">Squirtle::Squirtle</a></div><div class="ttdeci">Squirtle()</div><div class="ttdoc">class constructor</div><div class="ttdef"><b>Definition:</b> Squirtle.cpp:15</div></div>
+<div class="ttc" id="aclass_squirtle_html"><div class="ttname"><a href="class_squirtle.html">Squirtle</a></div><div class="ttdef"><b>Definition:</b> Squirtle.h:11</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Roguemon
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.9 beta</span>
    </div>
    <div id="projectbrief">Roguelike inspiré de Pokémon</div>
   </td>
@@ -71,38 +71,34 @@ $(function() {
 <div class="title">Item.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _Item</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _Item</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;include &lt;string&gt;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_item.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_item.html">Item</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;protected :</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">string</span> name ;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> amount;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;public :</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_item.html#a7e53008511b8e7990c290cfd5c39c81e">Item</a> ()</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_item.html#a7e53008511b8e7990c290cfd5c39c81e">Item</a> ( <span class="keywordtype">unsigned</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> newId, <span class="keywordtype">string</span> newName, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> newAmount)</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_item.html#a7e9f50092c4b559d2098a43a7782770c">~Item</a>()</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> getId();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">string</span> <a class="code" href="class_item.html#a63d7f2148b699e539aae354b01559811">getName</a> ();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_item.html#ad011f7c536d947f3b6a25c819037701d">getAmount</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_item.html">Item</a> <a class="code" href="class_item.html#a3dcd1de109501a6f84f77e09783e3618">useItem</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> amount, <span class="keywordtype">unsigned</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef ITEM_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ITEM_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Pokemon.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_item.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_item.html">Item</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;protected :</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">string</span> name ;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> amount;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> id;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;public :</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_item.html">Item</a> ();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_item.html">Item</a> ( <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> newId, std :: string newName, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> newAmount);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    ~<a class="code" href="class_item.html">Item</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> getId();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std :: string getName ();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_item.html">Item</a> operator= (<a class="code" href="class_item.html">Item</a> copy);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> actionItem(<a class="code" href="class_pokemon.html">Pokemon</a>*);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_item_html_a63d7f2148b699e539aae354b01559811"><div class="ttname"><a href="class_item.html#a63d7f2148b699e539aae354b01559811">Item::getName</a></div><div class="ttdeci">string getName()</div><div class="ttdoc">accessor</div></div>
-<div class="ttc" id="aclass_item_html_a3dcd1de109501a6f84f77e09783e3618"><div class="ttname"><a href="class_item.html#a3dcd1de109501a6f84f77e09783e3618">Item::useItem</a></div><div class="ttdeci">Item useItem(unsigned short int amount, unsigned unsigned int id)</div><div class="ttdoc">The fonction use the caracteristic of the item.</div></div>
-<div class="ttc" id="aclass_item_html_ad011f7c536d947f3b6a25c819037701d"><div class="ttname"><a href="class_item.html#ad011f7c536d947f3b6a25c819037701d">Item::getAmount</a></div><div class="ttdeci">unsigned short int getAmount()</div><div class="ttdoc">accessor</div></div>
-<div class="ttc" id="aclass_item_html_a7e9f50092c4b559d2098a43a7782770c"><div class="ttname"><a href="class_item.html#a7e9f50092c4b559d2098a43a7782770c">Item::~Item</a></div><div class="ttdeci">string unsigned short int newAmount ~Item() unsigned short int getId()</div><div class="ttdoc">class destructor</div><div class="ttdef"><b>Definition:</b> Item.cpp:22</div></div>
-<div class="ttc" id="aclass_item_html"><div class="ttname"><a href="class_item.html">Item</a></div><div class="ttdef"><b>Definition:</b> Item.h:5</div></div>
-<div class="ttc" id="aclass_item_html_a7e53008511b8e7990c290cfd5c39c81e"><div class="ttname"><a href="class_item.html#a7e53008511b8e7990c290cfd5c39c81e">Item::Item</a></div><div class="ttdeci">Item() Item(unsigned unsigned int new Id</div><div class="ttdoc">class constructor</div><div class="ttdef"><b>Definition:</b> Item.cpp:9</div></div>
+<div class="ttc" id="aclass_pokemon_html"><div class="ttname"><a href="class_pokemon.html">Pokemon</a></div><div class="ttdef"><b>Definition:</b> Pokemon.h:8</div></div>
+<div class="ttc" id="aclass_item_html"><div class="ttname"><a href="class_item.html">Item</a></div><div class="ttdef"><b>Definition:</b> Item.h:6</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
