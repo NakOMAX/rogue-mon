@@ -39,9 +39,10 @@ short int Test::run(/*Player p*/) {
 
 // ------------ cinematic
 
-Cinematic::Cinematic(std::string text_adress, std::string image_adress) {
+Cinematic::Cinematic(std::string text_adress, std::string image_adress, std::string sprite_adress) {
   txt_source = text_adress;
   background_source = image_adress;
+  spr_source = sprite_adress;
 }
 
 short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY) {
@@ -51,6 +52,14 @@ short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsi
   box = new DialogueBox;
   std::cout<<"DB made"<<std::endl; //boxtest
   components.push_back(&(*box)); //boxtest
+
+  //init sprite
+  if (spr_source != "") {
+    SDL_Rect temp;
+    temp.x = dimX/3; temp.y = dimY/3;
+    spr = new Sprite (spr_source, temp);
+    components.push_back(&(*spr));
+  }
 
   //init background
   back_text = loadImage(background_source);

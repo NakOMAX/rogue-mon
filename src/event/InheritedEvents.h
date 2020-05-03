@@ -39,7 +39,7 @@ private :
 class Cinematic : public Event {
 public :
   /** class constructor */
-  Cinematic(std::string text_adress, std::string image_adress);
+  Cinematic(std::string text_adress, std::string image_adress, std::string sprite_adress = "");
   /** @brief see Event run()*/
   short int run(SDL_Renderer * render, SDL_Event evt);
   /** @brief see Event init() */
@@ -59,6 +59,9 @@ private :
   std::ifstream myfile;
   /** @brief dialogue box for cinematic*/
   DialogueBox * box;
+  /** @brief sprite*/
+  std::string spr_source;
+  Sprite * spr;
 };
 /*----------------------------------------------------------------------------*/
 
