@@ -29,11 +29,13 @@ string Item::getName()
     return name;
 }
 
-void Item :: operator= (Item copy)
+Item Item :: operator= (Item copy)
 {
-  name=copy.name ;
-  amount = copy.amount;
-  id = copy.id;
+  Item It
+  it.name=copy.name ;
+  it.amount = copy.amount;
+  it.id = copy.id;
+  return it
 
 }
 

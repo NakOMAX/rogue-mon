@@ -168,7 +168,7 @@ $(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
 $(OBJ_DIR)/Pokemon.o: $(POKEMON_DIR)/Pokemon.cpp $(POKEMON_DIR)/Pokemon.h $(ATTACK_DIR)/Attack.h
 	$(CC) $(INC_SRC) -c $< -o $@
 
-$(OBJ_DIR)/Charmander.o: $(POKEMON_DIR)/Charmander.cpp $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Pokemon.h
+$(OBJ_DIR)/Charmander.o: $(POKEMON_DIR)/Charmander.cpp $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Pokemon.h 
 	$(CC) $(INC_SRC) -c $< -o $@
 
 $(OBJ_DIR)/Bulbasaur.o: $(POKEMON_DIR)/Bulbasaur.cpp $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Pokemon.h $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Second.h
