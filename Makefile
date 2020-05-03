@@ -12,7 +12,7 @@ ATTACK_DIR = $(SRC_DIR)/attack
 ITEM_DIR = $(SRC_DIR)/item
 POKEMON_DIR = $(SRC_DIR)/pokemon
 
-
+POKES_H = $(OBJ_DIR)/Pokemon.h $(OBJ_DIR)/Charmander.h $(OBJ_DIR)/Squirtle.h $(OBJ_DIR)/Bulbasaur.h $(OBJ_DIR)/Mewthree.h $(OBJ_DIR)/WildPok.h
 POKES_O = $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Charmander.o $(OBJ_DIR)/Squirtle.o $(OBJ_DIR)/Bulbasaur.o $(OBJ_DIR)/Mewthree.o $(OBJ_DIR)/WildPok.o
 
 # Include-related
@@ -136,7 +136,7 @@ $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
 $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Item.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/FightTest: $(OBJ_DIR)/FightTest.o $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Attack.o $(OBJ_DIR)/Item.o $(OBJ_DIR)/WildPok.o
+$(TARGET_DIR)/FightTest: $(OBJ_DIR)/FightTest.o $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(POKES_O) $(OBJ_DIR)/Attack.o $(OBJ_DIR)/Item.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 # Main objects
