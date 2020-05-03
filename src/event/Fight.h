@@ -20,10 +20,11 @@ class Fight : public Event
 {
 private :
   Player* me;
+  Pokemon * active; // active pokemon
   WildPok* opposant;
 
   /*----------------------------*/
-  
+
 public :
   ///@brief class constructor
   Fight (Player * newme, WildPok * newopposant);
@@ -56,11 +57,13 @@ public :
 
 
   ///@brief see event init
-  short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer);
+  short int init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY);
   ///@brief see event run
-  short int run(SDL_Renderer * renderer, Pokemon * Pok);
+  short int run(SDL_Renderer * renderer, SDL_Event evt);
+  ///@brief see event exit
+  short int exit();
   /** @brief dialogue box for cinematic*/
-  std::shared_ptr<DialogueBox> box;
+  DialogueBox * box;
 
 };
 

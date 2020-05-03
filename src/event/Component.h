@@ -25,8 +25,8 @@ class Component {
 public:
   Component();
   ~Component();
-  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
-  unsigned short int _update(SDL_Renderer * render);
+  virtual unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) = 0;
+  virtual unsigned short int _update(SDL_Renderer * render) = 0;
 protected:
 };
 
@@ -45,13 +45,13 @@ class DialogueBox : public Component {
       called when launched and not when created, loads ressources
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
+  virtual unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
 
   /** @brief update method
       called by parent, ends when the event is closed or when an error happens
       @return ERRCODE if error happened, 0 else
   */
-  unsigned short int _update(SDL_Renderer * render);
+  virtual unsigned short int _update(SDL_Renderer * render);
 
   /**@brief << operator for writing
     used to write a string to the box*/
@@ -59,6 +59,9 @@ class DialogueBox : public Component {
 
   /**@brief cleans the textbox*/
   void clean();
+
+  /**@brief returns true if aff is empty or NULL*/
+  bool isEmpty();
 
   /** @brief changes color */
   void setColor(const SDL_Color & color);
@@ -73,43 +76,45 @@ protected :
   SDL_Rect * text_transform;
   SDL_Surface * txt_surface;
   SDL_Texture * txt_image;
+  // text line 2
+  SDL_Rect * l2_transform;
+  // text line 3
+  SDL_Rect * l3_transform;
+  // text line 4
+  SDL_Rect * l4_transform;
+  // retrospect : should've done a struct + array
 
   TTF_Font *font; // used font (Power Green ftw)
   char * aff = NULL; // current line
+  char * af2 = NULL;
+  char * af3 = NULL;
+  char * af4 = NULL;
   //#N En principe t'as pas besoin des acolades
   SDL_Color color = {0,0,0}; //black by default, might be changed by constructor or method later
 };
 
 
 
-/**@class Button
-  @brief a clickable button
-  Launches the linked function*/
-class Button : public Component {
+/**@class Sprite
+  create an image (might animate later)*/
+class Sprite : public Component {
 public :
-  /**@brief class constructor*/
-  Button(SDL_Rect * pos);
-  /**@brief class destructor*/
-  ~Button();
-  /**@brief init method, called by event*/
+  /** @brief class constructor
+      @param adress link to the used image file
+      @param pos position and size of the img file*/
+  Sprite(const std::string adress, const SDL_Rect pos);
+  /** @brief class destructor*/
+  ~Sprite();
+  /** @brief see component base init*/
   unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
-  /**@brief update method, called by event loop*/
+  /** @brief see component base update*/
   unsigned short int _update(SDL_Renderer * render);
-
-protected :
-  //main related
+private :
+  // image data
   SDL_Rect * transform;
   SDL_Surface * surface;
-  SDL_Texture * image;
-  SDL_Color * bg_color;
-
-  // text related
-  SDL_Rect * txt_transform;
-  SDL_Surface * txt_surface;
-  SDL_Texture * txt_image;
-
-  TTF_Font * font;
-  std::string * aff;
-  SDL_Color textColor = {0,0,0};
+  SDL_Texture * texture;
+  // private data
+  std::string filename;
 };
 #endif

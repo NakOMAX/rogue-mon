@@ -11,7 +11,6 @@
 #include <iostream> //testing/debug only
 #include <string>
 #include <cstring>
-#include <memory>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
@@ -35,8 +34,6 @@ Fight :: ~Fight () {}
 Pokemon* Fight :: choicePok (Pokemon* old)
 {
     SDL_Event event;
-    bool ok = false;
-    do{
       *box << "Quel Pokemon voulez-vous utliser ? " ;
       SDL_WaitEvent(&event);
       if (event.type == SDL_KEYDOWN)
@@ -58,7 +55,6 @@ Pokemon* Fight :: choicePok (Pokemon* old)
           SDL_WaitEvent(&event);
         }
       }
-    }while(!ok);
     return old;
 }
 
@@ -176,21 +172,15 @@ void Fight :: action ()
 
 }*/
 
-short int Fight::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer)
+short int Fight::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY)
 {
     //std :: cout<<"Fight correct initialisation"<<endl; //debug
 
-    box= std :: make_shared<DialogueBox>();
+    box= new DialogueBox;
+    components.push_back(&(*box));
 
-    Pokemon* Pok= new Pokemon;
-    Pok=me->getPokemon(0);
-
-
-    // init components
-    box->_init(dimX, dimY, renderer);
-    for (short unsigned int i = 0; i < components.size(); i++) {
-        if (!(components[i]->_init(dimX, dimY, renderer))) return 1;
-    }
+    active = new Pokemon;
+    active = me->getPokemon(0);
 
     /*//init background
     back_text = loadImage(background_source);
@@ -200,89 +190,80 @@ short int Fight::init(unsigned short int dimX, unsigned short int dimY, SDL_Rend
     //init file ifstream
     myfile.open(txt_source);
     */
-    return run(renderer, Pok);
+    return 0;
 }
 
-short int Fight::run(SDL_Renderer * renderer, Pokemon* Pok) {
-  bool hasFinished = false;
-  SDL_Event evt;
+short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
   std :: cout<<"Launched cinematic loop"<< std :: endl; //debug
 
-  do{
-    //render bg
-    if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0)
-    {
-        printf("Box: No renderer error. Forcing exit...\n" );
-        return ERRCODE_NO_RENDER;
-    }
+  //render bg EVENT HAS NO BACKGROUND
+  // if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0)
+  // {
+  //     printf("Box: No renderer error. Forcing exit...\n" );
+  //     return ERRCODE_NO_RENDER;
+  // }
 
-    // update every component
-    if (box->_update(renderer) > 0)
-    {
-        // error during rendering, exit
-        break;
-    }
-
-    for (unsigned int i = 0; i < components.size(); i++)
-    {
-        if ((!components[i]->_update(renderer))>0)
-            return 1;
-    }
-
-    if(opposant->wildIsDead())
-    {
-        (*box)<<"Vous avez gagné le combat";
-        hasFinished = true;
-    }
+  if(opposant->wildIsDead())
+  {
+      (*box)<<"Vous avez gagné le combat";
+      return -1;
+  }
 
 
-    if(Pok->pokIsDead())
-    {
-        (*box)<<"Votre Pokémon n'a plus de point de vie";
+  if(active->pokIsDead())
+  {
+      (*box)<<"Votre Pokémon n'a plus de point de vie";
 
 
-        if (me->playerIsDead())
-        {
-            (*box)<<"Vous avez perdu";
-            hasFinished = true;
-        }
-        else Pok = choicePok(Pok);
-    }
+      if (me->playerIsDead())
+      {
+          (*box)<<"Vous avez perdu";
+          return -1;
+      }
+      else active = choicePok(active);
+  }
 
 
 
-    //render
-    SDL_RenderPresent(renderer);
-    // event treatement
-    while ( SDL_PollEvent(&evt) )
-    {
-        switch(evt.type)
-        {
-            case SDL_QUIT:
-                hasFinished= true;
+  //render
+  SDL_RenderPresent(renderer);
+  // event treatement
+  while ( SDL_PollEvent(&evt) )
+  {
+      switch(evt.type)
+      {
+          case SDL_QUIT:
+              return -1;
+              break;
+          case SDL_KEYDOWN:
+              switch (evt.key.keysym.sym)
+              {
+              case SDLK_x :
+                raid(active);
+                // Enemy's turn
                 break;
-            case SDL_KEYDOWN:
-                switch (evt.key.keysym.sym)
-                {
-                case SDLK_x :
-                  raid(Pok);
-                  // Enemy's turn
-                  break;
 
-                case SDLK_c :
-                  acitem(Pok);
-                  // Enemy's turn
-                  break;
+              case SDLK_c :
+                acitem(active);
+                // Enemy's turn
+                break;
 
-                case SDLK_s :
-                  choicePok(Pok);
-                  // Enemy's turn
-                  break;
-                }
-            default: break;
-        }
-
+              case SDLK_s :
+                choicePok(active);
+                // Enemy's turn
+                break;
+              }
+          default: break;
+      }
     }
-    } while (!hasFinished);
     return 0;
+}
+
+short int Fight::exit(){
+  delete box;
+  box = NULL;
+  me = NULL;
+  delete opposant;
+  opposant = NULL;
+  return 0;
 }

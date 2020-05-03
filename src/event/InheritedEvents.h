@@ -26,10 +26,10 @@ struct data {
 class Test : public Event {
 public :
   /** @brief see Event init() */
-  short int init();
+  virtual short int init();
 
   /** @brief see Event run() */
-  short int run();
+  virtual short int run();
 
 private :
   data ennemy[2];
@@ -40,13 +40,15 @@ class Cinematic : public Event {
 public :
   /** class constructor */
   Cinematic(std::string text_adress, std::string image_adress);
-  /** @brief see Event init() */
-  short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render);
   /** @brief see Event run()*/
-  short int run(SDL_Renderer * render);
+  short int run(SDL_Renderer * render, SDL_Event evt);
+  /** @brief see Event init() */
+  short int init(SDL_Renderer * render, unsigned short int dimX, unsigned short int dimY);
+  /**@brief see Event exit()*/
+  short int exit();
 private :
   /** @brief text reader */
-  short int read(std::shared_ptr<DialogueBox> db);
+  short int read(DialogueBox* db);
   /** @brief cinematic text file adress */
   std::string txt_source;
   /** @brief background adress */
@@ -56,7 +58,7 @@ private :
   /** @brief text flux */
   std::ifstream myfile;
   /** @brief dialogue box for cinematic*/
-  std::shared_ptr<DialogueBox> box;
+  DialogueBox * box;
 };
 /*----------------------------------------------------------------------------*/
 
