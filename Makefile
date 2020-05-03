@@ -132,7 +132,7 @@ _test_ttf : $(TARGET_DIR)/ttfTests
 $(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
+$(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o $(OBJ_DIR)/sdlTools.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Item.o
