@@ -42,9 +42,10 @@ DialogueBox::~DialogueBox() {
   delete aff;
   delete af2;
   delete af3;
-  delete af4;
   delete transform;
   delete text_transform;
+  delete l2_transform;
+  delete l3_transform;
 }
 
 //#N C'est le game manager qui fixe la dimension de l'écran et tu vas avoir besoin de te la faire passer
@@ -84,23 +85,21 @@ unsigned short int DialogueBox::_init( unsigned short int dimX, unsigned short i
   text_transform->y = transform->y + padding/2;
 
   l2_transform = new SDL_Rect;
-  RectCopy((*l2_transform), (*text_transform));
-  l2_transform->y-=45;
+  l2_transform->x = text_transform->x;
+  l2_transform->y = text_transform->y + 40;
+  //RectCopy(l2_transform, text_transform);
 
   l3_transform = new SDL_Rect;
-  RectCopy((*l3_transform), (*l2_transform));
-  l3_transform->y-=45;
+  l3_transform->x = text_transform->x;
+  l3_transform->y = l2_transform->y + 40;
+  // RectCopy(l3_transform, l2_transform);
 
-  l4_transform = new SDL_Rect;
-  RectCopy((*l4_transform), (*l3_transform));
-  l4_transform->y-=45;
   std::cout<<"Text made"<<std::endl; //debug
 
   // init char *
   aff = new char [CHARLIM];
   af2 = new char [CHARLIM];
   af3 = new char [CHARLIM];
-  af4 = new char [CHARLIM];
   clean();
   std::cout<<"char made"<<std::endl;//debug
   // return 0 if everything went well
@@ -175,55 +174,28 @@ unsigned short int DialogueBox::_update(SDL_Renderer * render) {
       }
     }
   }
-  //line 4
-  if (af4 != NULL && af4[0]!='\0') {
-    txt_surface = TTF_RenderText_Solid(font, af4, color);
-
-    if(txt_surface == NULL) {
-      // the text did not render
-      printf("Box: Can't render. Error. Forcing exit...\n" );
-      return ERRCODE_NO_AFF;
-    } else {
-      // here if text did render
-      txt_image = SDL_CreateTextureFromSurface(render, txt_surface); // transform surface into texture
-      SDL_QueryTexture(txt_image, NULL, NULL, &l4_transform->w, &l4_transform->h);
-      //#N Pour l'instant il y a une seule ligne, c'est ça?
-      if (SDL_RenderCopy(render, txt_image, NULL, l4_transform)<0) {
-        // if render of text surface failed
-        printf("Box: Can't present rendering. Forcing exit\n" );
-        return ERRCODE_NO_RENDER;
-      }
-    }
-  }
   //everything went well
   return 0;
 }
 
 void DialogueBox::operator<<(const char* str) {
+  clean();
   std::string buf (str);
 
   std::string buf2 = buf.substr(0, CHARLIM-1);
   strncpy(aff, buf2.c_str(), CHARLIM);
   if ( strlen( str ) >= CHARLIM ) {
-
-        aff[ CHARLIM -1 ] = '\0';
-        buf2 = buf.substr(CHARLIM, CHARLIM-1);
-        strncpy(af2, buf2.c_str(), CHARLIM);
-        if ((strlen(str) >= 2*CHARLIM)) {
-
-          af2[CHARLIM-1] = '\0';
-          buf2 = buf.substr(CHARLIM*2, CHARLIM-1);
-          strncpy(af3, buf2.c_str(), CHARLIM);
-          if ((strlen(str) >= 3*CHARLIM)) {
-
-            af3[CHARLIM-1] = '\0';
-            buf2 = buf.substr(CHARLIM*3, CHARLIM-1);
-            strncpy(af4, buf2.c_str(), CHARLIM);
-            if (strlen(str) >= 4*CHARLIM) {
-              af4[CHARLIM-1] = '\0';
-            }
-          }
-        }
+    aff[ CHARLIM -1 ] = '\0';
+    buf2 = buf.substr(CHARLIM, CHARLIM-1);
+    strncpy(af2, buf2.c_str(), CHARLIM);
+    if ((strlen(str) >= 2*CHARLIM)) {
+      af2[CHARLIM-1] = '\0';
+      buf2 = buf.substr(CHARLIM*2, CHARLIM-1);
+      strncpy(af3, buf2.c_str(), CHARLIM);
+      if ((strlen(str) >= 3*CHARLIM)) {
+        af3[CHARLIM-1] = '\0';
+      }
+    }
   }
 }
 
@@ -231,12 +203,11 @@ void DialogueBox::clean() {
   aff[0] = '\0';
   af2[0] = '\0';
   af3[0] = '\0';
-  af4[0] = '\0';
 }
 
 bool DialogueBox::isEmpty() {
   return (((aff[0] == '\0' || aff == NULL) && (af2[0] == '\0' || af2 == NULL))
-          && ((af3[0] == '\0' || af3 == NULL) && (af4[0] == '\0' || af4 == NULL))
+          && ((af3[0] == '\0' || af3 == NULL))
         );
 }
 
@@ -249,7 +220,7 @@ void DialogueBox::setColor(const SDL_Color & c) {
 
 Sprite::Sprite(const std::string adress,const SDL_Rect pos) {
   transform = new SDL_Rect;
-  RectCopy(*transform, pos);
+  RectCopy(transform, &pos);
   filename = adress;
 }
 
