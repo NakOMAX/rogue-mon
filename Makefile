@@ -147,7 +147,10 @@ $(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h
-	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $(INCLUDE_FLAGS) $< -o $@
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
+
+$(OBJ_DIR)/FightTest.o: $(MAIN_DIR)/FightTest.cpp $(EVENT_DIR)/Fight.h
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 # Required objects
 $(OBJ_DIR)/InheritedEvents.o : $(EVENT_DIR)/InheritedEvents.cpp $(EVENT_DIR)/*.h
