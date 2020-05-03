@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
   SDL_RenderClear(renderer);
 
   // TESTS
-  Cinematic introduction("data/Text/intro.txt", "data/Backgrounds/bg_intro.png");
+  Cinematic introduction("data/Text/intro.txt", "data/Backgrounds/bg_intro.png", "data/Components/professor.png");
   int res = introduction.launch(renderer, wdimx, wdimy);
   if (res>0) std::cout<<"Failed somewhere I guess. Errcode : "<<res<<std::endl;
 

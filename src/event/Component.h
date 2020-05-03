@@ -99,7 +99,7 @@ public :
   /** @brief class constructor
       @param adress link to the used image file
       @param pos position and size of the img file*/
-  Sprite(const std::string adress, const SDL_Rect pos);
+  Sprite(const std::string adress, const SDL_Rect pos, bool overwrite_size = false, unsigned short int multiplier = 1);
   /** @brief class destructor*/
   ~Sprite();
   /** @brief see component base init*/
@@ -113,5 +113,7 @@ private :
   SDL_Texture * texture;
   // private data
   std::string filename;
+  bool ovsize;
+  unsigned short int multi;
 };
 #endif
