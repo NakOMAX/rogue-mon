@@ -6,28 +6,7 @@
 #include <time.h>
 #include "SDL_image.h"
 #include <string>
-
-SDL_Surface * loadImage(const std::string & filename)
-{
-  SDL_Surface * surface;
-  surface = IMG_Load(filename.c_str());
-  if (surface==NULL)
-  {
-    std::string modFilename;
-    modFilename = "../" + filename;
-    surface = IMG_Load(modFilename.c_str());
-    if (surface==NULL)
-    {
-      modFilename = "../" + modFilename;
-      surface = IMG_Load(modFilename.c_str());
-      if (surface==NULL)
-      {
-        printf("Error: %s\n", SDL_GetError());
-      }
-    }
-  }
-  return surface;
-}
+#include "sdlTools.h"
 
 Map::Map(unsigned short int totalLayers, int seed)
 {

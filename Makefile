@@ -12,6 +12,9 @@ ATTACK_DIR = $(SRC_DIR)/attack
 ITEM_DIR = $(SRC_DIR)/item
 POKEMON_DIR = $(SRC_DIR)/pokemon
 
+
+POKES_O = $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Charmander.o $(OBJ_DIR)/Squirtle.o $(OBJ_DIR)/Bulbasaur.o $(OBJ_DIR)/Mewthree.o $(OBJ_DIR)/WildPok.o
+
 # Include-related
 INC_BOOST = -Iinclude/boost_1_72_0/
 INC_SDL2 = -Iinclude/SDL2/
@@ -130,8 +133,8 @@ $(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OB
 $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o
-	$(CC) $^ -o $@
+$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Item.o
+	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(TARGET_DIR)/FightTest: $(OBJ_DIR)/FightTest.o $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Attack.o $(OBJ_DIR)/Item.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
