@@ -1,6 +1,7 @@
 #include "../event/Fight.h"
 #include "Player.h"
 #include "WildPok.h"
+#include "Event.h"
 #include <iostream>
 
 #include "SDL.h"
@@ -80,11 +81,12 @@ int main(int argc, char *argv[])
   SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
   SDL_RenderClear(renderer);
 
-
-    Player player;
-    WildPok opposant;
+    Player* player;
+    WildPok* opposant;
+    player = new Player;
+    opposant = new WildPok;
     Fight firstFight(player,opposant);
-    std :: cout << launch(renderer, wdimx, wdimy);
+    std :: cout << firstFight.launch(renderer, wdimx, wdimy);
 
 
 }

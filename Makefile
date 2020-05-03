@@ -152,7 +152,7 @@ $(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
 $(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
-$(OBJ_DIR)/FightTest.o: $(MAIN_DIR)/FightTest.cpp $(EVENT_DIR)/Fight.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/WildPok.h
+$(OBJ_DIR)/FightTest.o: $(MAIN_DIR)/FightTest.cpp $(EVENT_DIR)/Fight.h $(SRC_DIR)/Player.h $(POKEMON_DIR)/WildPok.h $(EVENT_DIR)/Event.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 # Required objects
