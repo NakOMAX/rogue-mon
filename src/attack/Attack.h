@@ -17,6 +17,8 @@ class Attack{
   public:
   ///@brief constructor
   Attack();
+  ///@brief copy constructor
+  Attack(const Attack & atk);
   ///@brief destructor
   ~Attack();
   ///@brief accessor
@@ -38,8 +40,6 @@ class Attack{
   void usePP();
   ///@brief reset number of times an attack can be used
   void resetPP();
-  ///@brief operator =
-  void operator=(Attack atk);
 
 };
 

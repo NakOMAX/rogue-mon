@@ -22,24 +22,28 @@ protected:
     unsigned short int sDef;
     unsigned short int speed;
     unsigned short int lvl;
-    Attack *myAttacks;
+    Attack *myAttacks[4];
 
 public:
     ///@brief class constructor
     Pokemon();
 
     ///@brief class copy constructor
-    //Pokemon(const Pokemon& old);
+    Pokemon(const Pokemon & old);
 
     ///@brief class destructor
     ~Pokemon();
+<<<<<<< HEAD
     ///@brief operator =
     Pokemon operator = (Pokemon old){}
+=======
+
+>>>>>>> 279c51340034f593b4aab7281055afa26673eec9
 
     ///@brief accessor
     unsigned short int getId () const ;
     ///@brief accessor
-    std::string getName () ;
+    std::string getName () const;
     ///@brief accessor
     unsigned short int getType() const ;
     ///@brief accessor
@@ -60,7 +64,7 @@ public:
     unsigned short int getLvl () const ;
     ///@brief accessor
     ///@param i {the number in the array of the attack you want}
-    Attack* getMyAttacks (unsigned short int i);
+    Attack* getMyAttacks (unsigned short int i) const;
 
     ///@brief mutator
     ///@param newHP {the new value of Hp}
