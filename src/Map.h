@@ -4,6 +4,7 @@
 #include <boost/graph/adjacency_list.hpp>
 #include "SDL.h"
 #include "SDL_image.h"
+#include "sdlTools.h"
 
 #define BOSS_EVENT 0
 #define WILD_EVENT 1

@@ -24,10 +24,8 @@ Bulbasaur:: Bulbasaur () {
     def = 10 ;
     sDef = 2;
     speed = rand()%10-1;
-    First* first;
-    Second* second;
-    myAttacks[0]= first; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
-    myAttacks[1]= second;
+    myAttacks[0]= new First;
+    myAttacks[1]= new Second;
 }
 
 Bulbasaur:: ~Bulbasaur () {}
