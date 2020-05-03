@@ -133,7 +133,7 @@ $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
 $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o
 	$(CC) $^ -o $@
 
-$(TARGET_DIR)/FightTest: $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Attack.o $(OBJ_DIR)/Item.o
+$(TARGET_DIR)/FightTest: $(OBJ_DIR)/FightTest.o $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Attack.o $(OBJ_DIR)/Item.o $(OBJ_DIR)/WildPok.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 # Main objects
@@ -147,7 +147,10 @@ $(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h
-	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $(INCLUDE_FLAGS) $< -o $@
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
+
+$(OBJ_DIR)/FightTest.o: $(MAIN_DIR)/FightTest.cpp $(EVENT_DIR)/Fight.h $(SRC_DIR)/Player.h $(POK_DIR)/WildPok.h
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 # Required objects
 $(OBJ_DIR)/InheritedEvents.o : $(EVENT_DIR)/InheritedEvents.cpp $(EVENT_DIR)/*.h

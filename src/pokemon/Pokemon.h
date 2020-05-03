@@ -33,8 +33,6 @@ public:
 
     ///@brief class destructor
     ~Pokemon();
-
-
     ///@brief accessor
     unsigned short int getId () const ;
     ///@brief accessor

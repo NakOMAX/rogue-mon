@@ -24,8 +24,8 @@ Mewthree:: Mewthree () {
     def = 20 ;
     sDef = 2;
     speed = 0;
-    First first;
-    Second second;
+    First* first;
+    Second* second;
     myAttacks[0]= first; // je pense que ca ne fonctionne pas comme ca pour mettre une classe fille à la place de la mère
     myAttacks[1]= second;
     }
