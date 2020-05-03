@@ -34,8 +34,8 @@ unsigned short int Player :: getNbPokemon()
   return nbPokemon;
 }
 
-Item Player :: getItem(unsigned short int i){
-  return &myItem[i];
+Item* Player :: getItem(unsigned short int id){
+  return &myItem[id];
 }
 
 unsigned short int Player :: getNbItem() {

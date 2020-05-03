@@ -110,7 +110,7 @@ _event_sdl_run: $(TARGET_DIR)/eventTestSDL
 
 _attack_run : $(OBJ_DIR)/Attack.o $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
 
-_fight_run : $(OBJ_DIR)/Fight.o
+_fight_run : $(TARGET_DIR)/FightTest
 
 _player_run : $(OBJ_DIR)/Player.o
 
@@ -133,7 +133,7 @@ $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o
 $(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o
 	$(CC) $^ -o $@
 
-$(TARGET_DIR)/FightTest: $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o
+$(TARGET_DIR)/FightTest: $(OBJ_DIR)/Fight.o $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/eventTestSDL.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Attack.o $(OBJ_DIR)/Item.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 # Main objects
