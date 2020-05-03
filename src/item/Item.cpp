@@ -31,11 +31,11 @@ string Item::getName()
 
 Item Item :: operator= (Item copy)
 {
-  Item It
+  Item it;
   it.name=copy.name ;
   it.amount = copy.amount;
   it.id = copy.id;
-  return it
+  return it;
 
 }
 

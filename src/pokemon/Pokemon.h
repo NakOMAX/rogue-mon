@@ -33,13 +33,6 @@ public:
 
     ///@brief class destructor
     ~Pokemon();
-<<<<<<< HEAD
-    ///@brief operator =
-    Pokemon operator = (Pokemon old){}
-=======
-
->>>>>>> 279c51340034f593b4aab7281055afa26673eec9
-
     ///@brief accessor
     unsigned short int getId () const ;
     ///@brief accessor
