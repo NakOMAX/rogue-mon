@@ -77,9 +77,15 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Event:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_event__inherit__graph.png" border="0" usemap="#_event_inherit__map" alt="Inheritance graph"/></div>
-<!-- MAP 0 -->
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="class_event.png" usemap="#Event_map" alt=""/>
+  <map id="Event_map" name="Event_map">
+<area href="class_cinematic.html" title="event that displays a cinematic aka a portrait sprite with a background and a text read from a text f..." alt="Cinematic" shape="rect" coords="0,56,67,80"/>
+<area href="class_fight.html" alt="Fight" shape="rect" coords="77,56,144,80"/>
+<area href="class_healing.html" title="a healing event heals the player&#39;s party to full" alt="Healing" shape="rect" coords="154,56,221,80"/>
+<area href="class_template.html" title="never instantiated or compiled, just an example to learn how events work" alt="Template" shape="rect" coords="231,56,298,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -91,29 +97,25 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a7704ec01ce91e673885792054214b3d2">~Event</a> ()</td></tr>
 <tr class="memdesc:a7704ec01ce91e673885792054214b3d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">event destructor <br /></td></tr>
 <tr class="separator:a7704ec01ce91e673885792054214b3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="memItemLeft" align="right" valign="top"><a id="ad469f25d0c6da0cd6bb5d354055cf8c8"></a>
-virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8">run</a> (SDL_Renderer *render, SDL_Event event)=0</td></tr>
-<tr class="memdesc:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues, -1 if mainloop exited, errorcode else. Called every frame. <br /></td></tr>
+<tr class="memitem:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="memItemLeft" align="right" valign="top">virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8">run</a> (SDL_Renderer *render, SDL_Event event)=0</td></tr>
+<tr class="memdesc:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues, -1 if mainloop exited, errorcode else. Called every frame.  <a href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8">More...</a><br /></td></tr>
 <tr class="separator:ad469f25d0c6da0cd6bb5d354055cf8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfa8ee20e330830a12720403781dd5a0"><td class="memItemLeft" align="right" valign="top"><a id="abfa8ee20e330830a12720403781dd5a0"></a>
-virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0">init</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)=0</td></tr>
-<tr class="memdesc:abfa8ee20e330830a12720403781dd5a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">init method called when launching event, launches <a class="el" href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8" title="mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues,...">run()</a>, performs setup. Returns 0 if everything went correctly, else errorcode <br /></td></tr>
+<tr class="memitem:abfa8ee20e330830a12720403781dd5a0"><td class="memItemLeft" align="right" valign="top">virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0">init</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)=0</td></tr>
+<tr class="memdesc:abfa8ee20e330830a12720403781dd5a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">init method called when launching event, launches <a class="el" href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8" title="mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues,...">run()</a>, performs setup. Returns 0 if everything went correctly, else errorcode  <a href="class_event.html#abfa8ee20e330830a12720403781dd5a0">More...</a><br /></td></tr>
 <tr class="separator:abfa8ee20e330830a12720403781dd5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3ceb7f4d2ab1115f8bb282c577d89d9"><td class="memItemLeft" align="right" valign="top"><a id="af3ceb7f4d2ab1115f8bb282c577d89d9"></a>
 virtual short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#af3ceb7f4d2ab1115f8bb282c577d89d9">exit</a> ()=0</td></tr>
 <tr class="memdesc:af3ceb7f4d2ab1115f8bb282c577d89d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">exit method called once when event closes <br /></td></tr>
 <tr class="separator:af3ceb7f4d2ab1115f8bb282c577d89d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64994b40407662595d584ab6b71fd135"><td class="memItemLeft" align="right" valign="top"><a id="a64994b40407662595d584ab6b71fd135"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a64994b40407662595d584ab6b71fd135">launch</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)</td></tr>
-<tr class="memdesc:a64994b40407662595d584ab6b71fd135"><td class="mdescLeft">&#160;</td><td class="mdescRight">meta version of <a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0" title="init method called when launching event, launches run(), performs setup. Returns 0 if everything went...">init()</a> called when launching event <br /></td></tr>
+<tr class="memitem:a64994b40407662595d584ab6b71fd135"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a64994b40407662595d584ab6b71fd135">launch</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)</td></tr>
+<tr class="memdesc:a64994b40407662595d584ab6b71fd135"><td class="mdescLeft">&#160;</td><td class="mdescRight">meta version of <a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0" title="init method called when launching event, launches run(), performs setup. Returns 0 if everything went...">init()</a> called when launching event  <a href="class_event.html#a64994b40407662595d584ab6b71fd135">More...</a><br /></td></tr>
 <tr class="separator:a64994b40407662595d584ab6b71fd135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a973c02d044a5a6b07a044de0df1923cf"><td class="memItemLeft" align="right" valign="top"><a id="a973c02d044a5a6b07a044de0df1923cf"></a>
 short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a973c02d044a5a6b07a044de0df1923cf">getScaling</a> ()</td></tr>
 <tr class="memdesc:a973c02d044a5a6b07a044de0df1923cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">get method for scaling <br /></td></tr>
 <tr class="separator:a973c02d044a5a6b07a044de0df1923cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7b220e69b5b08422b056115e24e1e3e"><td class="memItemLeft" align="right" valign="top"><a id="ab7b220e69b5b08422b056115e24e1e3e"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ab7b220e69b5b08422b056115e24e1e3e">mainloop</a> (SDL_Renderer *render)</td></tr>
-<tr class="memdesc:ab7b220e69b5b08422b056115e24e1e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">actual mainloop Calls run every frame after updating every components. Also get keyboard events. <br /></td></tr>
+<tr class="memitem:ab7b220e69b5b08422b056115e24e1e3e"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ab7b220e69b5b08422b056115e24e1e3e">mainloop</a> (SDL_Renderer *render)</td></tr>
+<tr class="memdesc:ab7b220e69b5b08422b056115e24e1e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">actual mainloop Calls run every frame after updating every components. Also get keyboard events.  <a href="class_event.html#ab7b220e69b5b08422b056115e24e1e3e">More...</a><br /></td></tr>
 <tr class="separator:ab7b220e69b5b08422b056115e24e1e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -129,7 +131,179 @@ std::vector&lt; <a class="el" href="class_component.html">Component</a> * &gt;&#
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>events launched in gameplay An event launched by interacting with a node. Overrides gameplay. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="abfa8ee20e330830a12720403781dd5a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfa8ee20e330830a12720403781dd5a0">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual short int Event::init </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>render</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>dimX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>dimY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>init method called when launching event, launches <a class="el" href="class_event.html#ad469f25d0c6da0cd6bb5d354055cf8c8" title="mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues,...">run()</a>, performs setup. Returns 0 if everything went correctly, else errorcode </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render</td><td>renderer for SDL </td></tr>
+    <tr><td class="paramname">dimX</td><td>window size (x) </td></tr>
+    <tr><td class="paramname">dimY</td><td>window size (y) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_fight.html#a5722d8d65f72139b0f74900413dcd07f">Fight</a>, <a class="el" href="class_cinematic.html#a26d01222774b7dcb209650cd57147517">Cinematic</a>, and <a class="el" href="class_template.html#a31cb06073b1cee4016c55de241e36d67">Template</a>.</p>
+
+</div>
+</div>
+<a id="a64994b40407662595d584ab6b71fd135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64994b40407662595d584ab6b71fd135">&#9670;&nbsp;</a></span>launch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short int Event::launch </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>render</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>dimX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>dimY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>meta version of <a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0" title="init method called when launching event, launches run(), performs setup. Returns 0 if everything went...">init()</a> called when launching event </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render</td><td>renderer for SDL </td></tr>
+    <tr><td class="paramname">dimX</td><td>window dimension (x) </td></tr>
+    <tr><td class="paramname">dimY</td><td>window dimension (y) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7b220e69b5b08422b056115e24e1e3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b220e69b5b08422b056115e24e1e3e">&#9670;&nbsp;</a></span>mainloop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short int Event::mainloop </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>render</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>actual mainloop Calls run every frame after updating every components. Also get keyboard events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render</td><td>Renderer for SDL </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad469f25d0c6da0cd6bb5d354055cf8c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad469f25d0c6da0cd6bb5d354055cf8c8">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual short int Event::run </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>render</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>mainloop for the event overrides the normal mainloop until returned. Returns 0 if while continues, -1 if mainloop exited, errorcode else. Called every frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render</td><td>renderer for SDL </td></tr>
+    <tr><td class="paramname">event</td><td>a SDL_Event used to pollevent </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_fight.html#a6db19158f57ec5764351892a292e11f7">Fight</a>, <a class="el" href="class_cinematic.html#af54087bed984abcc4601d6a5e6e4fb08">Cinematic</a>, and <a class="el" href="class_template.html#a1a96d96e5d6046e989fd97695de26bc1">Template</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/event/<a class="el" href="_event_8h_source.html">Event.h</a></li>
 <li>src/event/Event.cpp</li>
 </ul>

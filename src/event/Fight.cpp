@@ -29,7 +29,15 @@ Fight :: Fight (Player * newme, WildPok * newopposant)
 
 }
 
-Fight :: ~Fight () {}
+Fight :: ~Fight () {
+  me = NULL;
+  opposant = NULL;
+  active = NULL;
+  SDL_FreeSurface(back_surf);
+  SDL_DestroyTexture(background);
+  delete box;
+  delete opposant;
+}
 
 Pokemon* Fight :: choicePok (Pokemon* old)
 {
@@ -62,7 +70,7 @@ Pokemon* Fight :: choicePok (Pokemon* old)
     if (old == me->getPokemon(ale))
     { if (ale==0)
       {return me->getPokemon(ale+1); }
-      else 
+      else
       {return me->getPokemon(ale-1);}
     }
     else
@@ -74,18 +82,18 @@ Pokemon* Fight :: choicePok (Pokemon* old)
 
 void Fight :: raid  (Pokemon* Pok)
 {
-  
+
   SDL_Event event;
   *box << "Quelle attaque voulez vous effectuer ?";
   bool ok = false;
-  
-  do { 
-        
-    std::string text = "Quelle attaque voulez-vous effectuer ?  1 est " + Pok->getMyAttacks(0)->getName();
-    *box << text.c_str(); 
 
-    
-    
+  do {
+
+    std::string text = "Quelle attaque voulez-vous effectuer ?  1 est " + Pok->getMyAttacks(0)->getName();
+    *box << text.c_str();
+
+
+
     /**box << "Quelle attaque voulez vous effectuer ?";*/
     SDL_WaitEvent(&event);
     if(event.type == SDL_KEYDOWN)
@@ -98,11 +106,11 @@ void Fight :: raid  (Pokemon* Pok)
         effectsattPlayer(Pok->getMyAttacks(1), Pok);
         return ;
         std :: cout << "J'ai choisi un nombre valide et la fonction s\'est executée "<<endl; //debug
-      } else 
+      } else
       {std :: cout << "J'ai choisi un nombre INvalide"<<endl; //debug
         *box << "Numéro d'attaque invalide";
-        
-    
+
+
         SDL_WaitEvent(&event);
       }
     }
@@ -124,16 +132,16 @@ void Fight :: acitem (Pokemon* Pok) // à completer
 
   SDL_Event event;
   bool ok = false;
-  
+
   do {
     *box << "Quel objet vous-vous utiliser ? " ;
     std :: cout << "JE viens dans objet"<<endl; //debug
-    
+
     SDL_WaitEvent(&event);
     if(event.type == SDL_KEYDOWN)
     {
      std :: cout << "JE viens dans le if objet"<<endl; //debug
-     
+
       // Number is within range?
       if (event.key.keysym.sym ==SDLK_1 )
       { std :: cout << "JE viens dans le if objet valide"<<endl; //debug
@@ -141,7 +149,7 @@ void Fight :: acitem (Pokemon* Pok) // à completer
       } else {
         std :: cout << "JE viens dans le if objet INvalide"<<endl; //debug
         *box << "Numèro d'attaque invalide";
-        
+
         SDL_WaitEvent(&event);
       }
     }
@@ -207,20 +215,20 @@ void Fight :: action ()
 short int Fight::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY)
 {
     //std :: cout<<"Fight correct initialisation"<<endl; //debug
-    
-   
+
+
     box= new DialogueBox;
     components.push_back(&(*box));
 
     active = new Pokemon;
     active = me->getPokemon(0);
 
-    /*//init background
-    back_text = loadImage(background_source);
-    background = SDL_CreateTextureFromSurface(renderer, back_text);
+    //init background
+    back_surf = loadImage("data/Backgrounds/bg_intro.png");
+    background = SDL_CreateTextureFromSurface(renderer, back_surf);
 
 
-    //init file ifstream
+    /*//init file ifstream
     myfile.open(txt_source);
     */
     return 0;
@@ -230,11 +238,11 @@ short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
   //std :: cout<<"Launched cinematic loop"<< std :: endl; //debug
 
   //render bg EVENT HAS NO BACKGROUND
-  // if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0)
-  // {
-  //     printf("Box: No renderer error. Forcing exit...\n" );
-  //     return ERRCODE_NO_RENDER;
-  // }
+  if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0)
+  {
+      printf("Box: No renderer error. Forcing exit...\n" );
+      return ERRCODE_NO_RENDER;
+  }
 
   if(opposant->wildIsDead())
   {

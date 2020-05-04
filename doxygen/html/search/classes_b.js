@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['seconc_100',['Seconc',['../class_seconc.html',1,'']]],
-  ['second_101',['Second',['../class_second.html',1,'']]],
-  ['sprite_102',['Sprite',['../class_sprite.html',1,'']]],
-  ['squirtle_103',['Squirtle',['../class_squirtle.html',1,'']]]
+  ['player_104',['Player',['../class_player.html',1,'']]],
+  ['pokemon_105',['Pokemon',['../class_pokemon.html',1,'']]],
+  ['potion_106',['Potion',['../class_potion.html',1,'']]]
 ];

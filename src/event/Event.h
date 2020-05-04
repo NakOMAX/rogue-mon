@@ -25,11 +25,16 @@ public:
   ~Event();
 
   /** @brief mainloop for the event
-  overrides the normal mainloop until returned. Returns 0 if while continues, -1 if mainloop exited, errorcode else. Called every frame.*/
+  overrides the normal mainloop until returned. Returns 0 if while continues, -1 if mainloop exited, errorcode else. Called every frame.
+  @param render renderer for SDL
+  @param event a SDL_Event used to pollevent*/
   virtual short int run(SDL_Renderer * render, SDL_Event event) = 0;
 
   /** @brief init method
-  called when launching event, launches run(), performs setup. Returns 0 if everything went correctly, else errorcode*/
+  called when launching event, launches run(), performs setup. Returns 0 if everything went correctly, else errorcode
+  @param render renderer for SDL
+  @param dimX window size (x)
+  @param dimY window size (y)*/
   virtual short int init(SDL_Renderer * render, unsigned short int dimX, unsigned short int dimY) = 0;
 
   /** @brief exit method
@@ -38,14 +43,18 @@ public:
 
 
   /** @brief meta version of init()
-      called when launching event */
+      called when launching event
+      @param render renderer for SDL
+      @param dimX window dimension (x)
+      @param dimY window dimension (y)*/
   short int launch(SDL_Renderer * render, unsigned short int dimX, unsigned short int dimY);
 
   /** @brief get method for scaling*/
   short int getScaling();
 
   /** @brief actual mainloop
-  Calls run every frame after updating every components. Also get keyboard events.*/
+  Calls run every frame after updating every components. Also get keyboard events.
+  @param render Renderer for SDL*/
   short int mainloop(SDL_Renderer * render);
 
 protected:

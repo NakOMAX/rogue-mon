@@ -70,22 +70,25 @@ $(function() {
 <div class="title">Cinematic Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>event that displays a cinematic aka a portrait sprite with a background and a text read from a text file  
+ <a href="class_cinematic.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_inherited_events_8h_source.html">InheritedEvents.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Cinematic:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_cinematic__inherit__graph.png" border="0" usemap="#_cinematic_inherit__map" alt="Inheritance graph"/></div>
-<!-- MAP 0 -->
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Cinematic:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_cinematic__coll__graph.png" border="0" usemap="#_cinematic_coll__map" alt="Collaboration graph"/></div>
-<!-- MAP 1 -->
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="class_cinematic.png" usemap="#Cinematic_map" alt=""/>
+  <map id="Cinematic_map" name="Cinematic_map">
+<area href="class_event.html" title="events launched in gameplay An event launched by interacting with a node. Overrides gameplay." alt="Event" shape="rect" coords="0,0,67,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9888728c7c76cec5ac6a6b5d3c470a89"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cinematic.html#a9888728c7c76cec5ac6a6b5d3c470a89">Cinematic</a> (std::string text_adress, std::string image_adress, std::string sprite_adress=&quot;&quot;)</td></tr>
+<tr class="memdesc:a9888728c7c76cec5ac6a6b5d3c470a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">class constructor  <a href="class_cinematic.html#a9888728c7c76cec5ac6a6b5d3c470a89">More...</a><br /></td></tr>
 <tr class="separator:a9888728c7c76cec5ac6a6b5d3c470a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af54087bed984abcc4601d6a5e6e4fb08"><td class="memItemLeft" align="right" valign="top"><a id="af54087bed984abcc4601d6a5e6e4fb08"></a>
 short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cinematic.html#af54087bed984abcc4601d6a5e6e4fb08">run</a> (SDL_Renderer *render, SDL_Event evt)</td></tr>
@@ -108,17 +111,15 @@ short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a7704ec01ce91e673885792054214b3d2">~Event</a> ()</td></tr>
 <tr class="memdesc:a7704ec01ce91e673885792054214b3d2 inherit pub_methods_class_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">event destructor <br /></td></tr>
 <tr class="separator:a7704ec01ce91e673885792054214b3d2 inherit pub_methods_class_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64994b40407662595d584ab6b71fd135 inherit pub_methods_class_event"><td class="memItemLeft" align="right" valign="top"><a id="a64994b40407662595d584ab6b71fd135"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a64994b40407662595d584ab6b71fd135">launch</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)</td></tr>
-<tr class="memdesc:a64994b40407662595d584ab6b71fd135 inherit pub_methods_class_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">meta version of <a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0" title="init method called when launching event, launches run(), performs setup. Returns 0 if everything went...">init()</a> called when launching event <br /></td></tr>
+<tr class="memitem:a64994b40407662595d584ab6b71fd135 inherit pub_methods_class_event"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a64994b40407662595d584ab6b71fd135">launch</a> (SDL_Renderer *render, unsigned short int dimX, unsigned short int dimY)</td></tr>
+<tr class="memdesc:a64994b40407662595d584ab6b71fd135 inherit pub_methods_class_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">meta version of <a class="el" href="class_event.html#abfa8ee20e330830a12720403781dd5a0" title="init method called when launching event, launches run(), performs setup. Returns 0 if everything went...">init()</a> called when launching event  <a href="class_event.html#a64994b40407662595d584ab6b71fd135">More...</a><br /></td></tr>
 <tr class="separator:a64994b40407662595d584ab6b71fd135 inherit pub_methods_class_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a973c02d044a5a6b07a044de0df1923cf inherit pub_methods_class_event"><td class="memItemLeft" align="right" valign="top"><a id="a973c02d044a5a6b07a044de0df1923cf"></a>
 short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a973c02d044a5a6b07a044de0df1923cf">getScaling</a> ()</td></tr>
 <tr class="memdesc:a973c02d044a5a6b07a044de0df1923cf inherit pub_methods_class_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">get method for scaling <br /></td></tr>
 <tr class="separator:a973c02d044a5a6b07a044de0df1923cf inherit pub_methods_class_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7b220e69b5b08422b056115e24e1e3e inherit pub_methods_class_event"><td class="memItemLeft" align="right" valign="top"><a id="ab7b220e69b5b08422b056115e24e1e3e"></a>
-short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ab7b220e69b5b08422b056115e24e1e3e">mainloop</a> (SDL_Renderer *render)</td></tr>
-<tr class="memdesc:ab7b220e69b5b08422b056115e24e1e3e inherit pub_methods_class_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">actual mainloop Calls run every frame after updating every components. Also get keyboard events. <br /></td></tr>
+<tr class="memitem:ab7b220e69b5b08422b056115e24e1e3e inherit pub_methods_class_event"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ab7b220e69b5b08422b056115e24e1e3e">mainloop</a> (SDL_Renderer *render)</td></tr>
+<tr class="memdesc:ab7b220e69b5b08422b056115e24e1e3e inherit pub_methods_class_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">actual mainloop Calls run every frame after updating every components. Also get keyboard events.  <a href="class_event.html#ab7b220e69b5b08422b056115e24e1e3e">More...</a><br /></td></tr>
 <tr class="separator:ab7b220e69b5b08422b056115e24e1e3e inherit pub_methods_class_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -133,7 +134,9 @@ std::vector&lt; <a class="el" href="class_component.html">Component</a> * &gt;&#
 <tr class="memdesc:a324c3cd52972cb45ae785791d2740a51 inherit pro_attribs_class_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">array of components to draw The core of the event system, every component is drawn in vector order, meaning last in last drawn. That means later elements are drawn over earlier ones. If drawing directly in event, please note that your things will end up under components. <br /></td></tr>
 <tr class="separator:a324c3cd52972cb45ae785791d2740a51 inherit pro_attribs_class_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>event that displays a cinematic aka a portrait sprite with a background and a text read from a text file </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9888728c7c76cec5ac6a6b5d3c470a89"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9888728c7c76cec5ac6a6b5d3c470a89">&#9670;&nbsp;</a></span>Cinematic()</h2>
 
@@ -165,7 +168,16 @@ std::vector&lt; <a class="el" href="class_component.html">Component</a> * &gt;&#
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>class constructor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_adress</td><td>adress of text file </td></tr>
+    <tr><td class="paramname">image_adress</td><td>adress of background </td></tr>
+    <tr><td class="paramname">adress</td><td>of sprite to display as portrait </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

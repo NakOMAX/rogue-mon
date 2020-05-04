@@ -26,6 +26,9 @@
 
 #define ICON_SIZE 160
 
+/**@struct Node
+  @brief node in a node map (tree)
+  a wrapper for vertices and information in a tree*/
 struct Node{
   //Event * event;
   unsigned short int event;

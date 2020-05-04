@@ -25,7 +25,15 @@ class Component {
 public:
   Component();
   ~Component();
+  /**@brief _init general definition
+    called by event->launch(), performs basic event initialisation
+    @param dimX window dimension (x)
+    @param dimY window dimension (y)
+    @param render renderer for SDL*/
   virtual unsigned short int _init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * render) = 0;
+  /**@brief _update general definition
+    called every frame by event->mainloop(), performs rendering
+    @param render renderer for SDL*/
   virtual unsigned short int _update(SDL_Renderer * render) = 0;
 protected:
 };
@@ -93,12 +101,15 @@ protected :
 
 
 /**@class Sprite
-  create an image (might animate later)*/
+  @brief create an image (might animate later)
+  A sprite component, that displays the linked picture*/
 class Sprite : public Component {
 public :
   /** @brief class constructor
       @param adress link to the used image file
-      @param pos position and size of the img file*/
+      @param pos position and size of the img file
+      @param overwrite_size whenever to use the width and height of pos
+      @param multiplier a size multiplier for the picture*/
   Sprite(const std::string adress, const SDL_Rect pos, bool overwrite_size = false, unsigned short int multiplier = 1);
   /** @brief class destructor*/
   ~Sprite();

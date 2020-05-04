@@ -64,7 +64,11 @@ public :
   short int exit();
   /** @brief dialogue box for fight*/
   DialogueBox * box;
- 
+  /** @brief texture for bg*/
+  SDL_Texture * background;
+  /** @brief surface for bg*/
+  SDL_Surface * back_surf;
+
 
 
 };

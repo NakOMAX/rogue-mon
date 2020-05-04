@@ -3,6 +3,8 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 
+/**@class Template
+  @brief never instantiated or compiled, just an example to learn how events work*/
 class Template : public Event {
 public :
   /** @brief called every frame*/

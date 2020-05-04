@@ -79,6 +79,10 @@ short int Cinematic::run(SDL_Renderer * renderer, SDL_Event evt) {
 short int Cinematic::exit() {
 
   //end of event
+  SDL_FreeSurface(back_text);
+  SDL_DestroyTexture(background);
+  delete box;
+  delete spr;
   myfile.close();
   return 0;
 }

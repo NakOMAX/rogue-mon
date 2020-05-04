@@ -78,22 +78,117 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Component:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_component__inherit__graph.png" border="0" usemap="#_component_inherit__map" alt="Inheritance graph"/></div>
-<!-- MAP 0 -->
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="class_component.png" usemap="#Component_map" alt=""/>
+  <map id="Component_map" name="Component_map">
+<area href="class_dialogue_box.html" title="Component box that gets sent text files and reads them." alt="DialogueBox" shape="rect" coords="0,56,83,80"/>
+<area href="class_sprite.html" title="create an image (might animate later) A sprite component, that displays the linked picture" alt="Sprite" shape="rect" coords="93,56,176,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:add995f35e695c136985c4eb18a67beb0"><td class="memItemLeft" align="right" valign="top"><a id="add995f35e695c136985c4eb18a67beb0"></a>
-virtual unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><b>_init</b> (unsigned short int dimX, unsigned short int dimY, SDL_Renderer *render)=0</td></tr>
+<tr class="memitem:add995f35e695c136985c4eb18a67beb0"><td class="memItemLeft" align="right" valign="top">virtual unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#add995f35e695c136985c4eb18a67beb0">_init</a> (unsigned short int dimX, unsigned short int dimY, SDL_Renderer *render)=0</td></tr>
+<tr class="memdesc:add995f35e695c136985c4eb18a67beb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">_init general definition called by event-&gt;launch(), performs basic event initialisation  <a href="class_component.html#add995f35e695c136985c4eb18a67beb0">More...</a><br /></td></tr>
 <tr class="separator:add995f35e695c136985c4eb18a67beb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb860e3bcbe392efbb4c3f3558984aa9"><td class="memItemLeft" align="right" valign="top"><a id="afb860e3bcbe392efbb4c3f3558984aa9"></a>
-virtual unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><b>_update</b> (SDL_Renderer *render)=0</td></tr>
+<tr class="memitem:afb860e3bcbe392efbb4c3f3558984aa9"><td class="memItemLeft" align="right" valign="top">virtual unsigned short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#afb860e3bcbe392efbb4c3f3558984aa9">_update</a> (SDL_Renderer *render)=0</td></tr>
+<tr class="memdesc:afb860e3bcbe392efbb4c3f3558984aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">_update general definition called every frame by event-&gt;mainloop(), performs rendering  <a href="class_component.html#afb860e3bcbe392efbb4c3f3558984aa9">More...</a><br /></td></tr>
 <tr class="separator:afb860e3bcbe392efbb4c3f3558984aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>container class for Components Components makes up a scene for events </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="add995f35e695c136985c4eb18a67beb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add995f35e695c136985c4eb18a67beb0">&#9670;&nbsp;</a></span>_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual unsigned short int Component::_init </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>dimX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>dimY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>render</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>_init general definition called by event-&gt;launch(), performs basic event initialisation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dimX</td><td>window dimension (x) </td></tr>
+    <tr><td class="paramname">dimY</td><td>window dimension (y) </td></tr>
+    <tr><td class="paramname">render</td><td>renderer for SDL </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_sprite.html#ab3e58c8b20965f1f3cf49a1c95e36e63">Sprite</a>, and <a class="el" href="class_dialogue_box.html#a838ad7371c6a2b1d06584f0cfc316003">DialogueBox</a>.</p>
+
+</div>
+</div>
+<a id="afb860e3bcbe392efbb4c3f3558984aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb860e3bcbe392efbb4c3f3558984aa9">&#9670;&nbsp;</a></span>_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual unsigned short int Component::_update </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>render</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>_update general definition called every frame by event-&gt;mainloop(), performs rendering </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render</td><td>renderer for SDL </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_sprite.html#a89e59c278a1010ba1237c6ca9da4c073">Sprite</a>, and <a class="el" href="class_dialogue_box.html#a1272b65e98d40fdeff657c620f53a823">DialogueBox</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/event/<a class="el" href="_component_8h_source.html">Component.h</a></li>
 <li>src/event/Component.cpp</li>
 </ul>

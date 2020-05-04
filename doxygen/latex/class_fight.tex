@@ -1,13 +1,11 @@
 \hypertarget{class_fight}{}\doxysection{Fight Class Reference}
 \label{class_fight}\index{Fight@{Fight}}
-
-
-Inheritance diagram for Fight\+:
-% FIG 0
-
-
-Collaboration diagram for Fight\+:
-% FIG 1
+Inheritance diagram for Fight\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_fight}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,7 +41,13 @@ short int \mbox{\hyperlink{class_fight_ad27c3eb4bc70b6f71f3e9202535debc7}{exit}}
 \item 
 \mbox{\Hypertarget{class_fight_a251a70704a71ecfcec844b7602379abf}\label{class_fight_a251a70704a71ecfcec844b7602379abf}} 
 \mbox{\hyperlink{class_dialogue_box}{Dialogue\+Box}} $\ast$ \mbox{\hyperlink{class_fight_a251a70704a71ecfcec844b7602379abf}{box}}
-\begin{DoxyCompactList}\small\item\em dialogue box for cinematic \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em dialogue box for fight \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_a1f0b2c453b47e49e4523c078348b4678}\label{class_fight_a1f0b2c453b47e49e4523c078348b4678}} 
+S\+D\+L\+\_\+\+Texture $\ast$ \mbox{\hyperlink{class_fight_a1f0b2c453b47e49e4523c078348b4678}{background}}
+\begin{DoxyCompactList}\small\item\em texture for bg \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_ae5de340bda7630e721361d7303ec14a1}\label{class_fight_ae5de340bda7630e721361d7303ec14a1}} 
+S\+D\+L\+\_\+\+Surface $\ast$ \mbox{\hyperlink{class_fight_ae5de340bda7630e721361d7303ec14a1}{back\+\_\+surf}}
+\begin{DoxyCompactList}\small\item\em surface for bg \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -93,7 +97,9 @@ choising a pokemon in your inventory
 {\em Pok} & \{is the \mbox{\hyperlink{class_pokemon}{Pokemon}} you want to remplace\} Precondition \+: The playermust have more than one pokemonin his array \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_fight_ac2db07210b6cbde5523f0e0505167789}\label{class_fight_ac2db07210b6cbde5523f0e0505167789}} 
+S\+D\+L\+\_\+\+Event event;
+
+box $<$$<$ \char`\"{}\+Quel Pokemon voulez-\/vous utliser ? \char`\"{} ; S\+D\+L\+\_\+\+Wait\+Event(\&event); if (event.\+type == S\+D\+L\+\_\+\+K\+E\+Y\+D\+O\+WN) \{ Number is within range? if (event.\+key.\+keysym.\+sym $>$ S\+D\+L\+K\+\_\+1 \&\& event.\+key.\+keysym.\+sym $<$= me-\/$>$get\+Nb\+Pokemon()) if (event.\+key.\+keysym.\+sym == S\+D\+L\+K\+\_\+1) \{ Number is the pokemon that was already fighting? if (old == me-\/$>$get\+Pokemon(1)) \{ box $<$$<$ \char`\"{}\+Ce pokemon est déjà sur le champ\char`\"{}; S\+D\+L\+\_\+\+Wait\+Event(\&event); \} else \{ Selected pokemon is ok and can be returned return me-\/$>$get\+Pokemon(1); \} \} else \{ box $<$$<$ \char`\"{}\+Numéro de pokemon invalide\char`\"{}; S\+D\+L\+\_\+\+Wait\+Event(\&event); \} \}\mbox{\Hypertarget{class_fight_ac2db07210b6cbde5523f0e0505167789}\label{class_fight_ac2db07210b6cbde5523f0e0505167789}} 
 \index{Fight@{Fight}!effectsattopposant@{effectsattopposant}}
 \index{effectsattopposant@{effectsattopposant}!Fight@{Fight}}
 \doxysubsubsection{\texorpdfstring{effectsattopposant()}{effectsattopposant()}}
@@ -138,7 +144,7 @@ player attack
 {\em Pok} & \{is the \mbox{\hyperlink{class_pokemon}{Pokemon}} in play\} \\
 \hline
 \end{DoxyParams}
-
+box $<$$<$ \char`\"{}\+Quelle attaque voulez vous effectuer ?\char`\"{};
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

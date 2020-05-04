@@ -2,16 +2,19 @@
 \label{class_sprite}\index{Sprite@{Sprite}}
 
 
+create an image (might animate later) A sprite component, that displays the linked picture  
+
+
+
+
 {\ttfamily \#include $<$Component.\+h$>$}
 
-
-
-Inheritance diagram for Sprite\+:
-% FIG 0
-
-
-Collaboration diagram for Sprite\+:
-% FIG 1
+Inheritance diagram for Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sprite}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,7 +32,7 @@ unsigned short int \mbox{\hyperlink{class_sprite_a89e59c278a1010ba1237c6ca9da4c0
 
 
 \doxysubsection{Detailed Description}
-create an image (might animate later) 
+create an image (might animate later) A sprite component, that displays the linked picture 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_sprite_a5f7eeb7e99211ae609f957b49501c37a}\label{class_sprite_a5f7eeb7e99211ae609f957b49501c37a}} 
@@ -49,6 +52,10 @@ class constructor
 {\em adress} & link to the used image file \\
 \hline
 {\em pos} & position and size of the img file \\
+\hline
+{\em overwrite\+\_\+size} & whenever to use the width and height of pos \\
+\hline
+{\em multiplier} & a size multiplier for the picture \\
 \hline
 \end{DoxyParams}
 

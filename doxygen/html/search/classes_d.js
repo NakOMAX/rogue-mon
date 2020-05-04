@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wildpok_105',['WildPok',['../class_wild_pok.html',1,'']]]
+  ['template_111',['Template',['../class_template.html',1,'']]]
 ];

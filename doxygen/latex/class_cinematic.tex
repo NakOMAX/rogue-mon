@@ -2,17 +2,24 @@
 \label{class_cinematic}\index{Cinematic@{Cinematic}}
 
 
-Inheritance diagram for Cinematic\+:
-% FIG 0
+event that displays a cinematic aka a portrait sprite with a background and a text read from a text file  
 
 
-Collaboration diagram for Cinematic\+:
-% FIG 1
+
+
+{\ttfamily \#include $<$Inherited\+Events.\+h$>$}
+
+Inheritance diagram for Cinematic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cinematic}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_cinematic_a9888728c7c76cec5ac6a6b5d3c470a89}{Cinematic}} (std\+::string text\+\_\+adress, std\+::string image\+\_\+adress, std\+::string sprite\+\_\+adress=\char`\"{}\char`\"{})
-\item 
+\begin{DoxyCompactList}\small\item\em class constructor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_cinematic_af54087bed984abcc4601d6a5e6e4fb08}\label{class_cinematic_af54087bed984abcc4601d6a5e6e4fb08}} 
 short int \mbox{\hyperlink{class_cinematic_af54087bed984abcc4601d6a5e6e4fb08}{run}} (S\+D\+L\+\_\+\+Renderer $\ast$render, S\+D\+L\+\_\+\+Event evt)
 \begin{DoxyCompactList}\small\item\em see \mbox{\hyperlink{class_event}{Event}} \mbox{\hyperlink{class_cinematic_af54087bed984abcc4601d6a5e6e4fb08}{run()}} \end{DoxyCompactList}\item 
@@ -25,6 +32,9 @@ short int \mbox{\hyperlink{class_cinematic_a584b4d07edac5d572094993de7bd6b61}{ex
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Detailed Description}
+event that displays a cinematic aka a portrait sprite with a background and a text read from a text file 
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_cinematic_a9888728c7c76cec5ac6a6b5d3c470a89}\label{class_cinematic_a9888728c7c76cec5ac6a6b5d3c470a89}} 
 \index{Cinematic@{Cinematic}!Cinematic@{Cinematic}}
@@ -32,7 +42,20 @@ short int \mbox{\hyperlink{class_cinematic_a584b4d07edac5d572094993de7bd6b61}{ex
 \doxysubsubsection{\texorpdfstring{Cinematic()}{Cinematic()}}
 {\footnotesize\ttfamily Cinematic\+::\+Cinematic (\begin{DoxyParamCaption}\item[{std\+::string}]{text\+\_\+adress,  }\item[{std\+::string}]{image\+\_\+adress,  }\item[{std\+::string}]{sprite\+\_\+adress = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
+
+
 class constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+\_\+adress} & adress of text file \\
+\hline
+{\em image\+\_\+adress} & adress of background \\
+\hline
+{\em adress} & of sprite to display as portrait \\
+\hline
+\end{DoxyParams}
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

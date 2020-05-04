@@ -15,9 +15,15 @@
 
 /*----------------------------------------------------------------------------*/
 
+/**@class Cinematic
+  @brief event that displays a cinematic
+  aka a portrait sprite with a background and a text read from a text file*/
 class Cinematic : public Event {
 public :
-  /** class constructor */
+  /** @brief class constructor
+      @param text_adress adress of text file
+      @param image_adress adress of background
+      @param adress of sprite to display as portrait*/
   Cinematic(std::string text_adress, std::string image_adress, std::string sprite_adress = "");
   /** @brief see Event run()*/
   short int run(SDL_Renderer * render, SDL_Event evt);
@@ -26,7 +32,8 @@ public :
   /**@brief see Event exit()*/
   short int exit();
 private :
-  /** @brief text reader */
+  /** @brief text reader
+      @param db points to dialoguebox to send line to*/
   short int read(DialogueBox* db);
   /** @brief cinematic text file adress */
   std::string txt_source;
@@ -44,6 +51,9 @@ private :
 };
 /*----------------------------------------------------------------------------*/
 
+/**@class Healing
+  @brief a healing event
+  heals the player's party to full*/
 class Healing : public Event {
 public:
   Healing();
