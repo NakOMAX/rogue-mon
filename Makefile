@@ -153,7 +153,7 @@ $(OBJ_DIR)/eventTestSDL.o: $(MAIN_DIR)/eventTestSDL.cpp $(EVENT_DIR)/Component.h
 	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
 
 $(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
-	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/gmTests.o: $(MAIN_DIR)/gmTests.cpp $(SRC_DIR)/GameManager.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
