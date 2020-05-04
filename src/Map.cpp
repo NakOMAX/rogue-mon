@@ -42,6 +42,23 @@ Map::Map(unsigned short int totalLayers, int seed)
 Map::~Map()
 {
   delete [] eventsInLayer;
+  delete focusRect;
+  SDL_FreeSurface(surBg);
+  SDL_FreeSurface(surTrainer);
+  SDL_FreeSurface(surWild);
+  SDL_FreeSurface(surShop);
+  SDL_FreeSurface(surHeal);
+
+  SDL_DestroyTexture(texBg);
+  SDL_DestroyTexture(texTrainer);
+  SDL_DestroyTexture(texWild);
+  SDL_DestroyTexture(texShop);
+  SDL_DestroyTexture(texHeal);
+
+  for (auto iter = allVertices.first; iter!=allVertices.second; iter++)
+  {
+    delete myMap[*iter].rect;
+  }
   std::cout<<"Map succesfully destroyed"<<std::endl;
 }
 
