@@ -1,6 +1,6 @@
 #include "InheritedEvents.h"
 #include "Event.h"
-//#include "../player/Player.h"
+#include "Player.h"
 #include <iostream> //testing/debug only
 #include <string>
 #include <fstream>
@@ -41,6 +41,17 @@ short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsi
 
   //init file ifstream
   myfile.open(txt_source);
+  if (!myfile.is_open()) {
+    txt_source = "../" + txt_source;
+    myfile.close();
+    myfile.open(txt_source);
+  }
+  if (!myfile.is_open()) {
+    txt_source = "../" + txt_source;
+    myfile.close();
+    myfile.open(txt_source);
+  }
+  std::cout<<txt_source<<std::endl;//debug
 
   return 0;
 }
@@ -93,7 +104,7 @@ short int Cinematic::read(DialogueBox* db) {
 //-------------------------------->HEALING<-----------------------------------//
 //____________________________________________________________________________//
 
-/*short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player)
+short int Healing::init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, Player & player)
 {
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 20);
   for (unsigned short int i = 0; i < 100; i++)
@@ -101,12 +112,12 @@ short int Cinematic::read(DialogueBox* db) {
     SDL_RenderDrawRect(renderer, NULL);
     SDL_Delay(5);
   }
-  unsigned short int n = player.getNumberOfPokemons();//changer le nom de la fonction
+  unsigned short int n = player.getNbPokemon();
   Pokemon * current;
   for (unsigned short int i = 0; i<n; i++)
   {
     current = player.getPokemon(i);
-    current->setHP(current->getMaxHp());
+    current->setHp(current->getMaxHp());
   }
   return 0;
-}*/
+}

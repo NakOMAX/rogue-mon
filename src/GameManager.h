@@ -18,7 +18,7 @@ public:
   /** @param dimx Screen width, in pixels */
   /** @param dimx Screen height, in pixels */
   short int init(unsigned short int cheatCode = 0, unsigned short int numberOfLayers = 10
-    , unsigned short int dimx=800, unsigned short int dimy=800);
+    , unsigned short int dimx=1200, unsigned short int dimy=750);
 
   /** @brief Runs the game in graphic mode */
   /** Holds game loops in it */
@@ -31,7 +31,10 @@ private:
   SDL_Event e;
   SDL_Surface * surface;
   SDL_Renderer * renderer;
+  unsigned short int wdimx;
+  unsigned short int wdimy;
 
+  unsigned short int nLayers;
 };
 
 #endif
