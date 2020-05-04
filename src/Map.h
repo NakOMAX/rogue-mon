@@ -51,6 +51,9 @@ typedef boost::graph_traits<GraphMap>::vertex_descriptor Vertex;
 typedef boost::graph_traits<GraphMap>::vertex_iterator VIterator;
 typedef boost::graph_traits<GraphMap>::adjacency_iterator PathI;
 
+
+/** @class Map class*/
+/** @brief Class that manages event structure */
 class Map{
 public:
   /** @brief Class constructor */

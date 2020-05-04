@@ -27,6 +27,7 @@ public :
     ///@brief accessor
     Item operator= (Item copy);
     ///@brief action of an item
+    ///@param Pokemon is a pointer to the Current Pokemon
     void actionItem(Pokemon*);
 };
 #endif

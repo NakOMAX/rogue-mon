@@ -256,8 +256,6 @@ short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
       else active = choicePok(active);
   }
 
-
-
   //render
   SDL_RenderPresent(renderer);
   // event treatement
