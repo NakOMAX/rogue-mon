@@ -80,57 +80,57 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Squirtle.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_player.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player.html">Player</a>{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  std::string name;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="class_pokemon.html">Pokemon</a> * myPokemon[6];</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="class_item.html">Item</a> * myItem;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> nbPokemon;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> nbItem;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_player.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player.html">Player</a>{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  std::string name;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="class_pokemon.html">Pokemon</a> * myPokemon[6];</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="class_item.html">Item</a> * myItem;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> nbPokemon;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> nbItem;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="class_player.html">Player</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  ~<a class="code" href="class_player.html">Player</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="class_player.html">Player</a>();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::string getUserName();   </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="class_pokemon.html">Pokemon</a>* <a class="code" href="class_player.html#a80527d1cf1cd35fd3733c47a2ea08a84">getPokemon</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span>);   </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#a88f1c55106cda6165d4e7f93ac9d854f">getNbPokemon</a>(); </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_item.html">Item</a> * <a class="code" href="class_player.html#a06099c208c5fd83950e5d84ad1746fd7">getItem</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span>);   </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#a526924eda77c2b48e93ca4a4d6fe9ee6">getNbItem</a>(); </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player.html#aff6d881ccbca76b149fe002f50dd01a0">setPokemon</a>();  </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">//me.myitem</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_player.html#a8209244967af2073876d5bf01a566d7d">addItem</a>(<a class="code" href="class_item.html">Item</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player.html#a76c17fc4b4f5aba544ab028b70a1e8dc">addPokemon</a>(<a class="code" href="class_pokemon.html">Pokemon</a>*);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_player.html#a142468d760a5f32de4df330abcfb8cba">deletePokemon</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player.html#a6ef477a23d4abff61b00298fb9761191">deleteItem</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_player.html#ac2c94945f20bacc46cbd152ec06d4ef7">pokIsDead</a>(<a class="code" href="class_pokemon.html">Pokemon</a>*);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_player.html#a8df8ebdd8bb2f93945c485de27c06b73">playerIsDead</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  ~<a class="code" href="class_player.html">Player</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::string getUserName();   </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="class_pokemon.html">Pokemon</a>* <a class="code" href="class_player.html#a80527d1cf1cd35fd3733c47a2ea08a84">getPokemon</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span>);   </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#a88f1c55106cda6165d4e7f93ac9d854f">getNbPokemon</a>(); </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_item.html">Item</a> * <a class="code" href="class_player.html#a06099c208c5fd83950e5d84ad1746fd7">getItem</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span>);   </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#a526924eda77c2b48e93ca4a4d6fe9ee6">getNbItem</a>(); </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player.html#aff6d881ccbca76b149fe002f50dd01a0">setPokemon</a>();  </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">//me.myitem</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_player.html#a8209244967af2073876d5bf01a566d7d">addItem</a>(<a class="code" href="class_item.html">Item</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player.html#a76c17fc4b4f5aba544ab028b70a1e8dc">addPokemon</a>(<a class="code" href="class_pokemon.html">Pokemon</a>*);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_player.html#a142468d760a5f32de4df330abcfb8cba">deletePokemon</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_player.html#a6ef477a23d4abff61b00298fb9761191">deleteItem</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_player.html#ac2c94945f20bacc46cbd152ec06d4ef7">pokIsDead</a>(<a class="code" href="class_pokemon.html">Pokemon</a>*);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_player.html#a8df8ebdd8bb2f93945c485de27c06b73">playerIsDead</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_player_html_a8209244967af2073876d5bf01a566d7d"><div class="ttname"><a href="class_player.html#a8209244967af2073876d5bf01a566d7d">Player::addItem</a></div><div class="ttdeci">void addItem(Item)</div><div class="ttdoc">mutator</div><div class="ttdef"><b>Definition:</b> Player.cpp:59</div></div>
 <div class="ttc" id="aclass_player_html_a06099c208c5fd83950e5d84ad1746fd7"><div class="ttname"><a href="class_player.html#a06099c208c5fd83950e5d84ad1746fd7">Player::getItem</a></div><div class="ttdeci">Item * getItem(unsigned short int id)</div><div class="ttdoc">accessor</div><div class="ttdef"><b>Definition:</b> Player.cpp:38</div></div>
 <div class="ttc" id="aclass_player_html_a526924eda77c2b48e93ca4a4d6fe9ee6"><div class="ttname"><a href="class_player.html#a526924eda77c2b48e93ca4a4d6fe9ee6">Player::getNbItem</a></div><div class="ttdeci">unsigned short int getNbItem()</div><div class="ttdoc">accessor</div><div class="ttdef"><b>Definition:</b> Player.cpp:42</div></div>
 <div class="ttc" id="aclass_player_html_a80527d1cf1cd35fd3733c47a2ea08a84"><div class="ttname"><a href="class_player.html#a80527d1cf1cd35fd3733c47a2ea08a84">Player::getPokemon</a></div><div class="ttdeci">Pokemon * getPokemon(unsigned short int id)</div><div class="ttdoc">accessor</div><div class="ttdef"><b>Definition:</b> Player.cpp:29</div></div>
-<div class="ttc" id="aclass_pokemon_html"><div class="ttname"><a href="class_pokemon.html">Pokemon</a></div><div class="ttdef"><b>Definition:</b> Pokemon.h:8</div></div>
+<div class="ttc" id="aclass_pokemon_html"><div class="ttname"><a href="class_pokemon.html">Pokemon</a></div><div class="ttdoc">Getter and Setter for Pokemon.</div><div class="ttdef"><b>Definition:</b> Pokemon.h:11</div></div>
 <div class="ttc" id="aclass_player_html_aff6d881ccbca76b149fe002f50dd01a0"><div class="ttname"><a href="class_player.html#aff6d881ccbca76b149fe002f50dd01a0">Player::setPokemon</a></div><div class="ttdeci">void setPokemon()</div><div class="ttdoc">accessor</div><div class="ttdef"><b>Definition:</b> Player.cpp:46</div></div>
 <div class="ttc" id="aclass_player_html_a142468d760a5f32de4df330abcfb8cba"><div class="ttname"><a href="class_player.html#a142468d760a5f32de4df330abcfb8cba">Player::deletePokemon</a></div><div class="ttdeci">void deletePokemon(unsigned short int i)</div><div class="ttdoc">Destroy the pokemon when it is die.</div><div class="ttdef"><b>Definition:</b> Player.cpp:64</div></div>
-<div class="ttc" id="aclass_item_html"><div class="ttname"><a href="class_item.html">Item</a></div><div class="ttdef"><b>Definition:</b> Item.h:6</div></div>
+<div class="ttc" id="aclass_item_html"><div class="ttname"><a href="class_item.html">Item</a></div><div class="ttdoc">Getter and Setter for Item and fonction for use selected Item.</div><div class="ttdef"><b>Definition:</b> Item.h:9</div></div>
 <div class="ttc" id="aclass_player_html_a6ef477a23d4abff61b00298fb9761191"><div class="ttname"><a href="class_player.html#a6ef477a23d4abff61b00298fb9761191">Player::deleteItem</a></div><div class="ttdeci">void deleteItem(unsigned short int i)</div><div class="ttdoc">Destroy the object if the item is used.</div><div class="ttdef"><b>Definition:</b> Player.cpp:69</div></div>
 <div class="ttc" id="aclass_player_html_a76c17fc4b4f5aba544ab028b70a1e8dc"><div class="ttname"><a href="class_player.html#a76c17fc4b4f5aba544ab028b70a1e8dc">Player::addPokemon</a></div><div class="ttdeci">void addPokemon(Pokemon *)</div><div class="ttdoc">Add one pokemon in the tab.</div><div class="ttdef"><b>Definition:</b> Player.cpp:52</div></div>
 <div class="ttc" id="aclass_player_html_a8df8ebdd8bb2f93945c485de27c06b73"><div class="ttname"><a href="class_player.html#a8df8ebdd8bb2f93945c485de27c06b73">Player::playerIsDead</a></div><div class="ttdeci">bool playerIsDead()</div><div class="ttdoc">check if the player is dead</div><div class="ttdef"><b>Definition:</b> Player.cpp:100</div></div>
 <div class="ttc" id="aclass_player_html_a88f1c55106cda6165d4e7f93ac9d854f"><div class="ttname"><a href="class_player.html#a88f1c55106cda6165d4e7f93ac9d854f">Player::getNbPokemon</a></div><div class="ttdeci">unsigned short int getNbPokemon()</div><div class="ttdoc">accessor</div><div class="ttdef"><b>Definition:</b> Player.cpp:33</div></div>
 <div class="ttc" id="aclass_player_html_ac2c94945f20bacc46cbd152ec06d4ef7"><div class="ttname"><a href="class_player.html#ac2c94945f20bacc46cbd152ec06d4ef7">Player::pokIsDead</a></div><div class="ttdeci">bool pokIsDead(Pokemon *)</div><div class="ttdoc">check if a pokemon is dead</div><div class="ttdef"><b>Definition:</b> Player.cpp:90</div></div>
-<div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdef"><b>Definition:</b> Player.h:10</div></div>
+<div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdoc">Getter and Setter for Player and fonction for use init the player.</div><div class="ttdef"><b>Definition:</b> Player.h:13</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

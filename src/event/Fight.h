@@ -14,7 +14,9 @@
 #include <string>
 #include <memory>
 
-
+/** @class Fight class
+    @brief Fight launched in gameplay
+    fight launched from the map */
 class Fight : public Event
 
 {

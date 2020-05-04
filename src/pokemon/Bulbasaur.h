@@ -5,8 +5,9 @@
 #include "Pokemon.h"
 #include "Attack.h"
 
-
 // Faut-il associer les attaques à chaque Pokemon ?
+/**@class Bulbasaur
+  @brief a plant-type pokemon*/
 class Bulbasaur : public Pokemon
 {
  public :

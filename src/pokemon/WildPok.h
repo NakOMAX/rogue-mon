@@ -7,7 +7,8 @@
 using namespace std;
 
 // Faut-il associer les attaques à chaque Pokemon ?
-
+/**@class WildPok
+  @brief a test wild pokemon*/
 class WildPok : public Pokemon
 {
 public :

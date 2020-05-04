@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['playerisdead_160',['playerIsDead',['../class_player.html#a8df8ebdd8bb2f93945c485de27c06b73',1,'Player']]],
-  ['pokisdead_161',['pokIsDead',['../class_player.html#ac2c94945f20bacc46cbd152ec06d4ef7',1,'Player']]]
+  ['playerisdead_183',['playerIsDead',['../class_player.html#a8df8ebdd8bb2f93945c485de27c06b73',1,'Player']]],
+  ['pokemon_184',['Pokemon',['../class_pokemon.html#a059e2fca08b08cd218c262f937399ed9',1,'Pokemon::Pokemon()'],['../class_pokemon.html#abf1d21ef2d67f293277ab8d9e5b3f36b',1,'Pokemon::Pokemon(const Pokemon &amp;old)']]],
+  ['pokisdead_185',['pokIsDead',['../class_player.html#ac2c94945f20bacc46cbd152ec06d4ef7',1,'Player']]]
 ];

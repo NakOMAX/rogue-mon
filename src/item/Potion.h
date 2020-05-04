@@ -4,6 +4,8 @@
 #include <string>
 #include "Item.h"
 
+/**@class Potion
+  @brief a health potion*/
 class Potion : public Item
 {
 Public :

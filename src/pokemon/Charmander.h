@@ -7,7 +7,8 @@
 
 
 // Faut-il associer les attaques à chaque Pokemon ?
-
+/**@class Charmander
+  @brief a fire-type pokemon*/
 class Charmander  : public Pokemon
 {
   public :

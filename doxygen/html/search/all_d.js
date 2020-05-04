@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_3c_3c_54',['operator&lt;&lt;',['../class_dialogue_box.html#a61bc96d35a4caff07c234fa37546d3e5',1,'DialogueBox']]],
-  ['operator_3d_55',['operator=',['../class_item.html#a2eb862c5d72eb5f5b48c4a3b2bd6466f',1,'Item']]]
+  ['operator_3c_3c_65',['operator&lt;&lt;',['../class_dialogue_box.html#a61bc96d35a4caff07c234fa37546d3e5',1,'DialogueBox']]],
+  ['operator_3d_66',['operator=',['../class_item.html#a2eb862c5d72eb5f5b48c4a3b2bd6466f',1,'Item']]]
 ];

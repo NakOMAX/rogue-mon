@@ -7,7 +7,8 @@
 
 
 // Faut-il associer les attaques à chaque Pokemon ?
-
+/**@class Squirtle
+  @brief a water-type pokemon*/
 class Squirtle  : public Pokemon
 {
     public :
