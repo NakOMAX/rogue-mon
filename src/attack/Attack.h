@@ -3,6 +3,9 @@
 
 #include <string>
 
+
+/** @class Attack class */
+/** @brief Getter and Setter for Attack*/
 class Attack{
   protected:
 	std :: string name;

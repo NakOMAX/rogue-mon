@@ -3,6 +3,9 @@
 #include <string>
 #include "Pokemon.h"
 using namespace std;
+
+/** @class Item class */
+/** @brief Getter and Setter for Item and fonction for use selected Item*/
 class Item
 {
 protected :
