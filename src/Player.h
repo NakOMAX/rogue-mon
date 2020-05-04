@@ -7,8 +7,10 @@
 #include "Squirtle.h"
 #include <string>
 
-class Player{
 
+/** @class Player class */
+/** @brief Getter and Setter for Player and fonction for use init the player*/
+class Player{
   protected:
   std::string name;
   Pokemon * myPokemon[6];
