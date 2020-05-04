@@ -50,6 +50,8 @@ short int GameManager::init(unsigned short int cheatCode, unsigned short int num
   map=new Map(numberOfLayers);
   nLayers = numberOfLayers;
   map->init(renderer, dimx, dimy);
+  wdimx = dimx;
+  wdimy = dimy;
 
   printf("Game manager successfully inited\n");
   return 0;
@@ -70,6 +72,11 @@ void GameManager::run()
   PathI pathIterator;
 
   printf("Game start\n");
+
+  // Start cinematic
+  Cinematic introduction("data/Text/intro.txt", "data/Backgrounds/bg_intro.png", "data/Components/professor.png");
+  introduction.launch(renderer, wdimx, wdimy);
+
   // Start loop
   do{
     // Event loop
