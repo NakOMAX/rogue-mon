@@ -6,6 +6,9 @@
 #include "SDL.h"
 #include "Player.h"
 
+/** @class GameManager class */
+/** @brief Class that manages game flow */
+/** In this class both game loops and game data are managed */
 class GameManager {
 public:
   GameManager();
