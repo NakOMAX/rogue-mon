@@ -62,8 +62,10 @@ public :
   short int run(SDL_Renderer * renderer, SDL_Event evt);
   ///@brief see event exit
   short int exit();
-  /** @brief dialogue box for cinematic*/
+  /** @brief dialogue box for fight*/
   DialogueBox * box;
+ 
+
 
 };
 

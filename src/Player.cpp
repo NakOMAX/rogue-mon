@@ -8,8 +8,7 @@
 using namespace std;
 
 Player:: Player(){ // je sais pas comment le faire en sdl :/
-  cout << "Enter your name: "<<endl;
-  cin >> name;
+  name = "Dominique";
   myItem = new Item[6];
   nbPokemon = 0;
   nbItem = 0;

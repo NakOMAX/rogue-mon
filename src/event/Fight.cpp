@@ -7,7 +7,7 @@
 #include "Component.h"
 #include "InheritedEvents.h"
 #include "Event.h"
-//#include "../player/Player.h"
+
 #include <iostream> //testing/debug only
 #include <string>
 #include <cstring>
@@ -33,50 +33,76 @@ Fight :: ~Fight () {}
 
 Pokemon* Fight :: choicePok (Pokemon* old)
 {
-    SDL_Event event;
-      *box << "Quel Pokemon voulez-vous utliser ? " ;
+    ///SDL_Event event;
+      /**box << "Quel Pokemon voulez-vous utliser ? " ;
       SDL_WaitEvent(&event);
       if (event.type == SDL_KEYDOWN)
       {
         // Number is within range?
-        if (event.key.keysym.sym > 0 && event.key.keysym.sym <= me->getNbPokemon())
+        //if (event.key.keysym.sym > SDLK_1 && event.key.keysym.sym <= me->getNbPokemon())
+        if (event.key.keysym.sym == SDLK_1)
         {
           // Number is the pokemon that was already fighting?
-          if (old == me->getPokemon(event.key.keysym.sym-1))
+          if (old == me->getPokemon(1))
           {
             *box << "Ce pokemon est déjà sur le champ";
             SDL_WaitEvent(&event);
           } else {
             // Selected pokemon is ok and can be returned
-            return me->getPokemon(event.key.keysym.sym-1);
+            return me->getPokemon(1);
           }
         } else {
-          *box << "Numèro de pokemon invalide";
+          *box << "Numéro de pokemon invalide";
           SDL_WaitEvent(&event);
         }
-      }
+      }*/
+      int ale;
+    ale= rand()%me->getNbPokemon()-1;
+    std :: cout<< "je suis arrivée avant le if choicePok"<<endl;
+    if (old == me->getPokemon(ale))
+    { if (ale==0)
+      {return me->getPokemon(ale+1); }
+      else 
+      {return me->getPokemon(ale-1);}
+    }
+    else
+    {return me->getPokemon(ale);}
+
+    std :: cout<< "je suis arrivée jusqu'ici"<<endl;
     return old;
 }
 
 void Fight :: raid  (Pokemon* Pok)
 {
+  
   SDL_Event event;
-     // (*box)= std :: make_shared<DialogueBox>();
+  *box << "Quelle attaque voulez vous effectuer ?";
   bool ok = false;
-  do {
+  
+  do { 
+        
     std::string text = "Quelle attaque voulez-vous effectuer ?  1 est " + Pok->getMyAttacks(0)->getName();
-    *box << text.c_str(); // étendre avec un pour quand on aura plus d'attques
+    *box << text.c_str(); 
 
+    
+    
+    /**box << "Quelle attaque voulez vous effectuer ?";*/
     SDL_WaitEvent(&event);
     if(event.type == SDL_KEYDOWN)
     {
+      std :: cout <<"Je viens dans le if"<< endl ; // debug
       // Number is within range?
       /* pensez à implementer une fonction pour récuperer le nombre d'attaques*/
-      if (event.key.keysym.sym > 0 && event.key.keysym.sym <= 1)
-      {
-        effectsattPlayer(Pok->getMyAttacks(event.key.keysym.sym), Pok);
-      } else {
-        *box << "Numèro d'attaque invalide";
+      if (event.key.keysym.sym==SDLK_1 || event.key.keysym.sym==SDLK_2)
+      {std :: cout << "J'ai choisi un nombre valide"<<endl; //debug
+        effectsattPlayer(Pok->getMyAttacks(1), Pok);
+        return ;
+        std :: cout << "J'ai choisi un nombre valide et la fonction s\'est executée "<<endl; //debug
+      } else 
+      {std :: cout << "J'ai choisi un nombre INvalide"<<endl; //debug
+        *box << "Numéro d'attaque invalide";
+        
+    
         SDL_WaitEvent(&event);
       }
     }
@@ -93,23 +119,29 @@ void Fight :: effectsattPlayer (Attack* att, Pokemon* Pok)
 void Fight :: acitem (Pokemon* Pok) // à completer
 {
   // C'est mieux d'éviter d'appeller cette fonction s'il n'y a plus d'items
-  //if (me->getNbItem() == 0) return;
+  if (me->getNbItem() == 0) return;
   // (*box)= std :: make_shared<DialogueBox>();
 
   SDL_Event event;
   bool ok = false;
+  
   do {
     *box << "Quel objet vous-vous utiliser ? " ;
-
+    std :: cout << "JE viens dans objet"<<endl; //debug
+    
     SDL_WaitEvent(&event);
     if(event.type == SDL_KEYDOWN)
     {
+     std :: cout << "JE viens dans le if objet"<<endl; //debug
+     
       // Number is within range?
-      if (event.key.keysym.sym > 0 && event.key.keysym.sym <= me->getNbItem())
-      {
+      if (event.key.keysym.sym ==SDLK_1 )
+      { std :: cout << "JE viens dans le if objet valide"<<endl; //debug
         me->getItem(event.key.keysym.sym)->actionItem(Pok);
       } else {
+        std :: cout << "JE viens dans le if objet INvalide"<<endl; //debug
         *box << "Numèro d'attaque invalide";
+        
         SDL_WaitEvent(&event);
       }
     }
@@ -175,7 +207,8 @@ void Fight :: action ()
 short int Fight::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned short int dimY)
 {
     //std :: cout<<"Fight correct initialisation"<<endl; //debug
-
+    
+   
     box= new DialogueBox;
     components.push_back(&(*box));
 
@@ -194,7 +227,7 @@ short int Fight::init(SDL_Renderer * renderer, unsigned short int dimX, unsigned
 }
 
 short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
-  std :: cout<<"Launched cinematic loop"<< std :: endl; //debug
+  //std :: cout<<"Launched cinematic loop"<< std :: endl; //debug
 
   //render bg EVENT HAS NO BACKGROUND
   // if (SDL_RenderCopy(renderer, background, NULL, NULL) < 0)
@@ -230,6 +263,7 @@ short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
   // event treatement
   while ( SDL_PollEvent(&evt) )
   {
+   /* std :: cout<< " Je viens jusqu'au choix"<<endl;//debug*/
       switch(evt.type)
       {
           case SDL_QUIT:
@@ -239,18 +273,24 @@ short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
               switch (evt.key.keysym.sym)
               {
               case SDLK_x :
+                std :: cout<< "x"<<endl; // debug
                 raid(active);
-                // Enemy's turn
+                std :: cout<< "x2"<<endl; // debug
+                actionOpposant(active);
                 break;
 
               case SDLK_c :
+                std :: cout<< "c"<<endl; // debug
                 acitem(active);
-                // Enemy's turn
+                std :: cout<< "c2"<<endl; // debug
+                actionOpposant(active);
                 break;
 
               case SDLK_s :
+                std :: cout<< "s"<<endl; // debug;
                 choicePok(active);
-                // Enemy's turn
+                std :: cout<< "s2"<<endl; // debug;;
+                actionOpposant(active);
                 break;
               }
           default: break;
