@@ -150,7 +150,7 @@ $(OBJ_DIR)/eventTests.o: $(MAIN_DIR)/eventTests.cpp $(EVENT_DIR)/*.h
 	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
 
 $(OBJ_DIR)/eventTestSDL.o: $(MAIN_DIR)/eventTestSDL.cpp $(EVENT_DIR)/Component.h $(EVENT_DIR)/Event.h $(EVENT_DIR)/InheritedEvents.h
-	$(CC) -c $(INCLUDE_FLAGS) $< -o $@
+	$(CC) -c $(INC_SRC) $(INCLUDE_FLAGS) $< -o $@
 
 $(OBJ_DIR)/mapTests.o: $(MAIN_DIR)/mapTests.cpp $(SRC_DIR)/Map.h
 	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
