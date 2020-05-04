@@ -66,7 +66,6 @@ int main(int argc, char *argv[])
   {
     printf("SDL error on window creation: %s\n", SDL_GetError() );
   }
-  //auto sdlFlags = ;
   SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
 
   // Tests

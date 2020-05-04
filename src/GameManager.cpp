@@ -27,7 +27,7 @@ short int GameManager::init(unsigned short int cheatCode, unsigned short int num
 {
 
   // SDL2 init
-  if(sdlFullInit())
+  if(!sdlFullInit())
   {
     printf("Failed on SDL init\n");
     return -1;
@@ -41,13 +41,15 @@ short int GameManager::init(unsigned short int cheatCode, unsigned short int num
     printf("SDL error on window creation: %s\n", SDL_GetError() );
     return -2;
   }
-  renderer = SDL_CreateRenderer(window, -1, 0);
+  renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
   surface = SDL_GetWindowSurface(window);
 
   player=new Player(/*cheatCode*/);
   map=new Map(numberOfLayers);
+  nLayers = numberOfLayers;
   map->init(renderer, dimx, dimy);
 
+  printf("Game manager successfully inited\n");
   return 0;
 }
 
@@ -56,13 +58,16 @@ void GameManager::run()
   // Loop managers
   bool quit = false;
   bool selected = false;
-  const Uint8 * keys;
+  bool victory = false;
+  //const Uint8 * keys;
   std::vector<VIterator> * options = map->getStarts();
   unsigned short int size = options->size();
-  unsigned short int selectedEvent = 0;
+  unsigned short int layersLeft = nLayers-1;
+  short int selectedEvent = 0;
   map->highlight(options, selectedEvent);
   PathI pathIterator;
 
+  printf("Game start\n");
   // Start loop
   do{
     // Event loop
@@ -74,48 +79,64 @@ void GameManager::run()
         // Both needed to exit both loops
         quit = true;
         selected = true;
+        printf("Forcing exit");
 
       } else if ( e.type == SDL_KEYDOWN) {
-        keys = SDL_GetKeyboardState(NULL);
-        if (keys[SDLK_RIGHT] == SDL_PRESSED)
+        //keys = SDL_GetKeyboardState(NULL);
+        if (e.key.keysym.sym == SDLK_RIGHT)
         {
           selectedEvent = (selectedEvent + 1) % size;
           map->highlight(options, selectedEvent);
-        } else if (keys[SDLK_LEFT] == SDL_PRESSED)
+        } else if (e.key.keysym.sym == SDLK_LEFT)
         {
-          selectedEvent = (selectedEvent - 1) % size;
+          if (selectedEvent - 1 < 0)
+            selectedEvent = size -1;
+          else
+            selectedEvent = (selectedEvent - 1) % size;
           map->highlight(options, selectedEvent);
-        } else if (keys[SDLK_KP_ENTER] == SDL_PRESSED)
+        } else if (e.key.keysym.sym == SDLK_RETURN)
         {
           map->selectPath(options->at(selectedEvent));
           selected=true;
           pathIterator = map->climbFrom(options->at(selectedEvent));
+          layersLeft--;
         }
       }
     }
     // Drawing
+    SDL_RenderClear(renderer);
     map->drawMap();
+    SDL_RenderPresent(renderer);
 
     // Game loop
-    while (selected && !quit){
+    while (selected && !quit && !victory){
       // Event loop
       while( SDL_PollEvent( &e ) != 0 )
       {
         //User requests quit
         if( e.type == SDL_QUIT )
         {
-            quit = true;
+          printf("Forcing exit\n");
+          quit = true;
         } else if ( e.type == SDL_KEYDOWN )
         {
-          if (keys[SDLK_KP_ENTER] == SDL_PRESSED)
+          if (e.key.keysym.sym == SDLK_RETURN)
           {
             pathIterator = map->climbFrom(pathIterator);
+            layersLeft--;
+            if (layersLeft == 0)
+            {
+              victory = true;
+              break;
+            }
           }
         }
       }
 
       // Drawing
+      SDL_RenderClear(renderer);
       map->drawMap();
+      SDL_RenderPresent(renderer);
     }
   } while (!selected);
 }

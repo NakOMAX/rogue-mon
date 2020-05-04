@@ -65,6 +65,7 @@ void Map::init(SDL_Renderer * newRenderer, unsigned short int wdimy, unsigned sh
   texHeal = SDL_CreateTextureFromSurface(renderer, surHeal);
   setContent();
   replaceIconsOnScroll();
+  printf("Map succesfully inited\n");
 }
 
 void Map::setContent()
@@ -165,14 +166,10 @@ void Map::setContent()
 
 void Map::replaceIconsOnScroll()
 {
-  printf("focus rect y %i\n", focusRect->y);
-  printf("first posy %i\n", myMap[*allVertices.first].posY);
-  printf("ratio %f\n", ratio);
   for (VIterator iter = allVertices.first; iter!=allVertices.second; iter++)
   {
     myMap[*iter].rect->y=(myMap[*iter].posY-focusRect->y)*ratio - myMap[*iter].rect->h;
   }
-  printf("first y %i\n", myMap[*allVertices.first].rect->y);
 }
 
 void Map::createVerticesBelow(const Vertex & vertexF, unsigned short int layer)
@@ -211,8 +208,8 @@ void Map::selectPath(VIterator start)
         myMap[*iter].state = STATE_UNREACHABLE;
     }
     myMap[*start].state = STATE_SELECTED;
-    myMap[*start].rect->h = ICON_SIZE*1.2*ratio;
-    myMap[*start].rect->w = ICON_SIZE*1.2*ratio;
+    myMap[*start].rect->h = myMap[*start].rect->h*1.5;
+    myMap[*start].rect->w = myMap[*start].rect->w*1.5;
     myMap[*start].rect->x = ratio*myMap[*start].posX-myMap[*start].rect->w/2;
 
     auto climbIterator = adjacent_vertices(*start, myMap);
@@ -228,15 +225,15 @@ PathI Map::climbFrom(VIterator current)
   // There is only one option to go upwards. If it changed, change this code
   // to return a vector of PathI and call selectPathI on the desired option.
   myMap[*current].state = STATE_VISITED;
-  myMap[*current].rect->h = ICON_SIZE*ratio;
-  myMap[*current].rect->w = ICON_SIZE*ratio;
+  myMap[*current].rect->h = myMap[*current].rect->h/1.5;
+  myMap[*current].rect->w = myMap[*current].rect->w/1.5;
   myMap[*current].rect->x = ratio*myMap[*current].posX-myMap[*current].rect->w/2;
 
   PathI next = adjacent_vertices(*current, myMap).first;
 
   myMap[*next].state = STATE_SELECTED;
-  myMap[*next].rect->h = ICON_SIZE*1.2*ratio;
-  myMap[*next].rect->w = ICON_SIZE*1.2*ratio;
+  myMap[*next].rect->h = myMap[*next].rect->h*1.5;
+  myMap[*next].rect->w = myMap[*next].rect->w*1.5;
   myMap[*next].rect->x = ratio*myMap[*next].posX-myMap[*next].rect->w/2;
 
   smoothScroll(myMap[*current].layer);
@@ -248,15 +245,15 @@ PathI Map::climbFrom(PathI current)
   // There is only one option to go upwards. If it changed, change this code
   // to return a vector of PathI and call selectPathI on the desired option.
   myMap[*current].state = STATE_VISITED;
-  myMap[*current].rect->h = ICON_SIZE*ratio;
-  myMap[*current].rect->w = ICON_SIZE*ratio;
+  myMap[*current].rect->h = myMap[*current].rect->h/1.5;
+  myMap[*current].rect->w = myMap[*current].rect->w/1.5;
   myMap[*current].rect->x = ratio*myMap[*current].posX-myMap[*current].rect->w/2;
 
   PathI next = adjacent_vertices(*current, myMap).first;
 
   myMap[*next].state = STATE_SELECTED;
-  myMap[*next].rect->h = ICON_SIZE*1.2*ratio;
-  myMap[*next].rect->w = ICON_SIZE*1.2*ratio;
+  myMap[*next].rect->h = myMap[*next].rect->h*1.5;
+  myMap[*next].rect->w = myMap[*next].rect->w*1.5;
   myMap[*next].rect->x = ratio*myMap[*next].posX-myMap[*next].rect->w/2;
 
   smoothScroll(myMap[*current].layer);

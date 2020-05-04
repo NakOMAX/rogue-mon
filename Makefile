@@ -12,10 +12,14 @@ ATTACK_DIR = $(SRC_DIR)/attack
 ITEM_DIR = $(SRC_DIR)/item
 POKEMON_DIR = $(SRC_DIR)/pokemon
 
-POKES_H = $(OBJ_DIR)/Pokemon.h $(OBJ_DIR)/Charmander.h $(OBJ_DIR)/Squirtle.h $(OBJ_DIR)/Bulbasaur.h $(OBJ_DIR)/Mewthree.h $(OBJ_DIR)/WildPok.h
+POKES_H = $(POKEMON_DIR)/Pokemon.h $(POKEMON_DIR)/Charmander.h $(POKEMON_DIR)/Squirtle.h $(POKEMON_DIR)/Bulbasaur.h $(POKEMON_DIR)/Mewthree.h $(POKEMON_DIR)/WildPok.h
 POKES_O = $(OBJ_DIR)/Pokemon.o $(OBJ_DIR)/Charmander.o $(OBJ_DIR)/Squirtle.o $(OBJ_DIR)/Bulbasaur.o $(OBJ_DIR)/Mewthree.o $(OBJ_DIR)/WildPok.o
 
-ATA_O = $(OBJ_DIR)/Attack.o $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
+ATACK_H = $(ATTACK_DIR)/Attack.h $(ATTACK_DIR)/First.h $(ATTACK_DIR)/Second.h
+ATTACK_O = $(OBJ_DIR)/Attack.o $(OBJ_DIR)/First.o $(OBJ_DIR)/Second.o
+
+EVENT_H = $(EVENT_DIR)/Event.h $(EVENT_DIR)/Fight.h $(EVENT_DIR)/InheritedEvents.h
+EVENT_O = $(OBJ_DIR)/Event.o $(OBJ_DIR)/Fight.o $(OBJ_DIR)/InheritedEvents.o
 
 # Include-related
 INC_BOOST = -Iinclude/boost_1_72_0/
@@ -135,10 +139,10 @@ $(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OB
 $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o $(OBJ_DIR)/sdlTools.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Item.o
+$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Item.o $(OBJ_DIR)/Component.o $(POKES_O) $(ATTACK_O) $(EVENT_O)
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/FightTest: $(OBJ_DIR)/FightTest.o $(OBJ_DIR)/Fight.o $(POKES_O) $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(ATA_O) $(OBJ_DIR)/Item.o
+$(TARGET_DIR)/FightTest: $(OBJ_DIR)/FightTest.o $(OBJ_DIR)/Fight.o $(POKES_O) $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(ATTACK_O) $(OBJ_DIR)/Item.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 # Main objects
@@ -170,8 +174,8 @@ $(OBJ_DIR)/GameManager.o: $(SRC_DIR)/GameManager.cpp $(SRC_DIR)/GameManager.h $(
 $(OBJ_DIR)/Event.o: $(EVENT_DIR)/Event.cpp $(EVENT_DIR)/Event.h $(EVENT_DIR)/Component.h
 	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
 
-$(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h
-	$(CC) $(INCLUDE_FLAGS) -c $< -o $@
+$(OBJ_DIR)/Map.o: $(SRC_DIR)/Map.cpp $(SRC_DIR)/Map.h $(EVENT_H)
+	$(CC) $(INC_SRC) $(INCLUDE_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/Pokemon.o: $(POKEMON_DIR)/Pokemon.cpp $(POKEMON_DIR)/Pokemon.h $(ATTACK_DIR)/Attack.h
 	$(CC) $(INC_SRC) -c $< -o $@

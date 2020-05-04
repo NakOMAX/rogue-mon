@@ -32,6 +32,7 @@ private:
   SDL_Surface * surface;
   SDL_Renderer * renderer;
 
+  unsigned short int nLayers;
 };
 
 #endif

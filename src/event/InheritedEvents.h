@@ -4,6 +4,7 @@
 #define POKE_EVI_H
 
 #include "Event.h"
+#include "Player.h"
 #include "Component.h"
 #include "SDL.h"
 #include "SDL_ttf.h"
@@ -43,11 +44,10 @@ private :
 };
 /*----------------------------------------------------------------------------*/
 
-/*class Healing : public Event {
+class Healing : public Event {
 public:
   Healing();
   ~Healing();
-  short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, const Player & player);
+  short int init(unsigned short int dimX, unsigned short int dimY, SDL_Renderer * renderer, Player & player);
 };
-*/
 #endif

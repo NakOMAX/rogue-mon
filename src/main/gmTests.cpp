@@ -3,7 +3,7 @@
 int main (void)
 {
   GameManager gm;
-  if(gm.init(0 , 4)==0)
+  if(gm.init(0 , 10)==0)
     gm.run();
   else
     printf("Could not open the game\n");

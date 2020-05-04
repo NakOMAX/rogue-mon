@@ -5,6 +5,9 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "sdlTools.h"
+#include "Event.h"
+#include "Fight.h"
+#include "InheritedEvents.h"
 
 #define BOSS_EVENT 0
 #define WILD_EVENT 1
