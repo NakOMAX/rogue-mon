@@ -109,6 +109,7 @@ void GameManager::run()
           selected=true;
           pathIterator = map->climbFrom(options->at(selectedEvent));
           layersLeft--;
+          while(SDL_PollEvent(&e)) {}
         }
       }
     }
@@ -132,6 +133,7 @@ void GameManager::run()
           if (e.key.keysym.sym == SDLK_RETURN)
           {
             pathIterator = map->climbFrom(pathIterator);
+            while(SDL_PollEvent(&e)) {}
             layersLeft--;
             if (layersLeft == 0)
             {

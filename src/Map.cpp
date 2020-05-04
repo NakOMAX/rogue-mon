@@ -279,9 +279,9 @@ PathI Map::climbFrom(PathI current)
 
 void Map::smoothScroll(unsigned short int startL)
 {
-  for (float i = 0; i<150; i++)
+  for (float i = 0; i<50; i++)
   {
-    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-(startL + i/150)/(nLayers-1));
+    focusRect->y = (MAP_HEIGHT-focusRect->h)*(1-(startL + i/50)/(nLayers-1));
     replaceIconsOnScroll();
     drawMap();
     SDL_RenderPresent(renderer);
