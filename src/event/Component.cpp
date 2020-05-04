@@ -179,6 +179,7 @@ unsigned short int DialogueBox::_update(SDL_Renderer * render) {
 }
 
 void DialogueBox::operator<<(const char* str) {
+  std:: cout << str;
   clean();
   std::string buf (str);
 
