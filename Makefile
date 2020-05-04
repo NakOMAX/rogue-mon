@@ -59,7 +59,7 @@ endif
 ## Build commands---------------------------------------------------------------
 
 # Builds everything
-default : setup map event
+default : setup gm
 
 # Map tests
 map: _map_run
@@ -111,7 +111,7 @@ _map_run: $(TARGET_DIR)/mapTests
 
 #_event_run: $(TARGET_DIR)/eventTests
 
-_gamemanager_run: $(TARGET_DIR)/gmTests
+_gamemanager_run: $(TARGET_DIR)/roguemon
 
 _pokemon_run: $(POKES_O)
 
@@ -139,7 +139,7 @@ $(TARGET_DIR)/eventTestSDL: $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OB
 $(TARGET_DIR)/mapTests: $(OBJ_DIR)/Map.o $(OBJ_DIR)/mapTests.o $(OBJ_DIR)/sdlTools.o
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
-$(TARGET_DIR)/gmTests: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Item.o $(OBJ_DIR)/Component.o $(POKES_O) $(ATTACK_O) $(EVENT_O)
+$(TARGET_DIR)/roguemon: $(OBJ_DIR)/gmTests.o $(OBJ_DIR)/GameManager.o $(OBJ_DIR)/Map.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(OBJ_DIR)/Item.o $(OBJ_DIR)/Component.o $(POKES_O) $(ATTACK_O) $(EVENT_O)
 	$(CC) $^ -o $@ $(LIB_SDL) $(LINK_SDL)
 
 $(TARGET_DIR)/FightTest: $(OBJ_DIR)/FightTest.o $(OBJ_DIR)/Fight.o $(POKES_O) $(OBJ_DIR)/Event.o $(OBJ_DIR)/InheritedEvents.o $(OBJ_DIR)/Component.o $(OBJ_DIR)/sdlTools.o $(OBJ_DIR)/Player.o $(ATTACK_O) $(OBJ_DIR)/Item.o
