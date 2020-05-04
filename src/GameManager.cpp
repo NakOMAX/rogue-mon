@@ -16,6 +16,8 @@ GameManager::~GameManager()
 {
   //delete player;
   delete map;
+  delete player;
+  SDL_FreeSurface(surface);
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   IMG_Quit();
