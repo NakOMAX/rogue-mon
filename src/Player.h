@@ -28,13 +28,22 @@ class Player{
 	Item * getItem(unsigned short int id);   ///@brief accessor
   unsigned short int getNbItem(); ///@brief accessor
 
+
 	void setPokemon();  ///@brief mutator
   //me.myitem
 
+  ///@brief Add one item in the tab
+  ///@param Item is the item you want to add
   void addItem(Item);
+  ///@brief Add one pokemon in the tab
+  ///@param Pokemon is the item you want to add
 	void addPokemon(Pokemon*);
 
+  ///@brief Destroy the pokemon when it is die
+  ///@param I is the index of tab Pokemon
   void deletePokemon(unsigned short int i);
+  ///@brief Destroy the object if the item is used
+  ///@param I is the index of tab Item
 	void deleteItem(unsigned short int i);
 
   ///@brief check if a pokemon is dead

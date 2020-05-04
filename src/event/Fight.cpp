@@ -224,7 +224,7 @@ short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
   }
 
 
-
+  *box << "while ? " ;
   //render
   SDL_RenderPresent(renderer);
   // event treatement
@@ -232,6 +232,7 @@ short int Fight::run(SDL_Renderer * renderer, SDL_Event evt) {
   {
       switch(evt.type)
       {
+          *box << "while ? " ;
           case SDL_QUIT:
               return -1;
               break;

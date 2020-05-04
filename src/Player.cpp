@@ -8,8 +8,6 @@
 using namespace std;
 
 Player:: Player(){ // je sais pas comment le faire en sdl :/
-  cout << "Enter your name: "<<endl;
-  cin >> name;
   myItem = new Item[6];
   nbPokemon = 0;
   nbItem = 0;
@@ -31,7 +29,6 @@ string Player:: getUserName(){
 Pokemon* Player :: getPokemon(unsigned short int i){
   return myPokemon[i];
 }
-
 
 unsigned short int Player :: getNbPokemon()
 {
