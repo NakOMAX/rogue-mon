@@ -16,12 +16,9 @@
 #include "SDL_ttf.h"
 #include "sdlTools.h"
 
-
-
-
-
-
-
+/** @class Event class
+    @brief Fight launched in gameplay
+    fight launched from the map */
 Fight :: Fight (Player * newme, WildPok * newopposant)
 {
     me = newme;
