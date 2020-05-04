@@ -34,6 +34,8 @@ short int GameManager::init(unsigned short int cheatCode, unsigned short int num
     printf("Failed on SDL init\n");
     return -1;
   }
+  
+  player=new Player(/*cheatCode*/);
 
   // SDL set up
   window = SDL_CreateWindow("Roguemon", SDL_WINDOWPOS_UNDEFINED,
@@ -46,7 +48,6 @@ short int GameManager::init(unsigned short int cheatCode, unsigned short int num
   renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
   surface = SDL_GetWindowSurface(window);
 
-  player=new Player(/*cheatCode*/);
   map=new Map(numberOfLayers);
   nLayers = numberOfLayers;
   map->init(renderer, dimx, dimy);
