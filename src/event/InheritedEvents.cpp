@@ -41,6 +41,17 @@ short int Cinematic::init(SDL_Renderer * renderer, unsigned short int dimX, unsi
 
   //init file ifstream
   myfile.open(txt_source);
+  if (!myfile.is_open()) {
+    txt_source = "../" + txt_source;
+    myfile.close();
+    myfile.open(txt_source);
+  }
+  if (!myfile.is_open()) {
+    txt_source = "../" + txt_source;
+    myfile.close();
+    myfile.open(txt_source);
+  }
+  std::cout<<txt_source<<std::endl;//debug
 
   return 0;
 }
