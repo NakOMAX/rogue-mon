@@ -19,8 +19,8 @@ Potion :: Potion () {
 
 Potion :: ~Potion () {}
 
-void Potion :: action(Pokemon &Pok)
+/*void Potion :: action(Pokemon &Pok)
 {
     Pok.Hp=100;
     Item:: action();
-}
+}*/
